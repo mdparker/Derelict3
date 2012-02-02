@@ -35,6 +35,7 @@ private
 
     import derelict.util.exception;
     import derelict.util.system;
+    import derelict.opengl3.types;
     import derelict.opengl3.constants;
     import derelict.opengl3.functions;
     static if(Derelict_OS_Windows) import derelict.opengl3.wgl;
@@ -42,6 +43,9 @@ private
 
 package
 {
+        // I want to avoid importing gl3 into this module and others.
+        __gshared DerelictGL3_loadedVersion = GLVersion.None;
+
         void bindGLFunc(void** ptr, string symName)
         {
             auto sym = loadGLFunc(symName);
@@ -52,7 +56,8 @@ package
 
         bool isExtSupported(string name)
         {
-            if(glGetIntegerv && glGetStringi)
+            // If OpenGL 3+ is loaded, use glGetStringi.
+            if(DerelictGL3_loadedVersion >= GLVersion.GL30)
             {
                 auto cstr = name.toStringz();
                 int count;
@@ -63,11 +68,21 @@ package
                         return true;
                 }
             }
+            // Otherwise use the classic approach.
             else
             {
                 auto extstr = to!string(glGetString(GL_EXTENSIONS));
-                if(extstr.indexOf(name) != -1)
-                    return true;
+                auto index = extstr.indexOf(name);
+                if(index != -1)
+                {
+                    // It's possible that the extension name is actually a
+                    // substring of another extension. If not, then the
+                    // character following the name in the extenions string
+                    // should be a space (or possibly the null character).
+                    size_t idx = index + name.length;
+                    if(extstr[idx] == ' ' || extstr[idx] == '\0')
+                        return true;
+                }
             }
             return false;
         }

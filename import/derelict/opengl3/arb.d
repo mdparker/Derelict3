@@ -2278,9 +2278,9 @@ private void load_ARB_texture_storage()
     }
 }
 
-package void loadARB(GLVersion loadedVersion)
+package void loadARB()
 {
-    if(loadedVersion >= GLVersion.GL30)
+    if(DerelictGL3_loadedVersion >= GLVersion.GL30)
     {
         _ARB_framebuffer_object = true;
         _ARB_map_buffer_range = true;
@@ -2296,7 +2296,7 @@ package void loadARB(GLVersion loadedVersion)
         if(_ARB_vertex_array_object) load_ARB_vertex_array_object();
     }
 
-    if(loadedVersion >= GLVersion.GL31)
+    if(DerelictGL3_loadedVersion >= GLVersion.GL31)
     {
         _ARB_copy_buffer = true;
         _ARB_uniform_buffer_object = true;
@@ -2309,7 +2309,7 @@ package void loadARB(GLVersion loadedVersion)
         if(_ARB_uniform_buffer_object) load_ARB_uniform_buffer_object();
     }
 
-    if(loadedVersion >= GLVersion.GL32)
+    if(DerelictGL3_loadedVersion >= GLVersion.GL32)
     {
         _ARB_draw_elements_base_vertex = true;
         _ARB_provoking_vertex = true;
@@ -2328,7 +2328,7 @@ package void loadARB(GLVersion loadedVersion)
         if(_ARB_texture_multisample) load_ARB_texture_multisample();
     }
 
-    if(loadedVersion >= GLVersion.GL33)
+    if(DerelictGL3_loadedVersion >= GLVersion.GL33)
     {
         _ARB_blend_func_extended = true;
         _ARB_sampler_objects = true;
@@ -2357,7 +2357,7 @@ package void loadARB(GLVersion loadedVersion)
         if(_ARB_vertex_type_2_10_10_10_rev) load_ARB_vertex_type_2_10_10_10_rev();
     }
 
-    if(loadedVersion >= GLVersion.GL40)
+    if(DerelictGL3_loadedVersion >= GLVersion.GL40)
     {
         _ARB_texture_query_lod = true;
         _ARB_draw_indirect = true;
@@ -2392,7 +2392,7 @@ package void loadARB(GLVersion loadedVersion)
         if(_ARB_transform_feedback3) load_ARB_transform_feedback3();
     }
 
-    if(loadedVersion >= GLVersion.GL41)
+    if(DerelictGL3_loadedVersion >= GLVersion.GL41)
     {
         _ARB_ES2_compatibility = true;
         _ARB_get_program_binary = true;
@@ -2416,7 +2416,7 @@ package void loadARB(GLVersion loadedVersion)
         if(_ARB_viewport_array) load_ARB_viewport_array();
     }
 
-    if(loadedVersion >= GLVersion.GL42)
+    if(DerelictGL3_loadedVersion >= GLVersion.GL42)
     {
         _ARB_base_instance = true;
         _ARB_shading_language_420pack = true;
