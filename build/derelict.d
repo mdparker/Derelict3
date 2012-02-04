@@ -6,7 +6,7 @@ import std.file : dirEntries, SpanMode;
 import std.array : endsWith;
 import std.string : format;
 
-// Output confiuration
+// Output configuration
 enum outdir = "../lib/";
 
 version(Windows)
@@ -24,7 +24,7 @@ else
     static assert(false, "Unknown operating system.");
 }
 
-// Compiler Configuration
+// Compiler configuration
 version(DigitalMars)
 {
     enum compilerOptions = "-lib -O -release -inline -property -w -wi";
@@ -55,14 +55,16 @@ string[string] pathMap;
 
 int main(string[] args)
 {
-    buildDerelict();
-
-
+    if(args.length == 1)
+        buildAll();
+    else
+        buildSome(args[1 .. $]);
+        
     return 0;
 }
 
 // Build all of the Derelict libraries.
-void buildDerelict()
+void buildAll()
 {
     try
     {
@@ -71,6 +73,22 @@ void buildDerelict()
     }
     // Eat any ErrnoException. The compiler will print the right thing on a failed build, no need
     // to clutter the output with exception info.
+    catch(ErrnoException e) {}
+}
+
+// Build only the packages specified on the command line.
+void buildSome(string[] args)
+{
+    try
+    {
+        // If any of the args matches a key in the pathMap, build
+        // that package.
+        foreach(s; args)
+        {
+            if(s in pathMap)
+                buildPackage(s);
+        }
+    }
     catch(ErrnoException e) {}
 }
 

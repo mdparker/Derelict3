@@ -1,7 +1,6 @@
 Derelict 3
 ------------
-Consider the current repo an ALPHA version! If you don't know what Derelict is,
-see the old project page for info on Derelict 1 & 2:
+Consider the current repo an ALPHA version! If you don't know what Derelict is, see the old project page for info on Derelict 1 & 2:
 
 http://www.dsource.org/projects/derelict/
 
@@ -9,38 +8,26 @@ And visit the forum for help:
 
 http://www.dsource.org/forums/viewforum.php?f=19
 
-This is a quick & dirty intro until I get the time to put together proper documentation. Several
-things have changed from Derelict 2.
+This is a quick & dirty intro until I get the time to put together proper documentation. Several things have changed from Derelict 2.
 
-The first thing to notice is that all source modules are located under a single import tree.
-When you build, .di files are no longer generated. So when building your app, you can just
-put the 'import' folder on the compiler's import path and away you go.
+The first thing to notice is that all source modules are located under a single import tree. When you build, .di files are no longer generated. So when building your app, you can just put the 'import' folder on the compiler's import path and away you go.
 
-Second, Derelict is now D2 only. You should still be able to use Tango with Derelict via the
-recently announced D2 port. But if you need D1, go back to Derelict 2.
+Second, Derelict is now D2 only. You should still be able to use Tango with Derelict via the recently announced D2 port. But if you need D1, go back to Derelict 2.
 
-Third, the build process has changed. No more makefiles. I hate them with a passion. The decision
-to support D2-only made it practical to slap together a simple build script. Currently, it builds
-each package in one go, but in the future will be updated to build individual packages. You can
-run it with rdmd like so:
+Third, the build process has changed. No more makefiles. I hate them with a passion. The decision to support D2-only made it practical to slap together a simple build script. You can specify which packages to build, or specify none to build all. You can run it with rdmd like so:
 
 ------
 cd $Derelict/build
 rdmd derelict.d
+
+rdmd DerelictUtil DerelictGL3
 ------
 
-Or, if you prefer, you can compile it with DMD and execute it. Also, be aware that the paths are currently
-hardcoded such that if you execute the script from another working directory, it will fail. I'll
-make it more robust in the future.
+Or, if you prefer (as I do), you can compile it with your D2 compiler* and execute it. Also, be aware that the paths are currently hardcoded such that if you execute the script from another working directory, it will fail. I'll make it more robust in the future.
 
-Also, the build script, is configured solely for Windows and DMD. If you absolutely need it on Linux or Mac,
-or with a different compiler, you'll need to hack at the script a bit. Its current state is not ideal. I
-will make it more configurable as time goes on.
+*Currently, the build script is configured only for DMD.
 
-Finally, the interface to DerelictGL3 is a bit different from the old DerelictGL. The primary change
-is that none of the symbols deprecated in the modern OpenGL specifications are present. This binding
-is based solely on the C header, gl3.h. You can still use older versions of OpenGL, but none of the
-deprecated functions will be loaded.
+Finally, the interface to DerelictGL3 is a bit different from the old DerelictGL. The primary change is that none of the symbols deprecated in the modern OpenGL specifications are present. This binding is based solely on the C header, gl3.h. You can still use older versions of OpenGL, but none of the deprecated functions will be loaded.
 
 Here's what you need to do in order to get up and running.
 
@@ -82,11 +69,6 @@ if(!ARB_sync)
 }
 --------------------
 
-You should call reload anytime you change contexts. This is required on Windows, but not on other platforms.
-There's a little bit more to do if you want to create a context yourself, but there's no support for that
-right now as I haven't yet implemented the WGL extensions.
+You should call reload anytime you change contexts. This is required on Windows, but not on other platforms. There's a little bit more to do if you want to create a context yourself, but there's no support for that right now as I haven't yet implemented the WGL extensions.
 
-Please bear in mind that this is all in an ALPHA state. It's perfectly usable as is, but there needs to be more
-work done on the build script, testing on different platforms/compilers, and, of course, the addition of a few
-more packages. Pull requests for bugfixes and enhancements are extremely welcome. However, I make no promises
-about accepting pull requests that add new packages. I'll have to take a wait-and-see approach on that for now.
+Please bear in mind that this is all in an ALPHA state. It's perfectly usable as is, but there needs to be more work done on the build script, testing on different platforms/compilers, and, of course, the addition of a few more packages. Pull requests for bugfixes and enhancements are extremely welcome. However, I make no promises about accepting pull requests that add new packages. I'll have to take a wait-and-see approach on that for now.
