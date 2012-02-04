@@ -14,18 +14,28 @@ version(Windows)
     enum prefix = "";
     enum extension = ".lib";
 }
+else version(Posix)
+{
+    enum prefix = "lib";
+    enum extension = ".a:";
+}
+else
+{
+    static assert(false, "Unknown operating system.");
+}
 
 // Compiler Configuration
 version(DigitalMars)
 {
-    enum compilerOptions = "dmd -lib -O -release -inline -property -w -wi -I../import -of" ~ outdir;
+    enum compilerOptions = "-lib -O -release -inline -property -w -wi";
+    string buildCompileString(string files, string packageName)
+    {
+        return format("dmd %s -I../import -of%s%s%s%s%s", compilerOptions, outdir, prefix, packageName, extension, files);
+    }
 }
 else
 {
     static assert(false, "Unknown compiler.");
-
-    // If this isn't here, the compiler complains about an undefined identifier.
-    enum compilerOptions = "";
 }
 
 
@@ -66,7 +76,8 @@ void buildDerelict()
 
 void buildPackage(string packageName)
 {
-    writefln("Building %s\n", packageName);
+    writefln("Building %s", packageName);
+    writeln();
 
     // Build up a string of all .d files in the directory that maps to packageName.
     string joined;
@@ -79,12 +90,11 @@ void buildPackage(string packageName)
         }
     }
 
-    string arg = format("%s%s%s%s%s", compilerOptions, prefix, packageName, extension, joined);
+    string arg = buildCompileString(joined, packageName);
 
     string s = shell(arg);
     writeln(s);
     writeln("Build succeeded.");
-
 }
 
 static this()
