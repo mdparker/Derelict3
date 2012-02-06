@@ -52,9 +52,9 @@ static if(Derelict_OS_Posix)
 
             const int RTLD_NOW = 2;
 
-            void *dlopen(CCPTR file, int mode);
+            void *dlopen(const(char)* file, int mode);
             int dlclose(void* handle);
-            void *dlsym(void* handle, CCPTR name);
+            void *dlsym(void* handle, const(char*) name);
             const(char)* dlerror();
         }
     }
@@ -63,7 +63,7 @@ static if(Derelict_OS_Posix)
 
     private SharedLibHandle LoadSharedLib(string libName)
     {
-        return dlopen(toCString(libName), RTLD_NOW);
+        return dlopen(libName.toStringz(), RTLD_NOW);
     }
 
     private void UnloadSharedLib(SharedLibHandle hlib)
@@ -73,7 +73,7 @@ static if(Derelict_OS_Posix)
 
     private void* GetSymbol(SharedLibHandle hlib, string symbolName)
     {
-        return dlsym(hlib, toCString(symbolName));
+        return dlsym(hlib, symbolName.toStringz());
     }
 
     private string GetErrorStr()
