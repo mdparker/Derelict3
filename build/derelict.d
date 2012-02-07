@@ -27,7 +27,7 @@ else
 // Compiler configuration
 version(DigitalMars)
 {
-	pragma(msg, "Using the Digital Mars DMD compiler.");
+    pragma(msg, "Using the Digital Mars DMD compiler.");
     enum compilerOptions = "-lib -O -release -inline -property -w -wi";
     string buildCompileString(string files, string packageName)
     {
@@ -36,12 +36,12 @@ version(DigitalMars)
 }
 else version(GNU)
 {
-	pragma(msg, "Using the GNU GDC compiler.");
-	enum compilerOptions = "-s -O3 -Wall";
-	string buildCompileString(string files, string packageName)
-	{
-		return format("gdc %s -I../import -o %s%s%s%s%s", compilerOptions, outdir, prefix, packageName, extension, files);
-	}
+    pragma(msg, "Using the GNU GDC compiler.");
+    enum compilerOptions = "-s -O3 -Wall";
+    string buildCompileString(string files, string packageName)
+    {
+        return format("gdc %s -I../import -o %s%s%s%s%s", compilerOptions, outdir, prefix, packageName, extension, files);
+    }
 }
 else
 {
@@ -69,14 +69,14 @@ int main(string[] args)
         buildAll();
     else
         buildSome(args[1 .. $]);
-        
+
     return 0;
 }
 
 // Build all of the Derelict libraries.
 void buildAll()
 {
-	writeln("Building all packages.");
+    writeln("Building all packages.");
     try
     {
         foreach(key; pathMap.keys)
@@ -90,7 +90,7 @@ void buildAll()
 // Build only the packages specified on the command line.
 void buildSome(string[] args)
 {
-	writeln("Building only the packages specified.");
+    writeln("Building only the packages specified.");
     try
     {
         // If any of the args matches a key in the pathMap, build
@@ -114,7 +114,7 @@ void buildPackage(string packageName)
     auto p = pathMap[packageName];
     foreach(string s; dirEntries(pathMap[packageName], SpanMode.breadth))
     {
-	    if(s.endsWith(".d"))
+        if(s.endsWith(".d"))
         {
             writeln(s);
             joined ~= " " ~ s;
