@@ -51,9 +51,15 @@ private
         enum libNames = "opengl32.dll";
     }
     else static if(Derelict_OS_Mac)
+    {
+        import derelict.opengl3.cgl;
         enum libNames = "../Frameworks/OpenGL.framework/OpenGL, /Library/Frameworks/OpenGL.framework/OpenGL, /System/Library/Frameworks/OpenGL.framework/OpenGL";
-    else static if(Derelict_OS_Mac)
+    }
+    else static if(Derelict_OS_Posix)
+    {
+        import derelict.opengl3.glx;
         enum libNames = "libGL.so.1,libGL.so";
+    }
     else
         static assert(0, "Need to implement OpenGL libNames for this operating system.");
 }

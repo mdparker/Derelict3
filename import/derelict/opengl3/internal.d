@@ -39,6 +39,8 @@ private
     import derelict.opengl3.constants;
     import derelict.opengl3.functions;
     static if(Derelict_OS_Windows) import derelict.opengl3.wgl;
+    else static if(Derelict_OS_Mac) import derelict.opengl3.cgl;
+    else static if(Derelict_OS_Posix) import derelict.opengl3.glx;
 }
 
 package
