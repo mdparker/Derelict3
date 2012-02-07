@@ -41,7 +41,6 @@ static if(Derelict_OS_Mac)
 {
     private
     {
-        import derelict.util.compat;
         import derelict.util.loader;
         import derelict.opengl3.types;
     }
@@ -202,50 +201,51 @@ static if(Derelict_OS_Mac)
     {
         __gshared
         {
-        CGLError function(CGLPixelFormatAttribute*, CGLPixelFormatObj*, int*) CGLChoosePixelFormat;
-        CGLError function(CGLPixelFormatObj) CGLDestroyPixelFormat;
-        CGLError function(CGLPixelFormatObj, int, CGLPixelFormatAttribute, int*) CGLDescribePixelFormat;
+            CGLError function(CGLPixelFormatAttribute*, CGLPixelFormatObj*, int*) CGLChoosePixelFormat;
+            CGLError function(CGLPixelFormatObj) CGLDestroyPixelFormat;
+            CGLError function(CGLPixelFormatObj, int, CGLPixelFormatAttribute, int*) CGLDescribePixelFormat;
 
-        CGLError function(uint, CGLRendererInfoObj*, int*) CGLQueryRendererInfo;
-        CGLError function(CGLRendererInfoObj) CGLDestroyRendererInfo;
-        CGLError function(CGLRendererInfoObj, int, CGLRendererProperty, int*) CGLDescribeRenderer;
+            CGLError function(uint, CGLRendererInfoObj*, int*) CGLQueryRendererInfo;
+            CGLError function(CGLRendererInfoObj) CGLDestroyRendererInfo;
+            CGLError function(CGLRendererInfoObj, int, CGLRendererProperty, int*) CGLDescribeRenderer;
 
-        CGLError function(CGLPixelFormatObj, CGLContextObj, CGLContextObj*) CGLCreateContext;
-        CGLError function(CGLContextObj) CGLDestroyContext;
-        CGLError function(CGLContextObj, CGLContextObj, uint) CGLCopyContext;
+            CGLError function(CGLPixelFormatObj, CGLContextObj, CGLContextObj*) CGLCreateContext;
+            CGLError function(CGLContextObj) CGLDestroyContext;
+            CGLError function(CGLContextObj, CGLContextObj, uint) CGLCopyContext;
 
-        CGLError function(CGLContextObj, int, int, int, void*) CGLSetOffScreen;
-        CGLError function(CGLContextObj, int*, int*, int*, void **baseaddr) CGLGetOffScreen;
-        CGLError function(CGLContextObj) CGLSetFullScreen;
+            CGLError function(CGLContextObj, int, int, int, void*) CGLSetOffScreen;
+            CGLError function(CGLContextObj, int*, int*, int*, void **baseaddr) CGLGetOffScreen;
+            CGLError function(CGLContextObj) CGLSetFullScreen;
 
-        CGLError function(CGLContextObj) CGLClearDrawable;
-        CGLError function(CGLContextObj) CGLFlushDrawable;
+            CGLError function(CGLContextObj) CGLClearDrawable;
+            CGLError function(CGLContextObj) CGLFlushDrawable;
 
-        CGLError function(CGLContextObj, CGLContextEnable) CGLEnable;
-        CGLError function(CGLContextObj, CGLContextEnable) CGLDisable;
-        CGLError function(CGLContextObj, CGLContextEnable, int*) CGLIsEnabled;
-        CGLError function(CGLContextObj, CGLContextParameter, int*) CGLSetParameter;
-        CGLError function(CGLContextObj, CGLContextParameter, int*) CGLGetParameter;
+            CGLError function(CGLContextObj, CGLContextEnable) CGLEnable;
+            CGLError function(CGLContextObj, CGLContextEnable) CGLDisable;
+            CGLError function(CGLContextObj, CGLContextEnable, int*) CGLIsEnabled;
+            CGLError function(CGLContextObj, CGLContextParameter, int*) CGLSetParameter;
+            CGLError function(CGLContextObj, CGLContextParameter, int*) CGLGetParameter;
 
-        CGLError function(CGLContextObj, int) CGLSetVirtualScreen;
-        CGLError function(CGLContextObj, int*) CGLGetVirtualScreen;
+            CGLError function(CGLContextObj, int) CGLSetVirtualScreen;
+            CGLError function(CGLContextObj, int*) CGLGetVirtualScreen;
 
-        CGLError function(CGLGlobalOption, int) CGLSetOption;
-        CGLError function(CGLGlobalOption, int*) CGLGetOption;
+            CGLError function(CGLGlobalOption, int) CGLSetOption;
+            CGLError function(CGLGlobalOption, int*) CGLGetOption;
 
 
-        version (Mac_OS_X_10_4_and_later)
-        {
-        CGLError function(CGLContextObj) CGLLockContext;
-        CGLError function(CGLContextObj) CGLUnlockContext;
+            version (Mac_OS_X_10_4_and_later)
+            {
+                CGLError function(CGLContextObj) CGLLockContext;
+                CGLError function(CGLContextObj) CGLUnlockContext;
+            }
+
+            void function(int*, int*) CGLGetVersion;
+
+            char* function(CGLError) CGLErrorString;
+
+            CGLError function(CGLContextObj) CGLSetCurrentContext;
+            CGLContextObj function() CGLGetCurrentContext;
         }
-
-        void function(int*, int*) CGLGetVersion;
-
-        char* function(CGLError) CGLErrorString;
-
-        CGLError function(CGLContextObj) CGLSetCurrentContext;
-        CGLContextObj function() CGLGetCurrentContext;");
     }
 
     package

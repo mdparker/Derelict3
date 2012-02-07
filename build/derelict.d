@@ -17,7 +17,7 @@ version(Windows)
 else version(Posix)
 {
     enum prefix = "lib";
-    enum extension = ".a:";
+    enum extension = ".a";
 }
 else
 {

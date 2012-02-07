@@ -40,6 +40,8 @@ private
 
     static if(Derelict_OS_Windows)
         enum libNames = "glfw.dll";
+    else static if(Derelict_OS_Mac)
+        enum libNames = "libglfw.dylib";
     else static if(Derelict_OS_Posix)
         enum libNames = "libglfw.so";
     else
