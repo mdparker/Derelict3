@@ -33,8 +33,8 @@ static if(Derelict_OS_Posix && !Derelict_OS_Mac)
 {
     private
     {
-	    import std.string;
-	    
+        import std.string;
+
         import derelict.util.loader;
         import derelict.util.xtypes;
         import derelict.opengl3.types;
@@ -224,7 +224,7 @@ static if(Derelict_OS_Posix && !Derelict_OS_Mac)
 
         bool hasValidContext()
         {
-            if(glxGetCurrentContext && glxGetCurrentContext())
+            if(glXGetCurrentContext && glXGetCurrentContext())
                 return true;
             return false;
         }
