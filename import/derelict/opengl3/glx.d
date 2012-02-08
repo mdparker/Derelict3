@@ -33,6 +33,8 @@ static if(Derelict_OS_Posix && !Derelict_OS_Mac)
 {
     private
     {
+	    import std.string;
+	    
         import derelict.util.loader;
         import derelict.util.xtypes;
         import derelict.opengl3.types;
@@ -117,7 +119,7 @@ static if(Derelict_OS_Posix && !Derelict_OS_Mac)
         alias void function(Display*,GLXDrawable,uint*) da_glXGetSelectedEvent;
 
         /* GLX 1.4+ */
-        alias void* function(CCPTR) da_glXGetProcAddress;
+        alias void* function(const(char)*) da_glXGetProcAddress;
     }
 
     __gshared
@@ -217,7 +219,7 @@ static if(Derelict_OS_Posix && !Derelict_OS_Mac)
 
         void* loadGLFunc(string symName)
         {
-            return glXGetProcAddress(toCString(symName));
+            return glXGetProcAddress(symName.toStringz());
         }
 
         bool hasValidContext()
