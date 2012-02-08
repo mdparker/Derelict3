@@ -34,7 +34,7 @@ private
 }
 
 
-extern(System)
+extern(C)
 {
     alias int function()da_glfwInit;
     alias int function(GLFWthreadmodel*, GLFWallocator*)da_glfwInitWithModels;
