@@ -253,6 +253,7 @@ enum
     GLFW_OPENGL_COMPAT_PROFILE = 0x00000002,
     GLFW_OPENGL_ES2_PROFILE   = 0x00000004,
 
+    GLFW_CURSOR_MODE          = 0x00030001,
     GLFW_STICKY_KEYS          = 0x00030002,
     GLFW_STICKY_MOUSE_BUTTONS = 0x00030003,
     GLFW_SYSTEM_KEYS          = 0x00030004,
@@ -295,8 +296,6 @@ extern(C)
     alias void function(GLFWwindow, int, int) GLFWscrollfun;
     alias void function(GLFWwindow, int, int) GLFWkeyfun;
     alias void function(GLFWwindow, int) GLFWcharfun;
-    alias void* function(size_t) GLFWmallocfun;
-    alias void function(void*) GLFWfreefun;
 }
 
 struct GLFWvidmode
@@ -313,15 +312,4 @@ struct GLFWgammaramp
     ushort[GLFW_GAMMA_RAMP_SIZE] red;
     ushort[GLFW_GAMMA_RAMP_SIZE] green;
     ushort[GLFW_GAMMA_RAMP_SIZE] blue;
-}
-
-struct GLFWallocator
-{
-    GLFWmallocfun malloc;
-    GLFWfreefun free;
-}
-
-struct GLFWthreadmodel
-{
-    int dummy;
 }

@@ -55,7 +55,6 @@ class DerelictGLFW3Loader : SharedLibLoader
         override void loadSymbols()
         {
             bindFunc(cast(void**)&glfwInit, "glfwInit");
-            bindFunc(cast(void**)&glfwInitWithModels, "glfwInitWithModels");
             bindFunc(cast(void**)&glfwTerminate, "glfwTerminate");
             bindFunc(cast(void**)&glfwGetVersion, "glfwGetVersion");
             bindFunc(cast(void**)&glfwGetVersionString, "glfwGetVersionString");
@@ -88,11 +87,12 @@ class DerelictGLFW3Loader : SharedLibLoader
             bindFunc(cast(void**)&glfwSetWindowIconifyCallback, "glfwSetWindowIconifyCallback");
             bindFunc(cast(void**)&glfwPollEvents, "glfwPollEvents");
             bindFunc(cast(void**)&glfwWaitEvents, "glfwWaitEvents");
+            bindFunc(cast(void**)&glfwGetInputMode, "glfwGetInputMode");
+            bindFunc(cast(void**)&glfwSetInputMode, "glfwSetInputMode");
             bindFunc(cast(void**)&glfwGetKey, "glfwGetKey");
             bindFunc(cast(void**)&glfwGetMouseButton, "glfwGetMouseButton");
             bindFunc(cast(void**)&glfwGetMousePos, "glfwGetMousePos");
             bindFunc(cast(void**)&glfwSetMousePos, "glfwSetMousePos");
-            bindFunc(cast(void**)&glfwSetCursorMode, "glfwSetCursorMode");
             bindFunc(cast(void**)&glfwGetScrollOffset, "glfwGetScrollOffset");
             bindFunc(cast(void**)&glfwSetKeyCallback, "glfwSetKeyCallback");
             bindFunc(cast(void**)&glfwSetCharCallback, "glfwSetCharCallback");
@@ -111,8 +111,6 @@ class DerelictGLFW3Loader : SharedLibLoader
             bindFunc(cast(void**)&glfwExtensionSupported, "glfwExtensionSupported");
             bindFunc(cast(void**)&glfwGetProcAddress, "glfwGetProcAddress");
             bindFunc(cast(void**)&glfwCopyContext, "glfwCopyContext");
-            bindFunc(cast(void**)&glfwEnable, "glfwEnable");
-            bindFunc(cast(void**)&glfwDisable, "glfwDisable");
         }
     }
     public
