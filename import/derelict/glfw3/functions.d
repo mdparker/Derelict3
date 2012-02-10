@@ -37,7 +37,6 @@ private
 extern(C)
 {
     alias int function()da_glfwInit;
-    alias int function(GLFWthreadmodel*, GLFWallocator*)da_glfwInitWithModels;
     alias void function()da_glfwTerminate;
     alias void function(int*, int*, int*)da_glfwGetVersion;
     alias const(char)* function()da_glfwGetVersionString;
@@ -76,11 +75,12 @@ extern(C)
     alias void function()da_glfwPollEvents;
     alias void function()da_glfwWaitEvents;
 
+    alias int function(GLFWwindow, int)da_glfwGetInputMode;
+    alias void function(GLFWwindow, int, int)da_glfwSetInputMode;
     alias int function(GLFWwindow, int)da_glfwGetKey;
     alias int function(GLFWwindow, int)da_glfwGetMouseButton;
     alias void function(GLFWwindow, int*, int*)da_glfwGetMousePos;
     alias void function(GLFWwindow, int, int)da_glfwSetMousePos;
-    alias void function(GLFWwindow, int) da_glfwSetCursorMode;
     alias void function(GLFWwindow, int*, int*)da_glfwGetScrollOffset;
     alias void function(GLFWkeyfun)da_glfwSetKeyCallback;
     alias void function(GLFWcharfun)da_glfwSetCharCallback;
@@ -102,15 +102,11 @@ extern(C)
     alias int function(in char*)da_glfwExtensionSupported;
     alias void* function(in char*)da_glfwGetProcAddress;
     alias void function(GLFWwindow, GLFWwindow, c_ulong)da_glfwCopyContext;
-
-    alias void function(GLFWwindow, int)da_glfwEnable;
-    alias void function(GLFWwindow, int)da_glfwDisable;
 }
 
 __gshared
 {
     da_glfwInit glfwInit;
-    da_glfwInitWithModels glfwInitWithModels;
     da_glfwTerminate glfwTerminate;
     da_glfwGetVersion glfwGetVersion;
     da_glfwGetVersionString glfwGetVersionString;
@@ -143,11 +139,12 @@ __gshared
     da_glfwSetWindowIconifyCallback glfwSetWindowIconifyCallback;
     da_glfwPollEvents glfwPollEvents;
     da_glfwWaitEvents glfwWaitEvents;
+    da_glfwGetInputMode glfwGetInputMode;
+    da_glfwSetInputMode glfwSetInputMode;
     da_glfwGetKey glfwGetKey;
     da_glfwGetMouseButton glfwGetMouseButton;
     da_glfwGetMousePos glfwGetMousePos;
     da_glfwSetMousePos glfwSetMousePos;
-    da_glfwSetCursorMode glfwSetCursorMode;
     da_glfwGetScrollOffset glfwGetScrollOffset;
     da_glfwSetKeyCallback glfwSetKeyCallback;
     da_glfwSetCharCallback glfwSetCharCallback;
@@ -166,6 +163,4 @@ __gshared
     da_glfwExtensionSupported glfwExtensionSupported;
     da_glfwGetProcAddress glfwGetProcAddress;
     da_glfwCopyContext glfwCopyContext;
-    da_glfwEnable glfwEnable;
-    da_glfwDisable glfwDisable;
 }
