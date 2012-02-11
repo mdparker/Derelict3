@@ -69,15 +69,29 @@ else
 enum packUtil = "DerelictUtil";
 enum packGL3 = "DerelictGL3";
 enum packGLFW3 = "DerelictGLFW3";
+enum packIL = "DerelictIL";
 
 // Source paths
 enum srcDerelict = "../import/derelict/";
 enum srcUtil = srcDerelict ~ "util/";
 enum srcGL3 = srcDerelict ~ "opengl3/";
 enum srcGLFW3 = srcDerelict ~ "glfw3/";
+enum srcIL = srcDerelict ~ "devil/";
 
 // Map package names to source paths.
 string[string] pathMap;
+
+static this()
+{
+    // Initializes the source path map.
+    pathMap =
+    [
+        packUtil : srcUtil,
+        packGL3 : srcGL3,
+        packGLFW3 : srcGLFW3,
+        packIL : srcIL,
+    ];
+}
 
 int main(string[] args)
 {
@@ -142,15 +156,4 @@ void buildPackage(string packageName)
     string s = shell(arg);
     writeln(s);
     writeln("Build succeeded.");
-}
-
-static this()
-{
-    // Initializes the source path map.
-    pathMap =
-    [
-        packUtil : srcUtil,
-        packGL3 : srcGL3,
-        packGLFW3 : srcGLFW3
-    ];
 }
