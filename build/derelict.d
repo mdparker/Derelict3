@@ -43,6 +43,22 @@ else version(GNU)
         return format("gdc %s -I../import -o %s%s%s%s%s", compilerOptions, outdir, prefix, packageName, extension, files);
     }
 }
+else version(LDC)
+{
+    version(D_Version2)
+    {
+        pragma(msg, "Using the LDC compiler.");
+        enum compilerOptions = "-lib -O -release -inline -property -w -wi";
+        string buildCompileString(string files, string packageName)
+        {
+            return format("ldc2 %s -I../import -of%s%s%s%s%s", compilerOptions, outdir, prefix, packageName, extension, files);
+        }
+    }
+    else
+    {
+        static assert(false, "Unsupported compiler version.");
+    }
+}
 else
 {
     static assert(false, "Unknown compiler.");
