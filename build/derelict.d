@@ -64,6 +64,7 @@ enum packGL3 = "DerelictGL3";
 enum packGLFW3 = "DerelictGLFW3";
 enum packIL = "DerelictIL";
 enum packAL = "DerelictAL";
+enum packFT = "DerelictFT";
 
 // Source paths
 enum srcDerelict = "../import/derelict/";
@@ -72,6 +73,7 @@ enum srcGL3 = srcDerelict ~ "opengl3/";
 enum srcGLFW3 = srcDerelict ~ "glfw3/";
 enum srcIL = srcDerelict ~ "devil/";
 enum srcAL = srcDerelict ~ "openal/";
+enum srcFT = srcDerelict ~ "freetype/";
 
 // Map package names to source paths.
 string[string] pathMap;
@@ -86,6 +88,7 @@ static this()
         packGLFW3 : srcGLFW3,
         packIL : srcIL,
         packAL : srcAL,
+        packFT : srcFT,
     ];
 }
 

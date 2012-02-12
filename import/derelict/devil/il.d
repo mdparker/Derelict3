@@ -43,7 +43,7 @@ private
     else static if(Derelict_OS_Posix)
         enum libNames = "libIL.so";
     else
-        static assert(0, "Need to implement GLFW libNames for this operating system.");
+        static assert(0, "Need to implement DevIL libNames for this operating system.");
 }
 
 class DerelictILLoader : SharedLibLoader

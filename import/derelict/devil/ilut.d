@@ -38,7 +38,7 @@ private
     else static if(Derelict_OS_Posix)
         enum libNames = "libILUT.so";
     else
-        static assert(0, "Need to implement GLFW libNames for this operating system.");
+        static assert(0, "Need to implement ILUT libNames for this operating system.");
 }
 
 enum : ILenum
