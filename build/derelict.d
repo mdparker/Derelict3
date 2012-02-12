@@ -45,18 +45,11 @@ else version(GNU)
 }
 else version(LDC)
 {
-    version(D_Version2)
+    pragma(msg, "Using the LDC compiler.");
+    enum compilerOptions = "-lib -O -release -enable-inlining -property -w -wi";
+    string buildCompileString(string files, string packageName)
     {
-        pragma(msg, "Using the LDC compiler.");
-        enum compilerOptions = "-lib -O -release -inline -property -w -wi";
-        string buildCompileString(string files, string packageName)
-        {
-            return format("ldc2 %s -I../import -of%s%s%s%s%s", compilerOptions, outdir, prefix, packageName, extension, files);
-        }
-    }
-    else
-    {
-        static assert(false, "Unsupported compiler version.");
+        return format("ldc2 %s -I../import -of%s%s%s%s%s", compilerOptions, outdir, prefix, packageName, extension, files);
     }
 }
 else
