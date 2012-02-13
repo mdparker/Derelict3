@@ -27,6 +27,11 @@ DEALINGS IN THE SOFTWARE.
 */
 module derelict.freetype.types;
 
+private
+{
+    import core.stdc.config;
+}
+
 // config/ftconfig.h
 alias short             FT_Int16;
 alias ushort            FT_UInt16;
@@ -1463,7 +1468,7 @@ extern(C)
     // ftmodapi.h
     alias FT_Error function( FT_Module mod ) FT_Module_Constructor;
     alias void function( FT_Module mod ) FT_Module_Destructor;
-    alias FT_Module_Interface function( FT_Module mod, CCPTR name ) FT_Module_Requester;
+    alias FT_Module_Interface function( FT_Module mod, const(char)* name ) FT_Module_Requester;
 
     alias void function( void* arg ) FT_DebugHook_Func;
 
