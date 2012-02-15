@@ -287,7 +287,7 @@ extern(C)
 {
     alias void function(int, const(char)*) GLFWerrorfun;
     alias void function(GLFWwindow, int, int) GLFWwindowsizefun;
-    alias void function(GLFWwindow) GLFWwindowclosefun;
+    alias int function(GLFWwindow) GLFWwindowclosefun;
     alias void function(GLFWwindow) GLFWwindowrefreshfun;
     alias void function(GLFWwindow, int) GLFWwindowfocusfun;
     alias void function(GLFWwindow, int) GLFWwindowiconifyfun;
