@@ -1414,7 +1414,7 @@ __gshared
     da_glUniform1dv glUniform1dv;
     da_glUniform2dv glUniform2dv;
     da_glUniform3dv glUniform3dv;
-    da_glUniform4dv glUniform5dv;
+    da_glUniform4dv glUniform4dv;
     da_glUniformMatrix2dv glUniformMatrix2dv;
     da_glUniformMatrix3dv glUniformMatrix3dv;
     da_glUniformMatrix4dv glUniformMatrix4dv;
@@ -1440,7 +1440,7 @@ private void load_ARB_gpu_shader_fp64()
         bindGLFunc(cast(void**)&glUniform1dv, "glUniform1dv");
         bindGLFunc(cast(void**)&glUniform2dv, "glUniform2dv");
         bindGLFunc(cast(void**)&glUniform3dv, "glUniform3dv");
-        bindGLFunc(cast(void**)&glUniform5dv, "glUniform5dv");
+        bindGLFunc(cast(void**)&glUniform4dv, "glUniform4dv");
         bindGLFunc(cast(void**)&glUniformMatrix2dv, "glUniformMatrix2dv");
         bindGLFunc(cast(void**)&glUniformMatrix3dv, "glUniformMatrix3dv");
         bindGLFunc(cast(void**)&glUniformMatrix4dv, "glUniformMatrix4dv");

@@ -486,7 +486,7 @@ class DerelictGL3Loader : SharedLibLoader
                     bindGLFunc(cast(void**)&glUniform1dv, "glUniform1dv");
                     bindGLFunc(cast(void**)&glUniform2dv, "glUniform2dv");
                     bindGLFunc(cast(void**)&glUniform3dv, "glUniform3dv");
-                    bindGLFunc(cast(void**)&glUniform5dv, "glUniform5dv");
+                    bindGLFunc(cast(void**)&glUniform4dv, "glUniform4dv");
                     bindGLFunc(cast(void**)&glUniformMatrix2dv, "glUniformMatrix2dv");
                     bindGLFunc(cast(void**)&glUniformMatrix3dv, "glUniformMatrix3dv");
                     bindGLFunc(cast(void**)&glUniformMatrix4dv, "glUniformMatrix4dv");
