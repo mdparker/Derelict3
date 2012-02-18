@@ -52,6 +52,11 @@ class DerelictSDL2Loader : SharedLibLoader
     {
         override void loadSymbols()
         {
+            bindFunc(cast(void**)&SDL_Init, "SDL_Init");
+            bindFunc(cast(void**)&SDL_InitSubSystem, "SDL_InitSubSystem");
+            bindFunc(cast(void**)&SDL_QuitSubSystem, "SDL_QuitSubSystem");
+            bindFunc(cast(void**)&SDL_WasInit, "SDL_WasInit");
+            bindFunc(cast(void**)&SDL_Quit, "SDL_Quit");
             bindFunc(cast(void**)&SDL_GetNumAudioDrivers, "SDL_GetNumAudioDrivers");
             bindFunc(cast(void**)&SDL_GetAudioDriver, "SDL_GetAudioDriver");
             bindFunc(cast(void**)&SDL_AudioInit, "SDL_AudioInit");

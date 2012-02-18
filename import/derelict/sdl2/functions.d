@@ -36,6 +36,13 @@ private
 
 extern(C)
 {
+    // SDL.h
+    alias int function(Uint32) da_SDL_Init;
+    alias int function(Uint32) da_SDL_InitSubSystem;
+    alias void function(Uint32) da_SDL_QuitSubSystem;
+    alias Uint32 function(Uint32) da_SDL_WasInit;
+    alias void function() da_SDL_Quit;
+
     // SDL_audio.h
     alias int function() da_SDL_GetNumAudioDrivers;
     alias const(char)* function(int) da_SDL_GetAudioDriver;
@@ -467,6 +474,12 @@ int SDL_SaveBMP(SDL_Surface* surface, const(char)* file)
 
 __gshared
 {
+    da_SDL_Init SDL_Init;
+    da_SDL_InitSubSystem SDL_InitSubSystem;
+    da_SDL_QuitSubSystem SDL_QuitSubSystem;
+    da_SDL_WasInit SDL_WasInit;
+    da_SDL_Quit SDL_Quit;
+
     da_SDL_GetNumAudioDrivers SDL_GetNumAudioDrivers;
     da_SDL_GetAudioDriver SDL_GetAudioDriver;
     da_SDL_AudioInit SDL_AudioInit;

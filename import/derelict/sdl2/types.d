@@ -97,6 +97,18 @@ Uint32 SDL_FOURCC(char A, char B, char C, char D)
     return ((A << 0) | (B << 8) | (C << 16) | (D << 24));
 }
 
+// SDL.h
+enum : Uint32
+{
+    SDL_INIT_TIMER = 0x00000001,
+    SDL_INIT_AUDIO = 0x00000010,
+    SDL_INIT_VIDEO = 0x00000020,
+    SDL_INIT_JOYSTICK = 0x00000200,
+    SDL_INIT_HAPTIC = 0x00001000,
+    SDL_INIT_NO_PARACHUTE = 0x00100000,
+    SDL_INIT_EVERYTHING = 0x000000FF
+}
+
 // SDL_audio.h
 alias Uint16 SDL_AudioFormat;
 
