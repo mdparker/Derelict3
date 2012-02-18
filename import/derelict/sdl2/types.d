@@ -1636,6 +1636,15 @@ bool SDL_RectEquals(const(SDL_Rect)* A, const(SDL_Rect)* B)
 }
 
 // SDL_render.h
+alias Uint32 SDL_RendererFlags;
+enum : Uint32
+{
+    SDL_RENDERER_SOFTWARE = 0x00000001,
+    SDL_RENDERER_ACCELERATED = 0x00000002,
+    SDL_RENDERER_PRESENTVSYNC = 0x00000004,
+    SDL_RENDERER_TARGETTEXTURE = 0x00000008,
+}
+
 struct SDL_RendererInfo
 {
     const(char)* name;
