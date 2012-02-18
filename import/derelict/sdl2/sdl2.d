@@ -41,7 +41,7 @@ private
     static if(Derelict_OS_Windows)
         enum libNames = "SDL2.dll";
     else static if(Derelict_OS_Posix)
-        enum libNames = "libSDL2.so";
+        enum libNames = "libSDL2.so,/usr/local/lib/libSDL2.so";
     else
         static assert(0, "Need to implement GLFW libNames for this operating system.");
 }
