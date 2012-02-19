@@ -373,7 +373,7 @@ extern(C)
     alias SDL_Finger* function(SDL_TouchID, SDL_FingerID) da_SDL_GetFinger;
 
     // SDL_version.h
-    alias void function(SDL_Version*) da_SDL_GetVersion;
+    alias void function(SDL_version*) da_SDL_GetVersion;
     alias const(char)* function() da_SDL_GetRevision;
     alias int function() da_SDL_GetRevisionNumber;
 

@@ -38,7 +38,7 @@ enum SDL_REVISION = "hg-6217:6952b11b7f46";
 enum SDL_REVISION_NUMBER = 6217;
 
 // SDL_version.h
-struct SDL_Version
+struct SDL_version
 {
     Uint8 major;
     Uint8 minor;
@@ -52,7 +52,7 @@ enum : Uint8
     SDL_PATCHLEVEL = 0
 }
 
-void SDL_VERSION(SDL_Version* x)
+void SDL_VERSION(SDL_version* x)
 {
     x.major = SDL_MAJOR_VERSION;
     x.minor = SDL_MINOR_VERSION;
