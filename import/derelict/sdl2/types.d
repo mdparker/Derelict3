@@ -1944,7 +1944,7 @@ enum
     SDL_GL_CONTEXT_PROFILE_MASK,
 }
 
-alias int SDL_GLprofile
+alias int SDL_GLprofile;
 enum
 {
     SDL_GL_CONTEXT_PROFILE_CORE = 0x0001,
@@ -1952,7 +1952,7 @@ enum
     SDL_GL_CONTEXT_PROFILE_ES2 = 0x0004,
 }
 
-alias int SDL_GLcontextFlag
+alias int SDL_GLcontextFlag;
 enum
 {
     SDL_GL_CONTEXT_DEBUG_FLAG = 0x0001,
