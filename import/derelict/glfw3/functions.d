@@ -36,72 +36,72 @@ private
 
 extern(C)
 {
-    alias int function()da_glfwInit;
-    alias void function()da_glfwTerminate;
-    alias void function(int*, int*, int*)da_glfwGetVersion;
-    alias const(char)* function()da_glfwGetVersionString;
+    alias nothrow int function()da_glfwInit;
+    alias nothrow void function()da_glfwTerminate;
+    alias nothrow void function(int*, int*, int*)da_glfwGetVersion;
+    alias nothrow const(char)* function()da_glfwGetVersionString;
 
-    alias int function()da_glfwGetError;
-    alias const(char)* function(int)da_glfwErrorString;
-    alias void function(GLFWerrorfun)da_glfwSetErrorCallback;
+    alias nothrow int function()da_glfwGetError;
+    alias nothrow const(char)* function(int)da_glfwErrorString;
+    alias nothrow void function(GLFWerrorfun)da_glfwSetErrorCallback;
 
-    alias int function(GLFWvidmode*, int)da_glfwGetVideoModes;
-    alias void function(GLFWvidmode*)da_glfwGetDesktopMode;
+    alias nothrow int function(GLFWvidmode*, int)da_glfwGetVideoModes;
+    alias nothrow void function(GLFWvidmode*)da_glfwGetDesktopMode;
 
-    alias void function(float)da_glfwSetGamma;
-    alias int function(GLFWgammaramp*)da_glfwGetGammaRamp;
-    alias void function(in GLFWgammaramp*)da_glfwSetGammaRamp;
+    alias nothrow void function(float)da_glfwSetGamma;
+    alias nothrow int function(GLFWgammaramp*)da_glfwGetGammaRamp;
+    alias nothrow void function(in GLFWgammaramp*)da_glfwSetGammaRamp;
 
-    alias GLFWwindow function(int, int, int, const(char)*, GLFWwindow)da_glfwOpenWindow;
-    alias void function(int, int)da_glfwOpenWindowHint;
-    alias int function(GLFWwindow)da_glfwIsWindow;
-    alias void function(GLFWwindow)da_glfwCloseWindow;
-    alias void function(GLFWwindow, const(char)*)da_glfwSetWindowTitle;
-    alias void function(GLFWwindow, int*, int*)da_glfwGetWindowSize;
-    alias void function(GLFWwindow, int, int)da_glfwSetWindowSize;
-    alias void function(GLFWwindow, int*, int*)da_glfwGetWindowPos;
-    alias void function(GLFWwindow, int, int)da_glfwSetWindowPos;
-    alias void function(GLFWwindow)da_glfwIconifyWindow;
-    alias void function(GLFWwindow)da_glfwRestoreWindow;
-    alias int function(GLFWwindow, int)da_glfwGetWindowParam;
-    alias void function(GLFWwindow, void*)da_glfwSetWindowUserPointer;
-    alias void* function(GLFWwindow)da_glfwGetWindowUserPointer;
-    alias void function(GLFWwindowsizefun)da_glfwSetWindowSizeCallback;
-    alias void function(GLFWwindowclosefun)da_glfwSetWindowCloseCallback;
-    alias void function(GLFWwindowrefreshfun)da_glfwSetWindowRefreshCallback;
-    alias void function(GLFWwindowfocusfun)da_glfwSetWindowFocusCallback;
-    alias void function(GLFWwindowiconifyfun)da_glfwSetWindowIconifyCallback;
+    alias nothrow GLFWwindow function(int, int, int, const(char)*, GLFWwindow)da_glfwOpenWindow;
+    alias nothrow void function(int, int)da_glfwOpenWindowHint;
+    alias nothrow int function(GLFWwindow)da_glfwIsWindow;
+    alias nothrow void function(GLFWwindow)da_glfwCloseWindow;
+    alias nothrow void function(GLFWwindow, const(char)*)da_glfwSetWindowTitle;
+    alias nothrow void function(GLFWwindow, int*, int*)da_glfwGetWindowSize;
+    alias nothrow void function(GLFWwindow, int, int)da_glfwSetWindowSize;
+    alias nothrow void function(GLFWwindow, int*, int*)da_glfwGetWindowPos;
+    alias nothrow void function(GLFWwindow, int, int)da_glfwSetWindowPos;
+    alias nothrow void function(GLFWwindow)da_glfwIconifyWindow;
+    alias nothrow void function(GLFWwindow)da_glfwRestoreWindow;
+    alias nothrow int function(GLFWwindow, int)da_glfwGetWindowParam;
+    alias nothrow void function(GLFWwindow, void*)da_glfwSetWindowUserPointer;
+    alias nothrow void* function(GLFWwindow)da_glfwGetWindowUserPointer;
+    alias nothrow void function(GLFWwindowsizefun)da_glfwSetWindowSizeCallback;
+    alias nothrow void function(GLFWwindowclosefun)da_glfwSetWindowCloseCallback;
+    alias nothrow void function(GLFWwindowrefreshfun)da_glfwSetWindowRefreshCallback;
+    alias nothrow void function(GLFWwindowfocusfun)da_glfwSetWindowFocusCallback;
+    alias nothrow void function(GLFWwindowiconifyfun)da_glfwSetWindowIconifyCallback;
 
-    alias void function()da_glfwPollEvents;
-    alias void function()da_glfwWaitEvents;
+    alias nothrow void function()da_glfwPollEvents;
+    alias nothrow void function()da_glfwWaitEvents;
 
-    alias int function(GLFWwindow, int)da_glfwGetInputMode;
-    alias void function(GLFWwindow, int, int)da_glfwSetInputMode;
-    alias int function(GLFWwindow, int)da_glfwGetKey;
-    alias int function(GLFWwindow, int)da_glfwGetMouseButton;
-    alias void function(GLFWwindow, int*, int*)da_glfwGetMousePos;
-    alias void function(GLFWwindow, int, int)da_glfwSetMousePos;
-    alias void function(GLFWwindow, int*, int*)da_glfwGetScrollOffset;
-    alias void function(GLFWkeyfun)da_glfwSetKeyCallback;
-    alias void function(GLFWcharfun)da_glfwSetCharCallback;
-    alias void function(GLFWmousebuttonfun)da_glfwSetMouseButtonCallback;
-    alias void function(GLFWmouseposfun)da_glfwSetMousePosCallback;
-    alias void function(GLFWscrollfun)da_glfwSetScrollCallback;
+    alias nothrow int function(GLFWwindow, int)da_glfwGetInputMode;
+    alias nothrow void function(GLFWwindow, int, int)da_glfwSetInputMode;
+    alias nothrow int function(GLFWwindow, int)da_glfwGetKey;
+    alias nothrow int function(GLFWwindow, int)da_glfwGetMouseButton;
+    alias nothrow void function(GLFWwindow, int*, int*)da_glfwGetMousePos;
+    alias nothrow void function(GLFWwindow, int, int)da_glfwSetMousePos;
+    alias nothrow void function(GLFWwindow, int*, int*)da_glfwGetScrollOffset;
+    alias nothrow void function(GLFWkeyfun)da_glfwSetKeyCallback;
+    alias nothrow void function(GLFWcharfun)da_glfwSetCharCallback;
+    alias nothrow void function(GLFWmousebuttonfun)da_glfwSetMouseButtonCallback;
+    alias nothrow void function(GLFWmouseposfun)da_glfwSetMousePosCallback;
+    alias nothrow void function(GLFWscrollfun)da_glfwSetScrollCallback;
 
-    alias int function(int, int)da_glfwGetJoystickParam;
-    alias int function(int, float*, int)da_glfwGetJoystickPos;
-    alias int function(int, ubyte*, int)da_glfwGetJoystickButtons;
+    alias nothrow int function(int, int)da_glfwGetJoystickParam;
+    alias nothrow int function(int, float*, int)da_glfwGetJoystickPos;
+    alias nothrow int function(int, ubyte*, int)da_glfwGetJoystickButtons;
 
-    alias double function()da_glfwGetTime;
-    alias void function(double)da_glfwSetTime;
+    alias nothrow double function()da_glfwGetTime;
+    alias nothrow void function(double)da_glfwSetTime;
 
-    alias void function(GLFWwindow) da_glfwMakeContextCurrent;
-    alias GLFWwindow function() da_glfwGetCurrentContext;
-    alias void function()da_glfwSwapBuffers;
-    alias void function(int)da_glfwSwapInterval;
-    alias int function(in char*)da_glfwExtensionSupported;
-    alias void* function(in char*)da_glfwGetProcAddress;
-    alias void function(GLFWwindow, GLFWwindow, c_ulong)da_glfwCopyContext;
+    alias nothrow void function(GLFWwindow) da_glfwMakeContextCurrent;
+    alias nothrow GLFWwindow function() da_glfwGetCurrentContext;
+    alias nothrow void function()da_glfwSwapBuffers;
+    alias nothrow void function(int)da_glfwSwapInterval;
+    alias nothrow int function(in char*)da_glfwExtensionSupported;
+    alias nothrow void* function(in char*)da_glfwGetProcAddress;
+    alias nothrow void function(GLFWwindow, GLFWwindow, c_ulong)da_glfwCopyContext;
 }
 
 __gshared

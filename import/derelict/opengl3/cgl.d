@@ -199,7 +199,7 @@ static if(Derelict_OS_Mac)
 
     extern (C)
     {
-        __gshared
+        __gshared nothrow
         {
             CGLError function(CGLPixelFormatAttribute*, CGLPixelFormatObj*, int*) CGLChoosePixelFormat;
             CGLError function(CGLPixelFormatObj) CGLDestroyPixelFormat;

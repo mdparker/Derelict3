@@ -76,50 +76,50 @@ static if(Derelict_OS_Posix && !Derelict_OS_Mac)
 
     extern (C)
     {
-        alias XVisualInfo* function(Display*,int,int*) da_glXChooseVisual;
-        alias void function(Display*,GLXContext,GLXContext,uint) da_glXCopyContext;
-        alias GLXContext function(Display*,XVisualInfo*,GLXContext,Bool) da_glXCreateContext;
-        alias GLXPixmap function(Display*,XVisualInfo*,Pixmap) da_glXCreateGLXPixmap;
-        alias void function(Display*,GLXContext) da_glXDestroyContext;
-        alias void function(Display*,GLXPixmap) da_glXDestroyGLXPixmap;
-        alias int  function(Display*,XVisualInfo*,int,int*) da_glXGetConfig;
-        alias GLXContext function() da_glXGetCurrentContext;
-        alias GLXDrawable function() da_glXGetCurrentDrawable;
-        alias Bool function(Display*,GLXContext) da_glXIsDirect;
-        alias Bool function(Display*,GLXDrawable,GLXContext) da_glXMakeCurrent;
-        alias Bool function(Display*,int*,int*) da_glXQueryExtension;
-        alias Bool function(Display*,int*,int*) da_glXQueryVersion;
-        alias void function(Display*,GLXDrawable) da_glXSwapBuffers;
-        alias void function(Font,int,int,int) da_glXUseXFont;
-        alias void function() da_glXWaitGL;
-        alias void function() da_glXWaitX;
-        alias char* function(Display*,int) da_glXGetClientString;
-        alias char* function(Display*,int,int) da_glXQueryServerString;
-        alias char* function(Display*,int) da_glXQueryExtensionsString;
+        alias nothrow XVisualInfo* function(Display*,int,int*) da_glXChooseVisual;
+        alias nothrow void function(Display*,GLXContext,GLXContext,uint) da_glXCopyContext;
+        alias nothrow GLXContext function(Display*,XVisualInfo*,GLXContext,Bool) da_glXCreateContext;
+        alias nothrow GLXPixmap function(Display*,XVisualInfo*,Pixmap) da_glXCreateGLXPixmap;
+        alias nothrow void function(Display*,GLXContext) da_glXDestroyContext;
+        alias nothrow void function(Display*,GLXPixmap) da_glXDestroyGLXPixmap;
+        alias nothrow int  function(Display*,XVisualInfo*,int,int*) da_glXGetConfig;
+        alias nothrow GLXContext function() da_glXGetCurrentContext;
+        alias nothrow GLXDrawable function() da_glXGetCurrentDrawable;
+        alias nothrow Bool function(Display*,GLXContext) da_glXIsDirect;
+        alias nothrow Bool function(Display*,GLXDrawable,GLXContext) da_glXMakeCurrent;
+        alias nothrow Bool function(Display*,int*,int*) da_glXQueryExtension;
+        alias nothrow Bool function(Display*,int*,int*) da_glXQueryVersion;
+        alias nothrow void function(Display*,GLXDrawable) da_glXSwapBuffers;
+        alias nothrow void function(Font,int,int,int) da_glXUseXFont;
+        alias nothrow void function() da_glXWaitGL;
+        alias nothrow void function() da_glXWaitX;
+        alias nothrow char* function(Display*,int) da_glXGetClientString;
+        alias nothrow char* function(Display*,int,int) da_glXQueryServerString;
+        alias nothrow char* function(Display*,int) da_glXQueryExtensionsString;
 
         /* GLX 1.3 */
 
-        alias GLXFBConfig* function(Display*,int,int*) da_glXGetFBConfigs;
-        alias GLXFBConfig* function(Display*,int,int*,int*) da_glXChooseFBConfig;
-        alias int  function(Display*,GLXFBConfig,int,int*) da_glXGetFBConfigAttrib;
-        alias XVisualInfo* function(Display*,GLXFBConfig) da_glXGetVisualFromFBConfig;
-        alias GLXWindow function(Display*,GLXFBConfig,Window,int*) da_glXCreateWindow;
-        alias void function(Display*,GLXWindow) da_glXDestroyWindow;
-        alias GLXPixmap function(Display*,GLXFBConfig,Pixmap,int*) da_glXCreatePixmap;
-        alias void function(Display*,GLXPixmap) da_glXDestroyPixmap;
-        alias GLXPbuffer function(Display*,GLXFBConfig,int*) da_glXCreatePbuffer;
-        alias void function(Display*,GLXPbuffer) da_glXDestroyPbuffer;
-        alias void function(Display*,GLXDrawable,int,uint*) da_glXQueryDrawable;
-        alias GLXContext function(Display*,GLXFBConfig,int,GLXContext,Bool) da_glXCreateNewContext;
-        alias Bool function(Display*,GLXDrawable,GLXDrawable,GLXContext) da_glXMakeContextCurrent;
-        alias GLXDrawable function() da_glXGetCurrentReadDrawable;
-        alias Display* function() da_glXGetCurrentDisplay;
-        alias int  function(Display*,GLXContext,int,int*) da_glXQueryContext;
-        alias void function(Display*,GLXDrawable,uint) da_glXSelectEvent;
-        alias void function(Display*,GLXDrawable,uint*) da_glXGetSelectedEvent;
+        alias nothrow GLXFBConfig* function(Display*,int,int*) da_glXGetFBConfigs;
+        alias nothrow GLXFBConfig* function(Display*,int,int*,int*) da_glXChooseFBConfig;
+        alias nothrow int  function(Display*,GLXFBConfig,int,int*) da_glXGetFBConfigAttrib;
+        alias nothrow XVisualInfo* function(Display*,GLXFBConfig) da_glXGetVisualFromFBConfig;
+        alias nothrow GLXWindow function(Display*,GLXFBConfig,Window,int*) da_glXCreateWindow;
+        alias nothrow void function(Display*,GLXWindow) da_glXDestroyWindow;
+        alias nothrow GLXPixmap function(Display*,GLXFBConfig,Pixmap,int*) da_glXCreatePixmap;
+        alias nothrow void function(Display*,GLXPixmap) da_glXDestroyPixmap;
+        alias nothrow GLXPbuffer function(Display*,GLXFBConfig,int*) da_glXCreatePbuffer;
+        alias nothrow void function(Display*,GLXPbuffer) da_glXDestroyPbuffer;
+        alias nothrow void function(Display*,GLXDrawable,int,uint*) da_glXQueryDrawable;
+        alias nothrow GLXContext function(Display*,GLXFBConfig,int,GLXContext,Bool) da_glXCreateNewContext;
+        alias nothrow Bool function(Display*,GLXDrawable,GLXDrawable,GLXContext) da_glXMakeContextCurrent;
+        alias nothrow GLXDrawable function() da_glXGetCurrentReadDrawable;
+        alias nothrow Display* function() da_glXGetCurrentDisplay;
+        alias nothrow int  function(Display*,GLXContext,int,int*) da_glXQueryContext;
+        alias nothrow void function(Display*,GLXDrawable,uint) da_glXSelectEvent;
+        alias nothrow void function(Display*,GLXDrawable,uint*) da_glXGetSelectedEvent;
 
         /* GLX 1.4+ */
-        alias void* function(const(char)*) da_glXGetProcAddress;
+        alias nothrow void* function(const(char)*) da_glXGetProcAddress;
     }
 
     __gshared

@@ -676,26 +676,26 @@ bool ARB_shading_language_packing() @property { return _ARB_shading_language_pac
 // ARB_framebuffer_object
 extern(System)
 {
-    alias GLboolean function(GLuint) da_glIsRenderbuffer;
-    alias void function(GLenum, GLuint) da_glBindRenderbuffer;
-    alias void function(GLsizei, const(GLuint)*) da_glDeleteRenderbuffers;
-    alias void function(GLsizei, GLuint*) da_glGenRenderbuffers;
-    alias void function(GLenum, GLenum, GLsizei, GLsizei) da_glRenderbufferStorage;
-    alias void function(GLenum, GLenum, GLint*) da_glGetRenderbufferParameteriv;
-    alias GLboolean function(GLuint) da_glIsFramebuffer;
-    alias void function(GLenum, GLuint) da_glBindFramebuffer;
-    alias void function(GLsizei, const(GLuint)*) da_glDeleteFramebuffers;
-    alias void function(GLsizei, GLuint*) da_glGenFramebuffers;
-    alias GLenum function(GLenum) da_glCheckFramebufferStatus;
-    alias void function(GLenum, GLenum, GLenum, GLuint, GLint) da_glFramebufferTexture1D;
-    alias void function(GLenum, GLenum, GLenum, GLuint, GLint) da_glFramebufferTexture2D;
-    alias void function(GLenum, GLenum, GLenum, GLuint, GLint, GLint) da_glFramebufferTexture3D;
-    alias void function(GLenum, GLenum, GLenum, GLuint) da_glFramebufferRenderbuffer;
-    alias void function(GLenum, GLenum, GLenum, GLint*) da_glGetFramebufferAttachmentParameteriv;
-    alias void function(GLenum) da_glGenerateMipmap;
-    alias void function(GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLbitfield, GLenum) da_glBlitFramebuffer;
-    alias void function(GLenum, GLsizei, GLenum, GLsizei, GLsizei) da_glRenderbufferStorageMultisample;
-    alias void function(GLenum, GLenum, GLuint, GLint, GLint) da_glFramebufferTextureLayer;
+    alias nothrow GLboolean function(GLuint) da_glIsRenderbuffer;
+    alias nothrow void function(GLenum, GLuint) da_glBindRenderbuffer;
+    alias nothrow void function(GLsizei, const(GLuint)*) da_glDeleteRenderbuffers;
+    alias nothrow void function(GLsizei, GLuint*) da_glGenRenderbuffers;
+    alias nothrow void function(GLenum, GLenum, GLsizei, GLsizei) da_glRenderbufferStorage;
+    alias nothrow void function(GLenum, GLenum, GLint*) da_glGetRenderbufferParameteriv;
+    alias nothrow GLboolean function(GLuint) da_glIsFramebuffer;
+    alias nothrow void function(GLenum, GLuint) da_glBindFramebuffer;
+    alias nothrow void function(GLsizei, const(GLuint)*) da_glDeleteFramebuffers;
+    alias nothrow void function(GLsizei, GLuint*) da_glGenFramebuffers;
+    alias nothrow GLenum function(GLenum) da_glCheckFramebufferStatus;
+    alias nothrow void function(GLenum, GLenum, GLenum, GLuint, GLint) da_glFramebufferTexture1D;
+    alias nothrow void function(GLenum, GLenum, GLenum, GLuint, GLint) da_glFramebufferTexture2D;
+    alias nothrow void function(GLenum, GLenum, GLenum, GLuint, GLint, GLint) da_glFramebufferTexture3D;
+    alias nothrow void function(GLenum, GLenum, GLenum, GLuint) da_glFramebufferRenderbuffer;
+    alias nothrow void function(GLenum, GLenum, GLenum, GLint*) da_glGetFramebufferAttachmentParameteriv;
+    alias nothrow void function(GLenum) da_glGenerateMipmap;
+    alias nothrow void function(GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLbitfield, GLenum) da_glBlitFramebuffer;
+    alias nothrow void function(GLenum, GLsizei, GLenum, GLsizei, GLsizei) da_glRenderbufferStorageMultisample;
+    alias nothrow void function(GLenum, GLenum, GLuint, GLint, GLint) da_glFramebufferTextureLayer;
 }
 
 __gshared
@@ -757,8 +757,8 @@ private void load_ARB_framebuffer_object()
 }
 
 // ARB_map_buffer_range
-extern(System) alias GLvoid* function(GLenum, GLintptr, GLsizeiptr, GLbitfield) da_glMapBufferRange;
-extern(System) alias void function(GLenum, GLintptr, GLsizeiptr) da_glFlushMappedBufferRange;
+extern(System) alias nothrow GLvoid* function(GLenum, GLintptr, GLsizeiptr, GLbitfield) da_glMapBufferRange;
+extern(System) alias nothrow void function(GLenum, GLintptr, GLsizeiptr) da_glFlushMappedBufferRange;
 __gshared da_glMapBufferRange glMapBufferRange;
 __gshared da_glFlushMappedBufferRange glFlushMappedBufferRange;
 
@@ -781,10 +781,10 @@ private void load_ARB_map_buffer_range()
 // ARB_vertex_array_object
 extern(System)
 {
-    alias void function(GLuint) da_glBindVertexArray;
-    alias void function(GLsizei, const(GLuint)*) da_glDeleteVertexArrays;
-    alias void function(GLsizei, GLuint*) da_glGenVertexArrays;
-    alias GLboolean function(GLuint) da_glIsVertexArray;
+    alias nothrow void function(GLuint) da_glBindVertexArray;
+    alias nothrow void function(GLsizei, const(GLuint)*) da_glDeleteVertexArrays;
+    alias nothrow void function(GLsizei, GLuint*) da_glGenVertexArrays;
+    alias nothrow GLboolean function(GLuint) da_glIsVertexArray;
 }
 
 __gshared
@@ -816,13 +816,13 @@ private void load_ARB_vertex_array_object()
 // ARB_uniform_buffer_object
 extern(System)
 {
-    alias void function(GLuint, GLsizei, const(GLchar*)*, GLuint*) da_glGetUniformIndices;
-    alias void function(GLuint, GLsizei, const(GLuint)*, GLenum, GLint*) da_glGetActiveUniformsiv;
-    alias void function(GLuint, GLuint, GLsizei, GLsizei*, GLchar*) da_glGetActiveUniformName;
-    alias GLuint function(GLuint, const(GLchar)*) da_glGetUniformBlockIndex;
-    alias void function(GLuint, GLuint, GLenum, GLint*) da_glGetActiveUniformBlockiv;
-    alias void function(GLuint, GLuint, GLsizei, GLsizei*, GLchar*) da_glGetActiveUniformBlockName;
-    alias void function(GLuint, GLuint, GLuint) da_glUniformBlockBinding;
+    alias nothrow void function(GLuint, GLsizei, const(GLchar*)*, GLuint*) da_glGetUniformIndices;
+    alias nothrow void function(GLuint, GLsizei, const(GLuint)*, GLenum, GLint*) da_glGetActiveUniformsiv;
+    alias nothrow void function(GLuint, GLuint, GLsizei, GLsizei*, GLchar*) da_glGetActiveUniformName;
+    alias nothrow GLuint function(GLuint, const(GLchar)*) da_glGetUniformBlockIndex;
+    alias nothrow void function(GLuint, GLuint, GLenum, GLint*) da_glGetActiveUniformBlockiv;
+    alias nothrow void function(GLuint, GLuint, GLsizei, GLsizei*, GLchar*) da_glGetActiveUniformBlockName;
+    alias nothrow void function(GLuint, GLuint, GLuint) da_glUniformBlockBinding;
 }
 
 __gshared
@@ -858,7 +858,7 @@ private void load_ARB_uniform_buffer_object()
 }
 
 // ARB_copy_buffer
-extern(System) alias void function(GLenum, GLenum, GLintptr, GLintptr, GLsizeiptr) da_glCopyBufferSubData;
+extern(System) alias nothrow void function(GLenum, GLenum, GLintptr, GLintptr, GLsizeiptr) da_glCopyBufferSubData;
 __gshared da_glCopyBufferSubData glCopyBufferSubData;
 
 private __gshared bool _ARB_copy_buffer;
@@ -879,10 +879,10 @@ private void load_ARB_copy_buffer()
 // ARB_draw_elements_base_vertex
 extern(System)
 {
-    alias void function(GLenum, GLsizei, GLenum, const(GLvoid)*, GLint) da_glDrawElementsBaseVertex;
-    alias void function(GLenum, GLuint, GLuint, GLsizei, GLenum, const(GLvoid)*, GLint) da_glDrawRangeElementsBaseVertex;
-    alias void function(GLenum, GLsizei, GLenum, const(GLvoid)*, GLsizei, GLint) da_glDrawElementsInstancedBaseVertex;
-    alias void function(GLenum, const(GLsizei)*, GLenum, const(GLvoid*)*, GLsizei, const(GLint)*) da_glMultiDrawElementsBaseVertex;
+    alias nothrow void function(GLenum, GLsizei, GLenum, const(GLvoid)*, GLint) da_glDrawElementsBaseVertex;
+    alias nothrow void function(GLenum, GLuint, GLuint, GLsizei, GLenum, const(GLvoid)*, GLint) da_glDrawRangeElementsBaseVertex;
+    alias nothrow void function(GLenum, GLsizei, GLenum, const(GLvoid)*, GLsizei, GLint) da_glDrawElementsInstancedBaseVertex;
+    alias nothrow void function(GLenum, const(GLsizei)*, GLenum, const(GLvoid*)*, GLsizei, const(GLint)*) da_glMultiDrawElementsBaseVertex;
 }
 
 __gshared
@@ -912,7 +912,7 @@ private void load_ARB_draw_elements_base_vertex()
 }
 
 // ARB_provoking_vertex
-extern(System) alias void function(GLenum) da_glProvokingVertex;
+extern(System) alias nothrow void function(GLenum) da_glProvokingVertex;
 __gshared da_glProvokingVertex glProvokingVertex;
 
 private __gshared bool _ARB_provoking_vertex;
@@ -933,13 +933,13 @@ private void load_ARB_provoking_vertex()
 // ARB_sync
 extern(System)
 {
-    alias GLsync function(GLenum, GLbitfield) da_glFenceSync;
-    alias GLboolean function(GLsync) da_glIsSync;
-    alias void function(GLsync) da_glDeleteSync;
-    alias GLenum function(GLsync, GLbitfield, GLuint64) da_glClientWaitSync;
-    alias void function(GLsync, GLbitfield, GLuint64) da_glWaitSync;
-    alias void function(GLsync, GLint64*) da_glGetInteger64v;
-    alias void function(GLsync, GLenum, GLsizei, GLsizei*, GLint*) da_glGetSynciv;
+    alias nothrow GLsync function(GLenum, GLbitfield) da_glFenceSync;
+    alias nothrow GLboolean function(GLsync) da_glIsSync;
+    alias nothrow void function(GLsync) da_glDeleteSync;
+    alias nothrow GLenum function(GLsync, GLbitfield, GLuint64) da_glClientWaitSync;
+    alias nothrow void function(GLsync, GLbitfield, GLuint64) da_glWaitSync;
+    alias nothrow void function(GLsync, GLint64*) da_glGetInteger64v;
+    alias nothrow void function(GLsync, GLenum, GLsizei, GLsizei*, GLint*) da_glGetSynciv;
 }
 
 __gshared
@@ -977,10 +977,10 @@ private void load_ARB_sync()
 // ARB_texture_multisample
 extern(System)
 {
-    alias void function(GLenum, GLsizei, GLint, GLsizei, GLsizei, GLboolean) da_glTexImage2DMultisample;
-    alias void function(GLenum, GLsizei, GLint, GLsizei, GLsizei, GLsizei, GLboolean) da_glTexImage3DMultisample;
-    alias void function(GLenum, GLuint, GLfloat*) da_glGetMultisamplefv;
-    alias void function(GLuint, GLbitfield) da_glSampleMaski;
+    alias nothrow void function(GLenum, GLsizei, GLint, GLsizei, GLsizei, GLboolean) da_glTexImage2DMultisample;
+    alias nothrow void function(GLenum, GLsizei, GLint, GLsizei, GLsizei, GLsizei, GLboolean) da_glTexImage3DMultisample;
+    alias nothrow void function(GLenum, GLuint, GLfloat*) da_glGetMultisamplefv;
+    alias nothrow void function(GLuint, GLbitfield) da_glSampleMaski;
 }
 
 __gshared
@@ -1012,10 +1012,10 @@ private void load_ARB_texture_multisample()
 // ARB_draw_buffers_blend
 extern(System)
 {
-    alias void function(GLuint, GLenum) da_glBlendEquationiARB;
-    alias void function(GLuint, GLenum, GLenum) da_glBlendEquationSeparateiARB;
-    alias void function(GLuint, GLenum, GLenum) da_glBlendFunciARB;
-    alias void function(GLuint, GLenum, GLenum, GLenum, GLenum) da_glBlendFuncSeparateiARB;
+    alias nothrow void function(GLuint, GLenum) da_glBlendEquationiARB;
+    alias nothrow void function(GLuint, GLenum, GLenum) da_glBlendEquationSeparateiARB;
+    alias nothrow void function(GLuint, GLenum, GLenum) da_glBlendFunciARB;
+    alias nothrow void function(GLuint, GLenum, GLenum, GLenum, GLenum) da_glBlendFuncSeparateiARB;
 }
 
 __gshared
@@ -1045,7 +1045,7 @@ private void load_ARB_draw_buffers_blend()
 }
 
 // ARB_sample_shading
-extern(System) alias void function(GLclampf) da_glMinSampleShadingARB;
+extern(System) alias nothrow void function(GLclampf) da_glMinSampleShadingARB;
 __gshared da_glMinSampleShadingARB glMinSampleShadingARB;
 
 private __gshared bool _ARB_sample_shading;
@@ -1066,12 +1066,12 @@ private void load_ARB_sample_shading()
 // ARB_shading_language_include
 extern(System)
 {
-    alias void function(GLenum, GLint, const(GLchar)*, GLint, const(GLchar)*) da_glNamedStringARB;
-    alias void function(GLint, const(GLchar)*) da_glDeleteNamedStringARB;
-    alias void function(GLuint, GLsizei, const(GLchar)*, const(GLint)*) da_glCompileShaderIncludeARB;
-    alias GLboolean function(GLint, const(GLchar)*) da_glIsNamedStringARB;
-    alias void function(GLint, const(GLchar)*, GLsizei, GLint*, GLchar*) da_glGetNamedStringARB;
-    alias void function(GLint, const(GLchar)*, GLenum, GLint*) da_glGetNamedStringivARB;
+    alias nothrow void function(GLenum, GLint, const(GLchar)*, GLint, const(GLchar)*) da_glNamedStringARB;
+    alias nothrow void function(GLint, const(GLchar)*) da_glDeleteNamedStringARB;
+    alias nothrow void function(GLuint, GLsizei, const(GLchar)*, const(GLint)*) da_glCompileShaderIncludeARB;
+    alias nothrow GLboolean function(GLint, const(GLchar)*) da_glIsNamedStringARB;
+    alias nothrow void function(GLint, const(GLchar)*, GLsizei, GLint*, GLchar*) da_glGetNamedStringARB;
+    alias nothrow void function(GLint, const(GLchar)*, GLenum, GLint*) da_glGetNamedStringivARB;
 }
 
 __gshared
@@ -1105,8 +1105,8 @@ private void load_ARB_shading_language_include()
 }
 
 // ARB_blend_func_extended
-extern(System) alias void function(GLuint, GLuint, GLuint, const(GLchar)*) da_glBindFragDataLocationIndexed;
-extern(System) alias GLint function(GLuint, const(GLchar)*) da_glGetFragDataIndex;
+extern(System) alias nothrow void function(GLuint, GLuint, GLuint, const(GLchar)*) da_glBindFragDataLocationIndexed;
+extern(System) alias nothrow GLint function(GLuint, const(GLchar)*) da_glGetFragDataIndex;
 __gshared da_glBindFragDataLocationIndexed glBindFragDataLocationIndexed;
 __gshared da_glGetFragDataIndex glGetFragDataIndex;
 
@@ -1129,20 +1129,20 @@ private void load_ARB_blend_func_extended()
 // ARB_sampler_objects
 extern(System)
 {
-    alias void function(GLsizei, GLuint*) da_glGenSamplers;
-    alias void function(GLsizei, const(GLuint)*) da_glDeleteSamplers;
-    alias GLboolean function(GLuint) da_glIsSampler;
-    alias void function(GLuint, GLuint) da_glBindSampler;
-    alias void function(GLuint, GLenum, GLint) da_glSamplerParameteri;
-    alias void function(GLuint, GLenum, const(GLint)*) da_glSamplerParameteriv;
-    alias void function(GLuint, GLenum, GLfloat) da_glSamplerParameterf;
-    alias void function(GLuint, GLenum, const(GLfloat)*) da_glSamplerParameterfv;
-    alias void function(GLuint, GLenum, const(GLint)*) da_glSamplerParameterIiv;
-    alias void function(GLuint, GLenum, const(GLuint)*) da_glSamplerParameterIuiv;
-    alias void function(GLuint, GLenum, GLint*) da_glGetSamplerParameteriv;
-    alias void function(GLuint, GLenum, GLint*) da_glGetSamplerParameterIiv;
-    alias void function(GLuint, GLenum, GLfloat*) da_glGetSamplerParameterfv;
-    alias void function(GLuint, GLenum, GLuint*) da_glGetSamplerParameterIuiv;
+    alias nothrow void function(GLsizei, GLuint*) da_glGenSamplers;
+    alias nothrow void function(GLsizei, const(GLuint)*) da_glDeleteSamplers;
+    alias nothrow GLboolean function(GLuint) da_glIsSampler;
+    alias nothrow void function(GLuint, GLuint) da_glBindSampler;
+    alias nothrow void function(GLuint, GLenum, GLint) da_glSamplerParameteri;
+    alias nothrow void function(GLuint, GLenum, const(GLint)*) da_glSamplerParameteriv;
+    alias nothrow void function(GLuint, GLenum, GLfloat) da_glSamplerParameterf;
+    alias nothrow void function(GLuint, GLenum, const(GLfloat)*) da_glSamplerParameterfv;
+    alias nothrow void function(GLuint, GLenum, const(GLint)*) da_glSamplerParameterIiv;
+    alias nothrow void function(GLuint, GLenum, const(GLuint)*) da_glSamplerParameterIuiv;
+    alias nothrow void function(GLuint, GLenum, GLint*) da_glGetSamplerParameteriv;
+    alias nothrow void function(GLuint, GLenum, GLint*) da_glGetSamplerParameterIiv;
+    alias nothrow void function(GLuint, GLenum, GLfloat*) da_glGetSamplerParameterfv;
+    alias nothrow void function(GLuint, GLenum, GLuint*) da_glGetSamplerParameterIuiv;
 }
 
 __gshared
@@ -1194,9 +1194,9 @@ private void load_ARB_sampler_objects()
 // ARB_timer_query
 extern(System)
 {
-    alias void function(GLuint, GLenum) da_glQueryCounter;
-    alias void function(GLuint, GLenum, GLint64*) da_glGetQueryObjecti64v;
-    alias void function(GLuint, GLenum, GLuint64*) da_glGetQueryObjectui64v;
+    alias nothrow void function(GLuint, GLenum) da_glQueryCounter;
+    alias nothrow void function(GLuint, GLenum, GLint64*) da_glGetQueryObjecti64v;
+    alias nothrow void function(GLuint, GLenum, GLuint64*) da_glGetQueryObjectui64v;
 }
 
 __gshared
@@ -1226,44 +1226,44 @@ void load_ARB_timer_query()
 // ARB_vertex_type_2_10_10_10_rev
 extern(System)
 {
-    alias void function(GLenum, GLuint) da_glVertexP2ui;
-    alias void function(GLenum, const(GLuint)*) da_glVertexP2uiv;
-    alias void function(GLenum, GLuint) da_glVertexP3ui;
-    alias void function(GLenum, const(GLuint)*) da_glVertexP3uiv;
-    alias void function(GLenum, GLuint) da_glVertexP4ui;
-    alias void function(GLenum, const(GLuint)*) da_glVertexP4uiv;
-    alias void function(GLenum, GLuint) da_glTexCoordP1ui;
-    alias void function(GLenum, const(GLuint)*) da_glTexCoordP1uiv;
-    alias void function(GLenum, GLuint) da_glTexCoordP2ui;
-    alias void function(GLenum, const(GLuint)*) da_glTexCoordP2uiv;
-    alias void function(GLenum, GLuint) da_glTexCoordP3ui;
-    alias void function(GLenum, const(GLuint)*) da_glTexCoordP3uiv;
-    alias void function(GLenum, GLuint) da_glTexCoordP4ui;
-    alias void function(GLenum, const(GLuint)*) da_glTexCoordP4uiv;
-    alias void function(GLenum, GLenum, GLuint) da_glMultiTexCoordP1ui;
-    alias void function(GLenum, GLenum, const(GLuint)*) da_glMultiTexCoordP1uiv;
-    alias void function(GLenum, GLenum, GLuint) da_glMultiTexCoordP2ui;
-    alias void function(GLenum, GLenum, const(GLuint)*) da_glMultiTexCoordP2uiv;
-    alias void function(GLenum, GLenum, GLuint) da_glMultiTexCoordP3ui;
-    alias void function(GLenum, GLenum, const(GLuint)*) da_glMultiTexCoordP3uiv;
-    alias void function(GLenum, GLenum, GLuint) da_glMultiTexCoordP4ui;
-    alias void function(GLenum, GLenum, const(GLuint)*) da_glMultiTexCoordP4uiv;
-    alias void function(GLenum, GLuint) da_glNormalP3ui;
-    alias void function(GLenum, const(GLuint)*) da_glNormalP3uiv;
-    alias void function(GLenum, GLuint) da_glColorP3ui;
-    alias void function(GLenum, const(GLuint)*) da_glColorP3uiv;
-    alias void function(GLenum, GLuint) da_glColorP4ui;
-    alias void function(GLenum, const(GLuint)*) da_glColorP4uiv;
-    alias void function(GLenum, GLuint) da_glSecondaryColorP3ui;
-    alias void function(GLenum, const(GLuint)*) da_glSecondaryColorP3uiv;
-    alias void function(GLuint, GLenum, GLboolean, GLuint) da_glVertexAttribP1ui;
-    alias void function(GLuint, GLenum, GLboolean, const(GLuint)*) da_glVertexAttribP1uiv;
-    alias void function(GLuint, GLenum, GLboolean, GLuint) da_glVertexAttribP2ui;
-    alias void function(GLuint, GLenum, GLboolean, const(GLuint)*) da_glVertexAttribP2uiv;
-    alias void function(GLuint, GLenum, GLboolean, GLuint) da_glVertexAttribP3ui;
-    alias void function(GLuint, GLenum, GLboolean, const(GLuint)*) da_glVertexAttribP3uiv;
-    alias void function(GLuint, GLenum, GLboolean, GLuint) da_glVertexAttribP4ui;
-    alias void function(GLuint, GLenum, GLboolean, const(GLuint)*) da_glVertexAttribP4uiv;
+    alias nothrow void function(GLenum, GLuint) da_glVertexP2ui;
+    alias nothrow void function(GLenum, const(GLuint)*) da_glVertexP2uiv;
+    alias nothrow void function(GLenum, GLuint) da_glVertexP3ui;
+    alias nothrow void function(GLenum, const(GLuint)*) da_glVertexP3uiv;
+    alias nothrow void function(GLenum, GLuint) da_glVertexP4ui;
+    alias nothrow void function(GLenum, const(GLuint)*) da_glVertexP4uiv;
+    alias nothrow void function(GLenum, GLuint) da_glTexCoordP1ui;
+    alias nothrow void function(GLenum, const(GLuint)*) da_glTexCoordP1uiv;
+    alias nothrow void function(GLenum, GLuint) da_glTexCoordP2ui;
+    alias nothrow void function(GLenum, const(GLuint)*) da_glTexCoordP2uiv;
+    alias nothrow void function(GLenum, GLuint) da_glTexCoordP3ui;
+    alias nothrow void function(GLenum, const(GLuint)*) da_glTexCoordP3uiv;
+    alias nothrow void function(GLenum, GLuint) da_glTexCoordP4ui;
+    alias nothrow void function(GLenum, const(GLuint)*) da_glTexCoordP4uiv;
+    alias nothrow void function(GLenum, GLenum, GLuint) da_glMultiTexCoordP1ui;
+    alias nothrow void function(GLenum, GLenum, const(GLuint)*) da_glMultiTexCoordP1uiv;
+    alias nothrow void function(GLenum, GLenum, GLuint) da_glMultiTexCoordP2ui;
+    alias nothrow void function(GLenum, GLenum, const(GLuint)*) da_glMultiTexCoordP2uiv;
+    alias nothrow void function(GLenum, GLenum, GLuint) da_glMultiTexCoordP3ui;
+    alias nothrow void function(GLenum, GLenum, const(GLuint)*) da_glMultiTexCoordP3uiv;
+    alias nothrow void function(GLenum, GLenum, GLuint) da_glMultiTexCoordP4ui;
+    alias nothrow void function(GLenum, GLenum, const(GLuint)*) da_glMultiTexCoordP4uiv;
+    alias nothrow void function(GLenum, GLuint) da_glNormalP3ui;
+    alias nothrow void function(GLenum, const(GLuint)*) da_glNormalP3uiv;
+    alias nothrow void function(GLenum, GLuint) da_glColorP3ui;
+    alias nothrow void function(GLenum, const(GLuint)*) da_glColorP3uiv;
+    alias nothrow void function(GLenum, GLuint) da_glColorP4ui;
+    alias nothrow void function(GLenum, const(GLuint)*) da_glColorP4uiv;
+    alias nothrow void function(GLenum, GLuint) da_glSecondaryColorP3ui;
+    alias nothrow void function(GLenum, const(GLuint)*) da_glSecondaryColorP3uiv;
+    alias nothrow void function(GLuint, GLenum, GLboolean, GLuint) da_glVertexAttribP1ui;
+    alias nothrow void function(GLuint, GLenum, GLboolean, const(GLuint)*) da_glVertexAttribP1uiv;
+    alias nothrow void function(GLuint, GLenum, GLboolean, GLuint) da_glVertexAttribP2ui;
+    alias nothrow void function(GLuint, GLenum, GLboolean, const(GLuint)*) da_glVertexAttribP2uiv;
+    alias nothrow void function(GLuint, GLenum, GLboolean, GLuint) da_glVertexAttribP3ui;
+    alias nothrow void function(GLuint, GLenum, GLboolean, const(GLuint)*) da_glVertexAttribP3uiv;
+    alias nothrow void function(GLuint, GLenum, GLboolean, GLuint) da_glVertexAttribP4ui;
+    alias nothrow void function(GLuint, GLenum, GLboolean, const(GLuint)*) da_glVertexAttribP4uiv;
 }
 
 __gshared
@@ -1361,8 +1361,8 @@ private void load_ARB_vertex_type_2_10_10_10_rev()
 }
 
 // ARB_draw_indirect
-extern(System) alias void function(GLenum, const(GLvoid)*) da_glDrawArraysIndirect;
-extern(System) alias void function(GLenum, GLenum, const(GLvoid)*) da_glDrawElementsIndirect;
+extern(System) alias nothrow void function(GLenum, const(GLvoid)*) da_glDrawArraysIndirect;
+extern(System) alias nothrow void function(GLenum, GLenum, const(GLvoid)*) da_glDrawElementsIndirect;
 da_glDrawArraysIndirect glDrawArraysIndirect;
 da_glDrawElementsIndirect glDrawElementsIndirect;
 
@@ -1385,24 +1385,24 @@ private void load_ARB_draw_indirect()
 // ARB_gpu_shader_fp64
 extern(System)
 {
-    alias void function(GLint, GLdouble) da_glUniform1d;
-    alias void function(GLint, GLdouble, GLdouble) da_glUniform2d;
-    alias void function(GLint, GLdouble, GLdouble, GLdouble) da_glUniform3d;
-    alias void function(GLint, GLdouble, GLdouble, GLdouble) da_glUniform4d;
-    alias void function(GLint, GLsizei, const(GLdouble)*) da_glUniform1dv;
-    alias void function(GLint, GLsizei, const(GLdouble)*) da_glUniform2dv;
-    alias void function(GLint, GLsizei, const(GLdouble)*) da_glUniform3dv;
-    alias void function(GLint, GLsizei, const(GLdouble)*) da_glUniform4dv;
-    alias void function(GLint, GLsizei, GLboolean, const(GLdouble)*) da_glUniformMatrix2dv;
-    alias void function(GLint, GLsizei, GLboolean, const(GLdouble)*) da_glUniformMatrix3dv;
-    alias void function(GLint, GLsizei, GLboolean, const(GLdouble)*) da_glUniformMatrix4dv;
-    alias void function(GLint, GLsizei, GLboolean, const(GLdouble)*) da_glUniformMatrix2x3dv;
-    alias void function(GLint, GLsizei, GLboolean, const(GLdouble)*) da_glUniformMatrix2x4dv;
-    alias void function(GLint, GLsizei, GLboolean, const(GLdouble)*) da_glUniformMatrix3x2dv;
-    alias void function(GLint, GLsizei, GLboolean, const(GLdouble)*) da_glUniformMatrix3x4dv;
-    alias void function(GLint, GLsizei, GLboolean, const(GLdouble)*) da_glUniformMatrix4x2dv;
-    alias void function(GLint, GLsizei, GLboolean, const(GLdouble)*) da_glUniformMatrix4x3dv;
-    alias void function(GLuint, GLint, GLdouble*) da_glGetUniformdv;
+    alias nothrow void function(GLint, GLdouble) da_glUniform1d;
+    alias nothrow void function(GLint, GLdouble, GLdouble) da_glUniform2d;
+    alias nothrow void function(GLint, GLdouble, GLdouble, GLdouble) da_glUniform3d;
+    alias nothrow void function(GLint, GLdouble, GLdouble, GLdouble) da_glUniform4d;
+    alias nothrow void function(GLint, GLsizei, const(GLdouble)*) da_glUniform1dv;
+    alias nothrow void function(GLint, GLsizei, const(GLdouble)*) da_glUniform2dv;
+    alias nothrow void function(GLint, GLsizei, const(GLdouble)*) da_glUniform3dv;
+    alias nothrow void function(GLint, GLsizei, const(GLdouble)*) da_glUniform4dv;
+    alias nothrow void function(GLint, GLsizei, GLboolean, const(GLdouble)*) da_glUniformMatrix2dv;
+    alias nothrow void function(GLint, GLsizei, GLboolean, const(GLdouble)*) da_glUniformMatrix3dv;
+    alias nothrow void function(GLint, GLsizei, GLboolean, const(GLdouble)*) da_glUniformMatrix4dv;
+    alias nothrow void function(GLint, GLsizei, GLboolean, const(GLdouble)*) da_glUniformMatrix2x3dv;
+    alias nothrow void function(GLint, GLsizei, GLboolean, const(GLdouble)*) da_glUniformMatrix2x4dv;
+    alias nothrow void function(GLint, GLsizei, GLboolean, const(GLdouble)*) da_glUniformMatrix3x2dv;
+    alias nothrow void function(GLint, GLsizei, GLboolean, const(GLdouble)*) da_glUniformMatrix3x4dv;
+    alias nothrow void function(GLint, GLsizei, GLboolean, const(GLdouble)*) da_glUniformMatrix4x2dv;
+    alias nothrow void function(GLint, GLsizei, GLboolean, const(GLdouble)*) da_glUniformMatrix4x3dv;
+    alias nothrow void function(GLuint, GLint, GLdouble*) da_glGetUniformdv;
 }
 
 __gshared
@@ -1461,14 +1461,14 @@ private void load_ARB_gpu_shader_fp64()
 // ARB_shader_subroutine
 extern(System)
 {
-    alias GLint function(GLuint, GLenum, const(GLchar)*) da_glGetSubroutineUniformLocation;
-    alias GLuint function(GLuint, GLenum, const(GLchar)*) da_glGetSubroutineIndex;
-    alias void function(GLuint, GLenum, GLuint, GLenum, GLint*) da_glGetActiveSubroutineUniformiv;
-    alias void function(GLuint, GLenum, GLuint, GLsizei, GLsizei*, GLchar*) da_glGetActiveSubroutineUniformName;
-    alias void function(GLuint, GLenum, GLuint, GLsizei, GLsizei*, GLchar*) da_glGetActiveSubroutineName;
-    alias void function(GLenum, GLsizei, const(GLuint)*) da_glUniformSubroutinesuiv;
-    alias void function(GLenum, GLint, GLuint*) da_glGetUniformSubroutineuiv;
-    alias void function(GLuint, GLenum, GLenum, GLint*) da_glGetProgramStageiv;
+    alias nothrow GLint function(GLuint, GLenum, const(GLchar)*) da_glGetSubroutineUniformLocation;
+    alias nothrow GLuint function(GLuint, GLenum, const(GLchar)*) da_glGetSubroutineIndex;
+    alias nothrow void function(GLuint, GLenum, GLuint, GLenum, GLint*) da_glGetActiveSubroutineUniformiv;
+    alias nothrow void function(GLuint, GLenum, GLuint, GLsizei, GLsizei*, GLchar*) da_glGetActiveSubroutineUniformName;
+    alias nothrow void function(GLuint, GLenum, GLuint, GLsizei, GLsizei*, GLchar*) da_glGetActiveSubroutineName;
+    alias nothrow void function(GLenum, GLsizei, const(GLuint)*) da_glUniformSubroutinesuiv;
+    alias nothrow void function(GLenum, GLint, GLuint*) da_glGetUniformSubroutineuiv;
+    alias nothrow void function(GLuint, GLenum, GLenum, GLint*) da_glGetProgramStageiv;
 }
 
 __gshared
@@ -1506,8 +1506,8 @@ private void load_ARB_shader_subroutine()
 }
 
 // ARB_tessellation_shader
-extern(System) alias void function(GLenum, GLint) da_glPatchParameteri;
-extern(System) alias void function(GLenum, const(GLfloat)*) da_glPatchParameterfv;
+extern(System) alias nothrow void function(GLenum, GLint) da_glPatchParameteri;
+extern(System) alias nothrow void function(GLenum, const(GLfloat)*) da_glPatchParameterfv;
 __gshared da_glPatchParameteri glPatchParameteri;
 __gshared da_glPatchParameterfv glPatchParameterfv;
 
@@ -1530,13 +1530,13 @@ private void load_ARB_tessellation_shader()
 // ARB_transform_feedback2
 extern(System)
 {
-    alias void function(GLenum, GLuint) da_glBindTransformFeedback;
-    alias void function(GLsizei, const(GLuint)*) da_glDeleteTransformFeedbacks;
-    alias void function(GLsizei, GLuint*) da_glGenTransformFeedbacks;
-    alias GLboolean function(GLuint) da_glIsTransformFeedback;
-    alias void function() da_glPauseTransformFeedback;
-    alias void function() da_glResumeTransformFeedback;
-    alias void function(GLenum, GLuint) da_glDrawTransformFeedback;
+    alias nothrow void function(GLenum, GLuint) da_glBindTransformFeedback;
+    alias nothrow void function(GLsizei, const(GLuint)*) da_glDeleteTransformFeedbacks;
+    alias nothrow void function(GLsizei, GLuint*) da_glGenTransformFeedbacks;
+    alias nothrow GLboolean function(GLuint) da_glIsTransformFeedback;
+    alias nothrow void function() da_glPauseTransformFeedback;
+    alias nothrow void function() da_glResumeTransformFeedback;
+    alias nothrow void function(GLenum, GLuint) da_glDrawTransformFeedback;
 }
 
 __gshared
@@ -1574,10 +1574,10 @@ void load_ARB_transform_feedback2()
 // ARB_transform_feedback3
 extern(System)
 {
-    alias void function(GLenum, GLuint, GLuint) da_glDrawTransformFeedbackStream;
-    alias void function(GLenum, GLuint, GLuint) da_glBeginQueryIndexed;
-    alias void function(GLenum, GLuint) da_glEndQueryIndexed;
-    alias void function(GLenum, GLuint, GLenum, GLint*) da_glGetQueryIndexediv;
+    alias nothrow void function(GLenum, GLuint, GLuint) da_glDrawTransformFeedbackStream;
+    alias nothrow void function(GLenum, GLuint, GLuint) da_glBeginQueryIndexed;
+    alias nothrow void function(GLenum, GLuint) da_glEndQueryIndexed;
+    alias nothrow void function(GLenum, GLuint, GLenum, GLint*) da_glGetQueryIndexediv;
 }
 
 __gshared
@@ -1609,11 +1609,11 @@ private void load_ARB_transform_feedback3()
 // ARB_ES2_compatibility
 extern(System)
 {
-    alias void function() da_glReleaseShaderCompiler;
-    alias void function(GLsizei, const(GLuint)*, GLenum, const(GLvoid)*, GLsizei) da_glShaderBinary;
-    alias void function(GLenum, GLenum, GLint*, GLint*) da_glGetShaderPrecisionFormat;
-    alias void function(GLclampf, GLclampf) da_glDepthRangef;
-    alias void function(GLclampf) da_glClearDepthf;
+    alias nothrow void function() da_glReleaseShaderCompiler;
+    alias nothrow void function(GLsizei, const(GLuint)*, GLenum, const(GLvoid)*, GLsizei) da_glShaderBinary;
+    alias nothrow void function(GLenum, GLenum, GLint*, GLint*) da_glGetShaderPrecisionFormat;
+    alias nothrow void function(GLclampf, GLclampf) da_glDepthRangef;
+    alias nothrow void function(GLclampf) da_glClearDepthf;
 }
 
 __gshared
@@ -1647,9 +1647,9 @@ private void load_ARB_ES2_compatibility()
 // ARB_get_program_binary
 extern(System)
 {
-    alias void function(GLuint, GLsizei, GLsizei*, GLenum*, GLvoid*) da_glGetProgramBinary;
-    alias void function(GLuint, GLenum, const(GLvoid)*, GLsizei) da_glProgramBinary;
-    alias void function(GLuint, GLenum, GLint) da_glProgramParameteri;
+    alias nothrow void function(GLuint, GLsizei, GLsizei*, GLenum*, GLvoid*) da_glGetProgramBinary;
+    alias nothrow void function(GLuint, GLenum, const(GLvoid)*, GLsizei) da_glProgramBinary;
+    alias nothrow void function(GLuint, GLenum, GLint) da_glProgramParameteri;
 }
 
 __gshared
@@ -1679,66 +1679,66 @@ private void load_ARB_get_program_binary()
 // ARB_separate_shader_objects
 extern(System)
 {
-    alias void function(GLuint, GLbitfield, GLuint) da_glUseProgramStages;
-    alias void function(GLuint, GLuint) da_glActiveShaderProgram;
-    alias GLuint function(GLenum, GLsizei, const(GLchar*)*) da_glCreateShaderProgramv;
-    alias void function(GLuint) da_glBindProgramPipeline;
-    alias void function(GLsizei, const(GLuint)*) da_glDeleteProgramPipelines;
-    alias void function(GLsizei, GLuint*) da_glGenProgramPipelines;
-    alias GLboolean function(GLuint) da_glIsProgramPipeline;
-    alias void function(GLuint, GLenum, GLint*) da_glGetProgramPipelineiv;
-    alias void function(GLuint, GLint, GLint) da_glProgramUniform1i;
-    alias void function(GLuint, GLint, GLsizei, const(GLint)*) da_glProgramUniform1iv;
-    alias void function(GLuint, GLint, GLfloat) da_glProgramUniform1f;
-    alias void function(GLuint, GLint, GLsizei, const(GLfloat)*) da_glProgramUniform1fv;
-    alias void function(GLuint, GLint, GLdouble) da_glProgramUniform1d;
-    alias void function(GLuint, GLint, GLsizei, const(GLdouble)*) da_glProgramUniform1dv;
-    alias void function(GLuint, GLint, GLuint) da_glProgramUniform1ui;
-    alias void function(GLuint, GLint, GLsizei, const(GLuint)*) da_glProgramUniform1uiv;
-    alias void function(GLuint, GLint, GLint, GLint) da_glProgramUniform2i;
-    alias void function(GLuint, GLint, GLsizei, const(GLint)*) da_glProgramUniform2iv;
-    alias void function(GLuint, GLint, GLfloat, GLfloat) da_glProgramUniform2f;
-    alias void function(GLuint, GLint, GLsizei, const(GLfloat)*) da_glProgramUniform2fv;
-    alias void function(GLuint, GLint, GLdouble, GLdouble) da_glProgramUniform2d;
-    alias void function(GLuint, GLint, GLsizei, const(GLdouble)*) da_glProgramUniform2dv;
-    alias void function(GLuint, GLint, GLuint, GLuint) da_glProgramUniform2ui;
-    alias void function(GLuint, GLint, GLsizei, const(GLuint)*) da_glProgramUniform2uiv;
-    alias void function(GLuint, GLint, GLint, GLint, GLint) da_glProgramUniform3i;
-    alias void function(GLuint, GLint, GLsizei, const(GLint)*) da_glProgramUniform3iv;
-    alias void function(GLuint, GLint, GLfloat, GLfloat, GLfloat) da_glProgramUniform3f;
-    alias void function(GLuint, GLint, GLsizei, const(GLfloat)*) da_glProgramUniform3fv;
-    alias void function(GLuint, GLint, GLdouble, GLdouble, GLdouble) da_glProgramUniform3d;
-    alias void function(GLuint, GLint, GLsizei, const(GLdouble)*) da_glProgramUniform3dv;
-    alias void function(GLuint, GLint, GLuint, GLuint, GLuint) da_glProgramUniform3ui;
-    alias void function(GLuint, GLint, GLsizei, const(GLuint)*) da_glProgramUniform3uiv;
-    alias void function(GLuint, GLint, GLint, GLint, GLint, GLint) da_glProgramUniform4i;
-    alias void function(GLuint, GLint, GLsizei, const(GLint)*) da_glProgramUniform4iv;
-    alias void function(GLuint, GLint, GLfloat, GLfloat, GLfloat, GLfloat) da_glProgramUniform4f;
-    alias void function(GLuint, GLint, GLsizei, const(GLfloat)*) da_glProgramUniform4fv;
-    alias void function(GLuint, GLint, GLdouble, GLdouble, GLdouble, GLdouble) da_glProgramUniform4d;
-    alias void function(GLuint, GLint, GLsizei, const(GLdouble)*) da_glProgramUniform4dv;
-    alias void function(GLuint, GLint, GLuint, GLuint, GLuint, GLuint) da_glProgramUniform4ui;
-    alias void function(GLuint, GLint, GLsizei, const(GLuint)*) da_glProgramUniform4uiv;
-    alias void function(GLuint, GLint, GLsizei, GLboolean, const(GLfloat)*) da_glProgramUniformMatrix2fv;
-    alias void function(GLuint, GLint, GLsizei, GLboolean, const(GLfloat)*) da_glProgramUniformMatrix3fv;
-    alias void function(GLuint, GLint, GLsizei, GLboolean, const(GLfloat)*) da_glProgramUniformMatrix4fv;
-    alias void function(GLuint, GLint, GLsizei, GLboolean, const(GLdouble)*) da_glProgramUniformMatrix2dv;
-    alias void function(GLuint, GLint, GLsizei, GLboolean, const(GLdouble)*) da_glProgramUniformMatrix3dv;
-    alias void function(GLuint, GLint, GLsizei, GLboolean, const(GLdouble)*) da_glProgramUniformMatrix4dv;
-    alias void function(GLuint, GLint, GLsizei, GLboolean, const(GLfloat)*) da_glProgramUniformMatrix2x3fv;
-    alias void function(GLuint, GLint, GLsizei, GLboolean, const(GLfloat)*) da_glProgramUniformMatrix3x2fv;
-    alias void function(GLuint, GLint, GLsizei, GLboolean, const(GLfloat)*) da_glProgramUniformMatrix2x4fv;
-    alias void function(GLuint, GLint, GLsizei, GLboolean, const(GLfloat)*) da_glProgramUniformMatrix4x2fv;
-    alias void function(GLuint, GLint, GLsizei, GLboolean, const(GLfloat)*) da_glProgramUniformMatrix3x4fv;
-    alias void function(GLuint, GLint, GLsizei, GLboolean, const(GLfloat)*) da_glProgramUniformMatrix4x3fv;
-    alias void function(GLuint, GLint, GLsizei, GLboolean, const(GLdouble)*) da_glProgramUniformMatrix2x3dv;
-    alias void function(GLuint, GLint, GLsizei, GLboolean, const(GLdouble)*) da_glProgramUniformMatrix3x2dv;
-    alias void function(GLuint, GLint, GLsizei, GLboolean, const(GLdouble)*) da_glProgramUniformMatrix2x4dv;
-    alias void function(GLuint, GLint, GLsizei, GLboolean, const(GLdouble)*) da_glProgramUniformMatrix4x2dv;
-    alias void function(GLuint, GLint, GLsizei, GLboolean, const(GLdouble)*) da_glProgramUniformMatrix3x4dv;
-    alias void function(GLuint, GLint, GLsizei, GLboolean, const(GLdouble)*) da_glProgramUniformMatrix4x3dv;
-    alias void function(GLuint) da_glValidateProgramPipeline;
-    alias void function(GLuint, GLsizei, GLsizei*, GLchar*) da_glGetProgramPipelineInfoLog;
+    alias nothrow void function(GLuint, GLbitfield, GLuint) da_glUseProgramStages;
+    alias nothrow void function(GLuint, GLuint) da_glActiveShaderProgram;
+    alias nothrow GLuint function(GLenum, GLsizei, const(GLchar*)*) da_glCreateShaderProgramv;
+    alias nothrow void function(GLuint) da_glBindProgramPipeline;
+    alias nothrow void function(GLsizei, const(GLuint)*) da_glDeleteProgramPipelines;
+    alias nothrow void function(GLsizei, GLuint*) da_glGenProgramPipelines;
+    alias nothrow GLboolean function(GLuint) da_glIsProgramPipeline;
+    alias nothrow void function(GLuint, GLenum, GLint*) da_glGetProgramPipelineiv;
+    alias nothrow void function(GLuint, GLint, GLint) da_glProgramUniform1i;
+    alias nothrow void function(GLuint, GLint, GLsizei, const(GLint)*) da_glProgramUniform1iv;
+    alias nothrow void function(GLuint, GLint, GLfloat) da_glProgramUniform1f;
+    alias nothrow void function(GLuint, GLint, GLsizei, const(GLfloat)*) da_glProgramUniform1fv;
+    alias nothrow void function(GLuint, GLint, GLdouble) da_glProgramUniform1d;
+    alias nothrow void function(GLuint, GLint, GLsizei, const(GLdouble)*) da_glProgramUniform1dv;
+    alias nothrow void function(GLuint, GLint, GLuint) da_glProgramUniform1ui;
+    alias nothrow void function(GLuint, GLint, GLsizei, const(GLuint)*) da_glProgramUniform1uiv;
+    alias nothrow void function(GLuint, GLint, GLint, GLint) da_glProgramUniform2i;
+    alias nothrow void function(GLuint, GLint, GLsizei, const(GLint)*) da_glProgramUniform2iv;
+    alias nothrow void function(GLuint, GLint, GLfloat, GLfloat) da_glProgramUniform2f;
+    alias nothrow void function(GLuint, GLint, GLsizei, const(GLfloat)*) da_glProgramUniform2fv;
+    alias nothrow void function(GLuint, GLint, GLdouble, GLdouble) da_glProgramUniform2d;
+    alias nothrow void function(GLuint, GLint, GLsizei, const(GLdouble)*) da_glProgramUniform2dv;
+    alias nothrow void function(GLuint, GLint, GLuint, GLuint) da_glProgramUniform2ui;
+    alias nothrow void function(GLuint, GLint, GLsizei, const(GLuint)*) da_glProgramUniform2uiv;
+    alias nothrow void function(GLuint, GLint, GLint, GLint, GLint) da_glProgramUniform3i;
+    alias nothrow void function(GLuint, GLint, GLsizei, const(GLint)*) da_glProgramUniform3iv;
+    alias nothrow void function(GLuint, GLint, GLfloat, GLfloat, GLfloat) da_glProgramUniform3f;
+    alias nothrow void function(GLuint, GLint, GLsizei, const(GLfloat)*) da_glProgramUniform3fv;
+    alias nothrow void function(GLuint, GLint, GLdouble, GLdouble, GLdouble) da_glProgramUniform3d;
+    alias nothrow void function(GLuint, GLint, GLsizei, const(GLdouble)*) da_glProgramUniform3dv;
+    alias nothrow void function(GLuint, GLint, GLuint, GLuint, GLuint) da_glProgramUniform3ui;
+    alias nothrow void function(GLuint, GLint, GLsizei, const(GLuint)*) da_glProgramUniform3uiv;
+    alias nothrow void function(GLuint, GLint, GLint, GLint, GLint, GLint) da_glProgramUniform4i;
+    alias nothrow void function(GLuint, GLint, GLsizei, const(GLint)*) da_glProgramUniform4iv;
+    alias nothrow void function(GLuint, GLint, GLfloat, GLfloat, GLfloat, GLfloat) da_glProgramUniform4f;
+    alias nothrow void function(GLuint, GLint, GLsizei, const(GLfloat)*) da_glProgramUniform4fv;
+    alias nothrow void function(GLuint, GLint, GLdouble, GLdouble, GLdouble, GLdouble) da_glProgramUniform4d;
+    alias nothrow void function(GLuint, GLint, GLsizei, const(GLdouble)*) da_glProgramUniform4dv;
+    alias nothrow void function(GLuint, GLint, GLuint, GLuint, GLuint, GLuint) da_glProgramUniform4ui;
+    alias nothrow void function(GLuint, GLint, GLsizei, const(GLuint)*) da_glProgramUniform4uiv;
+    alias nothrow void function(GLuint, GLint, GLsizei, GLboolean, const(GLfloat)*) da_glProgramUniformMatrix2fv;
+    alias nothrow void function(GLuint, GLint, GLsizei, GLboolean, const(GLfloat)*) da_glProgramUniformMatrix3fv;
+    alias nothrow void function(GLuint, GLint, GLsizei, GLboolean, const(GLfloat)*) da_glProgramUniformMatrix4fv;
+    alias nothrow void function(GLuint, GLint, GLsizei, GLboolean, const(GLdouble)*) da_glProgramUniformMatrix2dv;
+    alias nothrow void function(GLuint, GLint, GLsizei, GLboolean, const(GLdouble)*) da_glProgramUniformMatrix3dv;
+    alias nothrow void function(GLuint, GLint, GLsizei, GLboolean, const(GLdouble)*) da_glProgramUniformMatrix4dv;
+    alias nothrow void function(GLuint, GLint, GLsizei, GLboolean, const(GLfloat)*) da_glProgramUniformMatrix2x3fv;
+    alias nothrow void function(GLuint, GLint, GLsizei, GLboolean, const(GLfloat)*) da_glProgramUniformMatrix3x2fv;
+    alias nothrow void function(GLuint, GLint, GLsizei, GLboolean, const(GLfloat)*) da_glProgramUniformMatrix2x4fv;
+    alias nothrow void function(GLuint, GLint, GLsizei, GLboolean, const(GLfloat)*) da_glProgramUniformMatrix4x2fv;
+    alias nothrow void function(GLuint, GLint, GLsizei, GLboolean, const(GLfloat)*) da_glProgramUniformMatrix3x4fv;
+    alias nothrow void function(GLuint, GLint, GLsizei, GLboolean, const(GLfloat)*) da_glProgramUniformMatrix4x3fv;
+    alias nothrow void function(GLuint, GLint, GLsizei, GLboolean, const(GLdouble)*) da_glProgramUniformMatrix2x3dv;
+    alias nothrow void function(GLuint, GLint, GLsizei, GLboolean, const(GLdouble)*) da_glProgramUniformMatrix3x2dv;
+    alias nothrow void function(GLuint, GLint, GLsizei, GLboolean, const(GLdouble)*) da_glProgramUniformMatrix2x4dv;
+    alias nothrow void function(GLuint, GLint, GLsizei, GLboolean, const(GLdouble)*) da_glProgramUniformMatrix4x2dv;
+    alias nothrow void function(GLuint, GLint, GLsizei, GLboolean, const(GLdouble)*) da_glProgramUniformMatrix3x4dv;
+    alias nothrow void function(GLuint, GLint, GLsizei, GLboolean, const(GLdouble)*) da_glProgramUniformMatrix4x3dv;
+    alias nothrow void function(GLuint) da_glValidateProgramPipeline;
+    alias nothrow void function(GLuint, GLsizei, GLsizei*, GLchar*) da_glGetProgramPipelineInfoLog;
 }
 
 __gshared
@@ -1882,16 +1882,16 @@ private void load_ARB_separate_shader_objects()
 // ARB_vertex_attrib_64bit
 extern(System)
 {
-    alias void function(GLuint, GLdouble) da_glVertexAttribL1d;
-    alias void function(GLuint, GLdouble, GLdouble) da_glVertexAttribL2d;
-    alias void function(GLuint, GLdouble, GLdouble, GLdouble) da_glVertexAttribL3d;
-    alias void function(GLuint, GLdouble, GLdouble, GLdouble, GLdouble) da_glVertexAttribL4d;
-    alias void function(GLuint, const(GLdouble)*) da_glVertexAttribL1dv;
-    alias void function(GLuint, const(GLdouble)*) da_glVertexAttribL2dv;
-    alias void function(GLuint, const(GLdouble)*) da_glVertexAttribL3dv;
-    alias void function(GLuint, const(GLdouble)*) da_glVertexAttribL4dv;
-    alias void function(GLuint, GLint, GLenum, GLsizei, const(GLvoid)*) da_glVertexAttribLPointer;
-    alias void function(GLuint, GLenum, GLdouble*) da_glGetVertexAttribLdv;
+    alias nothrow void function(GLuint, GLdouble) da_glVertexAttribL1d;
+    alias nothrow void function(GLuint, GLdouble, GLdouble) da_glVertexAttribL2d;
+    alias nothrow void function(GLuint, GLdouble, GLdouble, GLdouble) da_glVertexAttribL3d;
+    alias nothrow void function(GLuint, GLdouble, GLdouble, GLdouble, GLdouble) da_glVertexAttribL4d;
+    alias nothrow void function(GLuint, const(GLdouble)*) da_glVertexAttribL1dv;
+    alias nothrow void function(GLuint, const(GLdouble)*) da_glVertexAttribL2dv;
+    alias nothrow void function(GLuint, const(GLdouble)*) da_glVertexAttribL3dv;
+    alias nothrow void function(GLuint, const(GLdouble)*) da_glVertexAttribL4dv;
+    alias nothrow void function(GLuint, GLint, GLenum, GLsizei, const(GLvoid)*) da_glVertexAttribLPointer;
+    alias nothrow void function(GLuint, GLenum, GLdouble*) da_glGetVertexAttribLdv;
 }
 
 __gshared
@@ -1935,16 +1935,16 @@ private void load_ARB_vertex_attrib_64bit()
 // ARB_viewport_array
 extern(System)
 {
-    alias void function(GLuint, GLsizei, const(GLfloat)*) da_glViewportArrayv;
-    alias void function(GLuint, GLfloat, GLfloat, GLfloat, GLfloat) da_glViewportIndexedf;
-    alias void function(GLuint, const(GLfloat)*) da_glViewportIndexedfv;
-    alias void function(GLuint, GLsizei, const(GLint)*) da_glScissorArrayv;
-    alias void function(GLuint, GLint, GLint, GLsizei, GLsizei) da_glScissorIndexed;
-    alias void function(GLuint, const(GLint)*) da_glScissorIndexedv;
-    alias void function(GLuint, GLsizei, const(GLclampd)*) da_glDepthRangeArrayv;
-    alias void function(GLuint, GLclampd, GLclampd) da_glDepthRangeIndexed;
-    alias void function(GLenum, GLuint, GLfloat*) da_glGetFloati_v;
-    alias void function(GLenum, GLuint, GLdouble*) da_glGetDoublei_v;
+    alias nothrow void function(GLuint, GLsizei, const(GLfloat)*) da_glViewportArrayv;
+    alias nothrow void function(GLuint, GLfloat, GLfloat, GLfloat, GLfloat) da_glViewportIndexedf;
+    alias nothrow void function(GLuint, const(GLfloat)*) da_glViewportIndexedfv;
+    alias nothrow void function(GLuint, GLsizei, const(GLint)*) da_glScissorArrayv;
+    alias nothrow void function(GLuint, GLint, GLint, GLsizei, GLsizei) da_glScissorIndexed;
+    alias nothrow void function(GLuint, const(GLint)*) da_glScissorIndexedv;
+    alias nothrow void function(GLuint, GLsizei, const(GLclampd)*) da_glDepthRangeArrayv;
+    alias nothrow void function(GLuint, GLclampd, GLclampd) da_glDepthRangeIndexed;
+    alias nothrow void function(GLenum, GLuint, GLfloat*) da_glGetFloati_v;
+    alias nothrow void function(GLenum, GLuint, GLdouble*) da_glGetDoublei_v;
 }
 
 __gshared
@@ -1986,7 +1986,7 @@ private void load_ARB_viewport_array()
 }
 
 // ARB_cl_event
-extern(System) alias GLsync function(_cl_context*, _cl_event*, GLbitfield) da_glCreateSyncFromCLeventARB;
+extern(System) alias nothrow GLsync function(_cl_context*, _cl_event*, GLbitfield) da_glCreateSyncFromCLeventARB;
 __gshared da_glCreateSyncFromCLeventARB glCreateSyncFromCLeventARB;
 
 private __gshared bool _ARB_cl_event;
@@ -2007,10 +2007,10 @@ private void load_ARB_cl_event()
 // ARB_debug_output
 extern(System)
 {
-    alias void function(GLenum, GLenum, GLenum, GLsizei, const(GLuint)*, GLboolean) da_glDebugMessageControlARB;
-    alias void function(GLenum, GLenum, GLuint, GLenum, GLsizei, const(GLchar)*) da_glDebugMessageInsertARB;
-    alias void function(GLDEBUGPROCARB, const(GLvoid)*) da_glDebugMessageCallbackARB;
-    alias void function(GLuint, GLsizei, GLenum*, GLenum*, GLuint*, GLenum*, GLsizei*, GLchar*) da_glGetDebugMessageLogARB;
+    alias nothrow void function(GLenum, GLenum, GLenum, GLsizei, const(GLuint)*, GLboolean) da_glDebugMessageControlARB;
+    alias nothrow void function(GLenum, GLenum, GLuint, GLenum, GLsizei, const(GLchar)*) da_glDebugMessageInsertARB;
+    alias nothrow void function(GLDEBUGPROCARB, const(GLvoid)*) da_glDebugMessageCallbackARB;
+    alias nothrow void function(GLuint, GLsizei, GLenum*, GLenum*, GLuint*, GLenum*, GLsizei*, GLchar*) da_glGetDebugMessageLogARB;
 }
 
 __gshared
@@ -2042,26 +2042,26 @@ private void load_ARB_debug_output()
 // ARB_robustness
 extern(System)
 {
-    alias GLenum function() da_glGetGraphicsResetStatusARB;
-    alias void function(GLenum, GLenum, GLsizei, GLdouble*) da_glGetnMapdvARB;
-    alias void function(GLenum, GLenum, GLsizei, GLfloat*) da_glGetnMapfvARB;
-    alias void function(GLenum, GLenum, GLsizei, GLint*) da_glGetnMapivARB;
-    alias void function(GLenum, GLsizei, GLfloat*) da_glGetnPixelMapfvARB;
-    alias void function(GLenum, GLsizei, GLuint*) da_glGetnPixelMapuivARB;
-    alias void function(GLenum, GLsizei, GLushort*) da_glGetnPixelMapusvARB;
-    alias void function(GLsizei, GLubyte*) da_glGetnPolygonStippleARB;
-    alias void function(GLenum, GLenum, GLenum, GLsizei, GLvoid*) da_glGetnColorTableARB;
-    alias void function(GLenum, GLenum, GLenum, GLsizei, GLvoid*) da_glGetnConvolutionFilterARB;
-    alias void function(GLenum, GLenum, GLenum, GLsizei, GLvoid*, GLsizei, GLvoid*, GLvoid*) da_glGetnSeparableFilterARB;
-    alias void function(GLenum, GLboolean, GLenum, GLenum, GLsizei, GLvoid*) da_glGetnHistogramARB;
-    alias void function(GLenum, GLboolean, GLenum, GLenum, GLsizei, GLvoid*) da_glGetnMinmaxARB;
-    alias void function(GLenum, GLint, GLenum, GLenum, GLsizei, GLvoid*) da_glGetnTexImageARB;
-    alias void function(GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, GLsizei, GLvoid*) da_glReadnPixelsARB;
-    alias void function(GLenum, GLint, GLsizei, GLvoid*) da_glGetnCompressedTexImageARB;
-    alias void function(GLuint, GLint, GLsizei, GLfloat*) da_glGetnUniformfvARB;
-    alias void function(GLuint, GLint, GLsizei, GLint*) da_glGetnUniformivARB;
-    alias void function(GLuint, GLint, GLsizei, GLuint*) da_glGetnUniformuivARB;
-    alias void function(GLuint, GLint, GLsizei, GLdouble*) da_glGetnUniformdvARB;
+    alias nothrow GLenum function() da_glGetGraphicsResetStatusARB;
+    alias nothrow void function(GLenum, GLenum, GLsizei, GLdouble*) da_glGetnMapdvARB;
+    alias nothrow void function(GLenum, GLenum, GLsizei, GLfloat*) da_glGetnMapfvARB;
+    alias nothrow void function(GLenum, GLenum, GLsizei, GLint*) da_glGetnMapivARB;
+    alias nothrow void function(GLenum, GLsizei, GLfloat*) da_glGetnPixelMapfvARB;
+    alias nothrow void function(GLenum, GLsizei, GLuint*) da_glGetnPixelMapuivARB;
+    alias nothrow void function(GLenum, GLsizei, GLushort*) da_glGetnPixelMapusvARB;
+    alias nothrow void function(GLsizei, GLubyte*) da_glGetnPolygonStippleARB;
+    alias nothrow void function(GLenum, GLenum, GLenum, GLsizei, GLvoid*) da_glGetnColorTableARB;
+    alias nothrow void function(GLenum, GLenum, GLenum, GLsizei, GLvoid*) da_glGetnConvolutionFilterARB;
+    alias nothrow void function(GLenum, GLenum, GLenum, GLsizei, GLvoid*, GLsizei, GLvoid*, GLvoid*) da_glGetnSeparableFilterARB;
+    alias nothrow void function(GLenum, GLboolean, GLenum, GLenum, GLsizei, GLvoid*) da_glGetnHistogramARB;
+    alias nothrow void function(GLenum, GLboolean, GLenum, GLenum, GLsizei, GLvoid*) da_glGetnMinmaxARB;
+    alias nothrow void function(GLenum, GLint, GLenum, GLenum, GLsizei, GLvoid*) da_glGetnTexImageARB;
+    alias nothrow void function(GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, GLsizei, GLvoid*) da_glReadnPixelsARB;
+    alias nothrow void function(GLenum, GLint, GLsizei, GLvoid*) da_glGetnCompressedTexImageARB;
+    alias nothrow void function(GLuint, GLint, GLsizei, GLfloat*) da_glGetnUniformfvARB;
+    alias nothrow void function(GLuint, GLint, GLsizei, GLint*) da_glGetnUniformivARB;
+    alias nothrow void function(GLuint, GLint, GLsizei, GLuint*) da_glGetnUniformuivARB;
+    alias nothrow void function(GLuint, GLint, GLsizei, GLdouble*) da_glGetnUniformdvARB;
 }
 
 __gshared
@@ -2126,9 +2126,9 @@ private void load_ARB_robustness()
 // ARB_base_instance
 extern(System)
 {
-    alias void function(GLenum, GLint, GLsizei, GLsizei, GLuint) da_glDrawArraysInstancedBaseInstance;
-    alias void function(GLenum, GLsizei, GLenum, const(void)*, GLsizei, GLuint) da_glDrawElementsInstancedBaseInstance;
-    alias void function(GLenum, GLsizei, GLenum, const(void)*, GLsizei, GLint, GLuint) da_glDrawElementsInstancedBaseVertexBaseInstance;
+    alias nothrow void function(GLenum, GLint, GLsizei, GLsizei, GLuint) da_glDrawArraysInstancedBaseInstance;
+    alias nothrow void function(GLenum, GLsizei, GLenum, const(void)*, GLsizei, GLuint) da_glDrawElementsInstancedBaseInstance;
+    alias nothrow void function(GLenum, GLsizei, GLenum, const(void)*, GLsizei, GLint, GLuint) da_glDrawElementsInstancedBaseVertexBaseInstance;
 }
 
 __gshared
@@ -2156,8 +2156,8 @@ private void load_ARB_base_instance()
 }
 
 // ARB_transform_feedback_instanced
-extern(System) alias void function(GLenum, GLuint, GLsizei) da_glDrawTransformFeedbackInstanced;
-extern(System) alias void function(GLenum, GLuint, GLuint, GLsizei) da_glDrawTransformFeedbackStreamInstanced;
+extern(System) alias nothrow void function(GLenum, GLuint, GLsizei) da_glDrawTransformFeedbackInstanced;
+extern(System) alias nothrow void function(GLenum, GLuint, GLuint, GLsizei) da_glDrawTransformFeedbackStreamInstanced;
 __gshared da_glDrawTransformFeedbackInstanced glDrawTransformFeedbackInstanced;
 __gshared da_glDrawTransformFeedbackStreamInstanced glDrawTransformFeedbackStreamInstanced;
 
@@ -2178,7 +2178,7 @@ private void load_ARB_transform_feedback_instanced()
 }
 
 // ARB_internalformat_query
-extern(System) alias void function(GLenum, GLenum, GLenum, GLsizei, GLint*) da_glGetInternalformativ;
+extern(System) alias nothrow void function(GLenum, GLenum, GLenum, GLsizei, GLint*) da_glGetInternalformativ;
 __gshared da_glGetInternalformativ glGetInternalformativ;
 
 private __gshared bool _ARB_internalformat_query;
@@ -2197,7 +2197,7 @@ private void load_ARB_internalformat_query()
 }
 
 // ARB_shader_atomic_counters
-extern(System) alias void function(GLuint, GLuint, GLenum, GLint*) da_glGetActiveAtomicCounterBufferiv;
+extern(System) alias nothrow void function(GLuint, GLuint, GLenum, GLint*) da_glGetActiveAtomicCounterBufferiv;
 __gshared da_glGetActiveAtomicCounterBufferiv glGetActiveAtomicCounterBufferiv;
 
 private __gshared bool _ARB_shader_atomic_counters;
@@ -2216,8 +2216,8 @@ private void load_ARB_shader_atomic_counters()
 }
 
 // ARB_shader_image_load_store
-extern(System) alias void function(GLuint, GLuint, GLint, GLboolean, GLint, GLenum, GLenum) da_glBindImageTexture;
-extern(System) alias void function(GLbitfield) da_glMemoryBarrier;
+extern(System) alias nothrow void function(GLuint, GLuint, GLint, GLboolean, GLint, GLenum, GLenum) da_glBindImageTexture;
+extern(System) alias nothrow void function(GLbitfield) da_glMemoryBarrier;
 __gshared da_glBindImageTexture glBindImageTexture;
 __gshared da_glMemoryBarrier glMemoryBarrier;
 
@@ -2240,12 +2240,12 @@ private void load_ARB_shader_image_load_store()
 // ARB_texture_storage
 extern(System)
 {
-    alias void function(GLenum, GLsizei, GLenum, GLsizei) da_glTexStorage1D;
-    alias void function(GLenum, GLsizei, GLenum, GLsizei, GLsizei) da_glTexStorage2D;
-    alias void function(GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei) da_glTexStorage3D;
-    alias void function(GLuint, GLenum, GLsizei, GLenum, GLsizei) da_glTextureStorage1DEXT;
-    alias void function(GLuint, GLenum, GLsizei, GLenum, GLsizei, GLsizei) da_glTextureStorage2DEXT;
-    alias void function(GLuint, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei) da_glTextureStorage3DEXT;
+    alias nothrow void function(GLenum, GLsizei, GLenum, GLsizei) da_glTexStorage1D;
+    alias nothrow void function(GLenum, GLsizei, GLenum, GLsizei, GLsizei) da_glTexStorage2D;
+    alias nothrow void function(GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei) da_glTexStorage3D;
+    alias nothrow void function(GLuint, GLenum, GLsizei, GLenum, GLsizei) da_glTextureStorage1DEXT;
+    alias nothrow void function(GLuint, GLenum, GLsizei, GLenum, GLsizei, GLsizei) da_glTextureStorage2DEXT;
+    alias nothrow void function(GLuint, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei) da_glTextureStorage3DEXT;
 }
 
 __gshared

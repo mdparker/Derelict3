@@ -34,113 +34,113 @@ private
 
 extern(C)
 {
-    alias void function(ALenum) da_alEnable;
-    alias void function(ALenum) da_alDisable;
-    alias ALboolean function(ALenum) da_alIsEnabled;
+    alias nothrow void function(ALenum) da_alEnable;
+    alias nothrow void function(ALenum) da_alDisable;
+    alias nothrow ALboolean function(ALenum) da_alIsEnabled;
 
-    alias const(char)* function(ALenum) da_alGetString;
-    alias void function(ALenum, ALboolean*) da_alGetBooleanv;
-    alias void function(ALenum, ALint*) da_alGetIntegerv;
-    alias void function(ALenum, ALfloat*) da_alGetFloatv;
-    alias void function(ALenum, ALdouble*) da_alGetDoublev;
-    alias ALboolean function(ALenum) da_alGetBoolean;
-    alias ALint function(ALenum) da_alGetInteger;
-    alias ALfloat function(ALenum) da_alGetFloat;
-    alias ALdouble function(ALenum) da_alGetDouble;
-    alias ALenum function() da_alGetError;
+    alias nothrow const(char)* function(ALenum) da_alGetString;
+    alias nothrow void function(ALenum, ALboolean*) da_alGetBooleanv;
+    alias nothrow void function(ALenum, ALint*) da_alGetIntegerv;
+    alias nothrow void function(ALenum, ALfloat*) da_alGetFloatv;
+    alias nothrow void function(ALenum, ALdouble*) da_alGetDoublev;
+    alias nothrow ALboolean function(ALenum) da_alGetBoolean;
+    alias nothrow ALint function(ALenum) da_alGetInteger;
+    alias nothrow ALfloat function(ALenum) da_alGetFloat;
+    alias nothrow ALdouble function(ALenum) da_alGetDouble;
+    alias nothrow ALenum function() da_alGetError;
 
-    alias ALboolean function(in char*) da_alIsExtensionPresent;
-    alias ALboolean function(in char*) da_alGetProcAddress;
-    alias ALenum function(in char*) da_alGetEnumValue;
+    alias nothrow ALboolean function(in char*) da_alIsExtensionPresent;
+    alias nothrow ALboolean function(in char*) da_alGetProcAddress;
+    alias nothrow ALenum function(in char*) da_alGetEnumValue;
 
-    alias void function(ALenum, ALfloat) da_alListenerf;
-    alias void function(ALenum, ALfloat, ALfloat, ALfloat) da_alListener3f;
-    alias void function(ALenum, in ALfloat*) da_alListenerfv;
-    alias void function(ALenum, ALint) da_alListeneri;
-    alias void function(ALenum, ALint, ALint, ALint) da_alListener3i;
-    alias void function(ALenum, in ALint*) da_alListeneriv;
+    alias nothrow void function(ALenum, ALfloat) da_alListenerf;
+    alias nothrow void function(ALenum, ALfloat, ALfloat, ALfloat) da_alListener3f;
+    alias nothrow void function(ALenum, in ALfloat*) da_alListenerfv;
+    alias nothrow void function(ALenum, ALint) da_alListeneri;
+    alias nothrow void function(ALenum, ALint, ALint, ALint) da_alListener3i;
+    alias nothrow void function(ALenum, in ALint*) da_alListeneriv;
 
-    alias void function(ALenum, ALfloat*) da_alGetListenerf;
-    alias void function(ALenum, ALfloat*, ALfloat*, ALfloat*) da_alGetListener3f;
-    alias void function(ALenum, ALfloat*) da_alGetListenerfv;
-    alias void function(ALenum, ALint*) da_alGetListeneri;
-    alias void function(ALenum, ALint*, ALint*, ALint*) da_alGetListener3i;
-    alias void function(ALenum, ALint*) da_alGetListeneriv;
+    alias nothrow void function(ALenum, ALfloat*) da_alGetListenerf;
+    alias nothrow void function(ALenum, ALfloat*, ALfloat*, ALfloat*) da_alGetListener3f;
+    alias nothrow void function(ALenum, ALfloat*) da_alGetListenerfv;
+    alias nothrow void function(ALenum, ALint*) da_alGetListeneri;
+    alias nothrow void function(ALenum, ALint*, ALint*, ALint*) da_alGetListener3i;
+    alias nothrow void function(ALenum, ALint*) da_alGetListeneriv;
 
-    alias void function(ALsizei, ALuint*) da_alGenSources;
-    alias void function(ALsizei, in ALuint*) da_alDeleteSources;
-    alias ALboolean function(ALuint) da_alIsSource;
+    alias nothrow void function(ALsizei, ALuint*) da_alGenSources;
+    alias nothrow void function(ALsizei, in ALuint*) da_alDeleteSources;
+    alias nothrow ALboolean function(ALuint) da_alIsSource;
 
-    alias void function(ALuint, ALenum, ALfloat) da_alSourcef;
-    alias void function(ALuint, ALenum, ALfloat, ALfloat, ALfloat) da_alSource3f;
-    alias void function(ALuint, ALenum, in ALfloat*) da_alSourcefv;
-    alias void function(ALuint, ALenum, ALint) da_alSourcei;
-    alias void function(ALuint, ALenum, ALint, ALint, ALint) da_alSource3i;
-    alias void function(ALuint, ALenum, in ALint*) da_alSourceiv;
+    alias nothrow void function(ALuint, ALenum, ALfloat) da_alSourcef;
+    alias nothrow void function(ALuint, ALenum, ALfloat, ALfloat, ALfloat) da_alSource3f;
+    alias nothrow void function(ALuint, ALenum, in ALfloat*) da_alSourcefv;
+    alias nothrow void function(ALuint, ALenum, ALint) da_alSourcei;
+    alias nothrow void function(ALuint, ALenum, ALint, ALint, ALint) da_alSource3i;
+    alias nothrow void function(ALuint, ALenum, in ALint*) da_alSourceiv;
 
-    alias void function(ALuint, ALenum, ALfloat*) da_alGetSourcef;
-    alias void function(ALuint, ALenum, ALfloat*, ALfloat*, ALfloat*) da_alGetSource3f;
-    alias void function(ALuint, ALenum, ALfloat*) da_alGetSourcefv;
-    alias void function(ALuint, ALenum, ALint*) da_alGetSourcei;
-    alias void function(ALuint, ALenum, ALint*, ALint*, ALint*) da_alGetSource3i;
-    alias void function(ALuint, ALenum, ALint*) da_alGetSourceiv;
+    alias nothrow void function(ALuint, ALenum, ALfloat*) da_alGetSourcef;
+    alias nothrow void function(ALuint, ALenum, ALfloat*, ALfloat*, ALfloat*) da_alGetSource3f;
+    alias nothrow void function(ALuint, ALenum, ALfloat*) da_alGetSourcefv;
+    alias nothrow void function(ALuint, ALenum, ALint*) da_alGetSourcei;
+    alias nothrow void function(ALuint, ALenum, ALint*, ALint*, ALint*) da_alGetSource3i;
+    alias nothrow void function(ALuint, ALenum, ALint*) da_alGetSourceiv;
 
-    alias void function(ALsizei, in ALuint*) da_alSourcePlayv;
-    alias void function(ALsizei, in ALuint*) da_alSourceStopv;
-    alias void function(ALsizei, in ALuint*) da_alSourceRewindv;
-    alias void function(ALsizei, in ALuint*) da_alSourcePausev;
-    alias void function(ALuint) da_alSourcePlay;
-    alias void function(ALuint) da_alSourcePause;
-    alias void function(ALuint) da_alSourceRewind;
-    alias void function(ALuint) da_alSourceStop;
+    alias nothrow void function(ALsizei, in ALuint*) da_alSourcePlayv;
+    alias nothrow void function(ALsizei, in ALuint*) da_alSourceStopv;
+    alias nothrow void function(ALsizei, in ALuint*) da_alSourceRewindv;
+    alias nothrow void function(ALsizei, in ALuint*) da_alSourcePausev;
+    alias nothrow void function(ALuint) da_alSourcePlay;
+    alias nothrow void function(ALuint) da_alSourcePause;
+    alias nothrow void function(ALuint) da_alSourceRewind;
+    alias nothrow void function(ALuint) da_alSourceStop;
 
-    alias void function(ALuint, ALsizei, ALuint*) da_alSourceQueueBuffers;
-    alias void function(ALuint, ALsizei, ALuint*) da_alSourceUnqueueBuffers;
+    alias nothrow void function(ALuint, ALsizei, ALuint*) da_alSourceQueueBuffers;
+    alias nothrow void function(ALuint, ALsizei, ALuint*) da_alSourceUnqueueBuffers;
 
-    alias void function(ALsizei, ALuint*) da_alGenBuffers;
-    alias void function(ALsizei, in ALuint*) da_alDeleteBuffers;
-    alias ALboolean function(ALuint) da_alIsBuffer;
-    alias void function(ALuint, ALenum, in ALvoid*, ALsizei, ALsizei) da_alBufferData;
+    alias nothrow void function(ALsizei, ALuint*) da_alGenBuffers;
+    alias nothrow void function(ALsizei, in ALuint*) da_alDeleteBuffers;
+    alias nothrow ALboolean function(ALuint) da_alIsBuffer;
+    alias nothrow void function(ALuint, ALenum, in ALvoid*, ALsizei, ALsizei) da_alBufferData;
 
-    alias void function(ALuint, ALenum, ALfloat) da_alBufferf;
-    alias void function(ALuint, ALenum, ALfloat, ALfloat, ALfloat) da_alBuffer3f;
-    alias void function(ALuint, ALenum, in ALfloat*) da_alBufferfv;
-    alias void function(ALuint, ALenum, ALint) da_alBufferi;
-    alias void function(ALuint, ALenum, ALint, ALint, ALint) da_alBuffer3i;
-    alias void function(ALuint, ALenum, in ALint*) da_alBufferiv;
+    alias nothrow void function(ALuint, ALenum, ALfloat) da_alBufferf;
+    alias nothrow void function(ALuint, ALenum, ALfloat, ALfloat, ALfloat) da_alBuffer3f;
+    alias nothrow void function(ALuint, ALenum, in ALfloat*) da_alBufferfv;
+    alias nothrow void function(ALuint, ALenum, ALint) da_alBufferi;
+    alias nothrow void function(ALuint, ALenum, ALint, ALint, ALint) da_alBuffer3i;
+    alias nothrow void function(ALuint, ALenum, in ALint*) da_alBufferiv;
 
-    alias void function(ALuint, ALenum, ALfloat*) da_alGetBufferf;
-    alias void function(ALuint, ALenum, ALfloat*, ALfloat*, ALfloat*) da_alGetBuffer3f;
-    alias void function(ALuint, ALenum, ALfloat*) da_alGetBufferfv;
-    alias void function(ALuint, ALenum, ALint*) da_alGetBufferi;
-    alias void function(ALuint, ALenum, ALint*, ALint*, ALint*) da_alGetBuffer3i;
-    alias void function(ALuint, ALenum, ALint*) da_alGetBufferiv;
+    alias nothrow void function(ALuint, ALenum, ALfloat*) da_alGetBufferf;
+    alias nothrow void function(ALuint, ALenum, ALfloat*, ALfloat*, ALfloat*) da_alGetBuffer3f;
+    alias nothrow void function(ALuint, ALenum, ALfloat*) da_alGetBufferfv;
+    alias nothrow void function(ALuint, ALenum, ALint*) da_alGetBufferi;
+    alias nothrow void function(ALuint, ALenum, ALint*, ALint*, ALint*) da_alGetBuffer3i;
+    alias nothrow void function(ALuint, ALenum, ALint*) da_alGetBufferiv;
 
-    alias void function(ALfloat) da_alDopplerFactor;
-    alias void function(ALfloat) da_alDopplerVelocity;
-    alias void function(ALfloat) da_alSpeedOfSound;
-    alias void function(ALenum) da_alDistanceModel;
+    alias nothrow void function(ALfloat) da_alDopplerFactor;
+    alias nothrow void function(ALfloat) da_alDopplerVelocity;
+    alias nothrow void function(ALfloat) da_alSpeedOfSound;
+    alias nothrow void function(ALenum) da_alDistanceModel;
 
-    alias ALCcontext* function(ALCdevice*, in ALCint*) da_alcCreateContext;
-    alias ALCboolean function(ALCcontext*) da_alcMakeContextCurrent;
-    alias void function(ALCcontext*) da_alcProcessContext;
-    alias void function(ALCcontext*) da_alcSuspendContext;
-    alias void function(ALCcontext*) da_alcDestroyContext;
-    alias ALCcontext* function() da_alcGetCurrentContext;
-    alias ALCdevice* function(ALCcontext*) da_alcGetContextsDevice;
-    alias ALCdevice* function(in char*) da_alcOpenDevice;
-    alias ALCboolean function(ALCdevice*) da_alcCloseDevice;
-    alias ALCenum function(ALCdevice*) da_alcGetError;
-    alias ALCboolean function(ALCdevice*, in char*) da_alcIsExtensionPresent;
-    alias void* function(ALCdevice*, in char*) da_alcGetProcAddress;
-    alias ALCenum function(ALCdevice*, in char*) da_alcGetEnumValue;
-    alias const(char)* function(ALCdevice*, ALCenum) da_alcGetString;
-    alias void function(ALCdevice*, ALCenum, ALCsizei, ALCint*) da_alcGetIntegerv;
-    alias ALCdevice* function(in char*, ALCuint, ALCenum, ALCsizei) da_alcCaptureOpenDevice;
-    alias ALCboolean function(ALCdevice*) da_alcCaptureCloseDevice;
-    alias void function(ALCdevice*) da_alcCaptureStart;
-    alias void function(ALCdevice*) da_alcCaptureStop;
-    alias void function(ALCdevice*, ALCvoid*, ALCsizei) da_alcCaptureSamples;
+    alias nothrow ALCcontext* function(ALCdevice*, in ALCint*) da_alcCreateContext;
+    alias nothrow ALCboolean function(ALCcontext*) da_alcMakeContextCurrent;
+    alias nothrow void function(ALCcontext*) da_alcProcessContext;
+    alias nothrow void function(ALCcontext*) da_alcSuspendContext;
+    alias nothrow void function(ALCcontext*) da_alcDestroyContext;
+    alias nothrow ALCcontext* function() da_alcGetCurrentContext;
+    alias nothrow ALCdevice* function(ALCcontext*) da_alcGetContextsDevice;
+    alias nothrow ALCdevice* function(in char*) da_alcOpenDevice;
+    alias nothrow ALCboolean function(ALCdevice*) da_alcCloseDevice;
+    alias nothrow ALCenum function(ALCdevice*) da_alcGetError;
+    alias nothrow ALCboolean function(ALCdevice*, in char*) da_alcIsExtensionPresent;
+    alias nothrow void* function(ALCdevice*, in char*) da_alcGetProcAddress;
+    alias nothrow ALCenum function(ALCdevice*, in char*) da_alcGetEnumValue;
+    alias nothrow const(char)* function(ALCdevice*, ALCenum) da_alcGetString;
+    alias nothrow void function(ALCdevice*, ALCenum, ALCsizei, ALCint*) da_alcGetIntegerv;
+    alias nothrow ALCdevice* function(in char*, ALCuint, ALCenum, ALCsizei) da_alcCaptureOpenDevice;
+    alias nothrow ALCboolean function(ALCdevice*) da_alcCaptureCloseDevice;
+    alias nothrow void function(ALCdevice*) da_alcCaptureStart;
+    alias nothrow void function(ALCdevice*) da_alcCaptureStop;
+    alias nothrow void function(ALCdevice*, ALCvoid*, ALCsizei) da_alcCaptureSamples;
 }
 
 __gshared

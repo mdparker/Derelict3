@@ -37,22 +37,22 @@ version(Windows)
 {
     extern(Windows)
     {
-        alias BOOL function(void*,void*) da_wglCopyContext;
-        alias void* function(void*) da_wglCreateContext;
-        alias void* function(void*,int) da_wglCreateLayerContext;
-        alias BOOL function(void*) da_wglDeleteContext;
-        alias BOOL function(void*,int,int,UINT,LAYERPLANEDESCRIPTOR*) da_wglDescribeLayerPlane;
-        alias void* function() da_wglGetCurrentContext;
-        alias void* function() da_wglGetCurrentDC;
-        alias int function(void*,int,int,int,COLORREF*) da_wglGetLayerPaletteEntries;
-        alias FARPROC function(LPCSTR) da_wglGetProcAddress;
-        alias BOOL function(void*,void*) da_wglMakeCurrent;
-        alias BOOL function(void*,int,BOOL) da_wglRealizeLayerPalette;
-        alias int function(void*,int,int,int,COLORREF*) da_wglSetLayerPaletteEntries;
-        alias BOOL function(void*,void*) da_wglShareLists;
-        alias BOOL function(void*,UINT) da_wglSwapLayerBuffers;
-        alias BOOL function(void*,DWORD,DWORD,DWORD) da_wglUseFontBitmapsW;
-        alias BOOL function(void*,DWORD,DWORD,DWORD,FLOAT,FLOAT,int,GLYPHMETRICSFLOAT*) da_wglUseFontOutlinesW;
+        alias nothrow BOOL function(void*,void*) da_wglCopyContext;
+        alias nothrow void* function(void*) da_wglCreateContext;
+        alias nothrow void* function(void*,int) da_wglCreateLayerContext;
+        alias nothrow BOOL function(void*) da_wglDeleteContext;
+        alias nothrow BOOL function(void*,int,int,UINT,LAYERPLANEDESCRIPTOR*) da_wglDescribeLayerPlane;
+        alias nothrow void* function() da_wglGetCurrentContext;
+        alias nothrow void* function() da_wglGetCurrentDC;
+        alias nothrow int function(void*,int,int,int,COLORREF*) da_wglGetLayerPaletteEntries;
+        alias nothrow FARPROC function(LPCSTR) da_wglGetProcAddress;
+        alias nothrow BOOL function(void*,void*) da_wglMakeCurrent;
+        alias nothrow BOOL function(void*,int,BOOL) da_wglRealizeLayerPalette;
+        alias nothrow int function(void*,int,int,int,COLORREF*) da_wglSetLayerPaletteEntries;
+        alias nothrow BOOL function(void*,void*) da_wglShareLists;
+        alias nothrow BOOL function(void*,UINT) da_wglSwapLayerBuffers;
+        alias nothrow BOOL function(void*,DWORD,DWORD,DWORD) da_wglUseFontBitmapsW;
+        alias nothrow BOOL function(void*,DWORD,DWORD,DWORD,FLOAT,FLOAT,int,GLYPHMETRICSFLOAT*) da_wglUseFontOutlinesW;
 
     }
 

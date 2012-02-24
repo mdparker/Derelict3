@@ -74,41 +74,41 @@ enum
 
 extern(C)
 {
-    alias int function(int) da_IMG_Init;
-    alias int function() da_IMG_Quit;
-    alias const(SDL_version)* function() da_IMG_Linked_Version;
-    alias SDL_Surface* function(SDL_RWops*, int, char*) da_IMG_LoadTyped_RW;
-    alias SDL_Surface* function(in char*) da_IMG_Load;
-    alias SDL_Surface* function(SDL_RWops*, int) da_IMG_Load_RW;
-    alias int function(int) da_IMG_InvertAlpha;
-    alias int function(SDL_RWops*) da_IMG_isBMP;
-    alias int function(SDL_RWops*) da_IMG_isGIF;
-    alias int function(SDL_RWops*) da_IMG_isJPG;
-    alias int function(SDL_RWops*) da_IMG_isLBM;
-    alias int function(SDL_RWops*) da_IMG_isPCX;
-    alias int function(SDL_RWops*) da_IMG_isPNG;
-    alias int function(SDL_RWops*) da_IMG_isPNM;
-    alias int function(SDL_RWops*) da_IMG_isTIF;
-    alias int function(SDL_RWops*) da_IMG_isXCF;
-    alias int function(SDL_RWops*) da_IMG_isXPM;
-    alias int function(SDL_RWops*) da_IMG_isXV;
-    alias int function(SDL_RWops*) da_IMG_isICO;
-    alias int function(SDL_RWops*) da_IMG_isCUR;
-    alias SDL_Surface* function(SDL_RWops*) da_IMG_LoadBMP_RW;
-    alias SDL_Surface* function(SDL_RWops*) da_IMG_LoadGIF_RW;
-    alias SDL_Surface* function(SDL_RWops*) da_IMG_LoadJPG_RW;
-    alias SDL_Surface* function(SDL_RWops*) da_IMG_LoadLBM_RW;
-    alias SDL_Surface* function(SDL_RWops*) da_IMG_LoadPCX_RW;
-    alias SDL_Surface* function(SDL_RWops*) da_IMG_LoadPNG_RW;
-    alias SDL_Surface* function(SDL_RWops*) da_IMG_LoadPNM_RW;
-    alias SDL_Surface* function(SDL_RWops*) da_IMG_LoadTGA_RW;
-    alias SDL_Surface* function(SDL_RWops*) da_IMG_LoadTIF_RW;
-    alias SDL_Surface* function(SDL_RWops*) da_IMG_LoadXCF_RW;
-    alias SDL_Surface* function(SDL_RWops*) da_IMG_LoadXPM_RW;
-    alias SDL_Surface* function(SDL_RWops*) da_IMG_LoadXV_RW;
-    alias SDL_Surface* function(SDL_RWops*) da_IMG_LoadICO_RW;
-    alias SDL_Surface* function(SDL_RWops*) da_IMG_LoadCUR_RW;
-    alias SDL_Surface* function(char**) da_IMG_ReadXPMFromArray;
+    alias nothrow int function(int) da_IMG_Init;
+    alias nothrow int function() da_IMG_Quit;
+    alias nothrow const(SDL_version)* function() da_IMG_Linked_Version;
+    alias nothrow SDL_Surface* function(SDL_RWops*, int, char*) da_IMG_LoadTyped_RW;
+    alias nothrow SDL_Surface* function(in char*) da_IMG_Load;
+    alias nothrow SDL_Surface* function(SDL_RWops*, int) da_IMG_Load_RW;
+    alias nothrow int function(int) da_IMG_InvertAlpha;
+    alias nothrow int function(SDL_RWops*) da_IMG_isBMP;
+    alias nothrow int function(SDL_RWops*) da_IMG_isGIF;
+    alias nothrow int function(SDL_RWops*) da_IMG_isJPG;
+    alias nothrow int function(SDL_RWops*) da_IMG_isLBM;
+    alias nothrow int function(SDL_RWops*) da_IMG_isPCX;
+    alias nothrow int function(SDL_RWops*) da_IMG_isPNG;
+    alias nothrow int function(SDL_RWops*) da_IMG_isPNM;
+    alias nothrow int function(SDL_RWops*) da_IMG_isTIF;
+    alias nothrow int function(SDL_RWops*) da_IMG_isXCF;
+    alias nothrow int function(SDL_RWops*) da_IMG_isXPM;
+    alias nothrow int function(SDL_RWops*) da_IMG_isXV;
+    alias nothrow int function(SDL_RWops*) da_IMG_isICO;
+    alias nothrow int function(SDL_RWops*) da_IMG_isCUR;
+    alias nothrow SDL_Surface* function(SDL_RWops*) da_IMG_LoadBMP_RW;
+    alias nothrow SDL_Surface* function(SDL_RWops*) da_IMG_LoadGIF_RW;
+    alias nothrow SDL_Surface* function(SDL_RWops*) da_IMG_LoadJPG_RW;
+    alias nothrow SDL_Surface* function(SDL_RWops*) da_IMG_LoadLBM_RW;
+    alias nothrow SDL_Surface* function(SDL_RWops*) da_IMG_LoadPCX_RW;
+    alias nothrow SDL_Surface* function(SDL_RWops*) da_IMG_LoadPNG_RW;
+    alias nothrow SDL_Surface* function(SDL_RWops*) da_IMG_LoadPNM_RW;
+    alias nothrow SDL_Surface* function(SDL_RWops*) da_IMG_LoadTGA_RW;
+    alias nothrow SDL_Surface* function(SDL_RWops*) da_IMG_LoadTIF_RW;
+    alias nothrow SDL_Surface* function(SDL_RWops*) da_IMG_LoadXCF_RW;
+    alias nothrow SDL_Surface* function(SDL_RWops*) da_IMG_LoadXPM_RW;
+    alias nothrow SDL_Surface* function(SDL_RWops*) da_IMG_LoadXV_RW;
+    alias nothrow SDL_Surface* function(SDL_RWops*) da_IMG_LoadICO_RW;
+    alias nothrow SDL_Surface* function(SDL_RWops*) da_IMG_LoadCUR_RW;
+    alias nothrow SDL_Surface* function(char**) da_IMG_ReadXPMFromArray;
 }
 
 __gshared

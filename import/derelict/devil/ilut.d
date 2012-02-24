@@ -93,48 +93,48 @@ enum : ILenum
 
 extern(System)
 {
-    alias ILboolean function(ILenum) da_ilutDisable;
-    alias ILboolean function(ILenum) da_ilutEnable;
-    alias ILboolean function(ILenum) da_ilutGetBoolean;
-    alias ILvoid function(ILenum, ILboolean*) da_ilutGetBooleanv;
-    alias ILint function(ILenum) da_ilutGetInteger;
-    alias ILvoid function(ILenum, ILint*) da_ilutGetIntegerv;
-    alias ILstring function(ILenum) da_ilutGetString;
-    alias ILvoid function() da_ilutInit;
-    alias ILboolean function(ILenum) da_ilutIsDisabled;
-    alias ILboolean function(ILenum) da_ilutIsEnabled;
-    alias ILvoid function() da_ilutPopAttrib;
-    alias ILvoid function(ILuint) da_ilutPushAttrib;
-    alias ILvoid function(ILenum, ILint) da_ilutSetInteger;
-    alias ILboolean function(ILenum) da_ilutRenderer;
-    alias uint function() da_ilutGLBindTexImage;
-    alias uint function() da_ilutGLBindMipmaps;
-    alias ILboolean function() da_ilutGLBuildMipmaps;
-    alias uint function(ILstring FileName) da_ilutGLLoadImage;
-    alias ILboolean function() da_ilutGLScreen;
-    alias ILboolean function() da_ilutGLScreenie;
-    alias ILboolean function(ILstring, uint) da_ilutGLSaveImage;
-    alias ILboolean function(uint) da_ilutGLSetTex;
-    alias ILboolean function(uint) da_ilutGLTexImage;
-    alias ILboolean function(uint, ILuint, ILuint) da_ilutGLSubTex;
+    alias nothrow ILboolean function(ILenum) da_ilutDisable;
+    alias nothrow ILboolean function(ILenum) da_ilutEnable;
+    alias nothrow ILboolean function(ILenum) da_ilutGetBoolean;
+    alias nothrow ILvoid function(ILenum, ILboolean*) da_ilutGetBooleanv;
+    alias nothrow ILint function(ILenum) da_ilutGetInteger;
+    alias nothrow ILvoid function(ILenum, ILint*) da_ilutGetIntegerv;
+    alias nothrow ILstring function(ILenum) da_ilutGetString;
+    alias nothrow ILvoid function() da_ilutInit;
+    alias nothrow ILboolean function(ILenum) da_ilutIsDisabled;
+    alias nothrow ILboolean function(ILenum) da_ilutIsEnabled;
+    alias nothrow ILvoid function() da_ilutPopAttrib;
+    alias nothrow ILvoid function(ILuint) da_ilutPushAttrib;
+    alias nothrow ILvoid function(ILenum, ILint) da_ilutSetInteger;
+    alias nothrow ILboolean function(ILenum) da_ilutRenderer;
+    alias nothrow uint function() da_ilutGLBindTexImage;
+    alias nothrow uint function() da_ilutGLBindMipmaps;
+    alias nothrow ILboolean function() da_ilutGLBuildMipmaps;
+    alias nothrow uint function(ILstring FileName) da_ilutGLLoadImage;
+    alias nothrow ILboolean function() da_ilutGLScreen;
+    alias nothrow ILboolean function() da_ilutGLScreenie;
+    alias nothrow ILboolean function(ILstring, uint) da_ilutGLSaveImage;
+    alias nothrow ILboolean function(uint) da_ilutGLSetTex;
+    alias nothrow ILboolean function(uint) da_ilutGLTexImage;
+    alias nothrow ILboolean function(uint, ILuint, ILuint) da_ilutGLSubTex;
 
     version(Windows)
     {
         private import derelict.util.wintypes;
-        alias HBITMAP function(HDC hDC) da_ilutConvertToHBitmap;
-        alias ILvoid function(ILubyte *Data) da_ilutFreePaddedData;
-        alias ILvoid function(BITMAPINFO *Info) da_ilutGetBmpInfo;
-        alias HPALETTE function() da_ilutGetHPal;
-        alias ILubyte* function() da_ilutGetPaddedData;
-        alias ILboolean function() da_ilutGetWinClipboard;
-        alias ILboolean function(HINSTANCE hInst, ILint ID,  ILstring ResourceType, ILenum Type) da_ilutLoadResource;
-        alias ILboolean function(HBITMAP Bitmap) da_ilutSetHBitmap;
-        alias ILboolean function(HPALETTE Pal) da_ilutSetHPal;
-        alias ILboolean function() da_ilutSetWinClipboard;
-        alias HBITMAP function( ILstring FileName, HDC hDC) da_ilutWinLoadImage;
-        alias ILboolean function( ILstring Url) da_ilutWinLoadUrl;
-        alias ILboolean function(ILuint XPos, ILuint YPos, ILuint Width, ILuint Height, HDC hDC) da_ilutWinPrint;
-        alias ILboolean function( ILstring FileName, HBITMAP Bitmap) da_ilutWinSaveImage;
+        alias nothrow HBITMAP function(HDC hDC) da_ilutConvertToHBitmap;
+        alias nothrow ILvoid function(ILubyte *Data) da_ilutFreePaddedData;
+        alias nothrow ILvoid function(BITMAPINFO *Info) da_ilutGetBmpInfo;
+        alias nothrow HPALETTE function() da_ilutGetHPal;
+        alias nothrow ILubyte* function() da_ilutGetPaddedData;
+        alias nothrow ILboolean function() da_ilutGetWinClipboard;
+        alias nothrow ILboolean function(HINSTANCE hInst, ILint ID,  ILstring ResourceType, ILenum Type) da_ilutLoadResource;
+        alias nothrow ILboolean function(HBITMAP Bitmap) da_ilutSetHBitmap;
+        alias nothrow ILboolean function(HPALETTE Pal) da_ilutSetHPal;
+        alias nothrow ILboolean function() da_ilutSetWinClipboard;
+        alias nothrow HBITMAP function( ILstring FileName, HDC hDC) da_ilutWinLoadImage;
+        alias nothrow ILboolean function( ILstring Url) da_ilutWinLoadUrl;
+        alias nothrow ILboolean function(ILuint XPos, ILuint YPos, ILuint Width, ILuint Height, HDC hDC) da_ilutWinPrint;
+        alias nothrow ILboolean function( ILstring FileName, HBITMAP Bitmap) da_ilutWinSaveImage;
     }
 
     version(Linux)
