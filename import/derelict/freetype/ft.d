@@ -41,9 +41,9 @@ private
     static if(Derelict_OS_Windows)
         enum libNames = "freetype.dll";
     else static if(Derelict_OS_Mac)
-        enum libNames = "libfreetype.so.6,libfreetype.so";
-    else static if(Derelict_OS_Posix)
         enum libNames = "libfreetype.dylib,libfreetype.6.dylib,libfreetype.6.3.16.dylib,/usr/X11/lib/libfreetype.dylib,/usr/X11/lib/libfreetype.6.dylib,/usr/X11/lib/libfreetype.6.3.16.dylib";
+    else static if(Derelict_OS_Posix)
+        enum libNames = "libfreetype.so.6,libfreetype.so";
     else
         static assert(0, "Need to implement FreeType libNames for this operating system.");
 }
