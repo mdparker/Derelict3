@@ -20,10 +20,23 @@ Third, the build process has changed. No more makefiles. I hate them with a pass
 cd $Derelict/build
 rdmd derelict.d
 
-rdmd DerelictUtil DerelictGL3
+rdmd derelict.d DerelictUtil DerelictGL3
 ------
 
-Or, if you prefer (as I do), you can compile it with your D2 compiler (DMD, GDC, or LDC2) and execute it. Also, be aware that the paths are currently hardcoded such that if you execute the script from another working directory, it will fail. I'll make it more robust in the future.
+Or, if you prefer (as I do), you can compile it once with your D2 compiler (DMD, GDC, or LDC2) and execute it as often as you need to. You'll only need to recompile the build script if you pull down any changes to it from the repository. 
+
+------
+cd $Derelict/build
+dmd derelict.d
+
+# Build all Derelict packages
+derelict
+
+# Build specific packages.
+derelict DerelictUtil DerelictGL3
+------
+
+Also, be aware that the paths are currently hardcoded such that if you execute the script from another working directory, it will fail. I'll make it more robust in the future.
 
 Finally, the interface to DerelictGL3 is a bit different from the old DerelictGL. The primary change is that none of the symbols deprecated in the modern OpenGL specifications are present. This binding is based solely on the C header, gl3.h. You can still use older versions of OpenGL, but none of the deprecated functions will be loaded.
 
