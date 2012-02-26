@@ -40,8 +40,8 @@ static if(Derelict_OS_Posix && !Derelict_OS_Mac)
         import derelict.opengl3.types;
     }
 
-    struct __GLXcontextRec {}
-    struct __GLXFBConfigRec {}
+    struct __GLXcontextRec;
+    struct __GLXFBConfigRec;
 
     alias uint GLXContentID;
     alias uint GLXPixmap;

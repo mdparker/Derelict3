@@ -466,7 +466,7 @@ struct SDL_UserEvent
     void* data2;
 }
 
-struct SDL_SysWMmsg {}
+struct SDL_SysWMmsg;
 struct SDL_SysWMEvent
 {
     Uint32 type;
@@ -565,7 +565,7 @@ enum
 alias Sint64 SDL_GestureID;
 
 // SDL_haptic.h
-struct SDL_Haptic{}
+struct SDL_Haptic;
 
 enum : Uint16
 {
@@ -712,7 +712,7 @@ enum
 }
 
 // SDL_joystick.h
-struct SDL_Joystick {}
+struct SDL_Joystick;
 
 enum : Uint8
 {
@@ -1338,7 +1338,7 @@ enum
 extern(C) alias void function(void*, int, SDL_LogPriority, const(char)*) SDL_LogOutputFunction;
 
 // SDL_mouse.h
-struct SDL_Cursor {}
+struct SDL_Cursor;
 
 Uint8 SDL_BUTTON(Uint8 X)
 {
@@ -1680,8 +1680,8 @@ enum
     SDL_TEXTUREMODULATE_ALPHA = 0x00000002
 }
 
-struct SDL_Renderer {}
-struct SDL_Texture {}
+struct SDL_Renderer;
+struct SDL_Texture;
 
 // SDL_rwops.h
 struct SDL_RWops
@@ -1797,7 +1797,7 @@ enum
 
 bool SDL_MUSTLOCK(SDL_Surface* S) { return (S.flags & SDL_RLEACCEL) != 0; }
 
-struct SDL_BlitMap {}
+struct SDL_BlitMap;
 struct SDL_Surface
 {
     Uint32 flags;
@@ -1867,7 +1867,7 @@ struct SDL_DisplayMode
     void* driverdata;
 }
 
-struct SDL_Window {}
+struct SDL_Window;
 
 alias int SDL_WindowFlags;
 enum

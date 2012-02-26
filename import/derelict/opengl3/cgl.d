@@ -45,10 +45,10 @@ static if(Derelict_OS_Mac)
         import derelict.opengl3.types;
     }
 
-    struct _CGLContextObject {}
-    struct _CGLPixelFormatObject {}
-    struct _CGLRendererInfoObject {}
-    struct _CGLPBufferObject {}
+    struct _CGLContextObject;
+    struct _CGLPixelFormatObject;
+    struct _CGLRendererInfoObject;
+    struct _CGLPBufferObject;
 
     alias _CGLContextObject*              CGLContextObj;
     alias _CGLPixelFormatObject*          CGLPixelFormatObj;

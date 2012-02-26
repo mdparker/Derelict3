@@ -68,12 +68,12 @@ alias ulong GLuint64EXT;
 // ARB_sync
 alias long GLint64;
 alias ulong GLuint64;
-struct __GLsync {}
+struct __GLsync;
 alias __GLsync* GLsync;
 
 // ARB_cl_event
-struct _cl_context {};
-struct _cl_event {};
+struct _cl_context;
+struct _cl_event;
 
 // ARB_debug_output
 extern(System) alias void function(GLenum, GLenum, GLuint, GLenum, GLsizei, in GLchar*, GLvoid*) GLDEBUGPROCARB;
