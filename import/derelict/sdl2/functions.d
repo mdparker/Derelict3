@@ -282,8 +282,8 @@ extern(C)
     alias nothrow int function(SDL_Texture*) da_SDL_UnlockTexture;
     alias nothrow int function(SDL_Renderer*, const(SDL_Rect)*) da_SDL_RenderSetViewport;
     alias nothrow void function(SDL_Renderer*, SDL_Rect*) da_SDL_RenderGetViewport;
-    alias nothrow int function(SDL_Renderer*, Uint8, Uint8, Uint8) da_SDL_SetRenderDrawColor;
-    alias nothrow int function(SDL_Renderer*, Uint8*, Uint8*, Uint8*) da_SDL_GetRenderDrawColor;
+    alias nothrow int function(SDL_Renderer*, Uint8, Uint8, Uint8, Uint8) da_SDL_SetRenderDrawColor;
+    alias nothrow int function(SDL_Renderer*, Uint8*, Uint8*, Uint8*, Uint8*) da_SDL_GetRenderDrawColor;
     alias nothrow int function(SDL_Renderer*, SDL_BlendMode) da_SDL_SetRenderDrawBlendMode;
     alias nothrow int function(SDL_Renderer*, SDL_BlendMode*) da_SDL_GetRenderDrawBlendMode;
     alias nothrow int function(SDL_Renderer*) da_SDL_RenderClear;
