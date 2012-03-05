@@ -258,6 +258,8 @@ class DerelictSDL2Loader : SharedLibLoader
             bindFunc(cast(void**)&SDL_UpdateTexture, "SDL_UpdateTexture");
             bindFunc(cast(void**)&SDL_LockTexture, "SDL_LockTexture");
             bindFunc(cast(void**)&SDL_UnlockTexture, "SDL_UnlockTexture");
+            bindFunc(cast(void**)&SDL_RenderTargetSupported, "SDL_RenderTargetSupported");
+            bindFunc(cast(void**)&SDL_SetRenderTarget, "SDL_SetRenderTarget");
             bindFunc(cast(void**)&SDL_RenderSetViewport, "SDL_RenderSetViewport");
             bindFunc(cast(void**)&SDL_RenderGetViewport, "SDL_RenderGetViewport");
             bindFunc(cast(void**)&SDL_SetRenderDrawColor, "SDL_SetRenderDrawColor");
