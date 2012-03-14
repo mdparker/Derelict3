@@ -166,7 +166,7 @@ extern(C)
     // SDL_joystick.h
     alias nothrow int function() da_SDL_NumJoysticks;
     alias nothrow const(char)* function(int) da_SDL_JoystickName;
-    alias nothrow SDL_Joystick* da_SDL_JoystickOpen;
+    alias nothrow SDL_Joystick* function(int) da_SDL_JoystickOpen;
     alias nothrow int function(int) da_SDL_JoystickOpened;
     alias nothrow int function(SDL_Joystick*) da_SDL_JoystickIndex;
     alias nothrow int function(SDL_Joystick*) da_SDL_JoystickNumAxes;

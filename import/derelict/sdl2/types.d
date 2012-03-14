@@ -361,6 +361,17 @@ struct SDL_JoyAxisEvent
     Uint32 type;
     Uint32 timestamp;
     Uint8 which;
+    Uint8 axis;
+    Uint8 padding1;
+    Uint8 padding2;
+    int value;
+}
+
+struct SDL_JoyBallEvent
+{
+    Uint32 type;
+    Uint32 timestamp;
+    Uint8 which;
     Uint8 ball;
     Uint8 padding1;
     Uint8 padding2;
