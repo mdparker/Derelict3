@@ -1469,7 +1469,7 @@ bool SDL_ISPIXELFORMAT_INDEXED(Uint32 format)
     return false;
 }
 
-bool SDL_ISPIXELFORMAT_ALHPA(Uint32 format)
+bool SDL_ISPIXELFORMAT_ALPHA(Uint32 format)
 {
     if(!SDL_ISPIXELFORMAT_FOURCC(format))
     {
