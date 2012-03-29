@@ -61,6 +61,7 @@ else
 // Package names
 enum packUtil = "DerelictUtil";
 enum packGL3 = "DerelictGL3";
+enum packGLES = "DerelictGLES";
 enum packGLFW3 = "DerelictGLFW3";
 enum packIL = "DerelictIL";
 enum packAL = "DerelictAL";
@@ -71,6 +72,7 @@ enum packSDL2 = "DerelictSDL2";
 enum srcDerelict = "../import/derelict/";
 enum srcUtil = srcDerelict ~ "util/";
 enum srcGL3 = srcDerelict ~ "opengl3/";
+enum srcGLES = srcDerelict ~ "opengles/";
 enum srcGLFW3 = srcDerelict ~ "glfw3/";
 enum srcIL = srcDerelict ~ "devil/";
 enum srcAL = srcDerelict ~ "openal/";
@@ -87,6 +89,7 @@ static this()
     [
         packUtil : srcUtil,
         packGL3 : srcGL3,
+        packGLES : srcGLES,
         packGLFW3 : srcGLFW3,
         packIL : srcIL,
         packAL : srcAL,
