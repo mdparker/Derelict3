@@ -124,7 +124,7 @@ alias dxWorldProcessThreadingManager* dWorldStepThreadingManagerId;
 
 enum
 {
-    d_ERR_UNKNOWN,
+    d_ERR_UNKNOWN = 0,
     d_ERR_IASSERT,
     d_ERR_UASSERT,
     d_ERR_LCP
@@ -133,7 +133,7 @@ enum
 alias int dJointType;
 enum
 {
-    dJointTypeNone,
+    dJointTypeNone = 0,
     dJointTypeBall,
     dJointTypeHinge,
     dJointTypeSlider,
@@ -206,8 +206,8 @@ enum
 
 enum
 {
-    dAMotorUser,
-    dAMotorEuler,
+    dAMotorUser  = 0,
+    dAMotorEuler = 1,
 }
 
 struct dJointFeedback
