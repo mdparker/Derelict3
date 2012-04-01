@@ -42,39 +42,41 @@ alias ushort uint16;
 alias byte int8;
 alias ubyte uint8;
 
+version(DerelictODE_DoublePrecision)
+    enum dInfinity = double.infinity;
+else
+    enum dInfinity = float.infinity;
+
 // common.h
 version(DerelictODE_DoublePrecision)
-{
     alias double dReal;
-}
 else
-{
     alias float dReal;
-}
 
 alias PI M_PI;
 alias SQRT1_2 M_SQRT1_2;
 
-version(DerelictOde_TriMesh_16Bit_Indices)
+version (DerelictOde_TriMesh_16Bit_Indices)
 {
-    alias uint16 dTriIndex;
+    version (DerelictOde_TriMesh_GIMPACT)
+        alias uint32 dTriIndex;
+    else
+        alias uint16 dTriIndex;
 }
 else
-{
     alias uint32 dTriIndex;
-}
 
 int dPAD(int a)
 {
     return (a > 1) ? (((a - 1)|3)+1) : a;
 }
 
-alias dReal dVector3[4];
-alias dReal dVector4[4];
-alias dReal dMatrix3[4*3];
-alias dReal dMatrix4[4*4];
-alias dReal dMatrix6[8*6];
-alias dReal dQuaternion[4];
+alias dReal[4]   dVector3;
+alias dReal[4]   dVector4;
+alias dReal[4*3] dMatrix3;
+alias dReal[4*4] dMatrix4;
+alias dReal[8*6] dMatrix6;
+alias dReal[4]   dQuaternion;
 
 dReal dRecip(dReal x)
 {
@@ -122,7 +124,7 @@ alias dxWorldProcessThreadingManager* dWorldStepThreadingManagerId;
 
 enum
 {
-    d_ERR_UNKNOWN,
+    d_ERR_UNKNOWN = 0,
     d_ERR_IASSERT,
     d_ERR_UASSERT,
     d_ERR_LCP
@@ -131,7 +133,7 @@ enum
 alias int dJointType;
 enum
 {
-    dJointTypeNone,
+    dJointTypeNone = 0,
     dJointTypeBall,
     dJointTypeHinge,
     dJointTypeSlider,
@@ -204,8 +206,8 @@ enum
 
 enum
 {
-    dAMotorUser,
-    dAMotorEuler,
+    dAMotorUser  = 0,
+    dAMotorEuler = 1,
 }
 
 struct dJointFeedback
@@ -264,7 +266,7 @@ enum
     dFirstSpaceClass,
     dSimpleSpaceClass = dFirstSpaceClass,
     dHashSpaceClass,
-    dSweepAndPruneClass,
+    dSweepAndPruneSpaceClass,
     dQuadTreeClass,
     dLastSpaceClass = dQuadTreeClass,
     dFirstUserClass,
@@ -272,7 +274,7 @@ enum
     dGeomNumClasses
 }
 
-alias dCapsuleClass dCCapsuleClass;
+alias dCapsuleClass dCCylinderClass;
 
 struct dxHeightfieldData;
 alias dxHeightfieldData* dHeightfieldDataID;
@@ -374,7 +376,7 @@ struct dContact
 }
 
 // error.h
-extern(C) alias void function(int, char*, va_list ap) dMessageFunction;
+extern(C) alias void function(int, const(char)*, va_list ap) dMessageFunction;
 
 // mass.h
 struct dMass
