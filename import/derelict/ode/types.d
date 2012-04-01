@@ -272,7 +272,7 @@ enum
     dGeomNumClasses
 }
 
-alias dCapsuleClass dCCapsuleClass;
+alias dCapsuleClass dCCylinderClass;
 
 struct dxHeightfieldData;
 alias dxHeightfieldData* dHeightfieldDataID;
