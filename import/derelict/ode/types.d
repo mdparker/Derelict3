@@ -374,7 +374,7 @@ struct dContact
 }
 
 // error.h
-extern(C) alias void function(int, char*, va_list ap) dMessageFunction;
+extern(C) alias void function(int, const(char)*, va_list ap) dMessageFunction;
 
 // mass.h
 struct dMass
