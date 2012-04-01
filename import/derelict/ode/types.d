@@ -43,9 +43,9 @@ alias byte int8;
 alias ubyte uint8;
 
 version(DerelictODE_DoublePrecision)
-    enum dInfinity = double.inf;
+    enum dInfinity = double.infinity;
 else
-    enum dInfinity = float.inf;
+    enum dInfinity = float.infinity;
 
 // common.h
 version(DerelictODE_DoublePrecision)
