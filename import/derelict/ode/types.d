@@ -264,7 +264,7 @@ enum
     dFirstSpaceClass,
     dSimpleSpaceClass = dFirstSpaceClass,
     dHashSpaceClass,
-    dSweepAndPruneClass,
+    dSweepAndPruneSpaceClass,
     dQuadTreeClass,
     dLastSpaceClass = dQuadTreeClass,
     dFirstUserClass,
