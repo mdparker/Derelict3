@@ -46,10 +46,12 @@ alias ubyte uint8;
 version(DerelictODE_DoublePrecision)
 {
     alias double dReal;
+    enum dInfinity = double.inf;
 }
 else
 {
     alias float dReal;
+    enum dInfinity = float.inf;
 }
 
 alias PI M_PI;
