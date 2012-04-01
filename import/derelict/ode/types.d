@@ -56,9 +56,9 @@ else
 alias PI M_PI;
 alias SQRT1_2 M_SQRT1_2;
 
-version (dTRIMESH_16BIT_INDICIES)
+version (DerelictOde_TriMesh_16Bit_Indices)
 {
-    version (dTRIMESH_GIMPACT)
+    version (DerelictOde_TriMesh_GIMPACT)
         alias uint32 dTriIndex;
     else
         alias uint16 dTriIndex;
