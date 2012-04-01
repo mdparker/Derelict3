@@ -42,29 +42,29 @@ alias ushort uint16;
 alias byte int8;
 alias ubyte uint8;
 
+version(DerelictODE_DoublePrecision)
+    enum dInfinity = double.inf;
+else
+    enum dInfinity = float.inf;
+
 // common.h
 version(DerelictODE_DoublePrecision)
-{
     alias double dReal;
-    enum dInfinity = double.inf;
-}
 else
-{
     alias float dReal;
-    enum dInfinity = float.inf;
-}
 
 alias PI M_PI;
 alias SQRT1_2 M_SQRT1_2;
 
-version(DerelictOde_TriMesh_16Bit_Indices)
+version (dTRIMESH_16BIT_INDICIES)
 {
-    alias uint16 dTriIndex;
+    version (dTRIMESH_GIMPACT)
+        alias uint32 dTriIndex;
+    else
+        alias uint16 dTriIndex;
 }
 else
-{
     alias uint32 dTriIndex;
-}
 
 int dPAD(int a)
 {
