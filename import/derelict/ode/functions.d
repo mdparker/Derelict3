@@ -37,7 +37,7 @@ private
 extern(C)
 {
     alias nothrow char* function() da_dGetConfiguration;
-    alias nothrow int function(in char*) da_dCheckConfiguration;
+    alias nothrow int function(const(char)*) da_dCheckConfiguration;
     alias nothrow void function(dGeomID) da_dGeomDestroy;
     alias nothrow void function(dGeomID,void*) da_dGeomSetData;
     alias nothrow void* function(dGeomID) da_dGeomGetData;
@@ -198,9 +198,9 @@ extern(C)
     alias nothrow dMessageFunction function() da_dGetErrorHandler;
     alias nothrow dMessageFunction function() da_dGetDebugHandler;
     alias nothrow dMessageFunction function() da_dGetMessageHandler;
-    alias nothrow void function(int,in char*,...) da_dError;
-    alias nothrow void function(int,in char*,...) da_dDebug;
-    alias nothrow void function(int,in char*,...) da_dMessage;
+    alias nothrow void function(int,const(char)*,...) da_dError;
+    alias nothrow void function(int,const(char)*,...) da_dDebug;
+    alias nothrow void function(int,const(char)*,...) da_dMessage;
     alias nothrow void function(dWorldID, FILE*, const(char)*) da_dWorldExportDIF;
     alias nothrow int function(in dMass*) da_dMassCheck;
     alias nothrow void function(dMass*) da_dMassSetZero;
@@ -575,8 +575,8 @@ extern(C)
     alias nothrow void function(dStopwatch*) da_dStopwatchStart;
     alias nothrow void function(dStopwatch*) da_dStopwatchStop;
     alias nothrow double function(dStopwatch*) da_dStopwatchTime;
-    alias nothrow void function(in char*) da_dTimerStart;
-    alias nothrow void function(in char*) da_dTimerNow;
+    alias nothrow void function(const(char)*) da_dTimerStart;
+    alias nothrow void function(const(char)*) da_dTimerNow;
     alias nothrow void function() da_dTimerEnd;
     alias nothrow void function(FILE*,int) da_dTimerReport;
     alias nothrow double function() da_dTimerTicksPerSecond;
