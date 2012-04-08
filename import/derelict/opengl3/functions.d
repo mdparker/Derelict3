@@ -519,7 +519,7 @@ extern(System)
     alias void function() da_glEndTransformFeedback;
     alias void function(GLenum, GLuint, GLuint, GLintptr, GLsizeiptr) da_glBindBufferRange;
     alias void function(GLenum, GLuint, GLuint) da_glBindBufferBase;
-    alias void function(GLuint, GLsizei, const(GLchar)*, GLenum) da_glTransformFeedbackVaryings;
+    alias void function(GLuint, GLsizei, const(GLchar*)*, GLenum) da_glTransformFeedbackVaryings;
     alias void function(GLuint, GLuint, GLsizei, GLsizei*, GLsizei*, GLenum*, GLchar*) da_glGetTransformFeedbackVarying;
     alias void function(GLenum, GLenum) da_glClampColor;
     alias void function(GLuint, GLenum) da_glBeginConditionalRender;
@@ -549,7 +549,7 @@ extern(System)
     alias void function(GLuint, const(GLushort)*) da_glVertexAttribI4usv;
     alias void function(GLuint, GLint, GLuint*) da_glGetUniformuiv;
     alias void function(GLuint, GLuint, const(GLchar)*) da_glBindFragDataLocation;
-    alias void function(GLuint, const(GLchar)*) da_glGetFragDataLocation;
+    alias GLint function(GLuint, const(GLchar)*) da_glGetFragDataLocation;
     alias void function(GLint, GLuint) da_glUniform1ui;
     alias void function(GLint, GLuint, GLuint) da_glUniform2ui;
     alias void function(GLint, GLuint, GLuint, GLuint) da_glUniform3ui;
