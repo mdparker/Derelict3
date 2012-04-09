@@ -70,7 +70,7 @@ class DerelictGL3Loader : SharedLibLoader
     {
         GLVersion loadedVersion() @property
         {
-            return DerelictGL3_loadedVersion;
+            return _loadedVersion;
         }
 
         GLVersion reload()
@@ -81,7 +81,7 @@ class DerelictGL3Loader : SharedLibLoader
 
             GLVersion glVer = GLVersion.GL11;
             GLVersion maxVer = findMaxAvailable();
-          
+
             if(maxVer >= GLVersion.GL12)
             {
                 bindGLFunc(cast(void**)&glBlendColor, "glBlendColor");
@@ -667,9 +667,9 @@ class DerelictGL3Loader : SharedLibLoader
                 glVer = GLVersion.GL42;
             }
 
-            loadARB();
+            loadARB(glVer);
 
-            DerelictGL3_loadedVersion = glVer;
+            _loadedVersion = glVer;
             return glVer;
         }
     }
@@ -742,7 +742,7 @@ class DerelictGL3Loader : SharedLibLoader
             bindFunc(cast(void**)&glGenTextures, "glGenTextures");
             bindFunc(cast(void**)&glIsTexture, "glIsTexture");
 
-            DerelictGL3_loadedVersion = GLVersion.GL11;
+            _loadedVersion = GLVersion.GL11;
 
             loadPlatformGL(&bindFunc);
         }
@@ -792,6 +792,11 @@ class DerelictGL3Loader : SharedLibLoader
             // is a valid version number and it's actually higher than the highest supported
             return GLVersion.HighestSupported;
         }
+    }
+
+    private
+    {
+        GLVersion _loadedVersion;
     }
 }
 

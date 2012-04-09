@@ -2278,9 +2278,9 @@ private void load_ARB_texture_storage()
     }
 }
 
-package void loadARB()
+package void loadARB(GLVersion glversion)
 {
-    if(DerelictGL3_loadedVersion >= GLVersion.GL30)
+    if(glversion >= GLVersion.GL30)
     {
         _ARB_framebuffer_object = true;
         _ARB_map_buffer_range = true;
@@ -2288,28 +2288,28 @@ package void loadARB()
     }
     else
     {
-        _ARB_framebuffer_object = isExtSupported("GL_ARB_framebuffer_object");
+        _ARB_framebuffer_object = isExtSupported(glversion, "GL_ARB_framebuffer_object");
         if(_ARB_framebuffer_object) load_ARB_framebuffer_object();
-        _ARB_map_buffer_range = isExtSupported("GL_ARB_map_buffer_range");
+        _ARB_map_buffer_range = isExtSupported(glversion, "GL_ARB_map_buffer_range");
         if(_ARB_map_buffer_range) load_ARB_map_buffer_range();
-        _ARB_vertex_array_object = isExtSupported("GL_ARB_vertex_array_object");
+        _ARB_vertex_array_object = isExtSupported(glversion, "GL_ARB_vertex_array_object");
         if(_ARB_vertex_array_object) load_ARB_vertex_array_object();
     }
 
-    if(DerelictGL3_loadedVersion >= GLVersion.GL31)
+    if(glversion >= GLVersion.GL31)
     {
         _ARB_copy_buffer = true;
         _ARB_uniform_buffer_object = true;
     }
     else
     {
-        _ARB_copy_buffer = isExtSupported("GL_ARB_copy_buffer");
+        _ARB_copy_buffer = isExtSupported(glversion, "GL_ARB_copy_buffer");
         if(_ARB_copy_buffer) load_ARB_copy_buffer();
-        _ARB_uniform_buffer_object = isExtSupported("GL_ARB_uniform_buffer_object");
+        _ARB_uniform_buffer_object = isExtSupported(glversion, "GL_ARB_uniform_buffer_object");
         if(_ARB_uniform_buffer_object) load_ARB_uniform_buffer_object();
     }
 
-    if(DerelictGL3_loadedVersion >= GLVersion.GL32)
+    if(glversion >= GLVersion.GL32)
     {
         _ARB_draw_elements_base_vertex = true;
         _ARB_provoking_vertex = true;
@@ -2318,17 +2318,17 @@ package void loadARB()
     }
     else
     {
-        _ARB_draw_elements_base_vertex = isExtSupported("GL_ARB_draw_elements_base_vertex");
+        _ARB_draw_elements_base_vertex = isExtSupported(glversion, "GL_ARB_draw_elements_base_vertex");
         if(_ARB_draw_elements_base_vertex) load_ARB_draw_elements_base_vertex();
-        _ARB_provoking_vertex = isExtSupported("GL_ARB_provoking_vertex");
+        _ARB_provoking_vertex = isExtSupported(glversion, "GL_ARB_provoking_vertex");
         if(_ARB_provoking_vertex) load_ARB_provoking_vertex();
-        _ARB_sync = isExtSupported("GL_ARB_sync");
+        _ARB_sync = isExtSupported(glversion, "GL_ARB_sync");
         if(_ARB_sync) load_ARB_sync();
-        _ARB_texture_multisample = isExtSupported("GL_ARB_texture_multisample");
+        _ARB_texture_multisample = isExtSupported(glversion, "GL_ARB_texture_multisample");
         if(_ARB_texture_multisample) load_ARB_texture_multisample();
     }
 
-    if(DerelictGL3_loadedVersion >= GLVersion.GL33)
+    if(glversion >= GLVersion.GL33)
     {
         _ARB_blend_func_extended = true;
         _ARB_sampler_objects = true;
@@ -2342,22 +2342,22 @@ package void loadARB()
     }
     else
     {
-        _ARB_blend_func_extended = isExtSupported("GL_ARB_blend_func_extended");
+        _ARB_blend_func_extended = isExtSupported(glversion, "GL_ARB_blend_func_extended");
         if(_ARB_blend_func_extended) load_ARB_blend_func_extended();
-        _ARB_sampler_objects = isExtSupported("GL_ARB_sampler_objects");
+        _ARB_sampler_objects = isExtSupported(glversion, "GL_ARB_sampler_objects");
         if(_ARB_sampler_objects) load_ARB_sampler_objects();
-        _ARB_explicit_attrib_location = isExtSupported("GL_ARB_explicit_attrib_location");
-        _ARB_occlusion_query2 = isExtSupported("GL_ARB_occlusion_query2");
-        _ARB_shader_bit_encoding = isExtSupported("GL_ARB_shader_bit_encoding");
-        _ARB_texture_rgb10_a2ui = isExtSupported("GL_ARB_texture_rgb10_a2ui");
-        _ARB_texture_swizzle = isExtSupported("GL_ARB_texture_swizzle");
-        _ARB_timer_query = isExtSupported("GL_ARB_timer_query");
+        _ARB_explicit_attrib_location = isExtSupported(glversion, "GL_ARB_explicit_attrib_location");
+        _ARB_occlusion_query2 = isExtSupported(glversion, "GL_ARB_occlusion_query2");
+        _ARB_shader_bit_encoding = isExtSupported(glversion, "GL_ARB_shader_bit_encoding");
+        _ARB_texture_rgb10_a2ui = isExtSupported(glversion, "GL_ARB_texture_rgb10_a2ui");
+        _ARB_texture_swizzle = isExtSupported(glversion, "GL_ARB_texture_swizzle");
+        _ARB_timer_query = isExtSupported(glversion, "GL_ARB_timer_query");
         if(_ARB_timer_query) load_ARB_timer_query();
-        _ARB_vertex_type_2_10_10_10_rev = isExtSupported("GL_ARB_vertex_type_2_10_10_10_rev");
+        _ARB_vertex_type_2_10_10_10_rev = isExtSupported(glversion, "GL_ARB_vertex_type_2_10_10_10_rev");
         if(_ARB_vertex_type_2_10_10_10_rev) load_ARB_vertex_type_2_10_10_10_rev();
     }
 
-    if(DerelictGL3_loadedVersion >= GLVersion.GL40)
+    if(glversion >= GLVersion.GL40)
     {
         _ARB_texture_query_lod = true;
         _ARB_draw_indirect = true;
@@ -2373,26 +2373,26 @@ package void loadARB()
     }
     else
     {
-        _ARB_texture_query_lod = isExtSupported("GL_ARB_texture_query_lod");
-        _ARB_draw_indirect = isExtSupported("GL_ARB_draw_indirect");
+        _ARB_texture_query_lod = isExtSupported(glversion, "GL_ARB_texture_query_lod");
+        _ARB_draw_indirect = isExtSupported(glversion, "GL_ARB_draw_indirect");
         if(_ARB_draw_indirect) load_ARB_draw_indirect();
-        _ARB_gpu_shader5 = isExtSupported("GL_ARB_gpu_shader5");
-        _ARB_gpu_shader_fp64 = isExtSupported("GL_ARB_gpu_shader_fp64");
+        _ARB_gpu_shader5 = isExtSupported(glversion, "GL_ARB_gpu_shader5");
+        _ARB_gpu_shader_fp64 = isExtSupported(glversion, "GL_ARB_gpu_shader_fp64");
         if(_ARB_gpu_shader_fp64) load_ARB_gpu_shader_fp64();
-        _ARB_shader_subroutine = isExtSupported("GL_ARB_shader_subroutine");
+        _ARB_shader_subroutine = isExtSupported(glversion, "GL_ARB_shader_subroutine");
         if(_ARB_shader_subroutine) load_ARB_shader_subroutine();
-        _ARB_tessellation_shader = isExtSupported("GL_ARB_tessellation_shader");
+        _ARB_tessellation_shader = isExtSupported(glversion, "GL_ARB_tessellation_shader");
         if(_ARB_tessellation_shader) load_ARB_tessellation_shader();
-        _ARB_texture_buffer_object_rgb32 = isExtSupported("GL_ARB_texture_buffer_object_rgb32");
-        _ARB_texture_cube_map_array = isExtSupported("GL_ARB_texture_cube_map_array");
-        _ARB_texture_gather = isExtSupported("GL_ARB_texture_gather");
-        _ARB_transform_feedback2 = isExtSupported("GL_ARB_transform_feedback2");
+        _ARB_texture_buffer_object_rgb32 = isExtSupported(glversion, "GL_ARB_texture_buffer_object_rgb32");
+        _ARB_texture_cube_map_array = isExtSupported(glversion, "GL_ARB_texture_cube_map_array");
+        _ARB_texture_gather = isExtSupported(glversion, "GL_ARB_texture_gather");
+        _ARB_transform_feedback2 = isExtSupported(glversion, "GL_ARB_transform_feedback2");
         if(_ARB_transform_feedback2) load_ARB_transform_feedback2();
-        _ARB_transform_feedback3 = isExtSupported("GL_ARB_transform_feedback3");
+        _ARB_transform_feedback3 = isExtSupported(glversion, "GL_ARB_transform_feedback3");
         if(_ARB_transform_feedback3) load_ARB_transform_feedback3();
     }
 
-    if(DerelictGL3_loadedVersion >= GLVersion.GL41)
+    if(glversion >= GLVersion.GL41)
     {
         _ARB_ES2_compatibility = true;
         _ARB_get_program_binary = true;
@@ -2403,20 +2403,20 @@ package void loadARB()
     }
     else
     {
-        _ARB_ES2_compatibility = isExtSupported("GL_ARB_ES2_compatibility");
+        _ARB_ES2_compatibility = isExtSupported(glversion, "GL_ARB_ES2_compatibility");
         if(_ARB_ES2_compatibility) load_ARB_ES2_compatibility();
-        _ARB_get_program_binary = isExtSupported("GL_ARB_get_program_binary");
+        _ARB_get_program_binary = isExtSupported(glversion, "GL_ARB_get_program_binary");
         if(_ARB_get_program_binary) load_ARB_get_program_binary();
-        _ARB_separate_shader_objects = isExtSupported("GL_ARB_separate_shader_objects");
+        _ARB_separate_shader_objects = isExtSupported(glversion, "GL_ARB_separate_shader_objects");
         if(_ARB_separate_shader_objects) load_ARB_separate_shader_objects();
-        _ARB_shader_precision = isExtSupported("GL_ARB_shader_precision");
-        _ARB_vertex_attrib_64bit = isExtSupported("GL_ARB_vertex_attrib_64bit");
+        _ARB_shader_precision = isExtSupported(glversion, "GL_ARB_shader_precision");
+        _ARB_vertex_attrib_64bit = isExtSupported(glversion, "GL_ARB_vertex_attrib_64bit");
         if(_ARB_vertex_attrib_64bit) load_ARB_vertex_attrib_64bit();
-        _ARB_viewport_array = isExtSupported("GL_ARB_viewport_array");
+        _ARB_viewport_array = isExtSupported(glversion, "GL_ARB_viewport_array");
         if(_ARB_viewport_array) load_ARB_viewport_array();
     }
 
-    if(DerelictGL3_loadedVersion >= GLVersion.GL42)
+    if(glversion >= GLVersion.GL42)
     {
         _ARB_base_instance = true;
         _ARB_shading_language_420pack = true;
@@ -2432,22 +2432,22 @@ package void loadARB()
     }
     else
     {
-        _ARB_base_instance = isExtSupported("GL_ARB_base_instance");
+        _ARB_base_instance = isExtSupported(glversion, "GL_ARB_base_instance");
         if(_ARB_base_instance) load_ARB_base_instance();
-        _ARB_shading_language_420pack = isExtSupported("GL_ARB_shading_language_420pack");
-        _ARB_transform_feedback_instanced = isExtSupported("GL_ARB_transform_feedback_instanced");
+        _ARB_shading_language_420pack = isExtSupported(glversion, "GL_ARB_shading_language_420pack");
+        _ARB_transform_feedback_instanced = isExtSupported(glversion, "GL_ARB_transform_feedback_instanced");
         if(_ARB_transform_feedback_instanced) load_ARB_transform_feedback_instanced();
-        _ARB_compressed_texture_pixel_storage = isExtSupported("GL_ARB_compressed_texture_pixel_storage");
-        _ARB_conservative_depth = isExtSupported("GL_ARB_conservative_depth");
-        _ARB_internalformat_query = isExtSupported("GL_ARB_internalformat_query");
+        _ARB_compressed_texture_pixel_storage = isExtSupported(glversion, "GL_ARB_compressed_texture_pixel_storage");
+        _ARB_conservative_depth = isExtSupported(glversion, "GL_ARB_conservative_depth");
+        _ARB_internalformat_query = isExtSupported(glversion, "GL_ARB_internalformat_query");
         if(_ARB_internalformat_query) load_ARB_internalformat_query();
-        _ARB_map_buffer_alignment = isExtSupported("GL_ARB_map_buffer_alignment");
-        _ARB_shader_atomic_counters = isExtSupported("GL_ARB_shader_atomic_counters");
+        _ARB_map_buffer_alignment = isExtSupported(glversion, "GL_ARB_map_buffer_alignment");
+        _ARB_shader_atomic_counters = isExtSupported(glversion, "GL_ARB_shader_atomic_counters");
         if(_ARB_shader_atomic_counters) load_ARB_shader_atomic_counters();
-        _ARB_shader_image_load_store = isExtSupported("GL_ARB_shader_image_load_store");
+        _ARB_shader_image_load_store = isExtSupported(glversion, "GL_ARB_shader_image_load_store");
         if(_ARB_shader_image_load_store) load_ARB_shader_image_load_store();
-        _ARB_shading_language_packing = isExtSupported("GL_ARB_shading_language_packing");
-        _ARB_texture_storage = isExtSupported("GL_ARB_texture_storage");
+        _ARB_shading_language_packing = isExtSupported(glversion, "GL_ARB_shading_language_packing");
+        _ARB_texture_storage = isExtSupported(glversion, "GL_ARB_texture_storage");
         if(_ARB_texture_storage) load_ARB_texture_storage();
     }
 }

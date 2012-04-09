@@ -45,9 +45,6 @@ private
 
 package
 {
-        // I want to avoid importing gl3 into this module and others.
-        __gshared DerelictGL3_loadedVersion = GLVersion.None;
-
         void bindGLFunc(void** ptr, string symName)
         {
             auto sym = loadGLFunc(symName);
@@ -56,10 +53,10 @@ package
             *ptr = sym;
         }
 
-        bool isExtSupported(string name)
+        bool isExtSupported(GLVersion glversion, string name)
         {
             // If OpenGL 3+ is loaded, use glGetStringi.
-            if(DerelictGL3_loadedVersion >= GLVersion.GL30)
+            if(glversion >= GLVersion.GL30)
             {
                 auto cstr = name.toStringz();
                 int count;
