@@ -218,7 +218,9 @@ version(Windows)
 
     extern(Windows)
     {
+        HDC GetDC(HWND);
         int ChoosePixelFormat(HDC,PIXELFORMATDESCRIPTOR*);
+        void SetPixelFormat(HDC,int,PIXELFORMATDESCRIPTOR*);
         int GetPixelFormat(HDC);
         int DescribePixelFormat(HDC,int,UINT,PIXELFORMATDESCRIPTOR*);
         BOOL SwapBuffers(HDC);
