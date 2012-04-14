@@ -64,6 +64,7 @@ enum packGL3 = "DerelictGL3";
 enum packGLFW3 = "DerelictGLFW3";
 enum packIL = "DerelictIL";
 enum packAL = "DerelictAL";
+enum packALURE = "DerelictALURE";
 enum packFT = "DerelictFT";
 enum packSDL2 = "DerelictSDL2";
 enum packODE = "DerelictODE";
@@ -75,6 +76,7 @@ enum srcGL3 = srcDerelict ~ "opengl3/";
 enum srcGLFW3 = srcDerelict ~ "glfw3/";
 enum srcIL = srcDerelict ~ "devil/";
 enum srcAL = srcDerelict ~ "openal/";
+enum srcALURE = srcDerelict ~ "alure/";
 enum srcFT = srcDerelict ~ "freetype/";
 enum srcSDL2 = srcDerelict ~ "sdl2/";
 enum srcODE = srcDerelict ~ "ode/";
@@ -92,6 +94,7 @@ static this()
         packGLFW3 : srcGLFW3,
         packIL : srcIL,
         packAL : srcAL,
+        packALURE : srcALURE,
         packFT : srcFT,
         packSDL2 : srcSDL2,
         packODE : srcODE,
