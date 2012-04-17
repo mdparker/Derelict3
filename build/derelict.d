@@ -68,6 +68,7 @@ enum packALURE = "DerelictALURE";
 enum packFT = "DerelictFT";
 enum packSDL2 = "DerelictSDL2";
 enum packODE = "DerelictODE";
+enum packASSIMP = "DerelictASSIMP";
 
 // Source paths
 enum srcDerelict = "../import/derelict/";
@@ -80,6 +81,7 @@ enum srcALURE = srcDerelict ~ "alure/";
 enum srcFT = srcDerelict ~ "freetype/";
 enum srcSDL2 = srcDerelict ~ "sdl2/";
 enum srcODE = srcDerelict ~ "ode/";
+enum srcASSIMP = srcDerelict ~ "assimp/";
 
 // Map package names to source paths.
 string[string] pathMap;
@@ -98,6 +100,7 @@ static this()
         packFT : srcFT,
         packSDL2 : srcSDL2,
         packODE : srcODE,
+        packASSIMP : srcASSIMP,
     ];
 }
 
