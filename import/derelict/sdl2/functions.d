@@ -216,7 +216,7 @@ extern(C)
     alias nothrow void function(int, SDL_LogPriority, const(char)*, ...) da_SDL_LogMessage;
     alias nothrow void function(int, SDL_LogPriority, const(char)*, va_list) da_SDL_LogMessageV;
     alias nothrow void function(SDL_LogOutputFunction, void**) da_SDL_LogGetOutputFunction;
-    alias nothrow void function(SDL_LogOutputFunction, void**) da_SDL_LogSetOutputFunction;
+    alias nothrow void function(SDL_LogOutputFunction, void*) da_SDL_LogSetOutputFunction;
 
     // SDL_mouse.h
     alias nothrow SDL_Window* function() da_SDL_GetMouseFocus;
