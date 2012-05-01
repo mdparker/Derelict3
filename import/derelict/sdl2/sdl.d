@@ -45,7 +45,7 @@ private
     else static if(Derelict_OS_Posix)
         enum libNames = "libSDL2.so,/usr/local/lib/libSDL2.so";
     else
-        static assert(0, "Need to implement GLFW libNames for this operating system.");
+        static assert(0, "Need to implement SDL2 libNames for this operating system.");
 }
 
 class DerelictSDL2Loader : SharedLibLoader
