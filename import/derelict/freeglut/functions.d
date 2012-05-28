@@ -27,7 +27,7 @@ DEALINGS IN THE SOFTWARE.
 */
 module derelict.freeglut.functions;
 
-// Callbacks used as parameters to some of the funcitons below.
+// Callbacks used as parameters to some of the functions below.
 extern(C)
 {
     alias void function(int) da_intCallback;
@@ -44,185 +44,185 @@ extern(C)
 extern(System)
 {
     // From freeglut_std.h
-    alias void function(int*,char**) da_glutInit;
-    alias void function(int,int) da_glutInitWindowPosition;
-    alias void function(int,int) da_glutInitWindowSize;
-    alias void function(uint) da_glutInitDisplayMode;
-    alias void function(const(char)*) da_glutInitDisplayString;
+    alias nothrow void function(int*,char**) da_glutInit;
+    alias nothrow void function(int,int) da_glutInitWindowPosition;
+    alias nothrow void function(int,int) da_glutInitWindowSize;
+    alias nothrow void function(uint) da_glutInitDisplayMode;
+    alias nothrow void function(const(char)*) da_glutInitDisplayString;
 
-    alias void function() da_glutMainLoop;
-    alias int function(const(char)*) da_glutCreateWindow;
-    alias int function(int,int,int,int,int) da_glutCreateSubWindow;
-    alias void function(int) da_glutDestroyWindow;
-    alias void function(int) da_glutSetWindow;
-    alias int function() da_glutGetWindow;
-    alias void function(const(char)*) da_glutSetWindowTitle;
-    alias void function(const(char)*) da_glutSetIconTitle;
-    alias void function(int,int) da_glutReshapeWindow;
-    alias void function(int,int) da_glutPositionWindow;
-    alias void function() da_glutShowWindow;
-    alias void function() da_glutHideWindow;
-    alias void function() da_glutIconifyWindow;
-    alias void function() da_glutPushWindow;
-    alias void function() da_glutPopWindow;
-    alias void function() da_glutFullScreen;
+    alias nothrow void function() da_glutMainLoop;
+    alias nothrow int function(const(char)*) da_glutCreateWindow;
+    alias nothrow int function(int,int,int,int,int) da_glutCreateSubWindow;
+    alias nothrow void function(int) da_glutDestroyWindow;
+    alias nothrow void function(int) da_glutSetWindow;
+    alias nothrow int function() da_glutGetWindow;
+    alias nothrow void function(const(char)*) da_glutSetWindowTitle;
+    alias nothrow void function(const(char)*) da_glutSetIconTitle;
+    alias nothrow void function(int,int) da_glutReshapeWindow;
+    alias nothrow void function(int,int) da_glutPositionWindow;
+    alias nothrow void function() da_glutShowWindow;
+    alias nothrow void function() da_glutHideWindow;
+    alias nothrow void function() da_glutIconifyWindow;
+    alias nothrow void function() da_glutPushWindow;
+    alias nothrow void function() da_glutPopWindow;
+    alias nothrow void function() da_glutFullScreen;
 
-    alias void function(int) da_glutPostWindowRedisplay;
-    alias void function() da_glutPostRedisplay;
-    alias void function() da_glutSwapBuffers;
+    alias nothrow void function(int) da_glutPostWindowRedisplay;
+    alias nothrow void function() da_glutPostRedisplay;
+    alias nothrow void function() da_glutSwapBuffers;
 
-    alias void function(int,int) da_glutWarpPointer;
-    alias void function(int) da_glutSetCursor;
+    alias nothrow void function(int,int) da_glutWarpPointer;
+    alias nothrow void function(int) da_glutSetCursor;
 
-    alias void function() da_glutEstablishOverlay;
-    alias void function() da_glutRemoveOverlay;
-    alias void function(uint) da_glutUseLayer;
-    alias void function() da_glutPostOverlayRedisplay;
-    alias void function(int) da_glutPostWindowOverlayRedisplay;
-    alias void function() da_glutShowOverlay;
-    alias void function() da_glutHideOverlay;
+    alias nothrow void function() da_glutEstablishOverlay;
+    alias nothrow void function() da_glutRemoveOverlay;
+    alias nothrow void function(uint) da_glutUseLayer;
+    alias nothrow void function() da_glutPostOverlayRedisplay;
+    alias nothrow void function(int) da_glutPostWindowOverlayRedisplay;
+    alias nothrow void function() da_glutShowOverlay;
+    alias nothrow void function() da_glutHideOverlay;
 
-    alias int function(da_intCallback) da_glutCreateMenu;
-    alias void function(int) da_glutDestroyMenu;
-    alias int function() da_glutGetMenu;
-    alias void function(int) da_glutSetMenu;
-    alias void function(const(char)*,int) da_glutAddMenuEntry;
-    alias void function(const(char)*,int) da_glutAddSubMenu;
-    alias void function(int,const(char)*,int) da_glutChangeToMenuEntry;
-    alias void function(int,const(char)*,int) da_glutChangeToSubMenu;
-    alias void function(int) da_glutRemoveMenuItem;
-    alias void function(int) da_glutAttachMenu;
-    alias void function(int) da_glutDetachMenu;
+    alias nothrow int function(da_intCallback) da_glutCreateMenu;
+    alias nothrow void function(int) da_glutDestroyMenu;
+    alias nothrow int function() da_glutGetMenu;
+    alias nothrow void function(int) da_glutSetMenu;
+    alias nothrow void function(const(char)*,int) da_glutAddMenuEntry;
+    alias nothrow void function(const(char)*,int) da_glutAddSubMenu;
+    alias nothrow void function(int,const(char)*,int) da_glutChangeToMenuEntry;
+    alias nothrow void function(int,const(char)*,int) da_glutChangeToSubMenu;
+    alias nothrow void function(int) da_glutRemoveMenuItem;
+    alias nothrow void function(int) da_glutAttachMenu;
+    alias nothrow void function(int) da_glutDetachMenu;
 
-    alias void function(uint,da_intCallback,int) da_glutTimerFunc;
-    alias void function(da_voidCallback) da_glutIdleFunc;
+    alias nothrow void function(uint,da_intCallback,int) da_glutTimerFunc;
+    alias nothrow void function(da_voidCallback) da_glutIdleFunc;
 
-    alias void function(da_keyboardCallback) da_glutKeyboardFunc;
-    alias void function(da_3intCallback) da_glutSpecialFunc;
-    alias void function(da_2intCallback) da_glutReshapeFunc;
-    alias void function(da_intCallback) da_glutVisibilityFunc;
-    alias void function(da_voidCallback) da_glutDisplayFunc;
-    alias void function(da_4intCallback) da_glutMouseFunc;
-    alias void function(da_2intCallback) da_glutMotionFunc;
-    alias void function(da_2intCallback) da_glutPassiveMotionFunc;
-    alias void function(da_intCallback) da_glutEntryFunc;
+    alias nothrow void function(da_keyboardCallback) da_glutKeyboardFunc;
+    alias nothrow void function(da_3intCallback) da_glutSpecialFunc;
+    alias nothrow void function(da_2intCallback) da_glutReshapeFunc;
+    alias nothrow void function(da_intCallback) da_glutVisibilityFunc;
+    alias nothrow void function(da_voidCallback) da_glutDisplayFunc;
+    alias nothrow void function(da_4intCallback) da_glutMouseFunc;
+    alias nothrow void function(da_2intCallback) da_glutMotionFunc;
+    alias nothrow void function(da_2intCallback) da_glutPassiveMotionFunc;
+    alias nothrow void function(da_intCallback) da_glutEntryFunc;
 
-    alias void function(da_keyboardCallback) da_glutKeyboardUpFunc;
-    alias void function(da_3intCallback) da_glutSpecialUpFunc;
-    alias void function(da_joytstickCallback) da_glutJoystickFunc;
-    alias void function(da_intCallback) da_glutMenuStateFunc;
-    alias void function(da_3intCallback) da_glutMenuStatusFunc;
-    alias void function(da_voidCallback) da_glutOverlayDisplayFunc;
-    alias void function(da_intCallback) da_glutWindowStatusFunc;
+    alias nothrow void function(da_keyboardCallback) da_glutKeyboardUpFunc;
+    alias nothrow void function(da_3intCallback) da_glutSpecialUpFunc;
+    alias nothrow void function(da_joytstickCallback) da_glutJoystickFunc;
+    alias nothrow void function(da_intCallback) da_glutMenuStateFunc;
+    alias nothrow void function(da_3intCallback) da_glutMenuStatusFunc;
+    alias nothrow void function(da_voidCallback) da_glutOverlayDisplayFunc;
+    alias nothrow void function(da_intCallback) da_glutWindowStatusFunc;
 
-    alias void function(da_3intCallback) da_glutSpaceballMotionFunc;
-    alias void function(da_3intCallback) da_glutSpaceballRotateFunc;
-    alias void function(da_2intCallback) da_glutSpaceballButtonFunc;
-    alias void function(da_2intCallback) da_glutButtonBoxFunc;
-    alias void function(da_2intCallback) da_glutDialsFunc;
-    alias void function(da_2intCallback) da_glutTabletMotionFunc;
-    alias void function(da_4intCallback) da_glutTabletButtonFunc;
+    alias nothrow void function(da_3intCallback) da_glutSpaceballMotionFunc;
+    alias nothrow void function(da_3intCallback) da_glutSpaceballRotateFunc;
+    alias nothrow void function(da_2intCallback) da_glutSpaceballButtonFunc;
+    alias nothrow void function(da_2intCallback) da_glutButtonBoxFunc;
+    alias nothrow void function(da_2intCallback) da_glutDialsFunc;
+    alias nothrow void function(da_2intCallback) da_glutTabletMotionFunc;
+    alias nothrow void function(da_4intCallback) da_glutTabletButtonFunc;
 
-    alias int function(uint) da_glutGet;
-    alias int function(uint) da_glutDeviceGet;
-    alias int function() da_glutGetModifiers;
-    alias int function(uint) da_glutLayerGet;
+    alias nothrow int function(uint) da_glutGet;
+    alias nothrow int function(uint) da_glutDeviceGet;
+    alias nothrow int function() da_glutGetModifiers;
+    alias nothrow int function(uint) da_glutLayerGet;
 
-    alias void function(void*,int) da_glutBitmapCharacter;
-    alias int function(void*,int) da_glutBitmapWidth;
-    alias void function(void*,int) da_glutStrokeCharacter;
-    alias int function(void*,int) da_glutStrokeWidth;
-    alias int function(void*, const(char)*) da_glutBitmapLength;
-    alias int function(void*,const(char)*) da_glutStrokeLength;
+    alias nothrow void function(void*,int) da_glutBitmapCharacter;
+    alias nothrow int function(void*,int) da_glutBitmapWidth;
+    alias nothrow void function(void*,int) da_glutStrokeCharacter;
+    alias nothrow int function(void*,int) da_glutStrokeWidth;
+    alias nothrow int function(void*, const(char)*) da_glutBitmapLength;
+    alias nothrow int function(void*,const(char)*) da_glutStrokeLength;
 
-    alias void function(double) da_glutWireCube;
-    alias void function(double) da_glutSolidCube;
-    alias void function(double,int,int) da_glutWireSphere;
-    alias void function(double,int,int) da_glutSolidSphere;
-    alias void function(double,double,int,int) da_glutWireCone;
-    alias void function(double,double,int,int) da_glutSolidCone;
+    alias nothrow void function(double) da_glutWireCube;
+    alias nothrow void function(double) da_glutSolidCube;
+    alias nothrow void function(double,int,int) da_glutWireSphere;
+    alias nothrow void function(double,int,int) da_glutSolidSphere;
+    alias nothrow void function(double,double,int,int) da_glutWireCone;
+    alias nothrow void function(double,double,int,int) da_glutSolidCone;
 
-    alias void function(double,double,int,int) da_glutWireTorus;
-    alias void function(double,double,int,int) da_glutSolidTorus;
-    alias void function() da_glutWireDodecahedron;
-    alias void function() da_glutSolidDodecahedron;
-    alias void function() da_glutWireOctahedron;
-    alias void function() da_glutSolidOctahedron;
-    alias void function() da_glutWireTetrahedron;
-    alias void function() da_glutSolidTetrahedron;
-    alias void function() da_glutWireIcosahedron;
-    alias void function() da_glutSolidIcosahedron;
+    alias nothrow void function(double,double,int,int) da_glutWireTorus;
+    alias nothrow void function(double,double,int,int) da_glutSolidTorus;
+    alias nothrow void function() da_glutWireDodecahedron;
+    alias nothrow void function() da_glutSolidDodecahedron;
+    alias nothrow void function() da_glutWireOctahedron;
+    alias nothrow void function() da_glutSolidOctahedron;
+    alias nothrow void function() da_glutWireTetrahedron;
+    alias nothrow void function() da_glutSolidTetrahedron;
+    alias nothrow void function() da_glutWireIcosahedron;
+    alias nothrow void function() da_glutSolidIcosahedron;
 
-    alias void function(double) da_glutWireTeapot;
-    alias void function(double) da_glutSolidTeapot;
+    alias nothrow void function(double) da_glutWireTeapot;
+    alias nothrow void function(double) da_glutSolidTeapot;
 
-    alias void function(const(char)*) da_glutGameModeString;
-    alias int function() da_glutEnterGameMode;
-    alias void function() da_glutLeaveGameMode;
-    alias int function(uint) da_glutGameModeGet;
+    alias nothrow void function(const(char)*) da_glutGameModeString;
+    alias nothrow int function() da_glutEnterGameMode;
+    alias nothrow void function() da_glutLeaveGameMode;
+    alias nothrow int function(uint) da_glutGameModeGet;
 
-    alias int function(uint) da_glutVideoResizeGet;
-    alias void function() da_glutSetupVideoResizing;
-    alias void function() da_glutStopVideoResizing;
-    alias void function(int,int,int,int) da_glutVideoResize;
-    alias void function(int,int,int,int) da_glutVideoPan;
+    alias nothrow int function(uint) da_glutVideoResizeGet;
+    alias nothrow void function() da_glutSetupVideoResizing;
+    alias nothrow void function() da_glutStopVideoResizing;
+    alias nothrow void function(int,int,int,int) da_glutVideoResize;
+    alias nothrow void function(int,int,int,int) da_glutVideoPan;
 
-    alias void function(int,float,float,float) da_glutSetColor;
-    alias float function(int,int) da_glutGetColor;
-    alias void function(int) da_glutCopyColormap;
+    alias nothrow void function(int,float,float,float) da_glutSetColor;
+    alias nothrow float function(int,int) da_glutGetColor;
+    alias nothrow void function(int) da_glutCopyColormap;
 
-    alias void function(int) da_glutIgnoreKeyRepeat;
-    alias void function(int) da_glutSetKeyRepeat;
-    alias void function() da_glutForceJoystickFunc;
+    alias nothrow void function(int) da_glutIgnoreKeyRepeat;
+    alias nothrow void function(int) da_glutSetKeyRepeat;
+    alias nothrow void function() da_glutForceJoystickFunc;
 
-    alias int function(const(char)*) da_glutExtensionSupported;
-    alias void function() da_glutReportErrors;
+    alias nothrow int function(const(char)*) da_glutExtensionSupported;
+    alias nothrow void function() da_glutReportErrors;
 
     // From freeglut_ext.h
-    alias void function() da_glutMainLoopEvent;
-    alias void function() da_glutLeaveMainLoop;
-    alias void function() da_glutExit;
+    alias nothrow void function() da_glutMainLoopEvent;
+    alias nothrow void function() da_glutLeaveMainLoop;
+    alias nothrow void function() da_glutExit;
 
-    alias void function() da_glutFullScreenToggle;
-    alias void function() da_glutLeaveFullScreen;
+    alias nothrow void function() da_glutFullScreenToggle;
+    alias nothrow void function() da_glutLeaveFullScreen;
 
-    alias void function(da_4intCallback) da_glutMouseWheelFunc;
-    alias void function(da_voidCallback) da_glutCloseFunc;
-    alias void function(da_voidCallback) da_glutWMCloseFunc;
-    alias void function(da_voidCallback) da_glutMenuDestroyFunc;
+    alias nothrow void function(da_4intCallback) da_glutMouseWheelFunc;
+    alias nothrow void function(da_voidCallback) da_glutCloseFunc;
+    alias nothrow void function(da_voidCallback) da_glutWMCloseFunc;
+    alias nothrow void function(da_voidCallback) da_glutMenuDestroyFunc;
 
-    alias void function(uint,int) da_glutSetOption;
-    alias int* function(uint,int*) da_glutGetModeValues;
-    alias void* function() da_glutGetWindowData;
-    alias void function(void*) da_glutSetWindowData;
-    alias void* function() da_glutGetMenuData;
-    alias void function(void*) da_glutSetMenuData;
+    alias nothrow void function(uint,int) da_glutSetOption;
+    alias nothrow int* function(uint,int*) da_glutGetModeValues;
+    alias nothrow void* function() da_glutGetWindowData;
+    alias nothrow void function(void*) da_glutSetWindowData;
+    alias nothrow void* function() da_glutGetMenuData;
+    alias nothrow void function(void*) da_glutSetMenuData;
 
-    alias int function(void*) da_glutBitmapHeight;
-    alias float function(void*) da_glutStrokeHeight;
-    alias void function(void*,const(char)*) da_glutBitmapString;
-    alias void function(void*,const(char)*) da_glutStrokeString;
+    alias nothrow int function(void*) da_glutBitmapHeight;
+    alias nothrow float function(void*) da_glutStrokeHeight;
+    alias nothrow void function(void*,const(char)*) da_glutBitmapString;
+    alias nothrow void function(void*,const(char)*) da_glutStrokeString;
 
-    alias void function() da_glutWireRhombicDodecahedron;
-    alias void function() da_glutSolidRhombicDodecahedron;
-    alias void function(int,double[3],double) da_glutWireSierpinskiSponge;
-    alias void function(int,double[3],double) da_glutSolidSierpinskiSponge;
-    alias void function(double,double,int,int) da_glutWireCylinder;
-    alias void function(double,double,int,int) da_glutSolidCylinder;
+    alias nothrow void function() da_glutWireRhombicDodecahedron;
+    alias nothrow void function() da_glutSolidRhombicDodecahedron;
+    alias nothrow void function(int,double[3],double) da_glutWireSierpinskiSponge;
+    alias nothrow void function(int,double[3],double) da_glutSolidSierpinskiSponge;
+    alias nothrow void function(double,double,int,int) da_glutWireCylinder;
+    alias nothrow void function(double,double,int,int) da_glutSolidCylinder;
 
-    alias void* function(const(char)*) da_glutGetProcAddress;
+    alias nothrow void* function(const(char)*) da_glutGetProcAddress;
 
-    alias void function(da_2intCallback) da_glutMultiEntryFunc;
-    alias void function(da_5intCallback) da_glutMultiButtonFunc;
-    alias void function(da_3intCallback) da_glutMultiMotionFunc;
-    alias void function(da_3intCallback) da_glutMultiPassiveFunc;
+    alias nothrow void function(da_2intCallback) da_glutMultiEntryFunc;
+    alias nothrow void function(da_5intCallback) da_glutMultiButtonFunc;
+    alias nothrow void function(da_3intCallback) da_glutMultiMotionFunc;
+    alias nothrow void function(da_3intCallback) da_glutMultiPassiveFunc;
 
-    alias void function(int,int) da_glutInitContextVersion;
-    alias void function(int) da_glutInitContextFlags;
-    alias void function(int) da_glutInitContextProfile;
+    alias nothrow void function(int,int) da_glutInitContextVersion;
+    alias nothrow void function(int) da_glutInitContextFlags;
+    alias nothrow void function(int) da_glutInitContextProfile;
 
-    alias void function(da_printCallback) da_glutInitErrorFunc;
-    alias void function(da_printCallback) da_glutInitWarningFunc;
+    alias nothrow void function(da_printCallback) da_glutInitErrorFunc;
+    alias nothrow void function(da_printCallback) da_glutInitWarningFunc;
 }
 
 __gshared
