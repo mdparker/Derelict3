@@ -398,10 +398,6 @@ __gshared
     da_FreeImage_RegisterLocalPlugin FreeImage_RegisterLocalPlugin;
     da_FreeImage_RegisterExternalPlugin FreeImage_RegisterExternalPlugin;
     da_FreeImage_GetFIFCount FreeImage_GetFIFCount;
-}
-
-__gshared
-{
     da_FreeImage_SetPluginEnabled FreeImage_SetPluginEnabled;
     da_FreeImage_IsPluginEnabled FreeImage_IsPluginEnabled;
     da_FreeImage_GetFIFFromFormat FreeImage_GetFIFFromFormat;
@@ -439,10 +435,6 @@ __gshared
     da_FreeImage_IsLittleEndian FreeImage_IsLittleEndian;
     da_FreeImage_LookupX11Color FreeImage_LookupX11Color;
     da_FreeImage_LookupSVGColor FreeImage_LookupSVGColor;
-}
-
-__gshared
-{
     da_FreeImage_GetBits FreeImage_GetBits;
     da_FreeImage_GetScanLine FreeImage_GetScanLine;
     da_FreeImage_GetPixelIndex FreeImage_GetPixelIndex;
@@ -525,10 +517,6 @@ __gshared
     da_FreeImage_ConvertTo16Bits565 FreeImage_ConvertTo16Bits565;
     da_FreeImage_ConvertTo24Bits FreeImage_ConvertTo24Bits;
     da_FreeImage_ConvertTo32Bits FreeImage_ConvertTo32Bits;
-}
-
-__gshared
-{
     da_FreeImage_ColorQuantize FreeImage_ColorQuantize;
     da_FreeImage_ColorQuantizeEx FreeImage_ColorQuantizeEx;
     da_FreeImage_Threshold FreeImage_Threshold;
@@ -552,7 +540,7 @@ __gshared
     da_FreeImage_ZLibGUnzip FreeImage_ZLibGUnzip;
     da_FreeImage_ZLibCRC32 FreeImage_ZLibCRC32;
 
-    // Commented out because weird "Error: forward reference of FITAG"
+    // Commented out because of weird "Error: forward reference of FITAG"
 
     /*da_FreeImage_CreateTag FreeImage_CreateTag;
     da_FreeImage_DeleteTag FreeImage_DeleteTag;

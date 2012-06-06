@@ -29,10 +29,6 @@ module derelict.freeimage.freeimage;
 
 public
 {
-    import std.typecons;
-    import std.string;
-    import std.typecons;
-    import std.traits;
     import derelict.freeimage.types;
     import derelict.freeimage.functions;
 }
@@ -57,8 +53,13 @@ class DerelictFILoader : SharedLibLoader
             // work-around: names in FreeImage.dll are stdcall-mangled on Windows
             void myBindFunc(Func)(ref Func f, string unmangledName)
             {
-                if(Derelict_OS_Windows)
+                static if(Derelict_OS_Windows)
                 {
+                    import std.typecons;
+                    import std.string;
+                    import std.typecons;
+                    import std.traits;
+
                     // get type-tuple of parameters
                     ParameterTypeTuple!f params;
 
@@ -185,6 +186,9 @@ class DerelictFILoader : SharedLibLoader
             myBindFunc(FreeImage_ZLibGZip, "FreeImage_ZLibGZip");
             myBindFunc(FreeImage_ZLibGUnzip, "FreeImage_ZLibGUnzip");
             myBindFunc(FreeImage_ZLibCRC32, "FreeImage_ZLibCRC32");
+
+            // Commented out because of weird "Error: forward reference of FITAG"
+
             /+
             myBindFunc(FreeImage_CreateTag, "FreeImage_CreateTag");
             myBindFunc(FreeImage_DeleteTag, "FreeImage_DeleteTag");
@@ -212,6 +216,7 @@ class DerelictFILoader : SharedLibLoader
             myBindFunc(FreeImage_CloneMetadata, "FreeImage_CloneMetadata");
             myBindFunc(FreeImage_TagToString, "FreeImage_TagToString");
             +/
+
             myBindFunc(FreeImage_RotateClassic, "FreeImage_RotateClassic");
             myBindFunc(FreeImage_Rotate, "FreeImage_Rotate");
             myBindFunc(FreeImage_RotateEx, "FreeImage_RotateEx");
