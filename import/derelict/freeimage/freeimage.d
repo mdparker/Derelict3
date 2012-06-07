@@ -29,8 +29,8 @@ module derelict.freeimage.freeimage;
 
 public
 {
-    import derelict.freeimage.types;
     import derelict.freeimage.functions;
+    import derelict.freeimage.types;
 }
 
 private
@@ -189,7 +189,7 @@ class DerelictFILoader : SharedLibLoader
 
             // Commented out because of weird "Error: forward reference of FITAG"
 
-            /+
+
             myBindFunc(FreeImage_CreateTag, "FreeImage_CreateTag");
             myBindFunc(FreeImage_DeleteTag, "FreeImage_DeleteTag");
             myBindFunc(FreeImage_CloneTag, "FreeImage_CloneTag");
@@ -199,7 +199,7 @@ class DerelictFILoader : SharedLibLoader
             myBindFunc(FreeImage_GetTagType, "FreeImage_GetTagType");
             myBindFunc(FreeImage_GetTagCount, "FreeImage_GetTagCount");
             myBindFunc(FreeImage_GetTagLength, "FreeImage_GetTagLength");
-            myBindFunc(FreeImage_GetTagValue, "FreeImage_GetTagValue");
+//            myBindFunc(FreeImage_GetTagValue, "FreeImage_GetTagValue");
             myBindFunc(FreeImage_SetTagKey, "FreeImage_SetTagKey");
             myBindFunc(FreeImage_SetTagDescription, "FreeImage_SetTagDescription");
             myBindFunc(FreeImage_SetTagID, "FreeImage_SetTagID");
@@ -214,8 +214,8 @@ class DerelictFILoader : SharedLibLoader
             myBindFunc(FreeImage_SetMetadata, "FreeImage_SetMetadata");
             myBindFunc(FreeImage_GetMetadataCount, "FreeImage_GetMetadataCount");
             myBindFunc(FreeImage_CloneMetadata, "FreeImage_CloneMetadata");
-            myBindFunc(FreeImage_TagToString, "FreeImage_TagToString");
-            +/
+//            myBindFunc(FreeImage_TagToString, "FreeImage_TagToString");
+
 
             myBindFunc(FreeImage_RotateClassic, "FreeImage_RotateClassic");
             myBindFunc(FreeImage_Rotate, "FreeImage_Rotate");

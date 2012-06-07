@@ -71,7 +71,7 @@ extern(System)
     alias nothrow BOOL function(FIMEMORY* stream, c_long offset, int origin) da_FreeImage_SeekMemory;
     alias nothrow BOOL function(FIMEMORY* stream, BYTE**data, DWORD* size_in_bytes) da_FreeImage_AcquireMemory;
     alias nothrow uint function(void* buffer, uint size, uint count, FIMEMORY* stream) da_FreeImage_ReadMemory;
-    alias nothrow uint function(const void* buffer, uint size, uint count, FIMEMORY* stream) da_FreeImage_WriteMemory;
+    alias nothrow uint function(const(void*) buffer, uint size, uint count, FIMEMORY* stream) da_FreeImage_WriteMemory;
 
     alias nothrow FIMULTIBITMAP*  function(FREE_IMAGE_FORMAT fif, FIMEMORY* stream, int flags = 0) da_FreeImage_LoadMultiBitmapFromMemory;
     alias nothrow BOOL function(FREE_IMAGE_FORMAT fif, FIMULTIBITMAP* bitmap, FIMEMORY* stream, int flags) da_FreeImage_SaveMultiBitmapToMemory;
@@ -282,7 +282,7 @@ extern(System)
     alias nothrow FREE_IMAGE_MDTYPE function(FITAG* tag) da_FreeImage_GetTagType;
     alias nothrow DWORD function(FITAG* tag) da_FreeImage_GetTagCount;
     alias nothrow DWORD function(FITAG* tag) da_FreeImage_GetTagLength;
-    alias nothrow const void*  function(FITAG* tag) da_FreeImage_GetTagValue;
+    alias nothrow const(void)* function(FITAG* tag) da_FreeImage_GetTagValue;
 
     alias nothrow BOOL function (FITAG* tag, const(char)* key) da_FreeImage_SetTagKey;
     alias nothrow BOOL function (FITAG* tag, const(char)* description) da_FreeImage_SetTagDescription;
@@ -290,7 +290,7 @@ extern(System)
     alias nothrow BOOL function (FITAG* tag, FREE_IMAGE_MDTYPE type) da_FreeImage_SetTagType;
     alias nothrow BOOL function (FITAG* tag, DWORD count) da_FreeImage_SetTagCount;
     alias nothrow BOOL function (FITAG* tag, DWORD length) da_FreeImage_SetTagLength;
-    alias nothrow BOOL function (FITAG* tag, const void* value) da_FreeImage_SetTagValue;
+    alias nothrow BOOL function (FITAG* tag, const(void)* value) da_FreeImage_SetTagValue;
 
     // iterator
     alias nothrow FIMETADATA* function(FREE_IMAGE_MDMODEL model, FIBITMAP* dib, FITAG** tag) da_FreeImage_FindFirstMetadata;
@@ -306,7 +306,7 @@ extern(System)
     alias nothrow BOOL function(FIBITMAP* dst, FIBITMAP* src) da_FreeImage_CloneMetadata;
 
     // tag to C string conversion
-    alias nothrow const char* function(FREE_IMAGE_MDMODEL model, FITAG* tag, char* Make = null) da_FreeImage_TagToString;
+    alias nothrow const(char)* function(FREE_IMAGE_MDMODEL model, FITAG* tag, char* Make = null) da_FreeImage_TagToString;
 
     // --------------------------------------------------------------------------
     // Image manipulation toolkit -----------------------------------------------
@@ -315,7 +315,7 @@ extern(System)
     // rotation and flipping
     /// @deprecated see FreeImage_Rotate
     alias nothrow FIBITMAP* function(FIBITMAP* dib, double angle) da_FreeImage_RotateClassic;
-    alias nothrow FIBITMAP* function(FIBITMAP* dib, double angle, const void* bkcolor = null) da_FreeImage_Rotate;
+    alias nothrow FIBITMAP* function(FIBITMAP* dib, double angle, const(void*) bkcolor = null) da_FreeImage_Rotate;
     alias nothrow FIBITMAP* function(FIBITMAP* dib, double angle, double x_shift, double y_shift, double x_origin, double y_origin, BOOL use_mask) da_FreeImage_RotateEx;
     alias nothrow BOOL function(FIBITMAP* dib) da_FreeImage_FlipHorizontal;
     alias nothrow BOOL function(FIBITMAP* dib) da_FreeImage_FlipVertical;
@@ -355,10 +355,10 @@ extern(System)
     alias nothrow BOOL function(FIBITMAP* dib) da_FreeImage_PreMultiplyWithAlpha;
 
     // background filling routines
-    alias nothrow BOOL function(FIBITMAP* dib, const void* color, int options = 0) da_FreeImage_FillBackground;
-    alias nothrow FIBITMAP* function(FIBITMAP*src, int left, int top, int right, int bottom, const void* color, int options = 0) da_FreeImage_EnlargeCanvas;
-    alias nothrow FIBITMAP* function(int width, int height, int bpp, const RGBQUAD* color, int options = 0, const RGBQUAD* palette = null, uint red_mask = 0, uint green_mask = 0, uint blue_mask = 0) da_FreeImage_AllocateEx;
-    alias nothrow FIBITMAP* function(FREE_IMAGE_TYPE type, int width, int height, int bpp, const void* color, int options = 0, const RGBQUAD* palette = null, uint red_mask = 0, uint green_mask = 0, uint blue_mask = 0) da_FreeImage_AllocateExT;
+    alias nothrow BOOL function(FIBITMAP* dib, const(void*) color, int options = 0) da_FreeImage_FillBackground;
+    alias nothrow FIBITMAP* function(FIBITMAP*src, int left, int top, int right, int bottom, const(void*) color, int options = 0) da_FreeImage_EnlargeCanvas;
+    alias nothrow FIBITMAP* function(int width, int height, int bpp, const(RGBQUAD)* color, int options = 0, const(RGBQUAD)* palette = null, uint red_mask = 0, uint green_mask = 0, uint blue_mask = 0) da_FreeImage_AllocateEx;
+    alias nothrow FIBITMAP* function(FREE_IMAGE_TYPE type, int width, int height, int bpp, const(void*) color, int options = 0, const(RGBQUAD)* palette = null, uint red_mask = 0, uint green_mask = 0, uint blue_mask = 0) da_FreeImage_AllocateExT;
 
     // miscellaneous algorithms
     alias nothrow FIBITMAP* function(FIBITMAP*Laplacian, int ncycle = 3) da_FreeImage_MultigridPoissonSolver;
@@ -542,7 +542,7 @@ __gshared
 
     // Commented out because of weird "Error: forward reference of FITAG"
 
-    /*da_FreeImage_CreateTag FreeImage_CreateTag;
+    da_FreeImage_CreateTag FreeImage_CreateTag;
     da_FreeImage_DeleteTag FreeImage_DeleteTag;
     da_FreeImage_CloneTag FreeImage_CloneTag;
     da_FreeImage_GetTagKey FreeImage_GetTagKey;
@@ -566,7 +566,7 @@ __gshared
     da_FreeImage_SetMetadata FreeImage_SetMetadata;
     da_FreeImage_GetMetadataCount FreeImage_GetMetadataCount;
     da_FreeImage_CloneMetadata FreeImage_CloneMetadata;
-    da_FreeImage_TagToString FreeImage_TagToString;*/
+    da_FreeImage_TagToString FreeImage_TagToString;
 
 
     da_FreeImage_RotateClassic FreeImage_RotateClassic;

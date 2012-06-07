@@ -69,7 +69,7 @@ enum packFT = "DerelictFT";
 enum packSDL2 = "DerelictSDL2";
 enum packODE = "DerelictODE";
 enum packASSIMP = "DerelictASSIMP";
-enum packFG = "DerelictFreeGLUT";
+enum packFG = "DerelictFG";
 enum packFI = "DerelictFI";
 
 // Source paths
