@@ -44,7 +44,9 @@ extern(System)
 
     alias nothrow void function(FreeImage_OutputMessageFunctionStdCall omf) da_FreeImage_SetOutputMessageStdCall;
     alias nothrow void function(FreeImage_OutputMessageFunction omf) da_FreeImage_SetOutputMessage;
-    alias nothrow void function(int fif, const(char)* fmt, ...) da_FreeImage_OutputMessageProc;
+
+    // interacts badly with stdcall mangling
+    //alias nothrow void function(int fif, const(char)* fmt, ...) da_FreeImage_OutputMessageProc;
 
     // Allocate / Clone / Unload routines ---------------------------------------
 
@@ -376,7 +378,10 @@ __gshared
     da_FreeImage_GetCopyrightMessage FreeImage_GetCopyrightMessage;
     da_FreeImage_SetOutputMessageStdCall FreeImage_SetOutputMessageStdCall;
     da_FreeImage_SetOutputMessage FreeImage_SetOutputMessage;
-    da_FreeImage_OutputMessageProc FreeImage_OutputMessageProc;
+
+    // interacts badly with stdcall mangling
+    //da_FreeImage_OutputMessageProc FreeImage_OutputMessageProc;
+
     da_FreeImage_Allocate FreeImage_Allocate;
     da_FreeImage_AllocateT FreeImage_AllocateT;
     da_FreeImage_Clone FreeImage_Clone;
