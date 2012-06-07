@@ -76,10 +76,6 @@ alias long FIINT64;
 alias ulong FIUINT64;
 alias ushort wchar_t; // is wchar_t 2 bytes everywhere?
 
-// TODO: c_long should always be the same size as the C type "long"
-//       this will probably break on x86_64 Linux where it is 64-bit
-alias int c_long;
-
 align(1) struct RGBQUAD
 {
     version(FREEIMAGE_COLORORDER_BGR)

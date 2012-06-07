@@ -27,7 +27,11 @@ DEALINGS IN THE SOFTWARE.
 */
 module derelict.freeimage.functions;
 
-import derelict.freeimage.types;
+private
+{
+	import core.stdc.config;
+	import derelict.freeimage.types;
+}
 
 extern(System)
 {
