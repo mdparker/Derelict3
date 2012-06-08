@@ -29,8 +29,8 @@ module derelict.freeimage.functions;
 
 private
 {
-	import core.stdc.config;
-	import derelict.freeimage.types;
+    import core.stdc.config;
+    import derelict.freeimage.types;
 }
 
 extern(System)
@@ -46,7 +46,7 @@ extern(System)
     alias nothrow void function(FreeImage_OutputMessageFunction omf) da_FreeImage_SetOutputMessage;
 
     // interacts badly with stdcall mangling
-    //alias nothrow void function(int fif, const(char)* fmt, ...) da_FreeImage_OutputMessageProc;
+    alias nothrow void function(int fif, const(char)* fmt, ...) da_FreeImage_OutputMessageProc;
 
     // Allocate / Clone / Unload routines ---------------------------------------
 
@@ -380,7 +380,7 @@ __gshared
     da_FreeImage_SetOutputMessage FreeImage_SetOutputMessage;
 
     // interacts badly with stdcall mangling
-    //da_FreeImage_OutputMessageProc FreeImage_OutputMessageProc;
+    da_FreeImage_OutputMessageProc FreeImage_OutputMessageProc;
 
     da_FreeImage_Allocate FreeImage_Allocate;
     da_FreeImage_AllocateT FreeImage_AllocateT;
