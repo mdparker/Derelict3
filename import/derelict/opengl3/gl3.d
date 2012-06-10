@@ -707,7 +707,8 @@ class DerelictGL3Loader : SharedLibLoader
             bindFunc(cast(void**)&glLogicOp, "glLogicOp");
             bindFunc(cast(void**)&glStencilFunc, "glStencilFunc");
             bindFunc(cast(void**)&glStencilOp, "glStencilOp");
-            bindFunc(cast(void**)&glDepthFunc, "glDepthFunc");
+            bindFunc(cast(void**)&glDepthMask, "glDepthMask");
+			bindFunc(cast(void**)&glDepthFunc, "glDepthFunc");
             bindFunc(cast(void**)&glPixelStoref, "glPixelStoref");
             bindFunc(cast(void**)&glPixelStorei, "glPixelStorei");
             bindFunc(cast(void**)&glReadBuffer, "glReadBuffer");

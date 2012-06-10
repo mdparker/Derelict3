@@ -63,6 +63,7 @@ extern(System)
     alias void function(GLenum) da_glLogicOp;
     alias void function(GLenum, GLint, GLuint) da_glStencilFunc;
     alias void function(GLenum, GLenum, GLenum) da_glStencilOp;
+    alias void function(GLboolean) da_glDepthMask;
     alias void function(GLenum) da_glDepthFunc;
     alias void function(GLenum, GLfloat) da_glPixelStoref;
     alias void function(GLenum, GLint) da_glPixelStorei;
@@ -114,6 +115,7 @@ __gshared
     da_glLogicOp glLogicOp;
     da_glStencilFunc glStencilFunc;
     da_glStencilOp glStencilOp;
+	da_glDepthMask glDepthMask;
     da_glDepthFunc glDepthFunc;
     da_glPixelStoref glPixelStoref;
     da_glPixelStorei glPixelStorei;
