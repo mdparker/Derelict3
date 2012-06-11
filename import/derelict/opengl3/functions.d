@@ -55,6 +55,7 @@ extern(System)
     alias nothrow void function(GLclampd) da_glClearDepth;
     alias nothrow void function(GLuint) da_glStencilMask;
     alias nothrow void function(GLboolean, GLboolean, GLboolean, GLboolean) da_glColorMask;
+    alias nothrow void function(GLboolean) da_glDepthMask;
     alias nothrow void function(GLenum) da_glDisable;
     alias nothrow void function(GLenum) da_glEnable;
     alias nothrow void function() da_glFinish;
@@ -106,6 +107,7 @@ __gshared
     da_glClearDepth glClearDepth;
     da_glStencilMask glStencilMask;
     da_glColorMask glColorMask;
+    da_glDepthMask glDepthMask;
     da_glDisable glDisable;
     da_glEnable glEnable;
     da_glFinish glFinish;
