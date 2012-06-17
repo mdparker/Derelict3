@@ -43,7 +43,7 @@ private
     else static if(Derelict_OS_Mac)
         enum libNames = "libglfw.dylib";
     else static if(Derelict_OS_Posix)
-        enum libNames = "libglfw.so";
+        enum libNames = "libglfw.so,/usr/local/lib/libglfw.so";
     else
         static assert(0, "Need to implement GLFW libNames for this operating system.");
 }
