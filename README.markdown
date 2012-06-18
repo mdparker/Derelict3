@@ -18,22 +18,25 @@ Third, the build process has changed. No more makefiles. I hate them with a pass
 
 ```
 cd $Derelict/build
-rdmd derelict.d
+rdmd build.d
 
-rdmd derelict.d DerelictUtil DerelictGL3
+rdmd build.d Util GL3
 ```
 
 Or, if you prefer (as I do), you can compile it once with your D2 compiler (DMD, GDC, or LDC2) and execute it as often as you need to. You'll only need to recompile the build script if you pull down any changes to it from the repository.
 
 ```
 cd $Derelict/build
-dmd derelict.d
+dmd build.d
 
 # Build all Derelict packages
-derelict
+build
 
 # Build specific packages.
-derelict DerelictUtil DerelictGL3
+build Util GL3
+
+# Package names are case insensitive
+build util gl3
 ```
 
 Also, be aware that the paths are currently hardcoded such that if you execute the script from another working directory, it will fail. I'll make it more robust in the future.

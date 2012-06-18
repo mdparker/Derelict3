@@ -4,7 +4,7 @@ import std.stdio : writefln, writeln;
 import std.process : shell, ErrnoException;
 import std.file : dirEntries, SpanMode;
 import std.array : endsWith;
-import std.string : format;
+import std.string : format, toUpper, capitalize;
 
 // Output configuration
 enum outdir = "../lib/";
@@ -59,18 +59,18 @@ else
 
 
 // Package names
-enum packUtil = "DerelictUtil";
-enum packGL3 = "DerelictGL3";
-enum packGLFW3 = "DerelictGLFW3";
-enum packIL = "DerelictIL";
-enum packAL = "DerelictAL";
-enum packALURE = "DerelictALURE";
-enum packFT = "DerelictFT";
-enum packSDL2 = "DerelictSDL2";
-enum packODE = "DerelictODE";
-enum packASSIMP = "DerelictASSIMP";
-enum packFG = "DerelictFG";
-enum packFI = "DerelictFI";
+enum packUtil = "Util";
+enum packGL3 = "GL3";
+enum packGLFW3 = "GLFW3";
+enum packIL = "IL";
+enum packAL = "AL";
+enum packALURE = "ALURE";
+enum packFT = "FT";
+enum packSDL2 = "SDL2";
+enum packODE = "ODE";
+enum packASSIMP = "ASSIMP";
+enum packFG = "FG";
+enum packFI = "FI";
 
 // Source paths
 enum srcDerelict = "../import/derelict/";
@@ -137,15 +137,32 @@ void buildAll()
 // Build only the packages specified on the command line.
 void buildSome(string[] args)
 {
-    writeln("Building only the packages specified.");
+    bool buildIt(string s)
+    {
+        if(s in pathMap)
+        {
+            buildPackage(s);
+            return true;
+        }
+        return false;
+    }
+
     try
     {
         // If any of the args matches a key in the pathMap, build
         // that package.
         foreach(s; args)
         {
-            if(s in pathMap)
-                buildPackage(s);
+            if(!buildIt(s))
+            {
+                s = s.toUpper();
+                if(!buildIt(s))
+                {
+                    s = s.capitalize();
+                    if(!buildIt(s))
+                        writefln("Unknown package '%s'", s);
+                }
+            }
         }
     }
     catch(ErrnoException e) {}
@@ -153,7 +170,7 @@ void buildSome(string[] args)
 
 void buildPackage(string packageName)
 {
-    writefln("Building %s", packageName);
+    writefln("Building Derelict%s", packageName);
     writeln();
 
     // Build up a string of all .d files in the directory that maps to packageName.
