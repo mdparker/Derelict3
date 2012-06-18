@@ -89,7 +89,7 @@ class DerelictFILoader : SharedLibLoader
             myBindFunc(FreeImage_SetOutputMessage, "FreeImage_SetOutputMessage");
 
             // This one isn't mangled like the rest, likely because of the variable args.
-            bindFunc(FreeImage_OutputMessageProc, "FreeImage_OutputMessageProc");
+            bindFunc(cast(void**)&FreeImage_OutputMessageProc, "FreeImage_OutputMessageProc");
 
             myBindFunc(FreeImage_Allocate, "FreeImage_Allocate");
             myBindFunc(FreeImage_AllocateT, "FreeImage_AllocateT");
