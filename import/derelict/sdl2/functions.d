@@ -437,7 +437,7 @@ extern(C)
     alias nothrow int function(SDL_GLattr, int) da_SDL_GL_SetAttribute;
     alias nothrow int function(SDL_GLattr, int*) da_SDL_GL_GetAttribute;
     alias nothrow SDL_GLContext function(SDL_Window*) da_SDL_GL_CreateContext;
-    alias nothrow int function(SDL_Window*, SDL_GLContext*) da_SDL_GL_MakeCurrent;
+    alias nothrow int function(SDL_Window*, SDL_GLContext) da_SDL_GL_MakeCurrent;
     alias nothrow int function(int) da_SDL_GL_SetSwapInterval;
     alias nothrow int function() da_SDL_GL_GetSwapInterval;
     alias nothrow void function(SDL_Window*) da_SDL_GL_SwapWindow;
