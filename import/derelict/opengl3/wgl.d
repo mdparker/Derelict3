@@ -54,6 +54,8 @@ version(Windows)
         alias nothrow BOOL function(void*,DWORD,DWORD,DWORD) da_wglUseFontBitmapsW;
         alias nothrow BOOL function(void*,DWORD,DWORD,DWORD,FLOAT,FLOAT,int,GLYPHMETRICSFLOAT*) da_wglUseFontOutlinesW;
 
+        alias nothrow BOOL function(HDC, const(int)*, const(FLOAT)*, UINT, int*, UINT*) da_wglChoosePixelFormatARB;
+        alias nothrow HGLRC function(HDC, HGLRC, const(int)*) da_wglCreateContextAttribsARB;
     }
 
     da_wglCopyContext wglCopyContext;
@@ -76,6 +78,9 @@ version(Windows)
     alias wglUseFontBitmapsW    wglUseFontBitmaps;
     alias wglUseFontOutlinesW   wglUseFontOutlines;
 
+    da_wglChoosePixelFormatARB wglChoosePixelFormatARB;
+    da_wglCreateContextAttribsARB wglCreateContextAttribsARB;
+
     package
     {
         void loadPlatformGL(void delegate(void**, string, bool doThrow = true) bindFunc)
@@ -96,6 +101,12 @@ version(Windows)
             bindFunc(cast(void**)&wglSwapLayerBuffers, "wglSwapLayerBuffers");
             bindFunc(cast(void**)&wglUseFontBitmapsW, "wglUseFontBitmapsW");
             bindFunc(cast(void**)&wglUseFontOutlinesW, "wglUseFontOutlinesW");
+        }
+
+        void loadWGLContextCreators()
+        {
+            wglChoosePixelFormatARB = cast(da_wglChoosePixelFormatARB)loadGLFunc("wglChoosePixelFormatARB");
+            wglCreateContextAttribsARB = cast(da_wglCreateContextAttribsARB)loadGLFunc("wglCreateContextAttribsARB");
         }
 
         void* loadGLFunc(string symName)
