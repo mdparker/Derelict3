@@ -31,7 +31,8 @@ version(DigitalMars)
     enum compilerOptions = "-lib -O -release -inline -property -w -wi";
     string buildCompileString(string files, string packageName)
     {
-        return format("dmd %s -I../import -of%s%s%s%s%s", compilerOptions, outdir, prefix, packageName, extension, files);
+	    string libName = format("%s%s%s%s", prefix, "Derelict", packageName, extension);
+        return format("dmd %s -I../import -of%s%s", compilerOptions, outdir, libName, files);
     }
 }
 else version(GNU)
