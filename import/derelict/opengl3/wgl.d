@@ -83,24 +83,24 @@ version(Windows)
 
     package
     {
-        void loadPlatformGL(void delegate(void**, string, bool doThrow = true) bindFunc)
+        void loadPlatformGL(void delegate(void**, string, bool doThrow) bindFunc)
         {
-            bindFunc(cast(void**)&wglCopyContext, "wglCopyContext");
-            bindFunc(cast(void**)&wglCreateContext, "wglCreateContext");
-            bindFunc(cast(void**)&wglCreateLayerContext, "wglCreateLayerContext");
-            bindFunc(cast(void**)&wglDeleteContext, "wglDeleteContext");
-            bindFunc(cast(void**)&wglDescribeLayerPlane, "wglDescribeLayerPlane");
-            bindFunc(cast(void**)&wglGetCurrentContext, "wglGetCurrentContext");
-            bindFunc(cast(void**)&wglGetCurrentDC, "wglGetCurrentDC");
-            bindFunc(cast(void**)&wglGetLayerPaletteEntries, "wglGetLayerPaletteEntries");
-            bindFunc(cast(void**)&wglGetProcAddress, "wglGetProcAddress");
-            bindFunc(cast(void**)&wglMakeCurrent, "wglMakeCurrent");
-            bindFunc(cast(void**)&wglRealizeLayerPalette, "wglRealizeLayerPalette");
-            bindFunc(cast(void**)&wglSetLayerPaletteEntries, "wglSetLayerPaletteEntries");
-            bindFunc(cast(void**)&wglShareLists, "wglShareLists");
-            bindFunc(cast(void**)&wglSwapLayerBuffers, "wglSwapLayerBuffers");
-            bindFunc(cast(void**)&wglUseFontBitmapsW, "wglUseFontBitmapsW");
-            bindFunc(cast(void**)&wglUseFontOutlinesW, "wglUseFontOutlinesW");
+            bindFunc(cast(void**)&wglCopyContext, "wglCopyContext", true);
+            bindFunc(cast(void**)&wglCreateContext, "wglCreateContext", true);
+            bindFunc(cast(void**)&wglCreateLayerContext, "wglCreateLayerContext", true);
+            bindFunc(cast(void**)&wglDeleteContext, "wglDeleteContext", true);
+            bindFunc(cast(void**)&wglDescribeLayerPlane, "wglDescribeLayerPlane", true);
+            bindFunc(cast(void**)&wglGetCurrentContext, "wglGetCurrentContext", true);
+            bindFunc(cast(void**)&wglGetCurrentDC, "wglGetCurrentDC", true);
+            bindFunc(cast(void**)&wglGetLayerPaletteEntries, "wglGetLayerPaletteEntries", true);
+            bindFunc(cast(void**)&wglGetProcAddress, "wglGetProcAddress", true);
+            bindFunc(cast(void**)&wglMakeCurrent, "wglMakeCurrent", true);
+            bindFunc(cast(void**)&wglRealizeLayerPalette, "wglRealizeLayerPalette", true);
+            bindFunc(cast(void**)&wglSetLayerPaletteEntries, "wglSetLayerPaletteEntries", true);
+            bindFunc(cast(void**)&wglShareLists, "wglShareLists", true);
+            bindFunc(cast(void**)&wglSwapLayerBuffers, "wglSwapLayerBuffers", true);
+            bindFunc(cast(void**)&wglUseFontBitmapsW, "wglUseFontBitmapsW", true);
+            bindFunc(cast(void**)&wglUseFontOutlinesW, "wglUseFontOutlinesW", true);
         }
 
         void loadWGLContextCreators()

@@ -250,49 +250,49 @@ static if(Derelict_OS_Mac)
 
     package
     {
-        alias void delegate(void**, string, bool doThrow = true) da_bindFunc;
+        alias void delegate(void**, string, bool doThrow) da_bindFunc;
         __gshared da_bindFunc _bindFunc;
 
         void loadPlatformGL(da_bindFunc bindFunc)
         {
-            bindFunc(cast(void**)&CGLSetCurrentContext, "CGLSetCurrentContext");
-            bindFunc(cast(void**)&CGLGetCurrentContext, "CGLGetCurrentContext");
-            bindFunc(cast(void**)&CGLChoosePixelFormat, "CGLChoosePixelFormat");
-            bindFunc(cast(void**)&CGLDestroyPixelFormat, "CGLDestroyPixelFormat");
-            bindFunc(cast(void**)&CGLDescribePixelFormat, "CGLDescribePixelFormat");
-            bindFunc(cast(void**)&CGLQueryRendererInfo, "CGLQueryRendererInfo");
-            bindFunc(cast(void**)&CGLDestroyRendererInfo, "CGLDestroyRendererInfo");
-            bindFunc(cast(void**)&CGLDescribeRenderer, "CGLDescribeRenderer");
-            bindFunc(cast(void**)&CGLCreateContext, "CGLCreateContext");
-            bindFunc(cast(void**)&CGLDestroyContext, "CGLDestroyContext");
-            bindFunc(cast(void**)&CGLCopyContext, "CGLCopyContext");
-            bindFunc(cast(void**)&CGLSetOffScreen, "CGLSetOffScreen");
-            bindFunc(cast(void**)&CGLGetOffScreen, "CGLGetOffScreen");
-            bindFunc(cast(void**)&CGLSetFullScreen, "CGLSetFullScreen");
-            bindFunc(cast(void**)&CGLClearDrawable, "CGLClearDrawable");
-            bindFunc(cast(void**)&CGLFlushDrawable, "CGLFlushDrawable");
-            bindFunc(cast(void**)&CGLEnable, "CGLEnable");
-            bindFunc(cast(void**)&CGLDisable, "CGLDisable");
-            bindFunc(cast(void**)&CGLIsEnabled, "CGLIsEnabled");
-            bindFunc(cast(void**)&CGLSetParameter, "CGLSetParameter");
-            bindFunc(cast(void**)&CGLGetParameter, "CGLGetParameter");
-            bindFunc(cast(void**)&CGLSetVirtualScreen, "CGLSetVirtualScreen");
-            bindFunc(cast(void**)&CGLGetVirtualScreen, "CGLGetVirtualScreen");
-            bindFunc(cast(void**)&CGLSetOption, "CGLSetOption");
-            bindFunc(cast(void**)&CGLGetOption, "CGLGetOption");
+            bindFunc(cast(void**)&CGLSetCurrentContext, "CGLSetCurrentContext", true);
+            bindFunc(cast(void**)&CGLGetCurrentContext, "CGLGetCurrentContext", true);
+            bindFunc(cast(void**)&CGLChoosePixelFormat, "CGLChoosePixelFormat", true);
+            bindFunc(cast(void**)&CGLDestroyPixelFormat, "CGLDestroyPixelFormat", true);
+            bindFunc(cast(void**)&CGLDescribePixelFormat, "CGLDescribePixelFormat", true);
+            bindFunc(cast(void**)&CGLQueryRendererInfo, "CGLQueryRendererInfo", true);
+            bindFunc(cast(void**)&CGLDestroyRendererInfo, "CGLDestroyRendererInfo", true);
+            bindFunc(cast(void**)&CGLDescribeRenderer, "CGLDescribeRenderer", true);
+            bindFunc(cast(void**)&CGLCreateContext, "CGLCreateContext", true);
+            bindFunc(cast(void**)&CGLDestroyContext, "CGLDestroyContext", true);
+            bindFunc(cast(void**)&CGLCopyContext, "CGLCopyContext", true);
+            bindFunc(cast(void**)&CGLSetOffScreen, "CGLSetOffScreen", true);
+            bindFunc(cast(void**)&CGLGetOffScreen, "CGLGetOffScreen", true);
+            bindFunc(cast(void**)&CGLSetFullScreen, "CGLSetFullScreen", true);
+            bindFunc(cast(void**)&CGLClearDrawable, "CGLClearDrawable", true);
+            bindFunc(cast(void**)&CGLFlushDrawable, "CGLFlushDrawable", true);
+            bindFunc(cast(void**)&CGLEnable, "CGLEnable", true);
+            bindFunc(cast(void**)&CGLDisable, "CGLDisable", true);
+            bindFunc(cast(void**)&CGLIsEnabled, "CGLIsEnabled", true);
+            bindFunc(cast(void**)&CGLSetParameter, "CGLSetParameter", true);
+            bindFunc(cast(void**)&CGLGetParameter, "CGLGetParameter", true);
+            bindFunc(cast(void**)&CGLSetVirtualScreen, "CGLSetVirtualScreen", true);
+            bindFunc(cast(void**)&CGLGetVirtualScreen, "CGLGetVirtualScreen", true);
+            bindFunc(cast(void**)&CGLSetOption, "CGLSetOption", true);
+            bindFunc(cast(void**)&CGLGetOption, "CGLGetOption", true);
 
             version (Mac_OS_X_10_4_and_later)
             {
-                bindFunc(cast(void**)&CGLLockContext, "CGLLockContext");
+                bindFunc(cast(void**)&CGLLockContext, "CGLLockContext", true);
 
-                bindFunc(cast(void**)&CGLUnlockContext, "CGLUnlockContext");
+                bindFunc(cast(void**)&CGLUnlockContext, "CGLUnlockContext", true);
             }
 
-            bindFunc(cast(void**)&CGLGetVersion, "CGLGetVersion");
-            bindFunc(cast(void**)&CGLErrorString, "CGLErrorString");
+            bindFunc(cast(void**)&CGLGetVersion, "CGLGetVersion", true);
+            bindFunc(cast(void**)&CGLErrorString, "CGLErrorString", true);
 
-            bindFunc(cast(void**)&CGLSetCurrentContext, "CGLSetCurrentContext");
-            bindFunc(cast(void**)&CGLGetCurrentContext, "CGLGetCurrentContext");
+            bindFunc(cast(void**)&CGLSetCurrentContext, "CGLSetCurrentContext", true);
+            bindFunc(cast(void**)&CGLGetCurrentContext, "CGLGetCurrentContext", true);
 
             _bindFunc = bindFunc;
         }

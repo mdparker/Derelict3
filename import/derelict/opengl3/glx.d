@@ -172,49 +172,49 @@ static if(Derelict_OS_Posix && !Derelict_OS_Mac)
 
     package
     {
-        void loadPlatformGL(void delegate(void**, string, bool doThrow = true) bindFunc)
+        void loadPlatformGL(void delegate(void**, string, bool doThrow) bindFunc)
         {
-            bindFunc(cast(void**)&glXChooseVisual, "glXChooseVisual");
-            bindFunc(cast(void**)&glXCopyContext, "glXCopyContext");
-            bindFunc(cast(void**)&glXCreateContext, "glXCreateContext");
-            bindFunc(cast(void**)&glXCreateGLXPixmap, "glXCreateGLXPixmap");
-            bindFunc(cast(void**)&glXDestroyContext, "glXDestroyContext");
-            bindFunc(cast(void**)&glXDestroyGLXPixmap, "glXDestroyGLXPixmap");
-            bindFunc(cast(void**)&glXGetConfig, "glXGetConfig");
-            bindFunc(cast(void**)&glXGetCurrentContext, "glXGetCurrentContext");
-            bindFunc(cast(void**)&glXGetCurrentDrawable, "glXGetCurrentDrawable");
-            bindFunc(cast(void**)&glXIsDirect, "glXIsDirect");
-            bindFunc(cast(void**)&glXMakeCurrent, "glXMakeCurrent");
-            bindFunc(cast(void**)&glXQueryExtension, "glXQueryExtension");
-            bindFunc(cast(void**)&glXQueryVersion, "glXQueryVersion");
-            bindFunc(cast(void**)&glXSwapBuffers, "glXSwapBuffers");
-            bindFunc(cast(void**)&glXUseXFont, "glXUseXFont");
-            bindFunc(cast(void**)&glXWaitGL, "glXWaitGL");
-            bindFunc(cast(void**)&glXWaitX, "glXWaitX");
-            bindFunc(cast(void**)&glXGetClientString, "glXGetClientString");
-            bindFunc(cast(void**)&glXQueryServerString, "glXQueryServerString");
-            bindFunc(cast(void**)&glXQueryExtensionsString, "glXQueryExtensionsString");
+            bindFunc(cast(void**)&glXChooseVisual, "glXChooseVisual", true);
+            bindFunc(cast(void**)&glXCopyContext, "glXCopyContext", true);
+            bindFunc(cast(void**)&glXCreateContext, "glXCreateContext", true);
+            bindFunc(cast(void**)&glXCreateGLXPixmap, "glXCreateGLXPixmap", true);
+            bindFunc(cast(void**)&glXDestroyContext, "glXDestroyContext", true);
+            bindFunc(cast(void**)&glXDestroyGLXPixmap, "glXDestroyGLXPixmap", true);
+            bindFunc(cast(void**)&glXGetConfig, "glXGetConfig", true);
+            bindFunc(cast(void**)&glXGetCurrentContext, "glXGetCurrentContext", true);
+            bindFunc(cast(void**)&glXGetCurrentDrawable, "glXGetCurrentDrawable", true);
+            bindFunc(cast(void**)&glXIsDirect, "glXIsDirect", true);
+            bindFunc(cast(void**)&glXMakeCurrent, "glXMakeCurrent", true);
+            bindFunc(cast(void**)&glXQueryExtension, "glXQueryExtension", true);
+            bindFunc(cast(void**)&glXQueryVersion, "glXQueryVersion", true);
+            bindFunc(cast(void**)&glXSwapBuffers, "glXSwapBuffers", true);
+            bindFunc(cast(void**)&glXUseXFont, "glXUseXFont", true);
+            bindFunc(cast(void**)&glXWaitGL, "glXWaitGL", true);
+            bindFunc(cast(void**)&glXWaitX, "glXWaitX", true);
+            bindFunc(cast(void**)&glXGetClientString, "glXGetClientString", true);
+            bindFunc(cast(void**)&glXQueryServerString, "glXQueryServerString", true);
+            bindFunc(cast(void**)&glXQueryExtensionsString, "glXQueryExtensionsString", true);
 
-            bindFunc(cast(void**)&glXGetFBConfigs, "glXGetFBConfigs");
-            bindFunc(cast(void**)&glXChooseFBConfig, "glXChooseFBConfig");
-            bindFunc(cast(void**)&glXGetFBConfigAttrib, "glXGetFBConfigAttrib");
-            bindFunc(cast(void**)&glXGetVisualFromFBConfig, "glXGetVisualFromFBConfig");
-            bindFunc(cast(void**)&glXCreateWindow, "glXCreateWindow");
-            bindFunc(cast(void**)&glXDestroyWindow, "glXDestroyWindow");
-            bindFunc(cast(void**)&glXCreatePixmap, "glXCreatePixmap");
-            bindFunc(cast(void**)&glXDestroyPixmap, "glXDestroyPixmap");
-            bindFunc(cast(void**)&glXCreatePbuffer, "glXCreatePbuffer");
-            bindFunc(cast(void**)&glXDestroyPbuffer, "glXDestroyPbuffer");
-            bindFunc(cast(void**)&glXQueryDrawable, "glXQueryDrawable");
-            bindFunc(cast(void**)&glXCreateNewContext, "glXCreateNewContext");
-            bindFunc(cast(void**)&glXMakeContextCurrent, "glXMakeContextCurrent");
-            bindFunc(cast(void**)&glXGetCurrentReadDrawable, "glXGetCurrentReadDrawable");
-            bindFunc(cast(void**)&glXGetCurrentDisplay, "glXGetCurrentDisplay");
-            bindFunc(cast(void**)&glXQueryContext, "glXQueryContext");
-            bindFunc(cast(void**)&glXSelectEvent, "glXSelectEvent");
-            bindFunc(cast(void**)&glXGetSelectedEvent, "glXGetSelectedEvent");
+            bindFunc(cast(void**)&glXGetFBConfigs, "glXGetFBConfigs", true);
+            bindFunc(cast(void**)&glXChooseFBConfig, "glXChooseFBConfig", true);
+            bindFunc(cast(void**)&glXGetFBConfigAttrib, "glXGetFBConfigAttrib", true);
+            bindFunc(cast(void**)&glXGetVisualFromFBConfig, "glXGetVisualFromFBConfig", true);
+            bindFunc(cast(void**)&glXCreateWindow, "glXCreateWindow", true);
+            bindFunc(cast(void**)&glXDestroyWindow, "glXDestroyWindow", true);
+            bindFunc(cast(void**)&glXCreatePixmap, "glXCreatePixmap", true);
+            bindFunc(cast(void**)&glXDestroyPixmap, "glXDestroyPixmap", true);
+            bindFunc(cast(void**)&glXCreatePbuffer, "glXCreatePbuffer", true);
+            bindFunc(cast(void**)&glXDestroyPbuffer, "glXDestroyPbuffer", true);
+            bindFunc(cast(void**)&glXQueryDrawable, "glXQueryDrawable", true);
+            bindFunc(cast(void**)&glXCreateNewContext, "glXCreateNewContext", true);
+            bindFunc(cast(void**)&glXMakeContextCurrent, "glXMakeContextCurrent", true);
+            bindFunc(cast(void**)&glXGetCurrentReadDrawable, "glXGetCurrentReadDrawable", true);
+            bindFunc(cast(void**)&glXGetCurrentDisplay, "glXGetCurrentDisplay", true);
+            bindFunc(cast(void**)&glXQueryContext, "glXQueryContext", true);
+            bindFunc(cast(void**)&glXSelectEvent, "glXSelectEvent", true);
+            bindFunc(cast(void**)&glXGetSelectedEvent, "glXGetSelectedEvent", true);
 
-            bindFunc(cast(void**)&glXGetProcAddress, "glXGetProcAddressARB");
+            bindFunc(cast(void**)&glXGetProcAddress, "glXGetProcAddressARB", true);
         }
 
         void* loadGLFunc(string symName)
