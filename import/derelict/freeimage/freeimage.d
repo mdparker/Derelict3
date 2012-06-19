@@ -39,7 +39,9 @@ private
     import derelict.util.system;
 
     static if(Derelict_OS_Windows)
-        enum libNames = "FreeImage.dll";
+        enum libNames = "FreeImage.dll";    
+    else static if(Derelict_OS_Posix)
+        enum libNames = "libfreeimage.so,libfreeimage.so.3";
     else
         static assert(0, "Need to implement FreeImage libNames for this operating system.");
 }
