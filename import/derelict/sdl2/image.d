@@ -204,7 +204,7 @@ class DerelictSDL2ImageLoader : SharedLibLoader
     }
 }
 
-DerelictSDL2ImageLoader DerelictSDL2Image;
+__gshared DerelictSDL2ImageLoader DerelictSDL2Image;
 
 shared static this()
 {

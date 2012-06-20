@@ -251,7 +251,7 @@ class DerelictSDL2ttfLoader : SharedLibLoader
     }
 }
 
-DerelictSDL2ttfLoader DerelictSDL2ttf;
+__gshared DerelictSDL2ttfLoader DerelictSDL2ttf;
 
 shared static this()
 {
