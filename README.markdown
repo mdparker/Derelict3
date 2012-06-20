@@ -87,6 +87,23 @@ if(!ARB_sync)
 
 You should call reload anytime you change contexts. This is required on Windows, but not on other platforms. There's a little bit more to do if you want to create a context yourself, but there's no support for that right now as I haven't yet implemented the WGL extensions.
 
+Furthermore, you can also make deprecated functions and constants available like so:
+
+---
+import derelict.opengl3.gl;
+
+void someFunc()
+{
+    DerelictGL.load();
+
+    // create classic, or compatible context
+
+    DerelictGL.reload();
+}
+---
+
+Notice that you are using the DerelictGL object, not the DerelictGL3 object in this case. You still need to link DerelictGL3.lib, as the DerelictGL stuff is compiled into the same library as it's part of the same package.
+
 #DerelictFreeGLUT
 
 This is a binding to [freeglut 2.8.0](http://freeglut.sourceforge.net/). It is largely complete,

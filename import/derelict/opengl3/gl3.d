@@ -676,6 +676,11 @@ class DerelictGL3Loader : SharedLibLoader
 
     protected
     {
+        this()
+        {
+            super(libNames);
+        }
+
         override void loadSymbols()
         {
             // OpenGL 1.0
@@ -751,11 +756,6 @@ class DerelictGL3Loader : SharedLibLoader
 
     private
     {
-        this()
-        {
-            super(libNames);
-        }
-
         GLVersion findMaxAvailable()
         {
             string verstr = to!string(glGetString(GL_VERSION));
