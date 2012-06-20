@@ -1363,8 +1363,12 @@ private void load_ARB_vertex_type_2_10_10_10_rev()
 // ARB_draw_indirect
 extern(System) alias nothrow void function(GLenum, const(GLvoid)*) da_glDrawArraysIndirect;
 extern(System) alias nothrow void function(GLenum, GLenum, const(GLvoid)*) da_glDrawElementsIndirect;
-da_glDrawArraysIndirect glDrawArraysIndirect;
-da_glDrawElementsIndirect glDrawElementsIndirect;
+
+__gshared
+{
+    da_glDrawArraysIndirect glDrawArraysIndirect;
+    da_glDrawElementsIndirect glDrawElementsIndirect;
+}
 
 private __gshared bool _ARB_draw_indirect;
 bool ARB_draw_indirect() @property { return _ARB_draw_indirect; }

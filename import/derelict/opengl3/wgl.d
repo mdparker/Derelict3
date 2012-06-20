@@ -58,28 +58,34 @@ version(Windows)
         alias nothrow HGLRC function(HDC, HGLRC, const(int)*) da_wglCreateContextAttribsARB;
     }
 
-    da_wglCopyContext wglCopyContext;
-    da_wglCreateContext wglCreateContext;
-    da_wglCreateLayerContext wglCreateLayerContext;
-    da_wglDeleteContext wglDeleteContext;
-    da_wglDescribeLayerPlane wglDescribeLayerPlane;
-    da_wglGetCurrentContext wglGetCurrentContext;
-    da_wglGetCurrentDC wglGetCurrentDC;
-    da_wglGetLayerPaletteEntries wglGetLayerPaletteEntries;
-    da_wglGetProcAddress wglGetProcAddress;
-    da_wglMakeCurrent wglMakeCurrent;
-    da_wglRealizeLayerPalette wglRealizeLayerPalette;
-    da_wglSetLayerPaletteEntries wglSetLayerPaletteEntries;
-    da_wglShareLists wglShareLists;
-    da_wglSwapLayerBuffers wglSwapLayerBuffers;
-    da_wglUseFontBitmapsW wglUseFontBitmapsW;
-    da_wglUseFontOutlinesW wglUseFontOutlinesW;
+    __gshared
+    {
+        da_wglCopyContext wglCopyContext;
+        da_wglCreateContext wglCreateContext;
+        da_wglCreateLayerContext wglCreateLayerContext;
+        da_wglDeleteContext wglDeleteContext;
+        da_wglDescribeLayerPlane wglDescribeLayerPlane;
+        da_wglGetCurrentContext wglGetCurrentContext;
+        da_wglGetCurrentDC wglGetCurrentDC;
+        da_wglGetLayerPaletteEntries wglGetLayerPaletteEntries;
+        da_wglGetProcAddress wglGetProcAddress;
+        da_wglMakeCurrent wglMakeCurrent;
+        da_wglRealizeLayerPalette wglRealizeLayerPalette;
+        da_wglSetLayerPaletteEntries wglSetLayerPaletteEntries;
+        da_wglShareLists wglShareLists;
+        da_wglSwapLayerBuffers wglSwapLayerBuffers;
+        da_wglUseFontBitmapsW wglUseFontBitmapsW;
+        da_wglUseFontOutlinesW wglUseFontOutlinesW;
+    }
 
     alias wglUseFontBitmapsW    wglUseFontBitmaps;
     alias wglUseFontOutlinesW   wglUseFontOutlines;
 
-    da_wglChoosePixelFormatARB wglChoosePixelFormatARB;
-    da_wglCreateContextAttribsARB wglCreateContextAttribsARB;
+    __gshared
+    {
+        da_wglChoosePixelFormatARB wglChoosePixelFormatARB;
+        da_wglCreateContextAttribsARB wglCreateContextAttribsARB;
+    }
 
     package
     {
