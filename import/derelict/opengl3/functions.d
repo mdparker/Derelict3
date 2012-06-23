@@ -329,7 +329,7 @@ extern(System)
     alias nothrow GLboolean function(GLuint) da_glIsProgram;
     alias nothrow GLboolean function(GLuint) da_glIsShader;
     alias nothrow void function(GLuint) da_glLinkProgram;
-    alias nothrow void function(GLuint, GLsizei, const(GLchar)**, const(GLint)*) da_glShaderSource;
+    alias nothrow void function(GLuint, GLsizei, const(GLchar*)*, const(GLint)*) da_glShaderSource;
     alias nothrow void function(GLuint) da_glUseProgram;
     alias nothrow void function(GLint, GLfloat) da_glUniform1f;
     alias nothrow void function(GLint, GLfloat, GLfloat) da_glUniform2f;
