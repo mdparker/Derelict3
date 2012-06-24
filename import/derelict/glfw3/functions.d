@@ -79,13 +79,13 @@ extern(C)
     alias nothrow void function(GLFWwindow, int, int)da_glfwSetInputMode;
     alias nothrow int function(GLFWwindow, int)da_glfwGetKey;
     alias nothrow int function(GLFWwindow, int)da_glfwGetMouseButton;
-    alias nothrow void function(GLFWwindow, int*, int*)da_glfwGetMousePos;
-    alias nothrow void function(GLFWwindow, int, int)da_glfwSetMousePos;
+    alias nothrow void function(GLFWwindow, int*, int*)da_glfwGetCursorPos;
+    alias nothrow void function(GLFWwindow, int, int)da_glfwSetCursorPos;
     alias nothrow void function(GLFWwindow, int*, int*)da_glfwGetScrollOffset;
     alias nothrow void function(GLFWkeyfun)da_glfwSetKeyCallback;
     alias nothrow void function(GLFWcharfun)da_glfwSetCharCallback;
     alias nothrow void function(GLFWmousebuttonfun)da_glfwSetMouseButtonCallback;
-    alias nothrow void function(GLFWmouseposfun)da_glfwSetMousePosCallback;
+    alias nothrow void function(GLFWcursorposfun)da_glfwSetCursorPosCallback;
     alias nothrow void function(GLFWscrollfun)da_glfwSetScrollCallback;
 
     alias nothrow int function(int, int)da_glfwGetJoystickParam;
@@ -143,13 +143,13 @@ __gshared
     da_glfwSetInputMode glfwSetInputMode;
     da_glfwGetKey glfwGetKey;
     da_glfwGetMouseButton glfwGetMouseButton;
-    da_glfwGetMousePos glfwGetMousePos;
-    da_glfwSetMousePos glfwSetMousePos;
+    da_glfwGetCursorPos glfwGetCursorPos;
+    da_glfwSetCursorPos glfwSetCursorPos;
     da_glfwGetScrollOffset glfwGetScrollOffset;
     da_glfwSetKeyCallback glfwSetKeyCallback;
     da_glfwSetCharCallback glfwSetCharCallback;
     da_glfwSetMouseButtonCallback glfwSetMouseButtonCallback;
-    da_glfwSetMousePosCallback glfwSetMousePosCallback;
+    da_glfwSetCursorPosCallback glfwSetCursorPosCallback;
     da_glfwSetScrollCallback glfwSetScrollCallback;
     da_glfwGetJoystickParam glfwGetJoystickParam;
     da_glfwGetJoystickPos glfwGetJoystickPos;
