@@ -91,13 +91,13 @@ class DerelictGLFW3Loader : SharedLibLoader
             bindFunc(cast(void**)&glfwSetInputMode, "glfwSetInputMode");
             bindFunc(cast(void**)&glfwGetKey, "glfwGetKey");
             bindFunc(cast(void**)&glfwGetMouseButton, "glfwGetMouseButton");
-            bindFunc(cast(void**)&glfwGetMousePos, "glfwGetMousePos");
-            bindFunc(cast(void**)&glfwSetMousePos, "glfwSetMousePos");
+            bindFunc(cast(void**)&glfwGetCursorPos, "glfwGetCursorPos");
+            bindFunc(cast(void**)&glfwSetCursorPos, "glfwSetCursorPos");
             bindFunc(cast(void**)&glfwGetScrollOffset, "glfwGetScrollOffset");
             bindFunc(cast(void**)&glfwSetKeyCallback, "glfwSetKeyCallback");
             bindFunc(cast(void**)&glfwSetCharCallback, "glfwSetCharCallback");
             bindFunc(cast(void**)&glfwSetMouseButtonCallback, "glfwSetMouseButtonCallback");
-            bindFunc(cast(void**)&glfwSetMousePosCallback, "glfwSetMousePosCallback");
+            bindFunc(cast(void**)&glfwSetCursorPosCallback, "glfwSetCursorPosCallback");
             bindFunc(cast(void**)&glfwSetScrollCallback, "glfwSetScrollCallback");
             bindFunc(cast(void**)&glfwGetJoystickParam, "glfwGetJoystickParam");
             bindFunc(cast(void**)&glfwGetJoystickPos, "glfwGetJoystickPos");
