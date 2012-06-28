@@ -72,6 +72,7 @@ enum packODE = "ODE";
 enum packASSIMP = "ASSIMP";
 enum packFG = "FG";
 enum packFI = "FI";
+enum packSFML2 = "SFML2";
 
 // Source paths
 enum srcDerelict = "../import/derelict/";
@@ -87,6 +88,7 @@ enum srcODE = srcDerelict ~ "ode/";
 enum srcASSIMP = srcDerelict ~ "assimp/";
 enum srcFG = srcDerelict ~ "freeglut/";
 enum srcFI = srcDerelict ~ "freeimage/";
+enum srcSFML2 = srcDerelict ~ "sfml2/";
 
 // Map package names to source paths.
 string[string] pathMap;
@@ -107,7 +109,8 @@ static this()
         packODE : srcODE,
         packASSIMP : srcASSIMP,
         packFG : srcFG,
-        packFI : srcFI
+        packFI : srcFI,
+        packSFML2 : srcSFML2
     ];
 }
 
