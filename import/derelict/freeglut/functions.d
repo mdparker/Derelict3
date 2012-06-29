@@ -30,15 +30,15 @@ module derelict.freeglut.functions;
 // Callbacks used as parameters to some of the functions below.
 extern(C)
 {
-    alias void function(int) da_intCallback;
-    alias void function(int,int) da_2intCallback;
-    alias void function(int,int,int) da_3intCallback;
-    alias void function(int,int,int,int) da_4intCallback;
-    alias void function(int,int,int,int,int) da_5intCallback;
-    alias void function() da_voidCallback;
-    alias void function(ubyte,int,int) da_keyboardCallback;
-    alias void function(uint,int,int,int) da_joytstickCallback;
-    alias void function(const(char)*,void*) da_printCallback;
+    alias nothrow void function(int) da_intCallback;
+    alias nothrow void function(int,int) da_2intCallback;
+    alias nothrow void function(int,int,int) da_3intCallback;
+    alias nothrow void function(int,int,int,int) da_4intCallback;
+    alias nothrow void function(int,int,int,int,int) da_5intCallback;
+    alias nothrow void function() da_voidCallback;
+    alias nothrow void function(ubyte,int,int) da_keyboardCallback;
+    alias nothrow void function(uint,int,int,int) da_joytstickCallback;
+    alias nothrow void function(const(char)*,void*) da_printCallback;
 }
 
 extern(System)
