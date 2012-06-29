@@ -208,6 +208,5 @@ shared static this()
 
 shared static ~this()
 {
-    if(SharedLibLoader.isAutoUnloadEnabled())
-        DerelictSFML2Network.unload();
+    DerelictSFML2Network.unload();
 }

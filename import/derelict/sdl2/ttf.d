@@ -260,6 +260,5 @@ shared static this()
 
 shared static ~this()
 {
-    if(SharedLibLoader.isAutoUnloadEnabled())
-        DerelictSDL2ttf.unload();
+    DerelictSDL2ttf.unload();
 }

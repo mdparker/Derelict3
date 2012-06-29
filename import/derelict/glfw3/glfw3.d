@@ -131,6 +131,5 @@ shared static this()
 
 shared static ~this()
 {
-    if(SharedLibLoader.isAutoUnloadEnabled())
-        DerelictGLFW3.unload();
+    DerelictGLFW3.unload();
 }

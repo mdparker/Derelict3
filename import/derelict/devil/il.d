@@ -163,6 +163,5 @@ shared static this()
 
 shared static ~this()
 {
-    if(SharedLibLoader.isAutoUnloadEnabled())
-        DerelictIL.unload();
+    DerelictIL.unload();
 }

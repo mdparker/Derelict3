@@ -224,6 +224,5 @@ shared static this()
 
 shared static ~this()
 {
-    if(SharedLibLoader.isAutoUnloadEnabled())
-        DerelictFreeGLUT.unload();
+    DerelictFreeGLUT.unload();
 }

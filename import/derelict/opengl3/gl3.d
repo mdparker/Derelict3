@@ -810,7 +810,6 @@ shared static this()
 
 shared static ~this()
 {
-    if(SharedLibLoader.isAutoUnloadEnabled())
-        DerelictGL3.unload();
+    DerelictGL3.unload();
 }
 

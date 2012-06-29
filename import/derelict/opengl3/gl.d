@@ -444,6 +444,5 @@ shared static this()
 
 shared static ~this()
 {
-    if(SharedLibLoader.isAutoUnloadEnabled())
-        DerelictGL.unload();
+    DerelictGL.unload();
 }

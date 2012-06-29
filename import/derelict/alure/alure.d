@@ -114,6 +114,5 @@ shared static this()
 
 shared static ~this()
 {
-    if(SharedLibLoader.isAutoUnloadEnabled())
-        DerelictALURE.unload();
+    DerelictALURE.unload();
 }

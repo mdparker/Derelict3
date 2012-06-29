@@ -343,6 +343,5 @@ shared static this()
 
 shared static ~this()
 {
-    if(SharedLibLoader.isAutoUnloadEnabled())
-        DerelictFI.unload();
+    DerelictFI.unload();
 }

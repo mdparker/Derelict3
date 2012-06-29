@@ -424,6 +424,5 @@ shared static this()
 
 shared static ~this()
 {
-    if(SharedLibLoader.isAutoUnloadEnabled())
-        DerelictSDL2.unload();
+    DerelictSDL2.unload();
 }

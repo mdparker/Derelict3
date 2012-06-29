@@ -295,6 +295,5 @@ shared static this()
 
 shared static ~this()
 {
-    if(SharedLibLoader.isAutoUnloadEnabled())
-        DerelictILU.unload();
+    DerelictILU.unload();
 }

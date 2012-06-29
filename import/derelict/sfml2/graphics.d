@@ -451,6 +451,5 @@ shared static this()
 
 shared static ~this()
 {
-    if(SharedLibLoader.isAutoUnloadEnabled())
-        DerelictSFML2Graphics.unload();
+    DerelictSFML2Graphics.unload();
 }
