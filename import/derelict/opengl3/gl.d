@@ -152,6 +152,8 @@ class DerelictGLLoader : DerelictGL3Loader
     {
         override void loadSymbols()
         {
+            super.loadSymbols();
+
             bindFunc(cast(void**)&glIsList, "glIsList");
             bindFunc(cast(void**)&glDeleteLists, "glDeleteLists");
             bindFunc(cast(void**)&glGenLists, "glGenLists");
