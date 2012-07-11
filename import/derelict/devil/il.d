@@ -42,6 +42,8 @@ private
         enum libNames = "devil.dll";
     else static if(Derelict_OS_Posix)
         enum libNames = "libIL.so";
+	else static if (Derelict_OS_Mac)
+		enum libNames = "libIL.dylib";
     else
         static assert(0, "Need to implement DevIL libNames for this operating system.");
 }
