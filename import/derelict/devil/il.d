@@ -40,6 +40,8 @@ private
 
     static if(Derelict_OS_Windows)
         enum libNames = "devil.dll";
+    else static if (Derelict_OS_Mac)
+        enum libNames = "libIL.dylib";
     else static if(Derelict_OS_Posix)
         enum libNames = "libIL.so";
     else

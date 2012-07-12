@@ -35,6 +35,8 @@ private
 
     static if(Derelict_OS_Windows)
         enum libNames = "ilut.dll";
+    else static if (Derelict_OS_Mac)
+        enum libNames = "libILUT.dylib";
     else static if(Derelict_OS_Posix)
         enum libNames = "libILUT.so";
     else
