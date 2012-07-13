@@ -127,8 +127,8 @@ struct aiAnimation
 
 
 // aiMaterial.h
-const uint AI_MAX_NUMBER_OF_COLOR_SETS = 0x4;
-const uint AI_MAX_NUMBER_OF_TEXTURECOORDS = 0x4;
+const uint AI_MAX_NUMBER_OF_COLOR_SETS = 0x8;
+const uint AI_MAX_NUMBER_OF_TEXTURECOORDS = 0x8;
 
 enum aiTextureOp : uint
 {
