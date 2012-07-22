@@ -38,7 +38,7 @@ extern(C)
     alias nothrow void function(ALenum) da_alDisable;
     alias nothrow ALboolean function(ALenum) da_alIsEnabled;
 
-    alias nothrow const(char)* function(ALenum) da_alGetString;
+    alias nothrow const(ALchar)* function(ALenum) da_alGetString;
     alias nothrow void function(ALenum, ALboolean*) da_alGetBooleanv;
     alias nothrow void function(ALenum, ALint*) da_alGetIntegerv;
     alias nothrow void function(ALenum, ALfloat*) da_alGetFloatv;
