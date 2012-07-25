@@ -41,7 +41,7 @@ else version(GNU)
     enum compilerOptions = "-s -O3 -Wall";
     string buildCompileString(string files, string packageName)
     {
-        return format("gdc %s -I../import -o %s%s%s%s%s", compilerOptions, outdir, prefix, packageName, extension, files);
+        return format("gdc %s -I../import -o %s%s%s%s%s", compilerOptions, outdir, prefix, "Derelict", packageName, extension, files);
     }
 }
 else version(LDC)
@@ -50,7 +50,7 @@ else version(LDC)
     enum compilerOptions = "-lib -O -release -enable-inlining -property -w -wi";
     string buildCompileString(string files, string packageName)
     {
-        return format("ldc2 %s -I../import -of%s%s%s%s%s", compilerOptions, outdir, prefix, packageName, extension, files);
+        return format("ldc2 %s -I../import -of%s%s%s%s%s", compilerOptions, outdir, prefix, "Derelict", packageName, extension, files);
     }
 }
 else
