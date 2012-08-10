@@ -66,10 +66,9 @@ class DerelictGLFW3Loader : SharedLibLoader
             bindFunc(cast(void**)&glfwSetGamma, "glfwSetGamma");
             bindFunc(cast(void**)&glfwGetGammaRamp, "glfwGetGammaRamp");
             bindFunc(cast(void**)&glfwSetGammaRamp, "glfwSetGammaRamp");
-            bindFunc(cast(void**)&glfwOpenWindow, "glfwOpenWindow");
-            bindFunc(cast(void**)&glfwOpenWindowHint, "glfwOpenWindowHint");
-            bindFunc(cast(void**)&glfwIsWindow, "glfwIsWindow");
-            bindFunc(cast(void**)&glfwCloseWindow, "glfwCloseWindow");
+            bindFunc(cast(void**)&glfwCreateWindow, "glfwCreateWindow");
+            bindFunc(cast(void**)&glfwWindowHint, "glfwWindowHint");
+            bindFunc(cast(void**)&glfwDestroyWindow, "glfwDestroyWindow");
             bindFunc(cast(void**)&glfwSetWindowTitle, "glfwSetWindowTitle");
             bindFunc(cast(void**)&glfwGetWindowSize, "glfwGetWindowSize");
             bindFunc(cast(void**)&glfwSetWindowSize, "glfwSetWindowSize");

@@ -52,10 +52,10 @@ extern(C)
     alias nothrow int function(GLFWgammaramp*)da_glfwGetGammaRamp;
     alias nothrow void function(in GLFWgammaramp*)da_glfwSetGammaRamp;
 
-    alias nothrow GLFWwindow function(int, int, int, const(char)*, GLFWwindow)da_glfwOpenWindow;
-    alias nothrow void function(int, int)da_glfwOpenWindowHint;
+    alias nothrow GLFWwindow function(int, int, int, const(char)*, GLFWwindow)da_glfwCreateWindow;
+    alias nothrow void function(int, int)da_glfwWindowHint;
     alias nothrow int function(GLFWwindow)da_glfwIsWindow;
-    alias nothrow void function(GLFWwindow)da_glfwCloseWindow;
+    alias nothrow void function(GLFWwindow)da_glfwDestroyWindow;
     alias nothrow void function(GLFWwindow, const(char)*)da_glfwSetWindowTitle;
     alias nothrow void function(GLFWwindow, int*, int*)da_glfwGetWindowSize;
     alias nothrow void function(GLFWwindow, int, int)da_glfwSetWindowSize;
@@ -118,10 +118,9 @@ __gshared
     da_glfwSetGamma glfwSetGamma;
     da_glfwGetGammaRamp glfwGetGammaRamp;
     da_glfwSetGammaRamp glfwSetGammaRamp;
-    da_glfwOpenWindow glfwOpenWindow;
-    da_glfwOpenWindowHint glfwOpenWindowHint;
-    da_glfwIsWindow glfwIsWindow;
-    da_glfwCloseWindow glfwCloseWindow;
+    da_glfwCreateWindow glfwCreateWindow;
+    da_glfwWindowHint glfwWindowHint;
+    da_glfwDestroyWindow glfwDestroyWindow;
     da_glfwSetWindowTitle glfwSetWindowTitle;
     da_glfwGetWindowSize glfwGetWindowSize;
     da_glfwSetWindowSize glfwSetWindowSize;
