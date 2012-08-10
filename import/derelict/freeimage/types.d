@@ -27,6 +27,8 @@ DEALINGS IN THE SOFTWARE.
 */
 module derelict.freeimage.types;
 
+private import core.stdc.config;
+
 enum FREEIMAGE_MAJOR_VERSION = 3,
      FREEIMAGE_MINOR_VERSION = 15,
      FREEIMAGE_RELEASE_SERIAL = 3;
@@ -70,7 +72,7 @@ enum
 alias uint BOOL;
 alias ubyte BYTE;
 alias ushort WORD;
-alias uint DWORD;
+alias c_ulong DWORD;
 alias int LONG;
 alias long FIINT64;
 alias ulong FIUINT64;
@@ -534,10 +536,13 @@ enum : FREE_IMAGE_MDMODEL
 // File IO routines ---------------------------------------------------------
 
 alias void* fi_handle;
-alias extern(C) nothrow uint function(void *buffer, uint size, uint count, fi_handle handle) FI_ReadProc;
-alias extern(C) nothrow uint function(void *buffer, uint size, uint count, fi_handle handle) FI_WriteProc;
-alias extern(C) nothrow int function(fi_handle handle, long offset, int origin) FI_SeekProc;
-alias extern(C) nothrow long function(fi_handle handle) FI_TellProc;
+extern(System)
+{
+	alias nothrow uint function(void *buffer, uint size, uint count, fi_handle handle) FI_ReadProc;
+	alias nothrow uint function(void *buffer, uint size, uint count, fi_handle handle) FI_WriteProc;
+	alias nothrow int function(fi_handle handle, c_long offset, int origin) FI_SeekProc;
+	alias nothrow c_long function(fi_handle handle) FI_TellProc;
+}
 
 align(1) struct FreeImageIO
 {
