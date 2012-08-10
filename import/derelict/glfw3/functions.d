@@ -45,11 +45,11 @@ extern(C)
     alias nothrow const(char)* function(int)da_glfwErrorString;
     alias nothrow void function(GLFWerrorfun)da_glfwSetErrorCallback;
 
-    alias nothrow int function(GLFWvidmode*, int)da_glfwGetVideoModes;
+    alias nothrow GLFWvidmode* function(int)da_glfwGetVideoModes;
     alias nothrow void function(GLFWvidmode*)da_glfwGetDesktopMode;
 
     alias nothrow void function(float)da_glfwSetGamma;
-    alias nothrow int function(GLFWgammaramp*)da_glfwGetGammaRamp;
+    alias nothrow void function(GLFWgammaramp*)da_glfwGetGammaRamp;
     alias nothrow void function(in GLFWgammaramp*)da_glfwSetGammaRamp;
 
     alias nothrow GLFWwindow function(int, int, int, const(char)*, GLFWwindow)da_glfwCreateWindow;
@@ -81,23 +81,27 @@ extern(C)
     alias nothrow int function(GLFWwindow, int)da_glfwGetMouseButton;
     alias nothrow void function(GLFWwindow, int*, int*)da_glfwGetCursorPos;
     alias nothrow void function(GLFWwindow, int, int)da_glfwSetCursorPos;
-    alias nothrow void function(GLFWwindow, int*, int*)da_glfwGetScrollOffset;
+    alias nothrow void function(GLFWwindow, double*, double*)da_glfwGetScrollOffset;
     alias nothrow void function(GLFWkeyfun)da_glfwSetKeyCallback;
     alias nothrow void function(GLFWcharfun)da_glfwSetCharCallback;
     alias nothrow void function(GLFWmousebuttonfun)da_glfwSetMouseButtonCallback;
     alias nothrow void function(GLFWcursorposfun)da_glfwSetCursorPosCallback;
+	alias nothrow void function(GLFWcursorenterfun) da_glfwSetCursorEnterCallback;
     alias nothrow void function(GLFWscrollfun)da_glfwSetScrollCallback;
 
     alias nothrow int function(int, int)da_glfwGetJoystickParam;
     alias nothrow int function(int, float*, int)da_glfwGetJoystickPos;
     alias nothrow int function(int, ubyte*, int)da_glfwGetJoystickButtons;
 
+	alias nothrow void function(GLFWwindow, const(char)*) da_glfwSetClipboardString;
+	alias nothrow const(char)* function(GLFWwindow) da_glfwGetClipboardString;
+	
     alias nothrow double function()da_glfwGetTime;
     alias nothrow void function(double)da_glfwSetTime;
 
     alias nothrow void function(GLFWwindow) da_glfwMakeContextCurrent;
     alias nothrow GLFWwindow function() da_glfwGetCurrentContext;
-    alias nothrow void function()da_glfwSwapBuffers;
+    alias nothrow void function(GLFWwindow)da_glfwSwapBuffers;
     alias nothrow void function(int)da_glfwSwapInterval;
     alias nothrow int function(in char*)da_glfwExtensionSupported;
     alias nothrow void* function(in char*)da_glfwGetProcAddress;
@@ -153,6 +157,8 @@ __gshared
     da_glfwGetJoystickParam glfwGetJoystickParam;
     da_glfwGetJoystickPos glfwGetJoystickPos;
     da_glfwGetJoystickButtons glfwGetJoystickButtons;
+	da_glfwSetClipboardString glfwSetClipboardString;
+	da_glfwGetClipboardString glfwGetClipboardString;
     da_glfwGetTime glfwGetTime;
     da_glfwSetTime glfwSetTime;
     da_glfwMakeContextCurrent glfwMakeContextCurrent;
