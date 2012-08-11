@@ -219,7 +219,6 @@ enum
 
     GLFW_ACTIVE               = 0x00020001,
     GLFW_ICONIFIED            = 0x00020002,
-    GLFW_ACCELERATED          = 0x00020003,
     GLFW_OPENGL_REVISION      = 0x00020004,
 
     GLFW_RED_BITS             = 0x00021000,
@@ -269,7 +268,7 @@ enum
 
     GLFW_NO_ERROR             = 0,
     GLFW_NOT_INITIALIZED      = 0x00070001,
-    GLFW_NO_CURRENT_WINDOW    = 0x00070002,
+    GLFW_NO_CURRENT_CONTEXT   = 0x00070002,
     GLFW_INVALID_ENUM         = 0x00070003,
     GLFW_INVALID_VALUE        = 0x00070004,
     GLFW_OUT_OF_MEMORY        = 0x00070005,
@@ -277,9 +276,12 @@ enum
     GLFW_VERSION_UNAVAILABLE  = 0x00070007,
     GLFW_PLATFORM_ERROR       = 0x00070008,
     GLFW_WINDOW_NOT_ACTIVE    = 0x00070009,
+	GLFW_FORMAT_UNAVAILABLE   = 0x0007000A,
 
     GLFW_GAMMA_RAMP_SIZE      = 256,
 }
+
+alias void function() GLFWglproc;
 
 alias void* GLFWwindow;
 
@@ -294,6 +296,7 @@ extern(C)
     alias void function(GLFWwindow, int, int) GLFWmousebuttonfun;
     alias void function(GLFWwindow, int, int) GLFWcursorposfun;
     alias void function(GLFWwindow, int, int) GLFWscrollfun;
+	alias void function(GLFWwindow, int) GLFWcursorenterfun;
     alias void function(GLFWwindow, int, int) GLFWkeyfun;
     alias void function(GLFWwindow, int) GLFWcharfun;
 }
