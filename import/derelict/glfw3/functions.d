@@ -54,7 +54,6 @@ extern(C)
 
     alias nothrow GLFWwindow function(int, int, int, const(char)*, GLFWwindow)da_glfwCreateWindow;
     alias nothrow void function(int, int)da_glfwWindowHint;
-    alias nothrow int function(GLFWwindow)da_glfwIsWindow;
     alias nothrow void function(GLFWwindow)da_glfwDestroyWindow;
     alias nothrow void function(GLFWwindow, const(char)*)da_glfwSetWindowTitle;
     alias nothrow void function(GLFWwindow, int*, int*)da_glfwGetWindowSize;
@@ -86,16 +85,16 @@ extern(C)
     alias nothrow void function(GLFWcharfun)da_glfwSetCharCallback;
     alias nothrow void function(GLFWmousebuttonfun)da_glfwSetMouseButtonCallback;
     alias nothrow void function(GLFWcursorposfun)da_glfwSetCursorPosCallback;
-	alias nothrow void function(GLFWcursorenterfun) da_glfwSetCursorEnterCallback;
+    alias nothrow void function(GLFWcursorenterfun) da_glfwSetCursorEnterCallback;
     alias nothrow void function(GLFWscrollfun)da_glfwSetScrollCallback;
 
     alias nothrow int function(int, int)da_glfwGetJoystickParam;
     alias nothrow int function(int, float*, int)da_glfwGetJoystickPos;
     alias nothrow int function(int, ubyte*, int)da_glfwGetJoystickButtons;
 
-	alias nothrow void function(GLFWwindow, const(char)*) da_glfwSetClipboardString;
-	alias nothrow const(char)* function(GLFWwindow) da_glfwGetClipboardString;
-	
+    alias nothrow void function(GLFWwindow, const(char)*) da_glfwSetClipboardString;
+    alias nothrow const(char)* function(GLFWwindow) da_glfwGetClipboardString;
+
     alias nothrow double function()da_glfwGetTime;
     alias nothrow void function(double)da_glfwSetTime;
 
@@ -157,8 +156,8 @@ __gshared
     da_glfwGetJoystickParam glfwGetJoystickParam;
     da_glfwGetJoystickPos glfwGetJoystickPos;
     da_glfwGetJoystickButtons glfwGetJoystickButtons;
-	da_glfwSetClipboardString glfwSetClipboardString;
-	da_glfwGetClipboardString glfwGetClipboardString;
+    da_glfwSetClipboardString glfwSetClipboardString;
+    da_glfwGetClipboardString glfwGetClipboardString;
     da_glfwGetTime glfwGetTime;
     da_glfwSetTime glfwSetTime;
     da_glfwMakeContextCurrent glfwMakeContextCurrent;

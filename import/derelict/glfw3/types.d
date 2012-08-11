@@ -276,7 +276,7 @@ enum
     GLFW_VERSION_UNAVAILABLE  = 0x00070007,
     GLFW_PLATFORM_ERROR       = 0x00070008,
     GLFW_WINDOW_NOT_ACTIVE    = 0x00070009,
-	GLFW_FORMAT_UNAVAILABLE   = 0x0007000A,
+    GLFW_FORMAT_UNAVAILABLE   = 0x0007000A,
 
     GLFW_GAMMA_RAMP_SIZE      = 256,
 }
@@ -296,7 +296,7 @@ extern(C)
     alias void function(GLFWwindow, int, int) GLFWmousebuttonfun;
     alias void function(GLFWwindow, int, int) GLFWcursorposfun;
     alias void function(GLFWwindow, int, int) GLFWscrollfun;
-	alias void function(GLFWwindow, int) GLFWcursorenterfun;
+    alias void function(GLFWwindow, int) GLFWcursorenterfun;
     alias void function(GLFWwindow, int, int) GLFWkeyfun;
     alias void function(GLFWwindow, int) GLFWcharfun;
 }
