@@ -8,16 +8,21 @@ import std.string : format, toUpper, capitalize;
 
 // Output configuration
 enum outdir = "../lib/";
-
+enum MajorVersion = "3";
+enum MinorVersion = "0";
+enum BumpVersion  = "0";
+enum FullVersion  = MajorVersion ~"."~ MinorVersion ~"."~ BumpVersion;
 version(Windows)
 {
     enum prefix = "";
-    enum extension = ".lib";
+    version(Shared) enum extension = ".dll";
+    else enum extension = ".lib";
 }
 else version(Posix)
 {
     enum prefix = "lib";
-    enum extension = ".a";
+    version(Shared) enum extension = ".so";
+    else enum extension = ".a";
 }
 else
 {
@@ -31,7 +36,7 @@ version(DigitalMars)
     enum compilerOptions = "-lib -O -release -inline -property -w -wi";
     string buildCompileString(string files, string packageName)
     {
-	    string libName = format("%s%s%s%s", prefix, "Derelict", packageName, extension);
+        string libName = format("%s%s%s%s", prefix, "Derelict", packageName, extension);
         return format("dmd %s -I../import -of%s%s", compilerOptions, outdir, libName, files);
     }
 }
@@ -47,10 +52,14 @@ else version(GNU)
 else version(LDC)
 {
     pragma(msg, "Using the LDC compiler.");
-    enum compilerOptions = "-lib -O -release -enable-inlining -property -w -wi";
+    version(Shared)enum compilerOptions = "-shared -O -release -enable-inlining -property -w -wi";
+    else enum compilerOptions = "-lib -O -release -enable-inlining -property -w -wi";
     string buildCompileString(string files, string packageName)
     {
-        return format("ldc2 %s -I../import -of%s%s%s%s%s", compilerOptions, outdir, prefix, "Derelict", packageName, extension, files);
+        version(Shared)
+            return format("ldc2 %s -I../import -of%s%s%s%s.s%s", compilerOptions, outdir, prefix, "Derelict", packageName, extension, FullVersion, files);
+        else
+            return format("ldc2 %s -I../import -of%s%s%s%s  %s", compilerOptions, outdir, prefix, "Derelict", packageName, extension, files);
     }
 }
 else
