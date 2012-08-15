@@ -288,7 +288,6 @@ enum : GLenum
     GL_Q                                    = 0x2003,
     GL_TEXTURE_GEN_R                        = 0x0C62,
     GL_TEXTURE_GEN_Q                        = 0x0C63,
-    GL_NO_ERROR                             = 0x0,
     GL_STACK_OVERFLOW                       = 0x0503,
     GL_STACK_UNDERFLOW                      = 0x0504,
     GL_LINE_BIT                             = 0x00000004,
