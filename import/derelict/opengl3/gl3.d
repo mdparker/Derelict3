@@ -33,6 +33,7 @@ public
     import derelict.opengl3.constants;
     import derelict.opengl3.functions;
     import derelict.opengl3.arb;
+    import derelict.opengl3.ext;
 }
 
 private
@@ -668,6 +669,7 @@ class DerelictGL3Loader : SharedLibLoader
             }
 
             loadARB(glVer);
+            loadEXT(glVer);
 
             _loadedVersion = glVer;
             return glVer;
