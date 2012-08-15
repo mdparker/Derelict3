@@ -38,6 +38,7 @@ build Util GL3
 # Package names are case insensitive
 build util gl3
 ```
+Passing -version=Shared on the command line will cause the script to build the Derelict libs as shared libraries (currently, this is unsupported with DMD, but should work with both LDC and GDC).
 
 Also, be aware that the paths are currently hardcoded such that if you execute the script from another working directory, it will fail. I'll make it more robust in the future.
 

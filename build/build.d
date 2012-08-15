@@ -32,15 +32,14 @@ else
 // Compiler configuration
 version(DigitalMars)
 {
+    version(Shared)
+        static assert(false, "Shared library support is not yet available with DMD.");
+
     pragma(msg, "Using the Digital Mars DMD compiler.");
     enum compilerOptions = "-lib -O -release -inline -property -w -wi";
-    string buildCompileString(string files, string packageName)
+    string buildCompileString(string files, string libName)
     {
-        string libName = "%s%s%s%s".format( prefix, "Derelict", packageName, extension );
-        version(Shared)
-            static assert(false, "DMD do not support yet shared library");
-        else
-            return format("dmd %s -I../import -of%s%s", compilerOptions, outdir, libName, files);
+        return format("dmd %s -I../import -of%s%s", compilerOptions, outdir, libName, files);
     }
 }
 else version(GNU)
@@ -50,9 +49,8 @@ else version(GNU)
         enum compilerOptions = "-s -O3 -Wall -shared";
     else
         enum compilerOptions = "-s -O3 -Wall";
-    string buildCompileString(string files, string packageName)
+    string buildCompileString(string files, string libName)
     {
-        string libName = "%s%s%s%s".format( prefix, "Derelict", packageName, extension );
         version(Shared)
             return format("gdc %s -Xlinker -soname=%s.%s -I../import -o %s%s.%s %s", compilerOptions, libName,MajorVersion, outdir, libName, FullVersion, files);
         else
@@ -64,11 +62,10 @@ else version(LDC)
     pragma(msg, "Using the LDC compiler.");
     version(Shared) enum compilerOptions = "-shared -O -release -enable-inlining -property -w -wi";
     else enum compilerOptions = "-lib -O -release -enable-inlining -property -w -wi";
-    string buildCompileString(string files, string packageName)
+    string buildCompileString(string files, string libName)
     {
-        string libName = "%s%s%s%s".format( prefix, "Derelict", packageName, extension );
         version(Shared)
-            return "ldc2 %s -soname=%s.%s -I../import -of%s%s.%s %s".format( compilerOptions, libName, MajorVersion, outdir, libName, FullVersion, files);
+            return format("ldc2 %s -soname=%s.%s -I../import -of%s%s.%s %s", compilerOptions, libName, MajorVersion, outdir, libName, FullVersion, files);
         else
             return format("ldc2 %s -I../import -of%s%sDerelict%s%s %s", compilerOptions, outdir, prefix, packageName, extension, files);
     }
@@ -78,37 +75,36 @@ else
     static assert(false, "Unknown compiler.");
 }
 
-
 // Package names
-enum packUtil   = "Util";
-enum packGL3    = "GL3";
-enum packGLFW3  = "GLFW3";
-enum packIL     = "IL";
-enum packAL     = "AL";
+enum packUtil = "Util";
+enum packGL3 = "GL3";
+enum packGLFW3 = "GLFW3";
+enum packIL = "IL";
+enum packAL = "AL";
 enum packALURE  = "ALURE";
-enum packFT     = "FT";
-enum packSDL2   = "SDL2";
-enum packODE    = "ODE";
+enum packFT = "FT";
+enum packSDL2 = "SDL2";
+enum packODE = "ODE";
 enum packASSIMP = "ASSIMP";
-enum packFG     = "FG";
-enum packFI     = "FI";
-enum packSFML2  = "SFML2";
+enum packFG = "FG";
+enum packFI = "FI";
+enum packSFML2 = "SFML2";
 
 // Source paths
-enum srcDerelict    = "../import/derelict/";
-enum srcUtil        = srcDerelict ~ "util/";
-enum srcGL3         = srcDerelict ~ "opengl3/";
-enum srcGLFW3       = srcDerelict ~ "glfw3/";
-enum srcIL          = srcDerelict ~ "devil/";
-enum srcAL          = srcDerelict ~ "openal/";
-enum srcALURE       = srcDerelict ~ "alure/";
-enum srcFT          = srcDerelict ~ "freetype/";
-enum srcSDL2        = srcDerelict ~ "sdl2/";
-enum srcODE         = srcDerelict ~ "ode/";
-enum srcASSIMP      = srcDerelict ~ "assimp/";
-enum srcFG          = srcDerelict ~ "freeglut/";
-enum srcFI          = srcDerelict ~ "freeimage/";
-enum srcSFML2       = srcDerelict ~ "sfml2/";
+enum srcDerelict = "../import/derelict/";
+enum srcUtil = srcDerelict ~ "util/";
+enum srcGL3 = srcDerelict ~ "opengl3/";
+enum srcGLFW3  = srcDerelict ~ "glfw3/";
+enum srcIL = srcDerelict ~ "devil/";
+enum srcAL= srcDerelict ~ "openal/";
+enum srcALURE = srcDerelict ~ "alure/";
+enum srcFT = srcDerelict ~ "freetype/";
+enum srcSDL2 = srcDerelict ~ "sdl2/";
+enum srcODE = srcDerelict ~ "ode/";
+enum srcASSIMP = srcDerelict ~ "assimp/";
+enum srcFG  = srcDerelict ~ "freeglut/";
+enum srcFI = srcDerelict ~ "freeimage/";
+enum srcSFML2 = srcDerelict ~ "sfml2/";
 
 // Map package names to source paths.
 string[string] pathMap;
@@ -209,7 +205,8 @@ void buildPackage(string packageName)
         }
     }
 
-    string arg = buildCompileString(joined, packageName);
+    string libName = format("%s%s%s%s", prefix, "Derelict", packageName, extension);
+    string arg = buildCompileString(joined, libName);
 
     string s = shell(arg);
     writeln(s);
