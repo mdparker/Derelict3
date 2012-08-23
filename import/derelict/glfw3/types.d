@@ -219,6 +219,7 @@ enum
 
     GLFW_ACTIVE               = 0x00020001,
     GLFW_ICONIFIED            = 0x00020002,
+    GLFW_CLOSE_REQUESTED      = 0x00020003,
     GLFW_OPENGL_REVISION      = 0x00020004,
 
     GLFW_RED_BITS             = 0x00021000,
