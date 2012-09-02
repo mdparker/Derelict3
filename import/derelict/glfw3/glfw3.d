@@ -99,7 +99,7 @@ class DerelictGLFW3Loader : SharedLibLoader
             bindFunc(cast(void**)&glfwSetCursorPosCallback, "glfwSetCursorPosCallback");
             bindFunc(cast(void**)&glfwSetScrollCallback, "glfwSetScrollCallback");
             bindFunc(cast(void**)&glfwGetJoystickParam, "glfwGetJoystickParam");
-            bindFunc(cast(void**)&glfwGetJoystickPos, "glfwGetJoystickPos");
+            bindFunc(cast(void**)&glfwGetJoystickAxes, "glfwGetJoystickAxes");
             bindFunc(cast(void**)&glfwGetJoystickButtons, "glfwGetJoystickButtons");
             bindFunc(cast(void**)&glfwSetClipboardString, "glfwSetClipboardString");
             bindFunc(cast(void**)&glfwGetClipboardString, "glfwGetClipboardString");

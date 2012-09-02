@@ -89,7 +89,7 @@ extern(C)
     alias nothrow void function(GLFWscrollfun)da_glfwSetScrollCallback;
 
     alias nothrow int function(int, int)da_glfwGetJoystickParam;
-    alias nothrow int function(int, float*, int)da_glfwGetJoystickPos;
+    alias nothrow int function(int, float*, int)da_glfwGetJoystickAxes;
     alias nothrow int function(int, ubyte*, int)da_glfwGetJoystickButtons;
 
     alias nothrow void function(GLFWwindow, const(char)*) da_glfwSetClipboardString;
@@ -154,7 +154,7 @@ __gshared
     da_glfwSetCursorPosCallback glfwSetCursorPosCallback;
     da_glfwSetScrollCallback glfwSetScrollCallback;
     da_glfwGetJoystickParam glfwGetJoystickParam;
-    da_glfwGetJoystickPos glfwGetJoystickPos;
+    da_glfwGetJoystickAxes glfwGetJoystickAxes;
     da_glfwGetJoystickButtons glfwGetJoystickButtons;
     da_glfwSetClipboardString glfwSetClipboardString;
     da_glfwGetClipboardString glfwGetClipboardString;
