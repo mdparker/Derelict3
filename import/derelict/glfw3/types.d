@@ -296,7 +296,7 @@ extern(C)
     alias void function(GLFWwindow, int) GLFWwindowiconifyfun;
     alias void function(GLFWwindow, int, int) GLFWmousebuttonfun;
     alias void function(GLFWwindow, int, int) GLFWcursorposfun;
-    alias void function(GLFWwindow, int, int) GLFWscrollfun;
+    alias void function(GLFWwindow, double, double) GLFWscrollfun;
     alias void function(GLFWwindow, int) GLFWcursorenterfun;
     alias void function(GLFWwindow, int, int) GLFWkeyfun;
     alias void function(GLFWwindow, int) GLFWcharfun;
