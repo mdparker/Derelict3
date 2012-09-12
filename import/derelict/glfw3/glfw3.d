@@ -41,7 +41,7 @@ private
     static if(Derelict_OS_Windows)
         enum libNames = "glfw3.dll";
     else static if(Derelict_OS_Mac)
-        enum libNames = "libglfw3.dylib";
+        enum libNames = "/usr/local/lib/libglfw.3.dylib,/usr/local/lib/libglfw.dylib,libglfw.3.dylib,libglfw.dylib";
     else static if(Derelict_OS_Posix)
         enum libNames = "libglfw3.so,libglfw.so.3,/usr/local/lib/libglfw3.so,/usr/local/lib/libglfw.so.3";
     else
