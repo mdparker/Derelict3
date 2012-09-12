@@ -39,7 +39,14 @@ private
     import derelict.util.system;
 
     static if(Derelict_OS_Windows)
-        enum libNames = "assimp.dll";
+    {
+        static if (size_t.sizeof == 4)
+            enum libNames = "assimp.dll, Assimp32.dll";
+        else static if (size_t.sizeof == 8)
+            enum libNames = "assimp.dll, Assimp64.dll";
+        else
+            static assert(0);
+    }
     else static if(Derelict_OS_Mac)
         enum libNames = "libassimp.dylib";
     else static if(Derelict_OS_Posix)
