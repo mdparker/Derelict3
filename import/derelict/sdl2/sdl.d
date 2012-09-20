@@ -397,6 +397,7 @@ class DerelictSDL2Loader : SharedLibLoader
             bindFunc(cast(void**)&SDL_GL_UnloadLibrary, "SDL_GL_UnloadLibrary");
             bindFunc(cast(void**)&SDL_GL_ExtensionSupported, "SDL_GL_ExtensionSupported");
             bindFunc(cast(void**)&SDL_GL_SetAttribute, "SDL_GL_SetAttribute");
+            bindFunc(cast(void**)&SDL_GL_GetAttribute, "SDL_GL_GetAttribute");
             bindFunc(cast(void**)&SDL_GL_CreateContext, "SDL_GL_CreateContext");
             bindFunc(cast(void**)&SDL_GL_MakeCurrent, "SDL_GL_MakeCurrent");
             bindFunc(cast(void**)&SDL_GL_SetSwapInterval, "SDL_GL_SetSwapInterval");

@@ -845,6 +845,7 @@ __gshared
     da_SDL_GL_UnloadLibrary SDL_GL_UnloadLibrary;
     da_SDL_GL_ExtensionSupported SDL_GL_ExtensionSupported;
     da_SDL_GL_SetAttribute SDL_GL_SetAttribute;
+    da_SDL_GL_GetAttribute SDL_GL_GetAttribute;
     da_SDL_GL_CreateContext SDL_GL_CreateContext;
     da_SDL_GL_MakeCurrent SDL_GL_MakeCurrent;
     da_SDL_GL_SetSwapInterval SDL_GL_SetSwapInterval;
