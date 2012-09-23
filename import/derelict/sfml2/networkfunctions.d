@@ -162,7 +162,7 @@ extern(C)
     alias nothrow sfBool function(const(sfUdpSocket)* socket) da_sfUdpSocket_isBlocking;
     alias nothrow short function(const(sfUdpSocket)* socket) da_sfUdpSocket_getLocalPort;
     alias nothrow sfSocketStatus function(sfUdpSocket* socket,ushort port) da_sfUdpSocket_bind;
-    alias nothrow void function(sfUdpSocket* socket) da_sfUdpSocket_Unbind;
+    alias nothrow void function(sfUdpSocket* socket) da_sfUdpSocket_unbind;
     alias nothrow sfSocketStatus function(sfUdpSocket* socket,const(void)* data,size_t size,sfIpAddress address,ushort port) da_sfUdpSocket_send;
     alias nothrow sfSocketStatus function(sfUdpSocket* socket,void* data,size_t maxSize,size_t* sizeReceived,sfIpAddress* address,ushort* port) da_sfUdpSocket_receive;
     alias nothrow sfSocketStatus function(sfUdpSocket* socket,sfPacket* packet,sfIpAddress address,ushort port) da_sfUdpSocket_sendPacket;
@@ -299,7 +299,7 @@ __gshared
     da_sfUdpSocket_isBlocking sfUdpSocket_isBlocking;
     da_sfUdpSocket_getLocalPort sfUdpSocket_getLocalPort;
     da_sfUdpSocket_bind sfUdpSocket_bind;
-    da_sfUdpSocket_Unbind sfUdpSocket_Unbind;
+    da_sfUdpSocket_unbind sfUdpSocket_unbind;
     da_sfUdpSocket_send sfUdpSocket_send;
     da_sfUdpSocket_receive sfUdpSocket_receive;
     da_sfUdpSocket_sendPacket sfUdpSocket_sendPacket;

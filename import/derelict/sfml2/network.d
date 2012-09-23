@@ -181,7 +181,7 @@ class DerelictSFML2NetworkLoader : SharedLibLoader
             bindFunc(cast(void**)&sfUdpSocket_isBlocking, "sfUdpSocket_isBlocking");
             bindFunc(cast(void**)&sfUdpSocket_getLocalPort, "sfUdpSocket_getLocalPort");
             bindFunc(cast(void**)&sfUdpSocket_bind, "sfUdpSocket_bind");
-            bindFunc(cast(void**)&sfUdpSocket_Unbind, "sfUdpSocket_Unbind");
+            bindFunc(cast(void**)&sfUdpSocket_unbind, "sfUdpSocket_unbind");
             bindFunc(cast(void**)&sfUdpSocket_send, "sfUdpSocket_send");
             bindFunc(cast(void**)&sfUdpSocket_receive, "sfUdpSocket_receive");
             bindFunc(cast(void**)&sfUdpSocket_sendPacket, "sfUdpSocket_sendPacket");
