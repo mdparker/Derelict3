@@ -52,7 +52,7 @@ extern(C)
     alias nothrow const(char)* function(const(sfFtpResponse)* ftpResponse) da_sfFtpResponse_getMessage;
     alias nothrow sfFtp* function() da_sfFtp_create;
     alias nothrow void function(sfFtp* ftp) da_sfFtp_destroy;
-    alias nothrow sfFtpResponse* function(sfFtp* ftp,sfIpAddress server,ushort port,sfUint32 timeout) da_sfFtp_connect;
+    alias nothrow sfFtpResponse* function(sfFtp* ftp,sfIpAddress server,ushort port,sfTime timeout) da_sfFtp_connect;
     alias nothrow sfFtpResponse* function(sfFtp* ftp) da_sfFtp_loginAnonymous;
     alias nothrow sfFtpResponse* function(sfFtp* ftp,const(char)* userName,const(char)* password) da_sfFtp_login;
     alias nothrow sfFtpResponse* function(sfFtp* ftp) da_sfFtp_disconnect;
