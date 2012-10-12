@@ -67,7 +67,7 @@ else version(LDC)
         version(Shared)
             return format("ldc2 %s -soname=%s.%s -I../import -of%s%s.%s %s", compilerOptions, libName, MajorVersion, outdir, libName, FullVersion, files);
         else
-            return format("ldc2 %s -I../import -of%s%sDerelict%s%s %s", compilerOptions, outdir, prefix, packageName, extension, files);
+            return format("ldc2 %s -I../import -of%s%sDerelict%s%s %s", compilerOptions, outdir, prefix, libName, extension, files);
     }
 }
 else
