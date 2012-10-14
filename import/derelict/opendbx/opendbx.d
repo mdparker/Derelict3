@@ -39,9 +39,9 @@ private
     import derelict.util.system;
 
     static if(Derelict_OS_Windows)
-        enum libNames = "libopendbx-1.dll, libopendbxplus-1.dll";
+        enum libNames = "libopendbx-1.dll,libopendbxplus-1.dll";
     else static if(Derelict_OS_Posix)
-        enum libNames = "libopendbx-1.so, libopendbxplus-1.so";
+        enum libNames = "libopendbx-1.so,libopendbxplus-1.so";
     else
         static assert(0, "Need to implement OPENDBX libNames for this operating system.");
 }
@@ -73,7 +73,7 @@ class DerelictOPENDBXLoader : SharedLibLoader
 			bindFunc(cast(void**)&odbx_column_type, "odbx_column_type");
 			bindFunc(cast(void**)&odbx_field_length, "odbx_field_length");
 			bindFunc(cast(void**)&odbx_field_value, "odbx_field_value");
-			bindFunc(cast(void**)&odbxdrv_register, "odbxdrv_register");
+			//bindFunc(cast(void**)&odbxdrv_register, "odbxdrv_register");
 			bindFunc(cast(void**)&_odbx_lib_open, "_odbx_lib_open");
 			bindFunc(cast(void**)&_odbx_lib_close, "_odbx_lib_close");
 		}

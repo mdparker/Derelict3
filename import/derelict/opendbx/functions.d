@@ -57,7 +57,7 @@ extern(C) nothrow
 	alias char* function(odbx_result_t* result, ulong pos) da_odbx_field_value;
 	
 	//odbxdrv.h
-	alias void function(odbx_ops** ops) da_odbxdrv_register;
+	//alias void function(odbx_ops** ops) da_odbxdrv_register;
 	
 	//odbxlib.h
 	alias int function(odbx_t* handle, const char* backend) da__odbx_lib_open;
@@ -87,7 +87,7 @@ __gshared
 	da_odbx_field_length odbx_field_length;
 	da_odbx_field_value odbx_field_value;
 
-	da_odbxdrv_register odbxdrv_register;
+	//da_odbxdrv_register odbxdrv_register;
 
 	da__odbx_lib_open _odbx_lib_open;
 	da__odbx_lib_close _odbx_lib_close;
