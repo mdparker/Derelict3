@@ -158,10 +158,6 @@ enum odbxtls {
 	ODBX_TLS_ALWAYS
 };
 
-struct odbx_t;
-struct odbx_lo_t;
-struct odbx_result_t;
-
 //odbxdrv.h
 
 /*
