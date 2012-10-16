@@ -26,6 +26,7 @@ DEALINGS IN THE SOFTWARE.
 
 */
 module derelict.opendbx.functions;
+import core.stdc.config;
 
 private
 {
@@ -44,17 +45,17 @@ extern(C) nothrow
 	alias int function(odbx_t* handle, uint option, void* value) da_odbx_set_option;
 	alias char* function(odbx_t* handle, int error) da_odbx_error;
 	alias int function(odbx_t* handle, int error) da_odbx_error_type;
-	alias int function(odbx_t* handle, const char* from, ulong fromlen, char* to, ulong* tolen) da_odbx_escape;
-	alias int function(odbx_t* handle, const char* query, ulong length) da_odbx_query;
-	alias int function(odbx_t* handle, odbx_result_t** result, timeval* timeout, ulong chunk) da_odbx_result;
+	alias int function(odbx_t* handle, const char* from, c_ulong fromlen, char* to, c_ulong* tolen) da_odbx_escape;
+	alias int function(odbx_t* handle, const char* query, c_ulong length) da_odbx_query;
+	alias int function(odbx_t* handle, odbx_result_t** result, timeval* timeout, c_ulong chunk) da_odbx_result;
 	alias int function(odbx_result_t* result) da_odbx_result_finish;
 	alias int function(odbx_result_t* result) da_odbx_row_fetch;
 	alias uint64_t function(odbx_result_t* result) da_odbx_rows_affected;
-	alias ulong function(odbx_result_t* result) da_odbx_column_count;
-	alias char* function(odbx_result_t* result, ulong pos) da_odbx_column_name;
-	alias int function(odbx_result_t* result, ulong pos) da_odbx_column_type;
-	alias ulong function(odbx_result_t* result, ulong pos) da_odbx_field_length;
-	alias char* function(odbx_result_t* result, ulong pos) da_odbx_field_value;
+	alias c_ulong function(odbx_result_t* result) da_odbx_column_count;
+	alias char* function(odbx_result_t* result, c_ulong pos) da_odbx_column_name;
+	alias int function(odbx_result_t* result, c_ulong pos) da_odbx_column_type;
+	alias c_ulong function(odbx_result_t* result, c_ulong pos) da_odbx_field_length;
+	alias char* function(odbx_result_t* result, c_ulong pos) da_odbx_field_value;
 	
 	//odbxdrv.h
 	//alias void function(odbx_ops** ops) da_odbxdrv_register;
