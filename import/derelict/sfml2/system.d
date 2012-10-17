@@ -77,7 +77,7 @@ class DerelictSFML2SystemLoader : SharedLibLoader
             bindFunc(cast(void**)&sfMicroseconds, "sfMicroseconds");
         }
     }
-    
+
     public
     {
         this()

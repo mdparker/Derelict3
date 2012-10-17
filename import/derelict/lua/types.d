@@ -1,5 +1,5 @@
 /*
-	
+
 Boost Software License - Version 1.0 - August 17th, 2003
 
 Permission is hereby granted, free of charge, to any person or organization
@@ -44,7 +44,7 @@ const int LUA_MULTRET = -1;
 const int LUA_REGISTRYINDEX = LUAI_FIRSTPSEUDOIDX;
 
 int lua_upvalueindex(int i) {
-	return LUA_REGISTRYINDEX - i;
+    return LUA_REGISTRYINDEX - i;
 }
 
 const int LUA_OK = 0;
@@ -61,7 +61,7 @@ alias int function(lua_State* L) lua_CFunction;
 alias const(char)* function(lua_State* L, void* ud, size_t* sz) lua_Reader;
 alias int function(lua_State* L, const(void)* p, size_t sz, void* ud) lua_Writer;
 alias void* function(void* ud, void* ptr, size_t osize, size_t nsize) lua_Alloc;
-	
+
 const int LUA_TNONE = -1;
 const int LUA_TNIL = 0;
 const int LUA_TBOOLEAN = 1;
@@ -125,19 +125,19 @@ struct lua_Debug;
 alias void function(lua_State *L, lua_Debug *ar) lua_Hook;
 //lauxlib.h
 struct luaL_Reg {
-	const char *name;
-	lua_CFunction func;
+    const char *name;
+    lua_CFunction func;
 }
 
 const int LUA_NOREF = -2;
 const int LUA_REFNIL = -1;
 
 struct luaL_Buffer {
-	char* b;
-	size_t size;
-	size_t n;
-	lua_State* L;
-	char initb[];
+    char* b;
+    size_t size;
+    size_t n;
+    lua_State* L;
+    char initb[];
 }
 struct luaL_Stream;
 //lualib.h

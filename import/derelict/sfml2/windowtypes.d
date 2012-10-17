@@ -157,9 +157,9 @@ enum
 // Window/Joystick.h
 enum
 {
-	sfJoystickCount = 8,
-	sfJoystickButtonCount = 32,
-	sfJoystickAxisCount = 8,
+    sfJoystickCount = 8,
+    sfJoystickButtonCount = 32,
+    sfJoystickAxisCount = 8,
 }
 
 // Window/Keyboard.h

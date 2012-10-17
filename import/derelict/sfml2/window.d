@@ -96,7 +96,7 @@ class DerelictSFML2WindowLoader : SharedLibLoader
 
         }
     }
-    
+
     public
     {
         this()

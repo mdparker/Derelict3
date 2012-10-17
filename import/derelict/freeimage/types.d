@@ -538,10 +538,10 @@ enum : FREE_IMAGE_MDMODEL
 alias void* fi_handle;
 extern(System)
 {
-	alias nothrow uint function(void *buffer, uint size, uint count, fi_handle handle) FI_ReadProc;
-	alias nothrow uint function(void *buffer, uint size, uint count, fi_handle handle) FI_WriteProc;
-	alias nothrow int function(fi_handle handle, c_long offset, int origin) FI_SeekProc;
-	alias nothrow c_long function(fi_handle handle) FI_TellProc;
+    alias nothrow uint function(void *buffer, uint size, uint count, fi_handle handle) FI_ReadProc;
+    alias nothrow uint function(void *buffer, uint size, uint count, fi_handle handle) FI_WriteProc;
+    alias nothrow int function(fi_handle handle, c_long offset, int origin) FI_SeekProc;
+    alias nothrow c_long function(fi_handle handle) FI_TellProc;
 }
 
 align(1) struct FreeImageIO
