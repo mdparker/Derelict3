@@ -29,7 +29,7 @@ module derelict.sfml2.windowfunctions;
 
 private
 {
-	import derelict.sfml2.systemtypes;
+    import derelict.sfml2.systemtypes;
     import derelict.sfml2.windowtypes;
 }
 

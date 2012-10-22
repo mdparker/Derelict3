@@ -36,10 +36,10 @@ private
 
 enum : uint
 {
-	// GL_EXT_texture_filter_anisotropic
+    // GL_EXT_texture_filter_anisotropic
     GL_TEXTURE_MAX_ANISOTROPY_EXT       = 0x84FE,
     GL_MAX_TEXTURE_MAX_ANISOTROPY_EXT   = 0x84FF,
-    
+
     // GL_EXT_framebuffer_object
     GL_INVALID_FRAMEBUFFER_OPERATION_EXT = 0x0506,
     GL_MAX_RENDERBUFFER_SIZE_EXT        = 0x84E8,
@@ -101,7 +101,7 @@ bool EXT_texture_filter_anisotropic() @property { return _EXT_texture_filter_ani
 // GL_EXT_framebuffer_object
 extern(System)
 {
-	alias nothrow GLboolean function(GLuint) da_glIsRenderbufferEXT;
+    alias nothrow GLboolean function(GLuint) da_glIsRenderbufferEXT;
     alias nothrow void function(GLenum, GLuint) da_glBindRenderbufferEXT;
     alias nothrow void function(GLsizei, in GLuint*) da_glDeleteRenderbuffersEXT;
     alias nothrow void function(GLsizei, GLuint*) da_glGenRenderbuffersEXT;
@@ -122,32 +122,32 @@ extern(System)
 
 __gshared
 {
-	da_glIsRenderbufferEXT glIsRenderbufferEXT;
-	da_glBindRenderbufferEXT glBindRenderbufferEXT;
-	da_glDeleteRenderbuffersEXT glDeleteRenderbuffersEXT;
-	da_glGenRenderbuffersEXT glGenRenderbuffersEXT;
-	da_glRenderbufferStorageEXT glRenderbufferStorageEXT;
-	da_glGetRenderbufferParameterivEXT glGetRenderbufferParameterivEXT;
-	da_glIsFramebufferEXT glIsFramebufferEXT;
-	da_glBindFramebufferEXT glBindFramebufferEXT;
-	da_glDeleteFramebuffersEXT glDeleteFramebuffersEXT;
-	da_glGenFramebuffersEXT glGenFramebuffersEXT;
-	da_glCheckFramebufferStatusEXT glCheckFramebufferStatusEXT;
-	da_glFramebufferTexture1DEXT glFramebufferTexture1DEXT;
-	da_glFramebufferTexture2DEXT glFramebufferTexture2DEXT;
-	da_glFramebufferTexture3DEXT glFramebufferTexture3DEXT;
-	da_glFramebufferRenderbufferEXT glFramebufferRenderbufferEXT;
-	da_glGetFramebufferAttachmentParameterivEXT glGetFramebufferAttachmentParameterivEXT;
-	da_glGenerateMipmapEXT glGenerateMipmapEXT;
+    da_glIsRenderbufferEXT glIsRenderbufferEXT;
+    da_glBindRenderbufferEXT glBindRenderbufferEXT;
+    da_glDeleteRenderbuffersEXT glDeleteRenderbuffersEXT;
+    da_glGenRenderbuffersEXT glGenRenderbuffersEXT;
+    da_glRenderbufferStorageEXT glRenderbufferStorageEXT;
+    da_glGetRenderbufferParameterivEXT glGetRenderbufferParameterivEXT;
+    da_glIsFramebufferEXT glIsFramebufferEXT;
+    da_glBindFramebufferEXT glBindFramebufferEXT;
+    da_glDeleteFramebuffersEXT glDeleteFramebuffersEXT;
+    da_glGenFramebuffersEXT glGenFramebuffersEXT;
+    da_glCheckFramebufferStatusEXT glCheckFramebufferStatusEXT;
+    da_glFramebufferTexture1DEXT glFramebufferTexture1DEXT;
+    da_glFramebufferTexture2DEXT glFramebufferTexture2DEXT;
+    da_glFramebufferTexture3DEXT glFramebufferTexture3DEXT;
+    da_glFramebufferRenderbufferEXT glFramebufferRenderbufferEXT;
+    da_glGetFramebufferAttachmentParameterivEXT glGetFramebufferAttachmentParameterivEXT;
+    da_glGenerateMipmapEXT glGenerateMipmapEXT;
 }
 
 private __gshared bool _EXT_framebuffer_object;
 bool EXT_framebuffer_object() @property { return _EXT_framebuffer_object; }
 private void load_EXT_framebuffer_object()
 {
-	try
-	{
-		bindGLFunc(cast(void**)&glIsRenderbufferEXT, "glIsRenderbufferEXT");
+    try
+    {
+        bindGLFunc(cast(void**)&glIsRenderbufferEXT, "glIsRenderbufferEXT");
         bindGLFunc(cast(void**)&glBindRenderbufferEXT, "glBindRenderbufferEXT");
         bindGLFunc(cast(void**)&glDeleteRenderbuffersEXT, "glDeleteRenderbuffersEXT");
         bindGLFunc(cast(void**)&glGenRenderbuffersEXT, "glGenRenderbuffersEXT");
@@ -165,16 +165,16 @@ private void load_EXT_framebuffer_object()
         bindGLFunc(cast(void**)&glGetFramebufferAttachmentParameterivEXT, "glGetFramebufferAttachmentParameterivEXT");
         bindGLFunc(cast(void**)&glGenerateMipmapEXT, "glGenerateMipmapEXT");
         _EXT_framebuffer_object = true;
-	}
-	catch(Exception e)
-	{
-		_EXT_framebuffer_object = false;
-	}
+    }
+    catch(Exception e)
+    {
+        _EXT_framebuffer_object = false;
+    }
 }
 
 package void loadEXT(GLVersion glversion)
 {
-	_EXT_texture_filter_anisotropic = isExtSupported(glversion, "GL_EXT_texture_filter_anisotropic");
-	_EXT_framebuffer_object = isExtSupported(glversion, "GL_EXT_framebuffer_object");
-	if(_EXT_framebuffer_object) load_EXT_framebuffer_object();	
+    _EXT_texture_filter_anisotropic = isExtSupported(glversion, "GL_EXT_texture_filter_anisotropic");
+    _EXT_framebuffer_object = isExtSupported(glversion, "GL_EXT_framebuffer_object");
+    if(_EXT_framebuffer_object) load_EXT_framebuffer_object();
 }

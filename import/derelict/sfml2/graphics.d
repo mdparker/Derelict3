@@ -428,7 +428,7 @@ class DerelictSFML2GraphicsLoader : SharedLibLoader
             bindFunc(cast(void**)&sfView_zoom, "sfView_zoom");
         }
     }
-    
+
     public
     {
         this()

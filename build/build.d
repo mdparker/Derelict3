@@ -67,7 +67,7 @@ else version(LDC)
         version(Shared)
             return format("ldc2 %s -soname=%s.%s -I../import -of%s%s.%s %s", compilerOptions, libName, MajorVersion, outdir, libName, FullVersion, files);
         else
-            return format("ldc2 %s -I../import -of%s%sDerelict%s%s %s", compilerOptions, outdir, prefix, packageName, extension, files);
+            return format("ldc2 %s -I../import -of%s%s %s", compilerOptions, outdir, libName, files);
     }
 }
 else
@@ -89,7 +89,7 @@ enum packASSIMP = "ASSIMP";
 enum packFG = "FG";
 enum packFI = "FI";
 enum packSFML2 = "SFML2";
-enum packOPENDBX = "OPENDBX";
+enum packLua = "Lua";
 
 // Source paths
 enum srcDerelict = "../import/derelict/";
@@ -106,7 +106,7 @@ enum srcASSIMP = srcDerelict ~ "assimp/";
 enum srcFG  = srcDerelict ~ "freeglut/";
 enum srcFI = srcDerelict ~ "freeimage/";
 enum srcSFML2 = srcDerelict ~ "sfml2/";
-enum srcOPENDBX = srcDerelict ~ "opendbx/";
+enum srcLua = srcDerelict ~ "lua/";
 
 // Map package names to source paths.
 string[string] pathMap;
@@ -129,7 +129,7 @@ static this()
         packFG : srcFG,
         packFI : srcFI,
         packSFML2 : srcSFML2,
-		packOPENDBX : srcOPENDBX
+	packLua : srcLua
     ];
 }
 
