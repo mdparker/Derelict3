@@ -90,6 +90,7 @@ enum packFG = "FG";
 enum packFI = "FI";
 enum packSFML2 = "SFML2";
 enum packLua = "Lua";
+enum packOpenDBX = "OpenDBX";
 
 // Source paths
 enum srcDerelict = "../import/derelict/";
@@ -107,6 +108,7 @@ enum srcFG  = srcDerelict ~ "freeglut/";
 enum srcFI = srcDerelict ~ "freeimage/";
 enum srcSFML2 = srcDerelict ~ "sfml2/";
 enum srcLua = srcDerelict ~ "lua/";
+enum srcOpenDBX = srcDerelict ~ "opendbx/";
 
 // Map package names to source paths.
 string[string] pathMap;
@@ -129,7 +131,8 @@ static this()
         packFG : srcFG,
         packFI : srcFI,
         packSFML2 : srcSFML2,
-	packLua : srcLua
+        packOpenDBX : srcOpenDBX,
+        packLua : srcLua
     ];
 }
 
