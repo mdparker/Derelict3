@@ -83,6 +83,9 @@ class DerelictFILoader : SharedLibLoader
                 bindFunc(cast(void**)&f, unmangledName);
             }
 
+            static if (Derelict_OS_Windows && Derelict_Arch_X86)
+                myBindFunc(FreeImage_RegisterExternalPlugin, "FreeImage_RegisterExternalPlugin");
+
             myBindFunc(FreeImage_Initialise, "FreeImage_Initialise");
             myBindFunc(FreeImage_DeInitialise, "FreeImage_DeInitialise");
             myBindFunc(FreeImage_GetVersion, "FreeImage_GetVersion");
@@ -116,7 +119,6 @@ class DerelictFILoader : SharedLibLoader
             myBindFunc(FreeImage_LoadMultiBitmapFromMemory, "FreeImage_LoadMultiBitmapFromMemory");
             myBindFunc(FreeImage_SaveMultiBitmapToMemory, "FreeImage_SaveMultiBitmapToMemory");
             myBindFunc(FreeImage_RegisterLocalPlugin, "FreeImage_RegisterLocalPlugin");
-            myBindFunc(FreeImage_RegisterExternalPlugin, "FreeImage_RegisterExternalPlugin");
             myBindFunc(FreeImage_GetFIFCount, "FreeImage_GetFIFCount");
             myBindFunc(FreeImage_SetPluginEnabled, "FreeImage_SetPluginEnabled");
             myBindFunc(FreeImage_IsPluginEnabled, "FreeImage_IsPluginEnabled");
