@@ -31,6 +31,7 @@ private
 {
     import core.stdc.config;
     import derelict.freeimage.types;
+    import derelict.util.system;
 }
 
 extern(System)
@@ -84,8 +85,11 @@ extern(System)
 
     // Plugin Interface ---------------------------------------------------------
 
+    static if (Derelict_OS_Windows && Derelict_Arch_X86)
+        alias nothrow FREE_IMAGE_FORMAT function(const(char)* path, const(char)* format = null, const(char)* description = null, const(char)* extension = null, const(char)* regexpr = null) da_FreeImage_RegisterExternalPlugin;
+
     alias nothrow FREE_IMAGE_FORMAT function(FI_InitProc proc_address, const(char)* format = null, const(char)* description = null, const(char)* extension = null, const(char)* regexpr = null) da_FreeImage_RegisterLocalPlugin;
-    alias nothrow FREE_IMAGE_FORMAT function(const(char)* path, const(char)* format = null, const(char)* description = null, const(char)* extension = null, const(char)* regexpr = null) da_FreeImage_RegisterExternalPlugin;
+
     alias nothrow int function() da_FreeImage_GetFIFCount;
     alias nothrow int function(FREE_IMAGE_FORMAT fif, BOOL enable) da_FreeImage_SetPluginEnabled;
     alias nothrow int function(FREE_IMAGE_FORMAT fif) da_FreeImage_IsPluginEnabled;
@@ -372,6 +376,9 @@ extern(System)
 
 __gshared
 {
+    static if (Derelict_OS_Windows && Derelict_Arch_X86)
+        da_FreeImage_RegisterExternalPlugin FreeImage_RegisterExternalPlugin;
+
     da_FreeImage_Initialise FreeImage_Initialise;
     da_FreeImage_DeInitialise FreeImage_DeInitialise;
     da_FreeImage_GetVersion FreeImage_GetVersion;
@@ -405,7 +412,6 @@ __gshared
     da_FreeImage_LoadMultiBitmapFromMemory FreeImage_LoadMultiBitmapFromMemory;
     da_FreeImage_SaveMultiBitmapToMemory FreeImage_SaveMultiBitmapToMemory;
     da_FreeImage_RegisterLocalPlugin FreeImage_RegisterLocalPlugin;
-    da_FreeImage_RegisterExternalPlugin FreeImage_RegisterExternalPlugin;
     da_FreeImage_GetFIFCount FreeImage_GetFIFCount;
     da_FreeImage_SetPluginEnabled FreeImage_SetPluginEnabled;
     da_FreeImage_IsPluginEnabled FreeImage_IsPluginEnabled;

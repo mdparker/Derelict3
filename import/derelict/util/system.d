@@ -67,3 +67,6 @@ else
 	enum Derelict_OS_OpenBSD = false;
 	enum Derelict_OS_OtherBSD = false;
 }
+
+version(X86) enum Derelict_Arch_X86 = true;
+else enum Derelict_Arch_X86 = false;
