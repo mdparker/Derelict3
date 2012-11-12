@@ -59,7 +59,7 @@ class DerelictSFML2NetworkLoader : SharedLibLoader
             bindFunc(cast(void**)&sfFtpListingResponse_getStatus, "sfFtpListingResponse_getStatus");
             bindFunc(cast(void**)&sfFtpListingResponse_getMessage, "sfFtpListingResponse_getMessage");
             bindFunc(cast(void**)&sfFtpListingResponse_getCount, "sfFtpListingResponse_getCount");
-            bindFunc(cast(void**)&sfFtpListingResponse_getFilename, "sfFtpListingResponse_getFilename");
+            bindFunc(cast(void**)&sfFtpListingResponse_getName, "sfFtpListingResponse_getName");
             bindFunc(cast(void**)&sfFtpDirectoryResponse_destroy, "sfFtpDirectoryResponse_destroy");
             bindFunc(cast(void**)&sfFtpDirectoryResponse_isOk, "sfFtpDirectoryResponse_isOk");
             bindFunc(cast(void**)&sfFtpDirectoryResponse_getStatus, "sfFtpDirectoryResponse_getStatus");

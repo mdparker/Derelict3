@@ -266,7 +266,6 @@ class DerelictSFML2GraphicsLoader : SharedLibLoader
             bindFunc(cast(void**)&sfShader_setTextureParameter, "sfShader_setTextureParameter");
             bindFunc(cast(void**)&sfShader_setCurrentTextureParameter, "sfShader_setCurrentTextureParameter");
             bindFunc(cast(void**)&sfShader_bind, "sfShader_bind");
-            bindFunc(cast(void**)&sfShader_unbind, "sfShader_unbind");
             bindFunc(cast(void**)&sfShader_isAvailable, "sfShader_isAvailable");
             bindFunc(cast(void**)&sfShape_create, "sfShape_create");
             bindFunc(cast(void**)&sfShape_destroy, "sfShape_destroy");
