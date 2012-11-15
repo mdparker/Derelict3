@@ -248,7 +248,6 @@ extern(C)
     alias nothrow void function(sfShader* shader,const(char)* name,const(sfTexture)* texture) da_sfShader_setTextureParameter;
     alias nothrow void function(sfShader* shader,const(char)* name) da_sfShader_setCurrentTextureParameter;
     alias nothrow void function(const(sfShader)* shader) da_sfShader_bind;
-    alias nothrow void function(const(sfShader)* shader) da_sfShader_unbind;
     alias nothrow sfBool function() da_sfShader_isAvailable;
     alias nothrow sfShape* function(sfShapeGetPointCountCallback getPointCount,sfShapeGetPointCallback getPoint) da_sfShape_create;
     alias nothrow void function(sfShape* shape) da_sfShape_destroy;
@@ -624,7 +623,6 @@ __gshared
     da_sfShader_setTextureParameter sfShader_setTextureParameter;
     da_sfShader_setCurrentTextureParameter sfShader_setCurrentTextureParameter;
     da_sfShader_bind sfShader_bind;
-    da_sfShader_unbind sfShader_unbind;
     da_sfShader_isAvailable sfShader_isAvailable;
     da_sfShape_create sfShape_create;
     da_sfShape_destroy sfShape_destroy;

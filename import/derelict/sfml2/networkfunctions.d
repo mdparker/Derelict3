@@ -40,7 +40,7 @@ extern(C)
     alias nothrow sfFtpStatus function(const(sfFtpListingResponse)* ftpListingResponse) da_sfFtpListingResponse_getStatus;
     alias nothrow const(char)* function(const(sfFtpListingResponse)* ftpListingResponse) da_sfFtpListingResponse_getMessage;
     alias nothrow size_t function(const(sfFtpListingResponse)* ftpListingResponse) da_sfFtpListingResponse_getCount;
-    alias nothrow const(char)* function(const(sfFtpListingResponse)* ftpListingResponse,size_t index) da_sfFtpListingResponse_getFilename;
+    alias nothrow const(char)* function(const(sfFtpListingResponse)* ftpListingResponse,size_t index) da_sfFtpListingResponse_getName;
     alias nothrow void function(sfFtpDirectoryResponse* ftpDirectoryResponse) da_sfFtpDirectoryResponse_destroy;
     alias nothrow sfBool function(const(sfFtpDirectoryResponse)* ftpDirectoryResponse) da_sfFtpDirectoryResponse_isOk;
     alias nothrow sfFtpStatus function(const(sfFtpDirectoryResponse)* ftpDirectoryResponse) da_sfFtpDirectoryResponse_getStatus;
@@ -177,7 +177,7 @@ __gshared
     da_sfFtpListingResponse_getStatus sfFtpListingResponse_getStatus;
     da_sfFtpListingResponse_getMessage sfFtpListingResponse_getMessage;
     da_sfFtpListingResponse_getCount sfFtpListingResponse_getCount;
-    da_sfFtpListingResponse_getFilename sfFtpListingResponse_getFilename;
+    da_sfFtpListingResponse_getName sfFtpListingResponse_getName;
     da_sfFtpDirectoryResponse_destroy sfFtpDirectoryResponse_destroy;
     da_sfFtpDirectoryResponse_isOk sfFtpDirectoryResponse_isOk;
     da_sfFtpDirectoryResponse_getStatus sfFtpDirectoryResponse_getStatus;
