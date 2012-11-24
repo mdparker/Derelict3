@@ -47,8 +47,8 @@ struct SDL_version
 
 enum : Uint8
 {
-    SDL_MAJOR_VERSION = 1,
-    SDL_MINOR_VERSION = 3,
+    SDL_MAJOR_VERSION = 2,
+    SDL_MINOR_VERSION = 0,
     SDL_PATCHLEVEL = 0
 }
 
@@ -710,6 +710,10 @@ enum : string
     SDL_HINT_RENDER_OPENGL_SHADERS = "SDL_RENDER_OPENGL_SHADERS",
     SDL_HINT_RENDER_SCALE_QUALITY = "SDL_RENDER_SCALE_QUALITY",
     SDL_HINT_RENDER_VSYNC = "SDL_RENDER_VSYNC",
+    SDL_HINT_VIDEO_X11_XVIDMODE = "SDL_VIDEO_X11_XVIDMODE",
+    SDL_HINT_VIDEO_X11_XINERAMA = "SDL_VIDEO_X11_XINERAMA",
+    SDL_HINT_VIDEO_X11_XRANDR = "SDL_VIDEO_X11_XRANDR",
+    SDL_HINT_GRAB_KEYBOARD = "SDL_GRAB_KEYBOARD",
     SDL_HINT_IDLE_TIMER_DISABLED = "SDL_HINT_IDLE_TIMER_DISABLED",
     SDL_HINT_ORIENTATIONS = "SDL_IOS_ORIENTATIONS",
 }
@@ -745,6 +749,61 @@ struct SDL_Keysym
     SDL_Keycode sym;
     Uint16 mod;
     Uint32 unicode;
+}
+
+// SDL_messagebox.h
+alias int SDL_MessageBoxFlags;
+enum
+{
+	SDL_MESSAGEBOX_ERROR = 0x00000010,
+	SDL_MESSAGEBOX_WARNING = 0x00000020,
+	SDL_MESSAGEBOX_INFORMATION = 0x00000040,
+}
+
+alias int SDL_MessageBoxButtonFlags;
+enum
+{
+	SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT = 0x00000001,
+	SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT = 0x00000002,
+}
+
+struct SDL_MessageBoxButtonData
+{
+	Uint32 flags;
+	int buttonid;
+	const(char)* text;
+}
+
+struct SDL_MessageBoxColor
+{
+	Uint8 r, g, b;
+}
+
+alias int SDL_MessageBoxColorType;
+enum
+{
+	SDL_MESSAGEBOX_COLOR_BACKGROUND,
+	SDL_MESSAGEBOX_COLOR_TEXT,
+	SDL_MESSAGEBOX_COLOR_BUTTON_BORDER,
+	SDL_MESSAGEBOX_COLOR_BUTTON_BACKGROUND,
+	SDL_MESSAGEBOX_COLOR_BUTTON_SELECTED,
+	SDL_MESSAGEBOX_COLOR_MAX,
+}
+
+struct SDL_MessageBoxColorScheme
+{
+	SDL_MessageBoxColor[SDL_MESSAGEBOX_COLOR_MAX] colors;
+}
+
+struct SDL_MessageBoxData
+{
+	Uint32 flags;
+	SDL_Window* window;
+	const(char)* title;
+	const(char)* message;
+	int numbuttons;
+	const(SDL_MessageBoxButtonData)* buttons;
+	const(SDL_MessageBoxColorScheme)* colorScheme;
 }
 
 // SDL_scancode.h
@@ -1314,6 +1373,7 @@ enum
 {
     SDL_LOG_CATEGORY_APPLICATION,
     SDL_LOG_CATEGORY_ERROR,
+    SDL_LOG_CATEGORY_ASSERT,
     SDL_LOG_CATEGORY_SYSTEM,
     SDL_LOG_CATEGORY_AUDIO,
     SDL_LOG_CATEGORY_VIDEO,
@@ -1354,6 +1414,24 @@ struct SDL_Cursor;
 Uint8 SDL_BUTTON(Uint8 X)
 {
     return cast(Uint8)(1 << (X - 1));
+}
+
+alias int SDL_SystemCursor;
+enum
+{
+	SDL_SYSTEM_CURSOR_ARROW,
+    SDL_SYSTEM_CURSOR_IBEAM,
+    SDL_SYSTEM_CURSOR_WAIT, 
+    SDL_SYSTEM_CURSOR_CROSSHAIR,
+    SDL_SYSTEM_CURSOR_WAITARROW, 
+    SDL_SYSTEM_CURSOR_SIZENWSE,
+    SDL_SYSTEM_CURSOR_SIZENESW,
+    SDL_SYSTEM_CURSOR_SIZEWE,
+    SDL_SYSTEM_CURSOR_SIZENS, 
+    SDL_SYSTEM_CURSOR_SIZEALL,
+    SDL_SYSTEM_CURSOR_NO,
+    SDL_SYSTEM_CURSOR_HAND, 
+    SDL_NUM_SYSTEM_CURSORS
 }
 
 enum : Uint8
@@ -1678,6 +1756,7 @@ struct SDL_RendererInfo
     int max_texture_height;
 }
 
+alias int SDL_TextureAccess;
 enum
 {
     SDL_TEXTUREACCESS_STATIC,
@@ -1685,11 +1764,20 @@ enum
     SDL_TEXTUREACCESS_TARGET,
 }
 
+alias int SDL_TextureModulate;
 enum
 {
     SDL_TEXTUREMODULATE_NONE = 0x00000000,
     SDL_TEXTUREMODULATE_COLOR = 0x00000001,
     SDL_TEXTUREMODULATE_ALPHA = 0x00000002
+}
+
+alias int SDL_RendererFlip;
+enum
+{
+	SDL_FLIP_NONE = 0x00000000,
+	SDL_FLIP_HORIZONTAL = 0x00000001,
+	SDL_FLIP_VERTICAL = 0x00000002,
 }
 
 struct SDL_Renderer;
@@ -1700,7 +1788,8 @@ struct SDL_RWops
 {
     extern(C)
     {
-        c_long function(SDL_RWops*, c_long, int) seek;
+	    Sint64 function(SDL_RWops*) size;
+        Sint64 function(SDL_RWops*, Sint64, int) seek;
         size_t function(SDL_RWops*, void*, size_t, size_t) read;
         size_t function(SDL_RWops*, const(void)*, size_t, size_t) write;
         int function(SDL_RWops*) close;
@@ -1759,8 +1848,9 @@ enum
     RW_SEEK_END = 2,
 }
 
-c_long SDL_RWseek(SDL_RWops* ctx, c_long offset, int whence) { return ctx.seek(ctx, offset, whence); }
-c_long SDL_RWtell(SDL_RWops* ctx) { return ctx.seek(ctx, 0, RW_SEEK_CUR); }
+Sint64 SDL_RWsize(SDL_RWops* ctx) { return ctx.size(ctx); }
+Sint64 SDL_RWseek(SDL_RWops* ctx, Sint64 offset, int whence) { return ctx.seek(ctx, offset, whence); }
+Sint64 SDL_RWtell(SDL_RWops* ctx) { return ctx.seek(ctx, 0, RW_SEEK_CUR); }
 size_t SDL_RWread(SDL_RWops* ctx, void* ptr, size_t size, size_t n) { return ctx.read(ctx, ptr, size, n); }
 size_t SDL_RWwrite(SDL_RWops* ctx, const(void)* ptr, size_t size, size_t n) { return ctx.write(ctx, ptr, size, n); }
 int SDL_RWclose(SDL_RWops* ctx) { return ctx.close(ctx); }
@@ -1802,7 +1892,8 @@ struct SDL_WindowShapeMode
 // SDL_surface.h
 enum
 {
-    SLD_REALLOC = 0x00000001,
+	SDL_SWSURFACE = 0,
+    SDL_PREALLOC = 0x00000001,
     SDL_RLEACCEL = 0x00000002,
     SDL_DONTFREE = 0x00000004,
 }
@@ -1961,7 +2052,7 @@ enum
 {
     SDL_GL_CONTEXT_PROFILE_CORE = 0x0001,
     SDL_GL_CONTEXT_PROFILE_COMPATIBILITY = 0x0002,
-    SDL_GL_CONTEXT_PROFILE_ES2 = 0x0004,
+    SDL_GL_CONTEXT_PROFILE_ES = 0x0004,
 }
 
 alias int SDL_GLcontextFlag;
