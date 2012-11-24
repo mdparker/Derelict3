@@ -755,55 +755,55 @@ struct SDL_Keysym
 alias int SDL_MessageBoxFlags;
 enum
 {
-	SDL_MESSAGEBOX_ERROR = 0x00000010,
-	SDL_MESSAGEBOX_WARNING = 0x00000020,
-	SDL_MESSAGEBOX_INFORMATION = 0x00000040,
+    SDL_MESSAGEBOX_ERROR = 0x00000010,
+    SDL_MESSAGEBOX_WARNING = 0x00000020,
+    SDL_MESSAGEBOX_INFORMATION = 0x00000040,
 }
 
 alias int SDL_MessageBoxButtonFlags;
 enum
 {
-	SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT = 0x00000001,
-	SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT = 0x00000002,
+    SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT = 0x00000001,
+    SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT = 0x00000002,
 }
 
 struct SDL_MessageBoxButtonData
 {
-	Uint32 flags;
-	int buttonid;
-	const(char)* text;
+    Uint32 flags;
+    int buttonid;
+    const(char)* text;
 }
 
 struct SDL_MessageBoxColor
 {
-	Uint8 r, g, b;
+    Uint8 r, g, b;
 }
 
 alias int SDL_MessageBoxColorType;
 enum
 {
-	SDL_MESSAGEBOX_COLOR_BACKGROUND,
-	SDL_MESSAGEBOX_COLOR_TEXT,
-	SDL_MESSAGEBOX_COLOR_BUTTON_BORDER,
-	SDL_MESSAGEBOX_COLOR_BUTTON_BACKGROUND,
-	SDL_MESSAGEBOX_COLOR_BUTTON_SELECTED,
-	SDL_MESSAGEBOX_COLOR_MAX,
+    SDL_MESSAGEBOX_COLOR_BACKGROUND,
+    SDL_MESSAGEBOX_COLOR_TEXT,
+    SDL_MESSAGEBOX_COLOR_BUTTON_BORDER,
+    SDL_MESSAGEBOX_COLOR_BUTTON_BACKGROUND,
+    SDL_MESSAGEBOX_COLOR_BUTTON_SELECTED,
+    SDL_MESSAGEBOX_COLOR_MAX,
 }
 
 struct SDL_MessageBoxColorScheme
 {
-	SDL_MessageBoxColor[SDL_MESSAGEBOX_COLOR_MAX] colors;
+    SDL_MessageBoxColor[SDL_MESSAGEBOX_COLOR_MAX] colors;
 }
 
 struct SDL_MessageBoxData
 {
-	Uint32 flags;
-	SDL_Window* window;
-	const(char)* title;
-	const(char)* message;
-	int numbuttons;
-	const(SDL_MessageBoxButtonData)* buttons;
-	const(SDL_MessageBoxColorScheme)* colorScheme;
+    Uint32 flags;
+    SDL_Window* window;
+    const(char)* title;
+    const(char)* message;
+    int numbuttons;
+    const(SDL_MessageBoxButtonData)* buttons;
+    const(SDL_MessageBoxColorScheme)* colorScheme;
 }
 
 // SDL_scancode.h
@@ -1419,18 +1419,18 @@ Uint8 SDL_BUTTON(Uint8 X)
 alias int SDL_SystemCursor;
 enum
 {
-	SDL_SYSTEM_CURSOR_ARROW,
+    SDL_SYSTEM_CURSOR_ARROW,
     SDL_SYSTEM_CURSOR_IBEAM,
-    SDL_SYSTEM_CURSOR_WAIT, 
+    SDL_SYSTEM_CURSOR_WAIT,
     SDL_SYSTEM_CURSOR_CROSSHAIR,
-    SDL_SYSTEM_CURSOR_WAITARROW, 
+    SDL_SYSTEM_CURSOR_WAITARROW,
     SDL_SYSTEM_CURSOR_SIZENWSE,
     SDL_SYSTEM_CURSOR_SIZENESW,
     SDL_SYSTEM_CURSOR_SIZEWE,
-    SDL_SYSTEM_CURSOR_SIZENS, 
+    SDL_SYSTEM_CURSOR_SIZENS,
     SDL_SYSTEM_CURSOR_SIZEALL,
     SDL_SYSTEM_CURSOR_NO,
-    SDL_SYSTEM_CURSOR_HAND, 
+    SDL_SYSTEM_CURSOR_HAND,
     SDL_NUM_SYSTEM_CURSORS
 }
 
@@ -1775,9 +1775,9 @@ enum
 alias int SDL_RendererFlip;
 enum
 {
-	SDL_FLIP_NONE = 0x00000000,
-	SDL_FLIP_HORIZONTAL = 0x00000001,
-	SDL_FLIP_VERTICAL = 0x00000002,
+    SDL_FLIP_NONE = 0x00000000,
+    SDL_FLIP_HORIZONTAL = 0x00000001,
+    SDL_FLIP_VERTICAL = 0x00000002,
 }
 
 struct SDL_Renderer;
@@ -1788,7 +1788,7 @@ struct SDL_RWops
 {
     extern(C)
     {
-	    Sint64 function(SDL_RWops*) size;
+        Sint64 function(SDL_RWops*) size;
         Sint64 function(SDL_RWops*, Sint64, int) seek;
         size_t function(SDL_RWops*, void*, size_t, size_t) read;
         size_t function(SDL_RWops*, const(void)*, size_t, size_t) write;
@@ -1892,7 +1892,7 @@ struct SDL_WindowShapeMode
 // SDL_surface.h
 enum
 {
-	SDL_SWSURFACE = 0,
+    SDL_SWSURFACE = 0,
     SDL_PREALLOC = 0x00000001,
     SDL_RLEACCEL = 0x00000002,
     SDL_DONTFREE = 0x00000004,

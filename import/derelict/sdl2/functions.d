@@ -224,7 +224,7 @@ extern(C)
     // SDL_messagebox.h
     alias nothrow int function(const(SDL_MessageBoxData)*, int) da_SDL_ShowMessageBox;
     alias nothrow int function(Uint32, const(char)*, const(char)*, SDL_Window*) da_SDL_ShowSimpleMessageBox;
-    
+
     // SDL_mouse.h
     alias nothrow SDL_Window* function() da_SDL_GetMouseFocus;
     alias nothrow Uint32 function(int*, int*) da_SDL_GetMouseState;
@@ -645,7 +645,7 @@ __gshared
     da_SDL_StopTextInput SDL_StopTextInput;
     da_SDL_SetTextInputRect SDL_SetTextInputRect;
     da_SDL_HasScreenKeyboardSupport SDL_HasScreenKeyboardSupport;
-    da_SDL_IsScreenKeyboardShown SDL_IsScreenKeyboardShown;    
+    da_SDL_IsScreenKeyboardShown SDL_IsScreenKeyboardShown;
 
     da_SDL_LoadObject SDL_LoadObject;
     da_SDL_LoadFunction SDL_LoadFunction;
@@ -666,7 +666,7 @@ __gshared
     da_SDL_LogMessageV SDL_LogMessageV;
     da_SDL_LogGetOutputFunction SDL_LogGetOutputFunction;
     da_SDL_LogSetOutputFunction SDL_LogSetOutputFunction;
-    
+
     da_SDL_ShowMessageBox SDL_ShowMessageBox;
     da_SDL_ShowSimpleMessageBox SDL_ShowSimpleMessageBox;
 
