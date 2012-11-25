@@ -125,10 +125,10 @@ const(char)* luaL_optstring(lua_State* L, int n, const(char)* d) {
     return luaL_optlstring(L, n, d, null);
 }
 int luaL_checkint(lua_State* L, int n){
-    return luaL_checkinteger(L, n);
+    return cast(int)luaL_checkinteger(L, n);
 }
 int luaL_optint(lua_State* L, int n, lua_Integer d) {
-    return luaL_optinteger(L, n, d);
+    return cast(int)luaL_optinteger(L, n, d);
 }
 long luaL_checklong(lua_State* L, int n) {
     return luaL_checkinteger(L, n);
