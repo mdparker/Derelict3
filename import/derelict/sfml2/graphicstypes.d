@@ -42,7 +42,6 @@ struct sfShape;
 struct sfSprite;
 struct sfText;
 struct sfTexture;
-struct sfTransform;
 struct sfTransformable;
 struct sfVertexArray;
 struct sfView;
@@ -118,7 +117,7 @@ struct sfIntRect
 struct sfRenderStates
 {
     sfBlendMode blendMode;
-    sfTransform* transform;
+    sfTransform transform;
     const(sfTexture)* texture;
     const(sfShader)* shader;
 }
@@ -139,6 +138,18 @@ enum
     sfTextItalic = 1 << 1,
     sfTextUnderlined = 1 << 2,
 }
+
+// Graphics/Transform
+struct sfTransform
+{
+    float[9] matrix;
+};
+
+const sfTransform sfTransform_Identity = sfTransform(
+    [1.0f, 0.0f, 0.0f,
+    0.0f, 1.0f, 0.0f,
+    0.0f, 0.0f, 1.0f]);
+
 
 // Graphics/Vertex.h
 struct sfVertex

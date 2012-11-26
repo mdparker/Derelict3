@@ -353,8 +353,8 @@ extern(C)
     alias nothrow void function(sfTexture* texture,sfBool repeated) da_sfTexture_setRepeated;
     alias nothrow sfBool function(const(sfTexture)* texture) da_sfTexture_isRepeated;
     alias nothrow uint function() da_sfTexture_getMaximumSize;
-    alias nothrow sfTransform* function(float a00,float a01,float a02,float a10,float a11,float a12,float a20,float a21,float a22) da_sfTransform_fromMatrix;
-    alias nothrow const(float)* function(const(sfTransform)* transform) da_sfTransform_getMatrix;
+    alias nothrow sfTransform function(float a00,float a01,float a02,float a10,float a11,float a12,float a20,float a21,float a22) da_sfTransform_fromMatrix;
+    alias nothrow void function(const(sfTransform)* transform, float* matrix) da_sfTransform_getMatrix;
     alias nothrow void function(const(sfTransform)* transform,sfTransform* result) da_sfTransform_getInverse;
     alias nothrow sfVector2f function(const(sfTransform)* transform,sfVector2f point) da_sfTransform_transformPoint;
     alias nothrow sfFloatRect function(const(sfTransform)* transform,sfFloatRect rectangle) da_sfTransform_transformRect;

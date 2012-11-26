@@ -5,7 +5,9 @@ Consider the current repo an ALPHA version! If you don't know what Derelict is, 
 http://www.dsource.org/projects/derelict/
 
 And visit the forum for help:
+http://dblog.aldacron.net/forum/index.php
 
+The old forum also has a lot of information (when the site works):
 http://www.dsource.org/forums/viewforum.php?f=19
 
 This is a quick & dirty intro until I get the time to put together proper documentation. Several things have changed from Derelict 2.

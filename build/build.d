@@ -1,5 +1,6 @@
 module derelict;
 
+import std.path : dirName;
 import std.stdio : writefln, writeln;
 import std.process : shell, ErrnoException;
 import std.file : dirEntries, SpanMode;
@@ -12,6 +13,7 @@ enum MajorVersion = "3";
 enum MinorVersion = "0";
 enum BumpVersion  = "0";
 enum FullVersion  = MajorVersion ~"."~ MinorVersion ~"."~ BumpVersion;
+
 version(Windows)
 {
     enum prefix = "";
@@ -39,7 +41,7 @@ version(DigitalMars)
     enum compilerOptions = "-lib -O -release -inline -property -w -wi";
     string buildCompileString(string files, string libName)
     {
-        return format("dmd %s -I../import -of%s%s", compilerOptions, outdir, libName, files);
+        return format("dmd %s -I%s -of%s%s", compilerOptions, importPath, outdir, libName, files);
     }
 }
 else version(GNU)
@@ -112,6 +114,8 @@ enum srcOpenDBX = srcDerelict ~ "opendbx/";
 
 // Map package names to source paths.
 string[string] pathMap;
+string buildPath;
+string importPath = "../import";
 
 static this()
 {
@@ -138,6 +142,21 @@ static this()
 
 int main(string[] args)
 {
+    // Determine the path to this executable so that imports and source files can be found
+    // no matter what the working directory.
+    buildPath = args[0].dirName() ~ "/";
+
+    if(buildPath != "./")
+    {
+        // Concat the build path with the import directory.
+        importPath = buildPath ~ "../import";
+
+        // fix up the package paths
+        auto keys = pathMap.keys;
+        foreach(i, s; pathMap.values)
+            pathMap[keys[i]] = buildPath ~ s;
+    }
+
     if(args.length == 1)
         buildAll();
     else
