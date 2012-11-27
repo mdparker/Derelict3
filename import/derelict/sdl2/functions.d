@@ -57,7 +57,7 @@ extern(C)
     alias nothrow SDL_AudioStatus function(SDL_AudioDeviceID) da_SDL_GetAudioDeviceStatus;
     alias nothrow void function(int) da_SDL_PauseAudio;
     alias nothrow void function(SDL_AudioDeviceID, int) da_SDL_PauseAudioDevice;
-    alias nothrow SDL_AudioSpec function(SDL_RWops*, int, SDL_AudioSpec*, Uint8**, Uint32*) da_SDL_LoadWAV_RW;
+    alias nothrow SDL_AudioSpec* function(SDL_RWops*, int, SDL_AudioSpec*, Uint8**, Uint32*) da_SDL_LoadWAV_RW;
     alias nothrow void function(Uint8*) da_SDL_FreeWAV;
     alias nothrow int function(SDL_AudioCVT*, SDL_AudioFormat, Uint8, int, SDL_AudioFormat, Uint8, int) da_SDL_BuildAudioCVT;
     alias nothrow int function(SDL_AudioCVT*) da_SDL_ConvertAudio;
@@ -465,7 +465,7 @@ extern(C)
 }
 
 // SDL_audio.h
-nothrow SDL_AudioSpec SDL_LoadWAV(const(char)* file, SDL_AudioSpec* spec, Uint8** audio_buf, Uint32* len)
+nothrow SDL_AudioSpec* SDL_LoadWAV(const(char)* file, SDL_AudioSpec* spec, Uint8** audio_buf, Uint32* len)
 {
     return SDL_LoadWAV_RW(SDL_RWFromFile(file, "rb"), 1, spec, audio_buf, len);
 }
