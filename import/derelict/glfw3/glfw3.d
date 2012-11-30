@@ -79,6 +79,7 @@ class DerelictGLFW3Loader : SharedLibLoader
             bindFunc(cast(void**)&glfwGetWindowParam, "glfwGetWindowParam");
             bindFunc(cast(void**)&glfwSetWindowUserPointer, "glfwSetWindowUserPointer");
             bindFunc(cast(void**)&glfwGetWindowUserPointer, "glfwGetWindowUserPointer");
+            bindFunc(cast(void**)&glfwSetWindowPosCallback, "glfwSetWindowPosCallback");
             bindFunc(cast(void**)&glfwSetWindowSizeCallback, "glfwSetWindowSizeCallback");
             bindFunc(cast(void**)&glfwSetWindowCloseCallback, "glfwSetWindowCloseCallback");
             bindFunc(cast(void**)&glfwSetWindowRefreshCallback, "glfwSetWindowRefreshCallback");

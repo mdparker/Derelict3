@@ -65,6 +65,7 @@ extern(C)
     alias nothrow int function(GLFWwindow, int) da_glfwGetWindowParam;
     alias nothrow void function(GLFWwindow, void*) da_glfwSetWindowUserPointer;
     alias nothrow void* function(GLFWwindow) da_glfwGetWindowUserPointer;
+    alias nothrow void function(GLFWwindow, GLFWwindowposfun) da_glfwSetWindowPosCallback;
     alias nothrow void function(GLFWwindow, GLFWwindowsizefun) da_glfwSetWindowSizeCallback;
     alias nothrow void function(GLFWwindow, GLFWwindowclosefun) da_glfwSetWindowCloseCallback;
     alias nothrow void function(GLFWwindow, GLFWwindowrefreshfun) da_glfwSetWindowRefreshCallback;
@@ -134,6 +135,7 @@ __gshared
     da_glfwGetWindowParam glfwGetWindowParam;
     da_glfwSetWindowUserPointer glfwSetWindowUserPointer;
     da_glfwGetWindowUserPointer glfwGetWindowUserPointer;
+    da_glfwSetWindowPosCallback glfwSetWindowPosCallback;
     da_glfwSetWindowSizeCallback glfwSetWindowSizeCallback;
     da_glfwSetWindowCloseCallback glfwSetWindowCloseCallback;
     da_glfwSetWindowRefreshCallback glfwSetWindowRefreshCallback;
