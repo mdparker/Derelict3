@@ -111,7 +111,6 @@ class DerelictGLFW3Loader : SharedLibLoader
             bindFunc(cast(void**)&glfwSwapInterval, "glfwSwapInterval");
             bindFunc(cast(void**)&glfwExtensionSupported, "glfwExtensionSupported");
             bindFunc(cast(void**)&glfwGetProcAddress, "glfwGetProcAddress");
-            bindFunc(cast(void**)&glfwCopyContext, "glfwCopyContext");
         }
     }
     public
