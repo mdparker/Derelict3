@@ -104,7 +104,6 @@ extern(C)
     alias nothrow void function(int) da_glfwSwapInterval;
     alias nothrow int function(in char*) da_glfwExtensionSupported;
     alias nothrow void* function(in char*) da_glfwGetProcAddress;
-    alias nothrow void function(GLFWwindow, GLFWwindow, c_ulong) da_glfwCopyContext;
 }
 
 __gshared
@@ -166,5 +165,4 @@ __gshared
     da_glfwSwapInterval glfwSwapInterval;
     da_glfwExtensionSupported glfwExtensionSupported;
     da_glfwGetProcAddress glfwGetProcAddress;
-    da_glfwCopyContext glfwCopyContext;
 }
