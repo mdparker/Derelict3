@@ -107,14 +107,14 @@ void someFunc()
 }
 ```
 
-Notice that you are using the DerelictGL object, not the DerelictGL3 object in this case. You still need to link DerelictGL3.lib, as the DerelictGL stuff is compiled into the same library as it's part of the same package.
+Notice that you are using the DerelictGL object, not the DerelictGL3 object in this case. You still need to link DerelictGL3.lib, as the DerelictGL stuff is compiled into the same library since it's part of the same package.
 
 #DerelictFreeGLUT
 
 This is a binding to [freeglut 2.8.0](http://freeglut.sourceforge.net/). It is largely complete,
 however it's missing the types for the font stuff. In the C headers, the font types are declared
 in a manner that I find a bit confusing. I need to dig into it a bit more to figure out exactly
-how to implement in ont he D side.
+how to implement them on the D side.
 
 #Downloads
 
