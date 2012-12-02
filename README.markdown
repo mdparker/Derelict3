@@ -60,7 +60,11 @@ import derelict.glfw3.glfw3;
 void someFunc()
 {
 
-// Load the OpenGL library and all functions up to OpenGL 1.1
+// Load the OpenGL library and all functions up to OpenGL 1.1. It is not strictly
+// necessary to load this before creating a context, unless you need to call some
+// system-specific functions from the OpenGL shared library during context creation.
+// You could call further below, just before the reload function. I prefer to load
+// all of my shared libraries first so that I can fail early if they are not available.
 DerelictGL3.load();
 
 // Create your (preferably forward-compatible) OpenGL context
@@ -90,7 +94,7 @@ You should call reload anytime you change contexts. This is required on Windows,
 
 Furthermore, you can also make deprecated functions and constants available like so:
 
----
+```d
 import derelict.opengl3.gl;
 
 void someFunc()
@@ -101,7 +105,7 @@ void someFunc()
 
     DerelictGL.reload();
 }
----
+```
 
 Notice that you are using the DerelictGL object, not the DerelictGL3 object in this case. You still need to link DerelictGL3.lib, as the DerelictGL stuff is compiled into the same library as it's part of the same package.
 
