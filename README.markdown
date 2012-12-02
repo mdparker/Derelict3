@@ -42,8 +42,6 @@ build util gl3
 ```
 Passing -version=Shared on the command line will cause the script to build the Derelict libs as shared libraries (currently, this is unsupported with DMD, but should work with both LDC and GDC).
 
-Also, be aware that the paths are currently hardcoded such that if you execute the script from another working directory, it will fail. I'll make it more robust in the future.
-
 #DerelictGL3
 
 The interface to DerelictGL3 is a bit different from the old DerelictGL. The primary change is that none of the symbols deprecated in the modern OpenGL specifications are present. This binding is based solely on the C header, gl3.h. You can still use older versions of OpenGL, but none of the deprecated functions will be loaded.
