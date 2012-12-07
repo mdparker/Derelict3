@@ -111,10 +111,15 @@ Notice that you are using the DerelictGL object, not the DerelictGL3 object in t
 
 #DerelictFreeGLUT
 
-This is a binding to [freeglut 2.8.0](http://freeglut.sourceforge.net/). It is largely complete,
-however it's missing the types for the font stuff. In the C headers, the font types are declared
-in a manner that I find a bit confusing. I need to dig into it a bit more to figure out exactly
-how to implement them on the D side.
+This is a binding to [freeglut 2.8.0](http://freeglut.sourceforge.net/). It is largely complete, however it's missing the types for the font stuff. In the C headers, the font types are declared in a manner that I find a bit confusing. I need to dig into it a bit more to figure out exactly how to implement them on the D side.
+
+#DerelictTCOD
+
+This is a binding to [libtcod 1.5.1](http://doryen.eptalys.net/libtcod/download/). Everything from libtcod is there with one major caveat. libtcod exports color structs from the shared library by value. This is no problem when linking with an import lib on windows or directly with the shared object on posix systems, but when loading manually like Derelict does it's rather problematic. libtcod provides some special functions, declared in "wrapper.h" for wrappers and bindings to work around the issue, but that means using integer values to represent colors rather than the struct. However, I chose to take a different route. DerelictTCOD loads the colors in the same way it loads the functions. As a result, they are stored as pointers. It would be possible to write a wrapper function that pulls the value from the pointer and copies it into the Derelict address space. But rather than do that sort of pointless duplication, I just kept them as pointers. In D, after all, you access members of a struct pointer in the same way you with a non-pointer. The only difference is that when you call one of the many TCOD_color* functions that expect a color struct to be passed by value and want to pass it one of the stock colors, you have to use the * operator on varaiable, like so:
+
+```D
+auto color = TCOD_color_subract(*TCOD_white, *TCOD_red);
+```
 
 #Downloads
 
