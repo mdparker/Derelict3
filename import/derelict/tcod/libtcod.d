@@ -39,11 +39,11 @@ private
     import derelict.util.system;
 
     static if(Derelict_OS_Windows)
-        enum libNames = "libtcod-mingw.dll";
+        enum libNames = "libtcod-mingw.dll,libtcod-VS.dll";
     else static if(Derelict_OS_Mac)
-        enum libNames = "libfreeglut.dylib";
+        enum libNames = "libtcod.dylib";
     else static if(Derelict_OS_Posix)
-        enum libNames = "libfreeglut.so";
+        enum libNames = "libtcod.so";
     else
         static assert(0, "Need to implement FreeGlut libNames for this operating system.");
 }
