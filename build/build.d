@@ -7,8 +7,6 @@ import std.file : dirEntries, SpanMode;
 import std.array : endsWith;
 import std.string : format, toUpper, capitalize;
 
-// Output configuration
-enum outdir = "../lib/";
 enum MajorVersion = "3";
 enum MinorVersion = "0";
 enum BumpVersion  = "0";
@@ -92,6 +90,7 @@ enum packFG = "FG";
 enum packFI = "FI";
 enum packSFML2 = "SFML2";
 enum packLua = "Lua";
+enum packTCOD = "TCOD";
 
 // Source paths
 enum srcDerelict = "../import/derelict/";
@@ -109,11 +108,13 @@ enum srcFG  = srcDerelict ~ "freeglut/";
 enum srcFI = srcDerelict ~ "freeimage/";
 enum srcSFML2 = srcDerelict ~ "sfml2/";
 enum srcLua = srcDerelict ~ "lua/";
+enum srcTCOD = srcDerelict ~ "tcod/";
 
 // Map package names to source paths.
 string[string] pathMap;
 string buildPath;
 string importPath = "../import";
+string outdir = "../lib/";
 
 static this()
 {
@@ -133,7 +134,8 @@ static this()
         packFG : srcFG,
         packFI : srcFI,
         packSFML2 : srcSFML2,
-    packLua : srcLua
+        packLua : srcLua,
+        packTCOD : srcTCOD
     ];
 }
 
@@ -146,7 +148,8 @@ int main(string[] args)
     if(buildPath != "./")
     {
         // Concat the build path with the import directory.
-        importPath = buildPath ~ "../import";
+        importPath = buildPath ~ importPath;
+        outdir = buildPath ~ outdir;
 
         // fix up the package paths
         auto keys = pathMap.keys;
