@@ -729,6 +729,13 @@ enum
 // SDL_joystick.h
 struct SDL_Joystick;
 
+struct JoystickGUID
+{
+    Uint8[16] data;
+}
+
+alias int SDL_JoystickID;
+
 enum : Uint8
 {
     SDL_HAT_CENTERED = 0x00,

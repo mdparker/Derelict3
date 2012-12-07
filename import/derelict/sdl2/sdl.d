@@ -162,10 +162,15 @@ class DerelictSDL2Loader : SharedLibLoader
 //            bindFunc(cast(void**)&SDL_GetInputDeviceName, "SDL_GetInputDeviceName");
 //            bindFunc(cast(void**)&SDL_IsDeviceDisconnected, "SDL_IsDeviceDisconnected");
             bindFunc(cast(void**)&SDL_NumJoysticks, "SDL_NumJoysticks");
-            bindFunc(cast(void**)&SDL_JoystickName, "SDL_JoystickName");
+            bindFunc(cast(void**)&SDL_JoystickNameForIndex, "SDL_JoystickNameForIndex");
             bindFunc(cast(void**)&SDL_JoystickOpen, "SDL_JoystickOpen");
-            bindFunc(cast(void**)&SDL_JoystickOpened, "SDL_JoystickOpened");
-            bindFunc(cast(void**)&SDL_JoystickIndex, "SDL_JoystickIndex");
+            bindFunc(cast(void**)&SDL_JoystickName, "SDL_JoystickName");
+            bindFunc(cast(void**)&SDL_JoystickGetDeviceGUID, "SDL_JoystickGetDeviceGUID");
+            bindFunc(cast(void**)&SDL_JoystickGetGUID, "SDL_JoystickGetGUID");
+            bindFunc(cast(void**)&SDL_JoystickGetGUIDString, "SDL_JoystickGetGUIDString");
+            bindFunc(cast(void**)&SDL_JoystickGetGUIDFromString, "SDL_JoystickGetGUIDFromString");
+            bindFunc(cast(void**)&SDL_JoystickGetAttached, "SDL_JoystickGetAttached");
+            bindFunc(cast(void**)&SDL_JoystickInstanceID, "SDL_JoystickInstanceID");
             bindFunc(cast(void**)&SDL_JoystickNumAxes, "SDL_JoystickNumAxes");
             bindFunc(cast(void**)&SDL_JoystickNumBalls, "SDL_JoystickNumBalls");
             bindFunc(cast(void**)&SDL_JoystickNumHats, "SDL_JoystickNumHats");

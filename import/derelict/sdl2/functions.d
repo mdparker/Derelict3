@@ -165,10 +165,15 @@ extern(C)
 
     // SDL_joystick.h
     alias nothrow int function() da_SDL_NumJoysticks;
-    alias nothrow const(char)* function(int) da_SDL_JoystickName;
+    alias nothrow const(char)* function(int) da_SDL_JoystickNameForIndex;
     alias nothrow SDL_Joystick* function(int) da_SDL_JoystickOpen;
-    alias nothrow int function(int) da_SDL_JoystickOpened;
-    alias nothrow int function(SDL_Joystick*) da_SDL_JoystickIndex;
+    alias nothrow const(char)* function(SDL_Joystick*) da_SDL_JoystickName;
+    alias nothrow JoystickGUID function(int) da_SDL_JoystickGetDeviceGUID;
+    alias nothrow JoystickGUID function(SDL_Joystick*) da_SDL_JoystickGetGUID;
+    alias nothrow char* function(JoystickGUID) da_SDL_JoystickGetGUIDString;
+    alias nothrow JoystickGUID function(const(char)*) da_SDL_JoystickGetGUIDFromString;
+    alias nothrow SDL_bool function(SDL_Joystick*) da_SDL_JoystickGetAttached;
+    alias nothrow SDL_JoystickID function(SDL_Joystick*) da_SDL_JoystickInstanceID;
     alias nothrow int function(SDL_Joystick*) da_SDL_JoystickNumAxes;
     alias nothrow int function(SDL_Joystick*) da_SDL_JoystickNumBalls;
     alias nothrow int function(SDL_Joystick*) da_SDL_JoystickNumHats;
@@ -614,10 +619,15 @@ __gshared
     da_SDL_IsDeviceDisconnected SDL_IsDeviceDisconnected;
 
     da_SDL_NumJoysticks SDL_NumJoysticks;
-    da_SDL_JoystickName SDL_JoystickName;
+    da_SDL_JoystickNameForIndex SDL_JoystickNameForIndex;
     da_SDL_JoystickOpen SDL_JoystickOpen;
-    da_SDL_JoystickOpened SDL_JoystickOpened;
-    da_SDL_JoystickIndex SDL_JoystickIndex;
+    da_SDL_JoystickName SDL_JoystickName;
+    da_SDL_JoystickGetDeviceGUID SDL_JoystickGetDeviceGUID;
+    da_SDL_JoystickGetGUID SDL_JoystickGetGUID;
+    da_SDL_JoystickGetGUIDString SDL_JoystickGetGUIDString;
+    da_SDL_JoystickGetGUIDFromString SDL_JoystickGetGUIDFromString;
+    da_SDL_JoystickGetAttached SDL_JoystickGetAttached;
+    da_SDL_JoystickInstanceID SDL_JoystickInstanceID;
     da_SDL_JoystickNumAxes SDL_JoystickNumAxes;
     da_SDL_JoystickNumBalls SDL_JoystickNumBalls;
     da_SDL_JoystickNumHats SDL_JoystickNumHats;
