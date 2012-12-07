@@ -39,7 +39,7 @@ private
     import derelict.util.system;
 
     static if(Derelict_OS_Windows)
-        enum libNames = "libtcod-mingw.dll,libtcod-VS.dll";
+        enum libNames = "libtcod-mingw.dll,libtcod-VS.dll,libtcod.dll";
     else static if(Derelict_OS_Mac)
         enum libNames = "libtcod.dylib";
     else static if(Derelict_OS_Posix)
