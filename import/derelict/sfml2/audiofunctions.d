@@ -69,7 +69,7 @@ extern(C)
     alias nothrow float function(const(sfMusic)* music) da_sfMusic_getMinDistance;
     alias nothrow float function(const(sfMusic)* music) da_sfMusic_getAttenuation;
     alias nothrow sfSound* function() da_sfSound_create;
-    alias nothrow sfSound* function(sfSound* sound) da_sfSound_copy;
+    alias nothrow sfSound* function(const(sfSound)* sound) da_sfSound_copy;
     alias nothrow void function(sfSound* sound) da_sfSound_destroy;
     alias nothrow void function(sfSound* sound) da_sfSound_play;
     alias nothrow void function(sfSound* sound) da_sfSound_pause;
@@ -97,7 +97,7 @@ extern(C)
     alias nothrow sfSoundBuffer* function(const(void)* data,size_t sizeInBytes) da_sfSoundBuffer_createFromMemory;
     alias nothrow sfSoundBuffer* function(sfInputStream* stream) da_sfSoundBuffer_createFromStream;
     alias nothrow sfSoundBuffer* function(const(sfInt16)* samples,size_t sampleCount,uint channelCount,uint sampleRate) da_sfSoundBuffer_createFromSamples;
-    alias nothrow sfSoundBuffer* function(sfSoundBuffer* soundBuffer) da_sfSoundBuffer_copy;
+    alias nothrow sfSoundBuffer* function(const(sfSoundBuffer)* soundBuffer) da_sfSoundBuffer_copy;
     alias nothrow void function(sfSoundBuffer* soundBuffer) da_sfSoundBuffer_destroy;
     alias nothrow sfBool function(const(sfSoundBuffer)* soundBuffer,const(char)* filename) da_sfSoundBuffer_saveToFile;
     alias nothrow const(sfInt16)* function(const(sfSoundBuffer)* soundBuffer) da_sfSoundBuffer_getSamples;
