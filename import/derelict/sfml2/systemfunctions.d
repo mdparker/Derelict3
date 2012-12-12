@@ -35,7 +35,7 @@ private
 extern(C)
 {
     alias nothrow sfClock* function() da_sfClock_create;
-    alias nothrow sfClock* function(sfClock* clock) da_sfClock_copy;
+    alias nothrow sfClock* function(const(sfClock)* clock) da_sfClock_copy;
     alias nothrow void function(sfClock* clock) da_sfClock_destroy;
     alias nothrow sfTime function(const(sfClock*) clock) da_sfClock_getElapsedTime;
     alias nothrow sfTime function(sfClock* clock) da_sfClock_restart;
