@@ -50,8 +50,8 @@ extern(C)
     alias nothrow void function(sfCircleShape* shape,sfVector2f offset) da_sfCircleShape_move;
     alias nothrow void function(sfCircleShape* shape,float angle) da_sfCircleShape_rotate;
     alias nothrow void function(sfCircleShape* shape,sfVector2f factors) da_sfCircleShape_scale;
-    alias nothrow const(sfTransform)* function(const(sfCircleShape)* shape) da_sfCircleShape_getTransform;
-    alias nothrow const(sfTransform)* function(const(sfCircleShape)* shape) da_sfCircleShape_getInverseTransform;
+    alias nothrow sfTransform function(const(sfCircleShape)* shape) da_sfCircleShape_getTransform;
+    alias nothrow sfTransform function(const(sfCircleShape)* shape) da_sfCircleShape_getInverseTransform;
     alias nothrow void function(sfCircleShape* shape,const(sfTexture)* texture,sfBool resetRect) da_sfCircleShape_setTexture;
     alias nothrow void function(sfCircleShape* shape,sfIntRect rect) da_sfCircleShape_setTextureRect;
     alias nothrow void function(sfCircleShape* shape,sfColor color) da_sfCircleShape_setFillColor;
@@ -87,8 +87,8 @@ extern(C)
     alias nothrow void function(sfConvexShape* shape,sfVector2f offset) da_sfConvexShape_move;
     alias nothrow void function(sfConvexShape* shape,float angle) da_sfConvexShape_rotate;
     alias nothrow void function(sfConvexShape* shape,sfVector2f factors) da_sfConvexShape_scale;
-    alias nothrow const(sfTransform)* function(const(sfConvexShape)* shape) da_sfConvexShape_getTransform;
-    alias nothrow const(sfTransform)* function(const(sfConvexShape)* shape) da_sfConvexShape_getInverseTransform;
+    alias nothrow sfTransform function(const(sfConvexShape)* shape) da_sfConvexShape_getTransform;
+    alias nothrow sfTransform function(const(sfConvexShape)* shape) da_sfConvexShape_getInverseTransform;
     alias nothrow void function(sfConvexShape* shape,const(sfTexture)* texture,sfBool resetRect) da_sfConvexShape_setTexture;
     alias nothrow void function(sfConvexShape* shape,sfIntRect rect) da_sfConvexShape_setTextureRect;
     alias nothrow void function(sfConvexShape* shape,sfColor color) da_sfConvexShape_setFillColor;
@@ -149,8 +149,8 @@ extern(C)
     alias nothrow void function(sfRectangleShape* shape,sfVector2f offset) da_sfRectangleShape_move;
     alias nothrow void function(sfRectangleShape* shape,float angle) da_sfRectangleShape_rotate;
     alias nothrow void function(sfRectangleShape* shape,sfVector2f factors) da_sfRectangleShape_scale;
-    alias nothrow const(sfTransform)* function(const(sfRectangleShape)* shape) da_sfRectangleShape_getTransform;
-    alias nothrow const(sfTransform)* function(const(sfRectangleShape)* shape) da_sfRectangleShape_getInverseTransform;
+    alias nothrow sfTransform function(const(sfRectangleShape)* shape) da_sfRectangleShape_getTransform;
+    alias nothrow sfTransform function(const(sfRectangleShape)* shape) da_sfRectangleShape_getInverseTransform;
     alias nothrow void function(sfRectangleShape* shape,const(sfTexture)* texture,sfBool resetRect) da_sfRectangleShape_setTexture;
     alias nothrow void function(sfRectangleShape* shape,sfIntRect rect) da_sfRectangleShape_setTextureRect;
     alias nothrow void function(sfRectangleShape* shape,sfColor color) da_sfRectangleShape_setFillColor;
@@ -235,6 +235,8 @@ extern(C)
     alias nothrow void function(sfRenderWindow* renderWindow) da_sfRenderWindow_popGLStates;
     alias nothrow void function(sfRenderWindow* renderWindow) da_sfRenderWindow_resetGLStates;
     alias nothrow sfImage* function(const(sfRenderWindow)* renderWindow) da_sfRenderWindow_capture;
+	alias nothrow sfVector2i function(const(sfRenderWindow)* relativeTo) da_sfMouse_getPositionRenderWindow;
+	alias nothrow void function(sfVector2i position, const(sfRenderWindow)* relativeTo) da_sfMouse_setPositionRenderWindow;
     alias nothrow sfShader* function(const(char)* vertexShaderFilename,const(char)* fragmentShaderFilename) da_sfShader_createFromFile;
     alias nothrow sfShader* function(const(char)* vertexShader,const(char)* fragmentShader) da_sfShader_createFromMemory;
     alias nothrow sfShader* function(sfInputStream* vertexShaderStream,sfInputStream* fragmentShaderStream) da_sfShader_createFromStream;
@@ -246,7 +248,7 @@ extern(C)
     alias nothrow void function(sfShader* shader,const(char)* name,sfVector2f vector) da_sfShader_setVector2Parameter;
     alias nothrow void function(sfShader* shader,const(char)* name,sfVector3f vector) da_sfShader_setVector3Parameter;
     alias nothrow void function(sfShader* shader,const(char)* name,sfColor color) da_sfShader_setColorParameter;
-    alias nothrow void function(sfShader* shader,const(char)* name,const(sfTransform)* transform) da_sfShader_setTransformParameter;
+    alias nothrow void function(sfShader* shader,const(char)* name,sfTransform transform) da_sfShader_setTransformParameter;
     alias nothrow void function(sfShader* shader,const(char)* name,const(sfTexture)* texture) da_sfShader_setTextureParameter;
     alias nothrow void function(sfShader* shader,const(char)* name) da_sfShader_setCurrentTextureParameter;
     alias nothrow void function(const(sfShader)* shader) da_sfShader_bind;
@@ -264,8 +266,8 @@ extern(C)
     alias nothrow void function(sfShape* shape,sfVector2f offset) da_sfShape_move;
     alias nothrow void function(sfShape* shape,float angle) da_sfShape_rotate;
     alias nothrow void function(sfShape* shape,sfVector2f factors) da_sfShape_scale;
-    alias nothrow const(sfTransform)* function(const(sfShape)* shape) da_sfShape_getTransform;
-    alias nothrow const(sfTransform)* function(const(sfShape)* shape) da_sfShape_getInverseTransform;
+    alias nothrow sfTransform function(const(sfShape)* shape) da_sfShape_getTransform;
+    alias nothrow sfTransform function(const(sfShape)* shape) da_sfShape_getInverseTransform;
     alias nothrow void function(sfShape* shape,const(sfTexture)* texture,sfBool resetRect) da_sfShape_setTexture;
     alias nothrow void function(sfShape* shape,sfIntRect rect) da_sfShape_setTextureRect;
     alias nothrow void function(sfShape* shape,sfColor color) da_sfShape_setFillColor;
@@ -295,8 +297,8 @@ extern(C)
     alias nothrow void function(sfSprite* sprite,sfVector2f offset) da_sfSprite_move;
     alias nothrow void function(sfSprite* sprite,float angle) da_sfSprite_rotate;
     alias nothrow void function(sfSprite* sprite,sfVector2f factors) da_sfSprite_scale;
-    alias nothrow const(sfTransform)* function(const(sfSprite)* sprite) da_sfSprite_getTransform;
-    alias nothrow const(sfTransform)* function(const(sfSprite)* sprite) da_sfSprite_getInverseTransform;
+    alias nothrow sfTransform function(const(sfSprite)* sprite) da_sfSprite_getTransform;
+    alias nothrow sfTransform function(const(sfSprite)* sprite) da_sfSprite_getInverseTransform;
     alias nothrow void function(sfSprite* sprite,const(sfTexture)* texture,sfBool resetRect) da_sfSprite_setTexture;
     alias nothrow void function(sfSprite* sprite,sfIntRect rectangle) da_sfSprite_setTextureRect;
     alias nothrow void function(sfSprite* sprite,sfColor color) da_sfSprite_setColor;
@@ -319,8 +321,8 @@ extern(C)
     alias nothrow void function(sfText* text,sfVector2f offset) da_sfText_move;
     alias nothrow void function(sfText* text,float angle) da_sfText_rotate;
     alias nothrow void function(sfText* text,sfVector2f factors) da_sfText_scale;
-    alias nothrow const(sfTransform)* function(const(sfText)* text) da_sfText_getTransform;
-    alias nothrow const(sfTransform)* function(const(sfText)* text) da_sfText_getInverseTransform;
+    alias nothrow sfTransform function(const(sfText)* text) da_sfText_getTransform;
+    alias nothrow sfTransform function(const(sfText)* text) da_sfText_getInverseTransform;
     alias nothrow void function(sfText* text,const(char)* string) da_sfText_setString;
     alias nothrow void function(sfText* text,const(sfUint32)* string) da_sfText_setUnicodeString;
     alias nothrow void function(sfText* text,const(sfFont)* font) da_sfText_setFont;
@@ -357,7 +359,7 @@ extern(C)
     alias nothrow uint function() da_sfTexture_getMaximumSize;
     alias nothrow sfTransform function(float a00,float a01,float a02,float a10,float a11,float a12,float a20,float a21,float a22) da_sfTransform_fromMatrix;
     alias nothrow void function(const(sfTransform)* transform, float* matrix) da_sfTransform_getMatrix;
-    alias nothrow void function(const(sfTransform)* transform,sfTransform* result) da_sfTransform_getInverse;
+    alias nothrow sfTransform function(const(sfTransform)* transform) da_sfTransform_getInverse;
     alias nothrow sfVector2f function(const(sfTransform)* transform,sfVector2f point) da_sfTransform_transformPoint;
     alias nothrow sfFloatRect function(const(sfTransform)* transform,sfFloatRect rectangle) da_sfTransform_transformRect;
     alias nothrow void function(sfTransform* transform,const(sfTransform)* other) da_sfTransform_combine;
@@ -380,8 +382,8 @@ extern(C)
     alias nothrow void function(sfTransformable* transformable,sfVector2f offset) da_sfTransformable_move;
     alias nothrow void function(sfTransformable* transformable,float angle) da_sfTransformable_rotate;
     alias nothrow void function(sfTransformable* transformable,sfVector2f factors) da_sfTransformable_scale;
-    alias nothrow const(sfTransform)* function(const(sfTransformable)* transformable) da_sfTransformable_getTransform;
-    alias nothrow const(sfTransform)* function(const(sfTransformable)* transformable) da_sfTransformable_getInverseTransform;
+    alias nothrow sfTransform function(const(sfTransformable)* transformable) da_sfTransformable_getTransform;
+    alias nothrow sfTransform function(const(sfTransformable)* transformable) da_sfTransformable_getInverseTransform;
     alias nothrow sfVertexArray* function() da_sfVertexArray_create;
     alias nothrow sfVertexArray* function(const(sfVertexArray)* vertexArray) da_sfVertexArray_copy;
     alias nothrow void function(sfVertexArray* vertexArray) da_sfVertexArray_destroy;
