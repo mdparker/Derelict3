@@ -253,8 +253,6 @@ class DerelictSFML2GraphicsLoader : SharedLibLoader
             bindFunc(cast(void**)&sfRenderWindow_popGLStates, "sfRenderWindow_popGLStates");
             bindFunc(cast(void**)&sfRenderWindow_resetGLStates, "sfRenderWindow_resetGLStates");
             bindFunc(cast(void**)&sfRenderWindow_capture, "sfRenderWindow_capture");
-			bindFunc(cast(void**)&sfMouse_getPositionRenderWindow, "sfMouse_getPositionRenderWindow");
-			bindFunc(cast(void**)&sfMouse_setPositionRenderWindow, "sfMouse_setPositionRenderWindow");
             bindFunc(cast(void**)&sfShader_createFromFile, "sfShader_createFromFile");
             bindFunc(cast(void**)&sfShader_createFromMemory, "sfShader_createFromMemory");
             bindFunc(cast(void**)&sfShader_createFromStream, "sfShader_createFromStream");
