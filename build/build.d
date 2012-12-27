@@ -39,7 +39,7 @@ version(DigitalMars)
     enum compilerOptions = "-lib -O -release -inline -property -w -wi";
     string buildCompileString(string files, string libName)
     {
-        return format("dmd %s -I%s -of%s%s", compilerOptions, importPath, outdir, libName, files);
+        return format("dmd %s -I%s -of%s%s %s", compilerOptions, importPath, outdir, libName, files);
     }
 }
 else version(GNU)
