@@ -113,6 +113,10 @@ Notice that you are using the DerelictGL object, not the DerelictGL3 object in t
 
 This is a binding to [freeglut 2.8.0](http://freeglut.sourceforge.net/). It is largely complete, however it's missing the types for the font stuff. In the C headers, the font types are declared in a manner that I find a bit confusing. I need to dig into it a bit more to figure out exactly how to implement them on the D side.
 
+#DerelictFT
+
+This is a binding to [freetype 2.4](http://www.freetype.org/). For Windows, there are some binaries available for download from external links off the FreeType site, but those are for older versions and will not load out of the box. You'll definitely need to download and compile the latest 2.4.x version.
+
 #DerelictTCOD
 
 This is a binding to [libtcod 1.5.1](http://doryen.eptalys.net/libtcod/download/). Everything from libtcod is there with one major caveat. libtcod exports color structs from the shared library by value. This is no problem when linking with an import lib on windows or directly with the shared object on posix systems, but when loading manually like Derelict does it's rather problematic. libtcod provides some special functions, declared in "wrapper.h" for wrappers and bindings to work around the issue, but that means using integer values rather than the struct to represent colors. However, I chose to take a different route. DerelictTCOD loads the colors in the same way it loads the functions keep them stored as pointers. It would be possible to instead write a wrapper function that pulls the value from the pointer and copies it into the Derelict address space. But rather than do that sort of pointless duplication, I just kept them as pointers. In D, after all, you access members of a struct pointer in the same way you do a non-pointer. The only difference is that when you call one of the many TCOD_color* functions that expect a color struct to be passed by value and want to pass it one of the stock colors, you have to use the * operator on the color instance, like so:
