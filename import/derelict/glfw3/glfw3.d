@@ -58,8 +58,6 @@ class DerelictGLFW3Loader : SharedLibLoader
             bindFunc(cast(void**)&glfwTerminate, "glfwTerminate");
             bindFunc(cast(void**)&glfwGetVersion, "glfwGetVersion");
             bindFunc(cast(void**)&glfwGetVersionString, "glfwGetVersionString");
-            bindFunc(cast(void**)&glfwGetError, "glfwGetError");
-            bindFunc(cast(void**)&glfwErrorString, "glfwErrorString");
             bindFunc(cast(void**)&glfwSetErrorCallback, "glfwSetErrorCallback");
             bindFunc(cast(void**)&glfwGetVideoModes, "glfwGetVideoModes");
             bindFunc(cast(void**)&glfwGetDesktopMode, "glfwGetDesktopMode");

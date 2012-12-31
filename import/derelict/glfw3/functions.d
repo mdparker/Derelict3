@@ -41,8 +41,6 @@ extern(C)
     alias nothrow void function(int*, int*, int*) da_glfwGetVersion;
     alias nothrow const(char)* function() da_glfwGetVersionString;
 
-    alias nothrow int function() da_glfwGetError;
-    alias nothrow const(char)* function(int) da_glfwErrorString;
     alias nothrow void function(GLFWerrorfun) da_glfwSetErrorCallback;
 
     alias nothrow GLFWvidmode* function(int) da_glfwGetVideoModes;
@@ -113,8 +111,6 @@ __gshared
     da_glfwTerminate glfwTerminate;
     da_glfwGetVersion glfwGetVersion;
     da_glfwGetVersionString glfwGetVersionString;
-    da_glfwGetError glfwGetError;
-    da_glfwErrorString glfwErrorString;
     da_glfwSetErrorCallback glfwSetErrorCallback;
     da_glfwGetVideoModes glfwGetVideoModes;
     da_glfwGetDesktopMode glfwGetDesktopMode;
