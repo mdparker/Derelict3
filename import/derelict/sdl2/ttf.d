@@ -76,8 +76,7 @@ enum
 alias SDL_SetError TTF_SetError;
 alias SDL_GetError TTF_GetError;
 
-struct _TTF_Font {}
-alias _TTF_Font TTF_Font;
+struct TTF_Font;
 
 void SDL_TTF_VERSION(SDL_version* X)
 {
