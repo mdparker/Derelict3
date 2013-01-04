@@ -29,6 +29,8 @@ module derelict.sdl2.ttf;
 
 private
 {
+	import core.stdc.config;
+	
     import derelict.util.loader;
     import derelict.util.system;
     import derelict.sdl2.types;
@@ -94,9 +96,9 @@ extern (C)
     alias nothrow void function(int) da_TTF_ByteSwappedUNICODE;
     alias nothrow int function() da_TTF_Init;
     alias nothrow TTF_Font * function (const(char)*, int) da_TTF_OpenFont;
-    alias nothrow TTF_Font * function (const(char)*, int, long ) da_TTF_OpenFontIndex;
+    alias nothrow TTF_Font * function (const(char)*, int, c_long ) da_TTF_OpenFontIndex;
     alias nothrow TTF_Font * function (SDL_RWops*, int, int) da_TTF_OpenFontRW;
-    alias nothrow TTF_Font * function (SDL_RWops*, int, int, long) da_TTF_OpenFontIndexRW;
+    alias nothrow TTF_Font * function (SDL_RWops*, int, int, c_long) da_TTF_OpenFontIndexRW;
     alias nothrow int function (const(TTF_Font)*) da_TTF_GetFontStyle;
     alias nothrow void function (const(TTF_Font)*, int style) da_TTF_SetFontStyle;
     alias nothrow int function(const(TTF_Font)*) da_TTF_GetFontOutline;
