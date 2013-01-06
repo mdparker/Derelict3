@@ -34,8 +34,8 @@ private
 }
 
 // From SDL_revision.h
-enum SDL_REVISION = "hg-6217:6952b11b7f46";
-enum SDL_REVISION_NUMBER = 6217;
+enum SDL_REVISION = "hg-6799:ddf4df4dfdd6";
+enum SDL_REVISION_NUMBER = 6799;
 
 // SDL_version.h
 struct SDL_version
@@ -257,6 +257,13 @@ enum
     SDL_JOYHATMOTION,
     SDL_JOYBUTTONDOWN,
     SDL_JOYBUTTONUP,
+    SDL_JOYDEVICEADDED,
+    SDL_JOYDEVICEREMOVED,
+    SDL_CONTROLLERAXISMOTION = 0x650,
+    SDL_CONTROLLERBUTTONDOWN,
+    SDL_CONTROLLERBUTTONUP,
+    SDL_CONTROLLERDEVICEADDED,
+    SDL_CONTROLLERDEVICEREMOVED,
     SDL_FINGERDOWN = 0x700,
     SDL_FINGERUP,
     SDL_FINGERMOTION,
@@ -267,9 +274,6 @@ enum
     SDL_MULTIGESTURE,
     SDL_CLIPBOARDUPDATE = 0x900,
     SDL_DROPFILE = 0x1000,
-    SDL_EVENT_COMPAT1 = 0x7000,
-    SDL_EVENT_COMPAT2,
-    SDL_EVENT_COMPAT3,
     SDL_USEREVENT = 0x8000,
     SDL_LASTEVENT = 0xFFFF
 }
@@ -399,6 +403,38 @@ struct SDL_JoyButtonEvent
     Uint8 padding1;
 }
 
+struct SDL_JoyDeviceEvent
+{
+    Uint32 type;
+    Uint32 timestamp;
+    Uint32 which;
+}
+
+struct SDL_ControllerAxisEvent
+{
+    Uint32 type;
+    Uint32 timestamp;
+    Uint8 which;
+    SDL_CONTROLLER_AXIS axis;
+    int value;
+}
+
+struct SDL_ControllerButtonEvent
+{
+    Uint32 type;
+    Uint32 timestamp;
+    Uint8 which;
+    SDL_CONTROLLER_BUTTON button;
+    Uint8 state;
+}
+
+struct SDL_ControllerDeviceEvent
+{
+    Uint32 type;
+    Uint32 timestamp;
+    Uint32 which;
+}
+
 struct SDL_TouchFingerEvent
 {
     Uint32 type;
@@ -485,73 +521,33 @@ struct SDL_SysWMEvent
     SDL_SysWMmsg* msg;
 }
 
-version(SDL_NO_COMPAT)
+union SDL_Event
 {
-    union SDL_Event
-    {
-        Uint32 type;
-        SDL_WindowEvent window;
-        SDL_KeyboardEvent key;
-        SDL_TextEditingEvent edit;
-        SDL_TextInputEvent text;
-        SDL_MouseMotionEvent motion;
-        SDL_MouseButtonEvent button;
-        SDL_MouseWheelEvent wheel;
-        SDL_JoyAxisEvent jaxis;
-        SDL_JoyHatEvent jhat;
-        SDL_JoyButtonEvent jbutton;
-        SDL_QuitEvent quit;
-        SDL_UserEvent user;
-        SDL_SysWMEvent syswm;
-        SDL_TouchFingerEvent tfinger;
-        SDL_TouchButtonEvent tbutton;
-        SDL_MultiGestureEvent mgesture;
-        SDL_DollarGestureEvent dgesture;
-        SDL_DropEvent drop;
-    }
-}
-else
-{
-    struct SDL_ActiveEvent
-    {
-        Uint32 type;
-        Uint32 timestamp;
-        Uint8 gain;
-        Uint8 state;
-    }
+    Uint32 type;
+    SDL_WindowEvent window;
+    SDL_KeyboardEvent key;
+    SDL_TextEditingEvent edit;
+    SDL_TextInputEvent text;
+    SDL_MouseMotionEvent motion;
+    SDL_MouseButtonEvent button;
+    SDL_MouseWheelEvent wheel;
+    SDL_JoyAxisEvent jaxis;
+    SDL_JoyHatEvent jhat;
+    SDL_JoyButtonEvent jbutton;
+    SDL_JoyDeviceEvent jdevice;
+    SDL_ControllerAxisEvent caxis;
+    SDL_ControllerButtonEvent cbutton;
+    SDL_ControllerDeviceEvent cdevice;
+    SDL_QuitEvent quit;
+    SDL_UserEvent user;
+    SDL_SysWMEvent syswm;
+    SDL_TouchFingerEvent tfinger;
+    SDL_TouchButtonEvent tbutton;
+    SDL_MultiGestureEvent mgesture;
+    SDL_DollarGestureEvent dgesture;
+    SDL_DropEvent drop;
 
-    struct SDL_ResizeEvent
-    {
-        Uint32 type;
-        Uint32 timestamp;
-        int w;
-        int h;
-    }
-
-    union SDL_Event
-    {
-        Uint32 type;
-        SDL_WindowEvent window;
-        SDL_KeyboardEvent key;
-        SDL_TextEditingEvent edit;
-        SDL_TextInputEvent text;
-        SDL_MouseMotionEvent motion;
-        SDL_MouseButtonEvent button;
-        SDL_MouseWheelEvent wheel;
-        SDL_JoyAxisEvent jaxis;
-        SDL_JoyHatEvent jhat;
-        SDL_JoyButtonEvent jbutton;
-        SDL_QuitEvent quit;
-        SDL_UserEvent user;
-        SDL_SysWMEvent syswm;
-        SDL_TouchFingerEvent tfinger;
-        SDL_TouchButtonEvent tbutton;
-        SDL_MultiGestureEvent mgesture;
-        SDL_DollarGestureEvent dgesture;
-        SDL_DropEvent drop;
-        SDL_ActiveEvent active;
-        SDL_ResizeEvent resize;
-    }
+    Uint8[56] padding;
 }
 
 alias int SDL_eventaction;
@@ -570,6 +566,72 @@ enum
     SDL_IGNORE = 0,
     SDL_DISABLE = 0,
     SDL_ENABLE = 1,
+}
+
+// SDL_gamecontroller.h
+struct SDL_GameController;
+alias int SDL_CONTROLLER_BINDTYPE;
+enum
+{
+    SDL_CONTROLLER_BINDTYPE_NONE = 0,
+    SDL_CONTROLLER_BINDTYPE_BUTTON,
+    SDL_CONTROLLER_BINDTYPE_AXIS,
+    SDL_CONTROLLER_BINDTYPE_HAT,
+}
+
+struct _SDL_GameControllerHatBind
+{
+    int hat;
+    int hat_mask;
+}
+
+struct SDL_GameControllerButtonBind
+{
+    SDL_CONTROLLER_BINDTYPE m_eBindType;
+    union inner
+    {
+        int button;
+        int axis;
+        _SDL_GameControllerHatBind hat;
+    }
+    alias inner.button button;
+    alias inner.axis axis;
+    alias inner.hat hat;
+}
+
+alias int SDL_CONTROLLER_AXIS;
+enum
+{
+    SDL_CONTROLLER_AXIS_INVALID = -1,
+    SDL_CONTROLLER_AXIS_LEFTX,
+    SDL_CONTROLLER_AXIS_LEFTY,
+    SDL_CONTROLLER_AXIS_RIGHTX,
+    SDL_CONTROLLER_AXIS_RIGHTY,
+    SDL_CONTROLLER_AXIS_TRIGGERLEFT,
+    SDL_CONTROLLER_AXIS_TRIGGERRIGHT,
+    SDL_CONTROLLER_AXIS_MAX
+}
+
+alias int SDL_CONTROLLER_BUTTON;
+enum
+{
+    SDL_CONTROLLER_BUTTON_INVALID = -1,
+    SDL_CONTROLLER_BUTTON_A,
+    SDL_CONTROLLER_BUTTON_B,
+    SDL_CONTROLLER_BUTTON_X,
+    SDL_CONTROLLER_BUTTON_Y,
+    SDL_CONTROLLER_BUTTON_BACK,
+    SDL_CONTROLLER_BUTTON_GUIDE,
+    SDL_CONTROLLER_BUTTON_START,
+    SDL_CONTROLLER_BUTTON_LEFTSTICK,
+    SDL_CONTROLLER_BUTTON_RIGHTSTICK,
+    SDL_CONTROLLER_BUTTON_LEFTSHOULDER,
+    SDL_CONTROLLER_BUTTON_RIGHTSHOULDER,
+    SDL_CONTROLLER_BUTTON_DPAD_UP,
+    SDL_CONTROLLER_BUTTON_DPAD_DOWN,
+    SDL_CONTROLLER_BUTTON_DPAD_LEFT,
+    SDL_CONTROLLER_BUTTON_DPAD_RIGHT,
+    SDL_CONTROLLER_BUTTON_MAX
 }
 
 // SDL_gesture.h
@@ -714,8 +776,10 @@ enum : string
     SDL_HINT_VIDEO_X11_XINERAMA = "SDL_VIDEO_X11_XINERAMA",
     SDL_HINT_VIDEO_X11_XRANDR = "SDL_VIDEO_X11_XRANDR",
     SDL_HINT_GRAB_KEYBOARD = "SDL_GRAB_KEYBOARD",
-    SDL_HINT_IDLE_TIMER_DISABLED = "SDL_HINT_IDLE_TIMER_DISABLED",
+    SDL_HINT_VIDEO_MINIMIZE_ON_FOCUS_LOSS = "SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS",
+    SDL_HINT_IDLE_TIMER_DISABLED = "SDL_IOS_IDLE_TIMER_DISABLED",
     SDL_HINT_ORIENTATIONS = "SDL_IOS_ORIENTATIONS",
+    SDL_HINT_GAMECONTROLLERCONFIG = "SDL_GAMECONTROLLERCONFIG",
 }
 
 alias int SDL_HintPriority;
@@ -1993,6 +2057,7 @@ enum
     SDL_WINDOW_INPUT_GRABBED = 0x00000100,
     SDL_WINDOW_INPUT_FOCUS = 0x00000200,
     SDL_WINDOW_MOUSE_FOCUS = 0x00000400,
+    SDL_WINDOW_FULLSCREEN_DESKTOP = SDL_WINDOW_FULLSCREEN | 0x00001000,
     SDL_WINDOW_FOREIGN = 0x00000800
 }
 
