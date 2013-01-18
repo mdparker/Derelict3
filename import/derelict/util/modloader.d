@@ -13,7 +13,7 @@ template ModLoader(T : ModLibLoader)
 		T[] loaders;
 	}
 	
-	this()
+	this(T t)
 	{
 	}
 	
