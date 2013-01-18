@@ -13,10 +13,6 @@ template ModLoader(T : ModLibLoader)
 		T[] loaders;
 	}
 	
-	this(T t)
-	{
-	}
-	
 	public {
 		int loadMod(string file) {
 			int id = loaders.length;
