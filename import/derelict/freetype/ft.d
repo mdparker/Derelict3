@@ -39,7 +39,7 @@ private
     import derelict.util.system;
 
     static if(Derelict_OS_Windows)
-        enum libNames = "freetype.dll";
+        enum libNames = "freetype.dll,libfreetype-6.dll";
     else static if(Derelict_OS_Mac)
         enum libNames = "libfreetype.dylib,libfreetype.6.dylib,libfreetype.6.3.16.dylib,/usr/X11/lib/libfreetype.dylib,/usr/X11/lib/libfreetype.6.dylib,/usr/X11/lib/libfreetype.6.3.16.dylib";
     else static if(Derelict_OS_Posix)

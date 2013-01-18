@@ -163,5 +163,3 @@ const string LUA_NUMBER_SCAN = "%lf";
 const string LUA_NUMBER_FMT = "%.14g";
 const int LUAI_MAXSTACK = 1000000;
 const int LUAI_FIRSTPSEUDOIDX = -LUAI_MAXSTACK - 1000;
-//c stuff
-struct va_list;

@@ -58,16 +58,20 @@ class DerelictGLFW3Loader : SharedLibLoader
             bindFunc(cast(void**)&glfwTerminate, "glfwTerminate");
             bindFunc(cast(void**)&glfwGetVersion, "glfwGetVersion");
             bindFunc(cast(void**)&glfwGetVersionString, "glfwGetVersionString");
-            bindFunc(cast(void**)&glfwGetError, "glfwGetError");
-            bindFunc(cast(void**)&glfwErrorString, "glfwErrorString");
-            bindFunc(cast(void**)&glfwSetErrorCallback, "glfwSetErrorCallback");
+            bindFunc(cast(void**)&glfwSetErrorCallback, "glfwSetErrorCallback");            
+            bindFunc(cast(void**)&glfwGetMonitors, "glfwGetMonitors");
+            bindFunc(cast(void**)&glfwGetPrimaryMonitor, "glfwGetPrimaryMonitor");
+            bindFunc(cast(void**)&glfwGetMonitorName, "glfwGetMonitorName");
+            bindFunc(cast(void**)&glfwSetMonitorCallback, "glfwSetMonitorCallback");
+            bindFunc(cast(void**)&glfwGetMonitorParam, "glfwGetMonitorParam");            
             bindFunc(cast(void**)&glfwGetVideoModes, "glfwGetVideoModes");
-            bindFunc(cast(void**)&glfwGetDesktopMode, "glfwGetDesktopMode");
+            bindFunc(cast(void**)&glfwGetVideoMode, "glfwGetVideoMode");
             bindFunc(cast(void**)&glfwSetGamma, "glfwSetGamma");
             bindFunc(cast(void**)&glfwGetGammaRamp, "glfwGetGammaRamp");
             bindFunc(cast(void**)&glfwSetGammaRamp, "glfwSetGammaRamp");
-            bindFunc(cast(void**)&glfwCreateWindow, "glfwCreateWindow");
+            bindFunc(cast(void**)&glfwDefaultWindowHints, "glfwDefaultWindowHints");
             bindFunc(cast(void**)&glfwWindowHint, "glfwWindowHint");
+            bindFunc(cast(void**)&glfwCreateWindow, "glfwCreateWindow");
             bindFunc(cast(void**)&glfwDestroyWindow, "glfwDestroyWindow");
             bindFunc(cast(void**)&glfwSetWindowTitle, "glfwSetWindowTitle");
             bindFunc(cast(void**)&glfwGetWindowSize, "glfwGetWindowSize");
@@ -76,9 +80,11 @@ class DerelictGLFW3Loader : SharedLibLoader
             bindFunc(cast(void**)&glfwRestoreWindow, "glfwRestoreWindow");
             bindFunc(cast(void**)&glfwShowWindow, "glfwShowWindow");
             bindFunc(cast(void**)&glfwHideWindow, "glfwHideWindow");
+            bindFunc(cast(void**)&glfwGetWindowMonitor, "glfwGetWindowMonitor");
             bindFunc(cast(void**)&glfwGetWindowParam, "glfwGetWindowParam");
             bindFunc(cast(void**)&glfwSetWindowUserPointer, "glfwSetWindowUserPointer");
             bindFunc(cast(void**)&glfwGetWindowUserPointer, "glfwGetWindowUserPointer");
+            bindFunc(cast(void**)&glfwSetWindowPosCallback, "glfwSetWindowPosCallback");
             bindFunc(cast(void**)&glfwSetWindowSizeCallback, "glfwSetWindowSizeCallback");
             bindFunc(cast(void**)&glfwSetWindowCloseCallback, "glfwSetWindowCloseCallback");
             bindFunc(cast(void**)&glfwSetWindowRefreshCallback, "glfwSetWindowRefreshCallback");
@@ -101,6 +107,7 @@ class DerelictGLFW3Loader : SharedLibLoader
             bindFunc(cast(void**)&glfwGetJoystickParam, "glfwGetJoystickParam");
             bindFunc(cast(void**)&glfwGetJoystickAxes, "glfwGetJoystickAxes");
             bindFunc(cast(void**)&glfwGetJoystickButtons, "glfwGetJoystickButtons");
+            bindFunc(cast(void**)&glfwGetJoystickName, "glfwGetJoystickName");
             bindFunc(cast(void**)&glfwSetClipboardString, "glfwSetClipboardString");
             bindFunc(cast(void**)&glfwGetClipboardString, "glfwGetClipboardString");
             bindFunc(cast(void**)&glfwGetTime, "glfwGetTime");
@@ -111,7 +118,6 @@ class DerelictGLFW3Loader : SharedLibLoader
             bindFunc(cast(void**)&glfwSwapInterval, "glfwSwapInterval");
             bindFunc(cast(void**)&glfwExtensionSupported, "glfwExtensionSupported");
             bindFunc(cast(void**)&glfwGetProcAddress, "glfwGetProcAddress");
-            bindFunc(cast(void**)&glfwCopyContext, "glfwCopyContext");
         }
     }
     public

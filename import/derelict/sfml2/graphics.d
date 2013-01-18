@@ -195,7 +195,8 @@ class DerelictSFML2GraphicsLoader : SharedLibLoader
             bindFunc(cast(void**)&sfRenderTexture_getView, "sfRenderTexture_getView");
             bindFunc(cast(void**)&sfRenderTexture_getDefaultView, "sfRenderTexture_getDefaultView");
             bindFunc(cast(void**)&sfRenderTexture_getViewport, "sfRenderTexture_getViewport");
-            bindFunc(cast(void**)&sfRenderTexture_convertCoords, "sfRenderTexture_convertCoords");
+            bindFunc(cast(void**)&sfRenderTexture_mapPixelToCoords, "sfRenderTexture_mapPixelToCoords");
+            bindFunc(cast(void**)&sfRenderTexture_mapCoordsToPixel, "sfRenderTexture_mapCoordsToPixel");
             bindFunc(cast(void**)&sfRenderTexture_drawSprite, "sfRenderTexture_drawSprite");
             bindFunc(cast(void**)&sfRenderTexture_drawText, "sfRenderTexture_drawText");
             bindFunc(cast(void**)&sfRenderTexture_drawShape, "sfRenderTexture_drawShape");
@@ -238,7 +239,8 @@ class DerelictSFML2GraphicsLoader : SharedLibLoader
             bindFunc(cast(void**)&sfRenderWindow_getView, "sfRenderWindow_getView");
             bindFunc(cast(void**)&sfRenderWindow_getDefaultView, "sfRenderWindow_getDefaultView");
             bindFunc(cast(void**)&sfRenderWindow_getViewport, "sfRenderWindow_getViewport");
-            bindFunc(cast(void**)&sfRenderWindow_convertCoords, "sfRenderWindow_convertCoords");
+            bindFunc(cast(void**)&sfRenderWindow_mapPixelToCoords, "sfRenderWindow_mapPixelToCoords");
+            bindFunc(cast(void**)&sfRenderWindow_mapCoordsToPixel, "sfRenderWindow_mapCoordsToPixel");
             bindFunc(cast(void**)&sfRenderWindow_drawSprite, "sfRenderWindow_drawSprite");
             bindFunc(cast(void**)&sfRenderWindow_drawText, "sfRenderWindow_drawText");
             bindFunc(cast(void**)&sfRenderWindow_drawShape, "sfRenderWindow_drawShape");
@@ -251,6 +253,8 @@ class DerelictSFML2GraphicsLoader : SharedLibLoader
             bindFunc(cast(void**)&sfRenderWindow_popGLStates, "sfRenderWindow_popGLStates");
             bindFunc(cast(void**)&sfRenderWindow_resetGLStates, "sfRenderWindow_resetGLStates");
             bindFunc(cast(void**)&sfRenderWindow_capture, "sfRenderWindow_capture");
+            bindFunc(cast(void**)&sfMouse_getPositionRenderWindow, "sfMouse_getPositionRenderWindow");
+            bindFunc(cast(void**)&sfMouse_setPositionRenderWindow, "sfMouse_setPositionRenderWindow");
             bindFunc(cast(void**)&sfShader_createFromFile, "sfShader_createFromFile");
             bindFunc(cast(void**)&sfShader_createFromMemory, "sfShader_createFromMemory");
             bindFunc(cast(void**)&sfShader_createFromStream, "sfShader_createFromStream");

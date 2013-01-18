@@ -42,8 +42,6 @@ build util gl3
 ```
 Passing -version=Shared on the command line will cause the script to build the Derelict libs as shared libraries (currently, this is unsupported with DMD, but should work with both LDC and GDC).
 
-Also, be aware that the paths are currently hardcoded such that if you execute the script from another working directory, it will fail. I'll make it more robust in the future.
-
 #DerelictGL3
 
 The interface to DerelictGL3 is a bit different from the old DerelictGL. The primary change is that none of the symbols deprecated in the modern OpenGL specifications are present. This binding is based solely on the C header, gl3.h. You can still use older versions of OpenGL, but none of the deprecated functions will be loaded.
@@ -62,7 +60,11 @@ import derelict.glfw3.glfw3;
 void someFunc()
 {
 
-// Load the OpenGL library and all functions up to OpenGL 1.1
+// Load the OpenGL library and all functions up to OpenGL 1.1. It is not strictly
+// necessary to load this before creating a context, unless you need to call some
+// system-specific functions from the OpenGL shared library during context creation.
+// You could call further below, just before the reload function. I prefer to load
+// all of my shared libraries first so that I can fail early if they are not available.
 DerelictGL3.load();
 
 // Create your (preferably forward-compatible) OpenGL context
@@ -92,7 +94,7 @@ You should call reload anytime you change contexts. This is required on Windows,
 
 Furthermore, you can also make deprecated functions and constants available like so:
 
----
+```d
 import derelict.opengl3.gl;
 
 void someFunc()
@@ -103,16 +105,25 @@ void someFunc()
 
     DerelictGL.reload();
 }
----
+```
 
-Notice that you are using the DerelictGL object, not the DerelictGL3 object in this case. You still need to link DerelictGL3.lib, as the DerelictGL stuff is compiled into the same library as it's part of the same package.
+Notice that you are using the DerelictGL object, not the DerelictGL3 object in this case. You still need to link DerelictGL3.lib, as the DerelictGL stuff is compiled into the same library since it's part of the same package.
 
 #DerelictFreeGLUT
 
-This is a binding to [freeglut 2.8.0](http://freeglut.sourceforge.net/). It is largely complete,
-however it's missing the types for the font stuff. In the C headers, the font types are declared
-in a manner that I find a bit confusing. I need to dig into it a bit more to figure out exactly
-how to implement in ont he D side.
+This is a binding to [freeglut 2.8.0](http://freeglut.sourceforge.net/). It is largely complete, however it's missing the types for the font stuff. In the C headers, the font types are declared in a manner that I find a bit confusing. I need to dig into it a bit more to figure out exactly how to implement them on the D side.
+
+#DerelictFT
+
+This is a binding to [freetype 2.4](http://www.freetype.org/). For Windows, there are some binaries available for download from external links off the FreeType site, but those are for older versions and will not load out of the box. You'll definitely need to download and compile the latest 2.4.x version.
+
+#DerelictTCOD
+
+This is a binding to [libtcod 1.5.1](http://doryen.eptalys.net/libtcod/download/). Everything from libtcod is there with one major caveat. libtcod exports color structs from the shared library by value. This is no problem when linking with an import lib on windows or directly with the shared object on posix systems, but when loading manually like Derelict does it's rather problematic. libtcod provides some special functions, declared in "wrapper.h" for wrappers and bindings to work around the issue, but that means using integer values rather than the struct to represent colors. However, I chose to take a different route. DerelictTCOD loads the colors in the same way it loads the functions keep them stored as pointers. It would be possible to instead write a wrapper function that pulls the value from the pointer and copies it into the Derelict address space. But rather than do that sort of pointless duplication, I just kept them as pointers. In D, after all, you access members of a struct pointer in the same way you do a non-pointer. The only difference is that when you call one of the many TCOD_color* functions that expect a color struct to be passed by value and want to pass it one of the stock colors, you have to use the * operator on the color instance, like so:
+
+```D
+auto color = TCOD_color_subract(*TCOD_white, *TCOD_red);
+```
 
 #Downloads
 

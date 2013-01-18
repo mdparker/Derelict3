@@ -92,7 +92,7 @@ extern(C)
     alias nothrow sfIpAddress function() da_sfIpAddress_getLocalAddress;
     alias nothrow sfIpAddress function(sfTime timeout) da_sfIpAddress_getPublicAddress;
     alias nothrow sfPacket* function() da_sfPacket_create;
-    alias nothrow sfPacket* function(sfPacket* packet) da_sfPacket_copy;
+    alias nothrow sfPacket* function(const(sfPacket)* packet) da_sfPacket_copy;
     alias nothrow void function(sfPacket* packet) da_sfPacket_destroy;
     alias nothrow void function(sfPacket* packet,const(void)* data,size_t sizeInBytes) da_sfPacket_append;
     alias nothrow void function(sfPacket* packet) da_sfPacket_clear;
@@ -123,7 +123,7 @@ extern(C)
     alias nothrow void function(sfPacket* packet,const(char)* string) da_sfPacket_writeString;
     alias nothrow void function(sfPacket* packet,const(wchar)* string) da_sfPacket_writeWideString;
     alias nothrow sfSocketSelector* function() da_sfSocketSelector_create;
-    alias nothrow sfSocketSelector* function(sfSocketSelector* selector) da_sfSocketSelector_copy;
+    alias nothrow sfSocketSelector* function(const(sfSocketSelector)* selector) da_sfSocketSelector_copy;
     alias nothrow void function(sfSocketSelector* selector) da_sfSocketSelector_destroy;
     alias nothrow void function(sfSocketSelector* selector,sfTcpListener* socket) da_sfSocketSelector_addTcpListener;
     alias nothrow void function(sfSocketSelector* selector,sfTcpSocket* socket) da_sfSocketSelector_addTcpSocket;

@@ -27,13 +27,15 @@ DEALINGS IN THE SOFTWARE.
 */
 module derelict.lua.functions;
 
-private {
+private
+{
+    import core.stdc.stdarg;
     import derelict.lua.types;
 }
 
 extern(C) {
     //lua.h
-    alias nothrow lua_State function(lua_Alloc f, void* ud) da_lua_newstate;
+    alias nothrow lua_State* function(lua_Alloc f, void* ud) da_lua_newstate;
     alias nothrow void function(lua_State* L) da_lua_close;
     alias nothrow lua_CFunction function(lua_State* L, lua_CFunction panicf) da_lua_atpanic;
     alias nothrow const(lua_Number)* function(lua_State* L) da_lua_version;
@@ -173,17 +175,17 @@ extern(C) {
     alias nothrow void function(lua_State* L, const(char)* modname, int sizehint) da_luaL_pushmodule;
     alias nothrow void function(lua_State* L, const(char)* libname, const(luaL_Reg)* l, int nup) da_luaL_openlib;
     //lualib.h
-    alias nothrow int function(lua_State *L) da_luaopen_base;
-    alias nothrow int function(lua_State *L) da_luaopen_coroutine;
-    alias nothrow int function(lua_State *L) da_luaopen_table;
-    alias nothrow int function(lua_State *L) da_luaopen_io;
-    alias nothrow int function(lua_State *L) da_luaopen_os;
-    alias nothrow int function(lua_State *L) da_luaopen_string;
-    alias nothrow int function(lua_State *L) da_luaopen_bit32;
-    alias nothrow int function(lua_State *L) da_luaopen_math;
-    alias nothrow int function(lua_State *L) da_luaopen_debug;
-    alias nothrow int function(lua_State *L) da_luaopen_package;
-    alias nothrow void function(lua_State *L) da_luaL_openlibs;
+    alias nothrow int function(lua_State* L) da_luaopen_base;
+    alias nothrow int function(lua_State* L) da_luaopen_coroutine;
+    alias nothrow int function(lua_State* L) da_luaopen_table;
+    alias nothrow int function(lua_State* L) da_luaopen_io;
+    alias nothrow int function(lua_State* L) da_luaopen_os;
+    alias nothrow int function(lua_State* L) da_luaopen_string;
+    alias nothrow int function(lua_State* L) da_luaopen_bit32;
+    alias nothrow int function(lua_State* L) da_luaopen_math;
+    alias nothrow int function(lua_State* L) da_luaopen_debug;
+    alias nothrow int function(lua_State* L) da_luaopen_package;
+    alias nothrow void function(lua_State* L) da_luaL_openlibs;
 }
 
 __gshared

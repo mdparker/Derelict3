@@ -40,7 +40,6 @@ class SharedLibLoader
 public:
     this(string libNames)
     {
-        _lib = new SharedLib();
         _libNames = libNames;
     }
 

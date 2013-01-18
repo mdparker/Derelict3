@@ -137,7 +137,7 @@ else
     static assert(0, "Derelict does not support this platform.");
 }
 
-final class SharedLib
+struct SharedLib
 {
     public
     {

@@ -57,7 +57,7 @@ extern(C)
     alias nothrow SDL_AudioStatus function(SDL_AudioDeviceID) da_SDL_GetAudioDeviceStatus;
     alias nothrow void function(int) da_SDL_PauseAudio;
     alias nothrow void function(SDL_AudioDeviceID, int) da_SDL_PauseAudioDevice;
-    alias nothrow SDL_AudioSpec function(SDL_RWops*, int, SDL_AudioSpec*, Uint8**, Uint32*) da_SDL_LoadWAV_RW;
+    alias nothrow SDL_AudioSpec* function(SDL_RWops*, int, SDL_AudioSpec*, Uint8**, Uint32*) da_SDL_LoadWAV_RW;
     alias nothrow void function(Uint8*) da_SDL_FreeWAV;
     alias nothrow int function(SDL_AudioCVT*, SDL_AudioFormat, Uint8, int, SDL_AudioFormat, Uint8, int) da_SDL_BuildAudioCVT;
     alias nothrow int function(SDL_AudioCVT*) da_SDL_ConvertAudio;
@@ -113,6 +113,23 @@ extern(C)
     alias nothrow Uint8 function(Uint32, int) da_SDL_EventState;
     alias nothrow Uint32 function(int) da_SDL_RegisterEvents;
 
+    // SDL_gamecontroller.h
+    alias nothrow int function(int) da_SDL_IsGameController;
+    alias nothrow const(char)* function(int) da_SDL_GameControllerNameForIndex;
+    alias nothrow SDL_GameController* function(int) da_SDL_GameControllerOpen;
+    alias nothrow const(char)* function(SDL_GameController*) da_SDL_GameControllerName;
+    alias nothrow int function(SDL_GameController*) da_SDL_GameControllerGetAttached;
+    alias nothrow SDL_Joystick* function(SDL_GameController*) da_SDL_GameControllerGetJoystick;
+    alias nothrow int function(int) da_SDL_GameControllerEventState;
+    alias nothrow SDL_CONTROLLER_AXIS function(const(char)*) da_SDL_GameControllerGetAxisFromString;
+    alias nothrow SDL_GameControllerButtonBind function(SDL_GameController*, SDL_CONTROLLER_AXIS) da_SDL_GameControllerGetBindForAxis;
+    alias nothrow Sint16 function(SDL_GameController*, SDL_CONTROLLER_AXIS) da_SDL_GameControllerGetAxis;
+    alias nothrow SDL_CONTROLLER_BUTTON function(const(char*)) da_SDL_GameControllerGetButtonFromString;
+    alias nothrow SDL_GameControllerButtonBind function(SDL_GameController*, SDL_CONTROLLER_BUTTON) da_SDL_GameControllerGetBindForButton;
+    alias nothrow Uint8 function(SDL_GameController*, SDL_CONTROLLER_BUTTON) da_SDL_GameControllerGetButton;
+    alias nothrow void function(SDL_GameController*) da_SDL_GameControllerClose;
+
+
     // SDL_gesture.h
     alias nothrow int function(SDL_TouchID) da_SDL_RecordGesture;
     alias nothrow int function(SDL_RWops*) da_SDL_SaveAllDollarTemplates;
@@ -165,10 +182,15 @@ extern(C)
 
     // SDL_joystick.h
     alias nothrow int function() da_SDL_NumJoysticks;
-    alias nothrow const(char)* function(int) da_SDL_JoystickName;
+    alias nothrow const(char)* function(int) da_SDL_JoystickNameForIndex;
     alias nothrow SDL_Joystick* function(int) da_SDL_JoystickOpen;
-    alias nothrow int function(int) da_SDL_JoystickOpened;
-    alias nothrow int function(SDL_Joystick*) da_SDL_JoystickIndex;
+    alias nothrow const(char)* function(SDL_Joystick*) da_SDL_JoystickName;
+    alias nothrow JoystickGUID function(int) da_SDL_JoystickGetDeviceGUID;
+    alias nothrow JoystickGUID function(SDL_Joystick*) da_SDL_JoystickGetGUID;
+    alias nothrow char* function(JoystickGUID) da_SDL_JoystickGetGUIDString;
+    alias nothrow JoystickGUID function(const(char)*) da_SDL_JoystickGetGUIDFromString;
+    alias nothrow SDL_bool function(SDL_Joystick*) da_SDL_JoystickGetAttached;
+    alias nothrow SDL_JoystickID function(SDL_Joystick*) da_SDL_JoystickInstanceID;
     alias nothrow int function(SDL_Joystick*) da_SDL_JoystickNumAxes;
     alias nothrow int function(SDL_Joystick*) da_SDL_JoystickNumBalls;
     alias nothrow int function(SDL_Joystick*) da_SDL_JoystickNumHats;
@@ -405,13 +427,14 @@ extern(C)
     alias nothrow void function() da_SDL_VideoQuit;
     alias nothrow const(char)* function() da_SDL_GetCurrentVideoDriver;
     alias nothrow int function() da_SDL_GetNumVideoDisplays;
+    alias nothrow int function(int) da_SDL_GetDisplayName;
     alias nothrow int function(int, SDL_Rect*) da_SDL_GetDisplayBounds;
     alias nothrow int function(int) da_SDL_GetNumDisplayModes;
     alias nothrow int function(int, int, SDL_DisplayMode*) da_SDL_GetDisplayMode;
     alias nothrow int function(int, SDL_DisplayMode*) da_SDL_GetDesktopDisplayMode;
     alias nothrow int function(int, SDL_DisplayMode*) da_SDL_GetCurrentDisplayMode;
     alias nothrow SDL_DisplayMode* function(int, const(SDL_DisplayMode)*, SDL_DisplayMode*) da_SDL_GetClosestDisplayMode;
-    alias nothrow int function(SDL_Window*) da_SDL_GetWindowDisplay;
+    alias nothrow int function(SDL_Window*) da_SDL_GetWindowDisplayIndex;
     alias nothrow int function(SDL_Window*, const(SDL_DisplayMode)*) da_SDL_SetWindowDisplayMode;
     alias nothrow int function(SDL_Window*, SDL_DisplayMode*) da_SDL_GetWindowDisplayMode;
     alias nothrow Uint32 function(SDL_Window*) da_SDL_GetWindowPixelFormat;
@@ -429,6 +452,10 @@ extern(C)
     alias nothrow void function(SDL_Window*, int*, int*) da_SDL_GetWindowPosition;
     alias nothrow void function(SDL_Window*, int, int) da_SDL_SetWindowSize;
     alias nothrow void function(SDL_Window*, int*, int*) da_SDL_GetWindowSize;
+    alias nothrow void function(SDL_Window*, int, int) da_SDL_SetWindowMinimumSize;
+    alias nothrow void function(SDL_Window*, int*, int*) da_SDL_GetWindowMinimumSize;
+    alias nothrow void function(SDL_Window*, int, int) da_SDL_SetWindowMaximumSize;
+    alias nothrow void function(SDL_Window*, int*, int*) da_SDL_GetWindowMaximumSize;
     alias nothrow void function(SDL_Window*, SDL_bool) da_SDL_SetWindowBordered;
     alias nothrow void function(SDL_Window*) da_SDL_ShowWindow;
     alias nothrow void function(SDL_Window*) da_SDL_HideWindow;
@@ -436,7 +463,7 @@ extern(C)
     alias nothrow void function(SDL_Window*) da_SDL_MaximizeWindow;
     alias nothrow void function(SDL_Window*) da_SDL_MinimizeWindow;
     alias nothrow void function(SDL_Window*) da_SDL_RestoreWindow;
-    alias nothrow int function(SDL_Window*, SDL_bool) da_SDL_SetWindowFullscreen;
+    alias nothrow int function(SDL_Window*, Uint32) da_SDL_SetWindowFullscreen;
     alias nothrow SDL_Surface* function(SDL_Window*) da_SDL_GetWindowSurface;
     alias nothrow int function(SDL_Window*) da_SDL_UpdateWindowSurface;
     alias nothrow int function(SDL_Window*, SDL_Rect*, int) da_SDL_UpdateWindowSurfaceRects;
@@ -465,7 +492,7 @@ extern(C)
 }
 
 // SDL_audio.h
-nothrow SDL_AudioSpec SDL_LoadWAV(const(char)* file, SDL_AudioSpec* spec, Uint8** audio_buf, Uint32* len)
+nothrow SDL_AudioSpec* SDL_LoadWAV(const(char)* file, SDL_AudioSpec* spec, Uint8** audio_buf, Uint32* len)
 {
     return SDL_LoadWAV_RW(SDL_RWFromFile(file, "rb"), 1, spec, audio_buf, len);
 }
@@ -567,6 +594,21 @@ __gshared
     da_SDL_EventState SDL_EventState;
     da_SDL_RegisterEvents SDL_RegisterEvents;
 
+    da_SDL_IsGameController SDL_IsGameController;
+    da_SDL_GameControllerNameForIndex SDL_GameControllerNameForIndex;
+    da_SDL_GameControllerOpen SDL_GameControllerOpen;
+    da_SDL_GameControllerName SDL_GameControllerName;
+    da_SDL_GameControllerGetAttached SDL_GameControllerGetAttached;
+    da_SDL_GameControllerGetJoystick SDL_GameControllerGetJoystick;
+    da_SDL_GameControllerEventState SDL_GameControllerEventState;
+    da_SDL_GameControllerGetAxisFromString SDL_GameControllerGetAxisFromString;
+    da_SDL_GameControllerGetBindForAxis SDL_GameControllerGetBindForAxis;
+    da_SDL_GameControllerGetAxis SDL_GameControllerGetAxis;
+    da_SDL_GameControllerGetButtonFromString SDL_GameControllerGetButtonFromString;
+    da_SDL_GameControllerGetBindForButton SDL_GameControllerGetBindForButton;
+    da_SDL_GameControllerGetButton SDL_GameControllerGetButton;
+    da_SDL_GameControllerClose SDL_GameControllerClose;
+
     da_SDL_RecordGesture SDL_RecordGesture;
     da_SDL_SaveAllDollarTemplates SDL_SaveAllDollarTemplates;
     da_SDL_SaveDollarTemplate SDL_SaveDollarTemplate;
@@ -614,10 +656,15 @@ __gshared
     da_SDL_IsDeviceDisconnected SDL_IsDeviceDisconnected;
 
     da_SDL_NumJoysticks SDL_NumJoysticks;
-    da_SDL_JoystickName SDL_JoystickName;
+    da_SDL_JoystickNameForIndex SDL_JoystickNameForIndex;
     da_SDL_JoystickOpen SDL_JoystickOpen;
-    da_SDL_JoystickOpened SDL_JoystickOpened;
-    da_SDL_JoystickIndex SDL_JoystickIndex;
+    da_SDL_JoystickName SDL_JoystickName;
+    da_SDL_JoystickGetDeviceGUID SDL_JoystickGetDeviceGUID;
+    da_SDL_JoystickGetGUID SDL_JoystickGetGUID;
+    da_SDL_JoystickGetGUIDString SDL_JoystickGetGUIDString;
+    da_SDL_JoystickGetGUIDFromString SDL_JoystickGetGUIDFromString;
+    da_SDL_JoystickGetAttached SDL_JoystickGetAttached;
+    da_SDL_JoystickInstanceID SDL_JoystickInstanceID;
     da_SDL_JoystickNumAxes SDL_JoystickNumAxes;
     da_SDL_JoystickNumBalls SDL_JoystickNumBalls;
     da_SDL_JoystickNumHats SDL_JoystickNumHats;
@@ -834,13 +881,14 @@ __gshared
     da_SDL_VideoQuit SDL_VideoQuit;
     da_SDL_GetCurrentVideoDriver SDL_GetCurrentVideoDriver;
     da_SDL_GetNumVideoDisplays SDL_GetNumVideoDisplays;
+    da_SDL_GetDisplayName SDL_GetDisplayName;
     da_SDL_GetDisplayBounds SDL_GetDisplayBounds;
     da_SDL_GetNumDisplayModes SDL_GetNumDisplayModes;
     da_SDL_GetDisplayMode SDL_GetDisplayMode;
     da_SDL_GetDesktopDisplayMode SDL_GetDesktopDisplayMode;
     da_SDL_GetCurrentDisplayMode SDL_GetCurrentDisplayMode;
     da_SDL_GetClosestDisplayMode SDL_GetClosestDisplayMode;
-    da_SDL_GetWindowDisplay SDL_GetWindowDisplay;
+    da_SDL_GetWindowDisplayIndex SDL_GetWindowDisplayIndex;
     da_SDL_SetWindowDisplayMode SDL_SetWindowDisplayMode;
     da_SDL_GetWindowDisplayMode SDL_GetWindowDisplayMode;
     da_SDL_GetWindowPixelFormat SDL_GetWindowPixelFormat;
@@ -858,6 +906,10 @@ __gshared
     da_SDL_GetWindowPosition SDL_GetWindowPosition;
     da_SDL_SetWindowSize SDL_SetWindowSize;
     da_SDL_GetWindowSize SDL_GetWindowSize;
+    da_SDL_SetWindowMinimumSize SDL_SetWindowMinimumSize;
+    da_SDL_GetWindowMinimumSize SDL_GetWindowMinimumSize;
+    da_SDL_SetWindowMaximumSize SDL_SetWindowMaximumSize;
+    da_SDL_GetWindowMaximumSize SDL_GetWindowMaximumSize;
     da_SDL_SetWindowBordered SDL_SetWindowBordered;
     da_SDL_ShowWindow SDL_ShowWindow;
     da_SDL_HideWindow SDL_HideWindow;
