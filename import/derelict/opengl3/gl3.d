@@ -761,7 +761,9 @@ class DerelictGL3Loader : SharedLibLoader
         GLVersion findMaxAvailable()
         {
             string verstr = to!string(glGetString(GL_VERSION));
-            if(verstr.indexOf("4.2") != -1)
+            if(verstr.indexOf("4.3") != -1)
+                return GLVersion.HighestSupported;
+            else if(verstr.indexOf("4.2") != -1)
                 return GLVersion.GL42;
             else if(verstr.indexOf("4.1") != -1)
                 return GLVersion.GL41;
