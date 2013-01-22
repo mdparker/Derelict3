@@ -62,6 +62,7 @@ class DerelictLuaLoader : SharedLibLoader
             //lua.h
             bindFunc(cast(void**)&lua_newstate, "lua_newstate");
             bindFunc(cast(void**)&lua_close, "lua_close");
+            bindFunc(cast(void**)&lua_newthread, "lua_newthread");
             bindFunc(cast(void**)&lua_atpanic, "lua_atpanic");
             bindFunc(cast(void**)&lua_version, "lua_version");
             bindFunc(cast(void**)&lua_absindex, "lua_absindex");
