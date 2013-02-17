@@ -63,6 +63,8 @@ extern(C)
     alias nothrow void function(GLFWwindow*, const(char)*) da_glfwSetWindowTitle;
     alias nothrow void function(GLFWwindow*, int*, int*) da_glfwGetWindowSize;
     alias nothrow void function(GLFWwindow*, int, int) da_glfwSetWindowSize;
+    alias nothrow void function(GLFWwindow*, int*, int*) da_glfwGetWindowPos;
+    alias nothrow void function(GLFWwindow*, int, int) da_glfwSetWindowPos;
     alias nothrow void function(GLFWwindow*) da_glfwIconifyWindow;
     alias nothrow void function(GLFWwindow*) da_glfwRestoreWindow;
     alias nothrow void function(GLFWwindow*) da_glfwShowWindow;
@@ -138,6 +140,8 @@ __gshared
     da_glfwSetWindowTitle glfwSetWindowTitle;
     da_glfwGetWindowSize glfwGetWindowSize;
     da_glfwSetWindowSize glfwSetWindowSize;
+    da_glfwGetWindowPos glfwGetWindowPos;
+    da_glfwSetWindowPos glfwSetWindowPos;
     da_glfwIconifyWindow glfwIconifyWindow;
     da_glfwRestoreWindow glfwRestoreWindow;
     da_glfwShowWindow glfwShowWindow;
