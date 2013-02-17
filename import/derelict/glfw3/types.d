@@ -242,8 +242,6 @@ enum
     GLFW_OPENGL_PROFILE       = 0x00022006,
     GLFW_RESIZABLE            = 0x00022007,
     GLFW_VISIBLE              = 0x00022008,
-    GLFW_POSITION_X           = 0x00022009,
-    GLFW_POSITION_Y           = 0x0002200A,
 
     GLFW_OPENGL_API           = 0x00000001,
     GLFW_OPENGL_ES_API        = 0x00000002,
