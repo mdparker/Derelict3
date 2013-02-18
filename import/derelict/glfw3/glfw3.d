@@ -63,7 +63,8 @@ class DerelictGLFW3Loader : SharedLibLoader
             bindFunc(cast(void**)&glfwGetPrimaryMonitor, "glfwGetPrimaryMonitor");
             bindFunc(cast(void**)&glfwGetMonitorName, "glfwGetMonitorName");
             bindFunc(cast(void**)&glfwSetMonitorCallback, "glfwSetMonitorCallback");
-            bindFunc(cast(void**)&glfwGetMonitorParam, "glfwGetMonitorParam");            
+            bindFunc(cast(void**)&glfwGetMonitorPhysicalSize, "glfwGetMonitorPhysicalSize");
+            bindFunc(cast(void**)&glfwGetMonitorPos, "glfwGetMonitorPos");
             bindFunc(cast(void**)&glfwGetVideoModes, "glfwGetVideoModes");
             bindFunc(cast(void**)&glfwGetVideoMode, "glfwGetVideoMode");
             bindFunc(cast(void**)&glfwSetGamma, "glfwSetGamma");
