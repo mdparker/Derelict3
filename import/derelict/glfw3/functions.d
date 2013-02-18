@@ -45,9 +45,10 @@ extern(C)
 
     alias nothrow GLFWmonitor** function(int*) da_glfwGetMonitors;
     alias nothrow GLFWmonitor* function() da_glfwGetPrimaryMonitor;
-    alias nothrow int function(GLFWmonitor*, int) da_glfwGetMonitorParam;
     alias nothrow const(char)* function(GLFWmonitor*) da_glfwGetMonitorName;
     alias nothrow void function(GLFWmonitorfun) da_glfwSetMonitorCallback;
+    alias nothrow void function(GLFWmonitor*, int*, int*) da_glfwGetMonitorPhysicalSize;
+    alias nothrow void function(GLFWmonitor*, int*, int*) da_glfwGetMonitorPos;
 
     alias nothrow const(GLFWvidmode)* function(GLFWmonitor*, int*) da_glfwGetVideoModes;
     alias nothrow GLFWvidmode function(GLFWmonitor*) da_glfwGetVideoMode;
@@ -127,7 +128,8 @@ __gshared
     da_glfwGetPrimaryMonitor glfwGetPrimaryMonitor;
     da_glfwGetMonitorName glfwGetMonitorName;
     da_glfwSetMonitorCallback glfwSetMonitorCallback;
-    da_glfwGetMonitorParam glfwGetMonitorParam;
+    da_glfwGetMonitorPhysicalSize glfwGetMonitorPhysicalSize;
+    da_glfwGetMonitorPos glfwGetMonitorPos;
     da_glfwGetVideoModes glfwGetVideoModes;
     da_glfwGetVideoMode glfwGetVideoMode;
     da_glfwSetGamma glfwSetGamma;
