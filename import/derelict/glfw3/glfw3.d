@@ -98,7 +98,6 @@ class DerelictGLFW3Loader : SharedLibLoader
             bindFunc(cast(void**)&glfwGetMouseButton, "glfwGetMouseButton");
             bindFunc(cast(void**)&glfwGetCursorPos, "glfwGetCursorPos");
             bindFunc(cast(void**)&glfwSetCursorPos, "glfwSetCursorPos");
-            bindFunc(cast(void**)&glfwGetScrollOffset, "glfwGetScrollOffset");
             bindFunc(cast(void**)&glfwSetKeyCallback, "glfwSetKeyCallback");
             bindFunc(cast(void**)&glfwSetCharCallback, "glfwSetCharCallback");
             bindFunc(cast(void**)&glfwSetMouseButtonCallback, "glfwSetMouseButtonCallback");
