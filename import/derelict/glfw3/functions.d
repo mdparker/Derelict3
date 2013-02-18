@@ -90,7 +90,6 @@ extern(C)
     alias nothrow int function(GLFWwindow*, int) da_glfwGetMouseButton;
     alias nothrow void function(GLFWwindow*, int*, int*) da_glfwGetCursorPos;
     alias nothrow void function(GLFWwindow*, int, int) da_glfwSetCursorPos;
-    alias nothrow void function(GLFWwindow*, double*, double*) da_glfwGetScrollOffset;
     alias nothrow void function(GLFWwindow*, GLFWkeyfun) da_glfwSetKeyCallback;
     alias nothrow void function(GLFWwindow*, GLFWcharfun) da_glfwSetCharCallback;
     alias nothrow void function(GLFWwindow*, GLFWmousebuttonfun) da_glfwSetMouseButtonCallback;
@@ -166,7 +165,6 @@ __gshared
     da_glfwGetMouseButton glfwGetMouseButton;
     da_glfwGetCursorPos glfwGetCursorPos;
     da_glfwSetCursorPos glfwSetCursorPos;
-    da_glfwGetScrollOffset glfwGetScrollOffset;
     da_glfwSetKeyCallback glfwSetKeyCallback;
     da_glfwSetCharCallback glfwSetCharCallback;
     da_glfwSetMouseButtonCallback glfwSetMouseButtonCallback;
