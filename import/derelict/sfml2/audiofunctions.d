@@ -61,7 +61,7 @@ extern(C)
     alias nothrow void function(sfMusic* music,sfBool relative) da_sfMusic_setRelativeToListener;
     alias nothrow void function(sfMusic* music,float distance) da_sfMusic_setMinDistance;
     alias nothrow void function(sfMusic* music,float attenuation) da_sfMusic_setAttenuation;
-    alias nothrow void function(sfMusic* music,sfUint32 timeOffset) da_sfMusic_setPlayingOffset;
+    alias nothrow void function(sfMusic* music,sfTime timeOffset) da_sfMusic_setPlayingOffset;
     alias nothrow float function(const(sfMusic)* music) da_sfMusic_getPitch;
     alias nothrow float function(const(sfMusic)* music) da_sfMusic_getVolume;
     alias nothrow sfVector3f function(const(sfMusic)* music) da_sfMusic_getPosition;
