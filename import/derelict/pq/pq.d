@@ -55,17 +55,21 @@ class DerelictPQLoader : SharedLibLoader
         override void loadSymbols()
         {
             bindFunc(cast(void**)&PQconnectStart, "PQconnectStart");
+            bindFunc(cast(void**)&PQconnectStartParams, "PQconnectStartParams");
             bindFunc(cast(void**)&PQconnectPoll, "PQconnectPoll");
             bindFunc(cast(void**)&PQconnectdb, "PQconnectdb");
+            bindFunc(cast(void**)&PQconnectdbParams, "PQconnectdbParams");
             bindFunc(cast(void**)&PQsetdbLogin, "PQsetdbLogin");
             bindFunc(cast(void**)&PQfinish, "PQfinish");
             bindFunc(cast(void**)&PQconndefaults, "PQconndefaults");
+            bindFunc(cast(void**)&PQconninfoParse, "PQconninfoParse");
             bindFunc(cast(void**)&PQconninfoFree, "PQconninfoFree");
             bindFunc(cast(void**)&PQresetStart, "PQresetStart");
             bindFunc(cast(void**)&PQresetPoll, "PQresetPoll");
             bindFunc(cast(void**)&PQreset, "PQreset");
             bindFunc(cast(void**)&PQgetCancel, "PQgetCancel");
             bindFunc(cast(void**)&PQfreeCancel, "PQfreeCancel");
+            bindFunc(cast(void**)&PQcancel, "PQcancel");
             bindFunc(cast(void**)&PQrequestCancel, "PQrequestCancel");
             bindFunc(cast(void**)&PQdb, "PQdb");
             bindFunc(cast(void**)&PQuser, "PQuser");
@@ -82,10 +86,13 @@ class DerelictPQLoader : SharedLibLoader
             bindFunc(cast(void**)&PQerrorMessage, "PQerrorMessage");
             bindFunc(cast(void**)&PQsocket, "PQsocket");
             bindFunc(cast(void**)&PQbackendPID, "PQbackendPID");
+            bindFunc(cast(void**)&PQconnectionNeedsPassword, "PQconnectionNeedsPassword");
+            bindFunc(cast(void**)&PQconnectionUsedPassword, "PQconnectionUsedPassword");
             bindFunc(cast(void**)&PQclientEncoding, "PQclientEncoding");
             bindFunc(cast(void**)&PQsetClientEncoding, "PQsetClientEncoding");
             bindFunc(cast(void**)&PQgetssl, "PQgetssl");
             bindFunc(cast(void**)&PQinitSSL, "PQinitSSL");
+            bindFunc(cast(void**)&PQinitOpenSSL, "PQinitOpenSSL");
             bindFunc(cast(void**)&PQsetErrorVerbosity, "PQsetErrorVerbosity");
             bindFunc(cast(void**)&PQtrace, "PQtrace");
             bindFunc(cast(void**)&PQuntrace, "PQuntrace");
@@ -100,6 +107,7 @@ class DerelictPQLoader : SharedLibLoader
             bindFunc(cast(void**)&PQsendQueryParams, "PQsendQueryParams");
             bindFunc(cast(void**)&PQsendPrepare, "PQsendPrepare");
             bindFunc(cast(void**)&PQsendQueryPrepared, "PQsendQueryPrepared");
+            bindFunc(cast(void**)&PQsetSingleRowMode, "PQsetSingleRowMode");
             bindFunc(cast(void**)&PQgetResult, "PQgetResult");
             bindFunc(cast(void**)&PQisBusy, "PQisBusy");
             bindFunc(cast(void**)&PQconsumeInput, "PQconsumeInput");
@@ -115,6 +123,8 @@ class DerelictPQLoader : SharedLibLoader
             bindFunc(cast(void**)&PQsetnonblocking, "PQsetnonblocking");
             bindFunc(cast(void**)&PQisnonblocking, "PQisnonblocking");
             bindFunc(cast(void**)&PQisthreadsafe, "PQisthreadsafe");
+            bindFunc(cast(void**)&PQping, "PQping");
+            bindFunc(cast(void**)&PQpingParams, "PQpingParams");
             bindFunc(cast(void**)&PQflush, "PQflush");
             bindFunc(cast(void**)&PQfn, "PQfn");
             bindFunc(cast(void**)&PQresultStatus, "PQresultStatus");
@@ -148,12 +158,17 @@ class DerelictPQLoader : SharedLibLoader
             bindFunc(cast(void**)&PQclear, "PQclear");
             bindFunc(cast(void**)&PQfreemem, "PQfreemem");
             bindFunc(cast(void**)&PQmakeEmptyPGresult, "PQmakeEmptyPGresult");
+            bindFunc(cast(void**)&PQcopyResult, "PQcopyResult");
+            bindFunc(cast(void**)&PQsetResultAttrs, "PQsetResultAttrs");
+            bindFunc(cast(void**)&PQresultAlloc, "PQresultAlloc");
+            bindFunc(cast(void**)&PQsetvalue, "PQsetvalue");
             bindFunc(cast(void**)&PQescapeStringConn, "PQescapeStringConn");
+            bindFunc(cast(void**)&PQescapeLiteral, "PQescapeLiteral");
+            bindFunc(cast(void**)&PQescapeIdentifier, "PQescapeIdentifier");
             bindFunc(cast(void**)&PQescapeByteaConn, "PQescapeByteaConn");
             bindFunc(cast(void**)&PQunescapeBytea, "PQunescapeBytea");
             bindFunc(cast(void**)&PQescapeString, "PQescapeString");
             bindFunc(cast(void**)&PQescapeBytea, "PQescapeBytea");
-            bindFunc(cast(void**)&PQescapeIdentifier, "PQescapeIdentifier");
             bindFunc(cast(void**)&PQprint, "PQprint");
             bindFunc(cast(void**)&PQdisplayTuples, "PQdisplayTuples");
             bindFunc(cast(void**)&PQprintTuples, "PQprintTuples");
@@ -165,14 +180,19 @@ class DerelictPQLoader : SharedLibLoader
             bindFunc(cast(void**)&lo_creat, "lo_creat");
             bindFunc(cast(void**)&lo_create, "lo_create");
             bindFunc(cast(void**)&lo_tell, "lo_tell");
+            bindFunc(cast(void**)&lo_truncate, "lo_truncate");
             bindFunc(cast(void**)&lo_unlink, "lo_unlink");
             bindFunc(cast(void**)&lo_import, "lo_import");
+            bindFunc(cast(void**)&lo_import_with_oid, "lo_import_with_oid");
             bindFunc(cast(void**)&lo_export, "lo_export");
             bindFunc(cast(void**)&PQlibVersion, "PQlibVersion");
             bindFunc(cast(void**)&PQmblen, "PQmblen");
             bindFunc(cast(void**)&PQdsplen, "PQdsplen");
             bindFunc(cast(void**)&PQenv2encoding, "PQenv2encoding");
             bindFunc(cast(void**)&PQencryptPassword, "PQencryptPassword");
+            bindFunc(cast(void**)&pg_char_to_encoding, "pg_char_to_encoding");
+            bindFunc(cast(void**)&pg_encoding_to_char, "pg_encoding_to_char");
+            bindFunc(cast(void**)&pg_valid_server_encoding_id, "pg_valid_server_encoding_id");
             bindFunc(cast(void**)&PQregisterEventProc, "PQregisterEventProc");
             bindFunc(cast(void**)&PQsetInstanceData, "PQsetInstanceData");
         }

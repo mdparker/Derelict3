@@ -33,6 +33,10 @@ extern(C)
 	alias char pqbool;
 	public import std.c.stdio : FILE;
 
+	enum PG_COPYRES_ATTRS       = 0x01;
+	enum PG_COPYRES_TUPLES      = 0x02;
+	enum PG_COPYRES_EVENTS      = 0x04;
+	enum PG_COPYRES_NOTICEHOOKS = 0x08;
 	enum valueFormat
 	{
 		TEXT,
@@ -67,7 +71,9 @@ extern(C)
 		PGRES_COPY_IN,
 		PGRES_BAD_RESPONSE,
 		PGRES_NONFATAL_ERROR,
-		PGRES_FATAL_ERROR
+		PGRES_FATAL_ERROR,
+		PGRES_COPY_BOTH,
+		PGRES_SINGLE_TUPLE
 	}
 	enum PGTransactionStatusType
 	{
@@ -83,13 +89,20 @@ extern(C)
 		PQERRORS_DEFAULT,
 		PQERRORS_VERBOSE
 	}
+	enum PGPing
+	{
+		PQPING_OK,
+		PQPING_REJECT,
+		PQPING_NO_RESPONSE,
+		PQPING_NO_ATTEMTP
+	}
 	struct PGconn {}
 	struct PGresult {}
 	struct PGcancel {}
 	struct PGnotify
 	{
 		char* relname;
-		size_t be_pid;
+		int be_pid;
 		char* extra;
 		private PGnotify* next;
 	}
@@ -125,6 +138,16 @@ extern(C)
 			int* ptr;
 			int integer;
 		}
+	}
+	struct PGresAttDesc
+	{
+		char* name;
+		Oid tableid;
+		int columnid;
+		int format;
+		Oid typid;
+		int typlen;
+		int atttypmod;
 	}
 	enum PGEventId
 	{
