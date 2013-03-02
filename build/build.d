@@ -92,6 +92,7 @@ enum packSFML2 = "SFML2";
 enum packLua = "Lua";
 enum packTCOD = "TCOD";
 enum packOGG = "OGG";
+enum packPQ = "PQ";
 
 // Source paths
 enum srcDerelict = "../import/derelict/";
@@ -111,6 +112,7 @@ enum srcSFML2 = srcDerelict ~ "sfml2/";
 enum srcLua = srcDerelict ~ "lua/";
 enum srcTCOD = srcDerelict ~ "tcod/";
 enum srcOGG = srcDerelict ~ "ogg/";
+enum srcPQ = srcDerelict ~ "pq/";
 
 // Map package names to source paths.
 string[string] pathMap;
@@ -138,7 +140,8 @@ static this()
         packSFML2 : srcSFML2,
         packLua : srcLua,
         packTCOD : srcTCOD,
-        packOGG : srcOGG
+        packOGG : srcOGG,
+        packPQ : srcPQ
     ];
 }
 
