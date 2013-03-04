@@ -2,18 +2,14 @@ module derelict.opengl3.gl;
 
 public
 {
-    import derelict.opengl3.types;
-    import derelict.opengl3.constants;
     import derelict.opengl3.deprecatedConstants;
-    import derelict.opengl3.functions;
     import derelict.opengl3.deprecatedFunctions;
-    import derelict.opengl3.arb;
+    import derelict.opengl3.gl3;
 }
 
 private
 {
     import derelict.util.loader;
-    import derelict.opengl3.gl3;
     import derelict.opengl3.internal;
 }
 
