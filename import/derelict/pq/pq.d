@@ -37,6 +37,7 @@ private
 {
     import derelict.util.loader;
     import derelict.util.system;
+    import derelict.util.exception;
 
     static if(Derelict_OS_Windows)
         enum libNames = "libpq.dll";
@@ -50,10 +51,28 @@ private
 
 class DerelictPQLoader : SharedLibLoader
 {
+    PQVersion _loadedVersion;
+
+    PQVersion loadedVersion() @property
+    {
+        return _loadedVersion;
+    }
+
     protected
     {
         override void loadSymbols()
         {
+            // PQlibVersion appears first at 9.1
+            try 
+            {
+                bindFunc(cast(void**)&PQlibVersion, "PQlibVersion");
+            } catch(SymbolLoadException e)
+            {
+                throw new DerelictException("DerelictPQ supports libpq since 9.1 version!");
+            }
+
+            _loadedVersion = cast(PQVersion)PQlibVersion();
+
             bindFunc(cast(void**)&PQconnectStart, "PQconnectStart");
             bindFunc(cast(void**)&PQconnectStartParams, "PQconnectStartParams");
             bindFunc(cast(void**)&PQconnectPoll, "PQconnectPoll");
@@ -107,7 +126,6 @@ class DerelictPQLoader : SharedLibLoader
             bindFunc(cast(void**)&PQsendQueryParams, "PQsendQueryParams");
             bindFunc(cast(void**)&PQsendPrepare, "PQsendPrepare");
             bindFunc(cast(void**)&PQsendQueryPrepared, "PQsendQueryPrepared");
-            bindFunc(cast(void**)&PQsetSingleRowMode, "PQsetSingleRowMode");
             bindFunc(cast(void**)&PQgetResult, "PQgetResult");
             bindFunc(cast(void**)&PQisBusy, "PQisBusy");
             bindFunc(cast(void**)&PQconsumeInput, "PQconsumeInput");
@@ -185,7 +203,6 @@ class DerelictPQLoader : SharedLibLoader
             bindFunc(cast(void**)&lo_import, "lo_import");
             bindFunc(cast(void**)&lo_import_with_oid, "lo_import_with_oid");
             bindFunc(cast(void**)&lo_export, "lo_export");
-            bindFunc(cast(void**)&PQlibVersion, "PQlibVersion");
             bindFunc(cast(void**)&PQmblen, "PQmblen");
             bindFunc(cast(void**)&PQdsplen, "PQdsplen");
             bindFunc(cast(void**)&PQenv2encoding, "PQenv2encoding");
@@ -195,6 +212,11 @@ class DerelictPQLoader : SharedLibLoader
             bindFunc(cast(void**)&pg_valid_server_encoding_id, "pg_valid_server_encoding_id");
             bindFunc(cast(void**)&PQregisterEventProc, "PQregisterEventProc");
             bindFunc(cast(void**)&PQsetInstanceData, "PQsetInstanceData");
+
+            if(_loadedVersion >= PQVersion.PQ_920)
+            {
+                bindFunc(cast(void**)&PQsetSingleRowMode, "PQsetSingleRowMode");
+            }
         }
     }
 

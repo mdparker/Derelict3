@@ -27,6 +27,23 @@ DEALINGS IN THE SOFTWARE.
 */
 module derelict.pq.types;
 
+enum PQVersion : int
+{
+	PQ_910 = 90100,
+	PQ_911 = 90101,
+	PQ_912 = 90102,
+	PQ_913 = 90103,
+	PQ_914 = 90104,
+	PQ_915 = 90105,
+	PQ_916 = 90106,
+	PQ_917 = 90107,
+	PQ_918 = 90108,
+	PQ_920 = 90200,
+	PQ_921 = 90201,
+	PQ_922 = 90202,
+	PQ_923 = 90203,
+}
+
 extern(C)
 {
 	alias uint Oid;
