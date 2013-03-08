@@ -246,12 +246,6 @@ enum
     SDL_MOUSEBUTTONDOWN,
     SDL_MOUSEBUTTONUP,
     SDL_MOUSEWHEEL,
-    SDL_INPUTMOTION = 0x500,
-    SDL_INPUTBUTTONDOWN,
-    SDL_INPUTBUTTONUP,
-    SDL_INPUTWHEEL,
-    SDL_INPUTPROXIMITYIN,
-    SDL_INPUTPROXIMITYOUT,
     SDL_JOYAXISMOTION = 0x600,
     SDL_JOYBALLMOTION,
     SDL_JOYHATMOTION,
@@ -264,11 +258,10 @@ enum
     SDL_CONTROLLERBUTTONUP,
     SDL_CONTROLLERDEVICEADDED,
     SDL_CONTROLLERDEVICEREMOVED,
+    SDL_CONTROLLERDEVICEREMAPPED,
     SDL_FINGERDOWN = 0x700,
     SDL_FINGERUP,
     SDL_FINGERMOTION,
-    SDL_TOUCHBUTTONDOWN,
-    SDL_TOUCHBUTTONUP,
     SDL_DOLLARGESTURE = 0x800,
     SDL_DOLLARRECORD,
     SDL_MULTIGESTURE,
@@ -276,6 +269,12 @@ enum
     SDL_DROPFILE = 0x1000,
     SDL_USEREVENT = 0x8000,
     SDL_LASTEVENT = 0xFFFF
+}
+
+struct SDL_GenericEvent
+{
+    Uint32 type;
+    Uint32 timestamp;
 }
 
 struct SDL_WindowEvent
@@ -287,8 +286,8 @@ struct SDL_WindowEvent
     Uint8 padding1;
     Uint8 padding2;
     Uint8 padding3;
-    int data1;
-    int data2;
+    Sint32 data1;
+    Sint32 data2;
 }
 
 struct SDL_KeyboardEvent
@@ -310,8 +309,8 @@ struct SDL_TextEditingEvent
     Uint32 timestamp;
     Uint32 windowID;
     char[SDL_TEXTEDITINGEVENT_TEXT_SIZE] text;
-    int start;
-    int length;
+    Sint32 start;
+    Sint32 length;
 }
 
 enum SDL_TEXTINPUTEVENT_TEXT_SIZE = 32;
@@ -328,14 +327,15 @@ struct SDL_MouseMotionEvent
     Uint32 type;
     Uint32 timestamp;
     Uint32 windowID;
+    Uint32 which;
     Uint8 state;
     Uint8 padding1;
     Uint8 padding2;
     Uint8 padding3;
-    int x;
-    int y;
-    int xrel;
-    int yrel;
+    Sint32 x;
+    Sint32 y;
+    Sint32 xrel;
+    Sint32 yrel;
 }
 
 struct SDL_MouseButtonEvent
@@ -343,12 +343,13 @@ struct SDL_MouseButtonEvent
     Uint32 type;
     Uint32 timestamp;
     Uint32 windowID;
+    Uint32 which;
     Uint8 button;
     Uint8 state;
     Uint8 padding1;
     Uint8 padding2;
-    int x;
-    int y;
+    Sint32 x;
+    Sint32 y;
 }
 
 struct SDL_MouseWheelEvent
@@ -356,120 +357,114 @@ struct SDL_MouseWheelEvent
     Uint32 type;
     Uint32 timestamp;
     Uint32 windowID;
-    int x;
-    int y;
+    Uint32 which;
+    Sint32 x;
+    Sint32 y;
 }
 
 struct SDL_JoyAxisEvent
 {
     Uint32 type;
     Uint32 timestamp;
-    Uint8 which;
+    SDL_JoystickID which;
     Uint8 axis;
     Uint8 padding1;
     Uint8 padding2;
-    int value;
+    Uint8 padding3;
+    Sint16 value;
+    Uint16 padding4;
 }
 
 struct SDL_JoyBallEvent
 {
     Uint32 type;
     Uint32 timestamp;
-    Uint8 which;
+    SDL_JoystickID which;
     Uint8 ball;
     Uint8 padding1;
     Uint8 padding2;
-    int xrel;
-    int yrel;
+    Uint8 padding3;
+    Sint16 xrel;
+    Sint16 yrel;
 }
 
 struct SDL_JoyHatEvent
 {
     Uint32 type;
     Uint32 timestamp;
-    Uint8 which;
+    SDL_JoystickID which;
     Uint8 hat;
     Uint8 value;
     Uint8 padding1;
+    Uint8 padding2;
 }
 
 struct SDL_JoyButtonEvent
 {
     Uint32 type;
     Uint32 timestamp;
-    Uint8 which;
+    SDL_JoystickID which;
     Uint8 button;
     Uint8 state;
     Uint8 padding1;
+    Uint8 padding2;
 }
 
 struct SDL_JoyDeviceEvent
 {
     Uint32 type;
     Uint32 timestamp;
-    Uint32 which;
+    Sint32 which;
 }
 
 struct SDL_ControllerAxisEvent
 {
     Uint32 type;
     Uint32 timestamp;
-    Uint8 which;
-    SDL_CONTROLLER_AXIS axis;
-    int value;
+    SDL_JoystickID which;
+    Uint8 axis;
+    Uint8 padding1;
+    Uint8 padding2;
+    Uint8 padding3;
+    Sint16 value;
+    Uint16 padding4;
 }
 
 struct SDL_ControllerButtonEvent
 {
     Uint32 type;
     Uint32 timestamp;
-    Uint8 which;
-    SDL_CONTROLLER_BUTTON button;
+    SDL_JoystickID which;
+    Uint8 button;
     Uint8 state;
+    Uint8 padding1;
+    Uint8 padding2;
 }
 
 struct SDL_ControllerDeviceEvent
 {
     Uint32 type;
     Uint32 timestamp;
-    Uint32 which;
+    Sint32 which;
 }
 
 struct SDL_TouchFingerEvent
 {
     Uint32 type;
     Uint32 timestamp;
-    Uint32 windowID;
     SDL_TouchID touchId;
     SDL_FingerID fingerId;
-    Uint8 state;
-    Uint8 padding1;
-    Uint8 padding2;
-    Uint8 padding3;
-    Uint16 x;
-    Uint16 y;
-    Sint16 dx;
-    Sint16 dy;
-    Uint16 pressure;
-}
-
-struct SDL_TouchButtonEvent
-{
-    Uint32 type;
-    Uint32 timestamp;
-    Uint32 windowID;
-    SDL_TouchID touchId;
-    Uint8 state;
-    Uint8 button;
-    Uint8 padding1;
-    Uint8 padding2;
+    float x;
+    float y;
+    float dx;
+    float dy;
+    float pressure;
 }
 
 struct SDL_MultiGestureEvent
 {
     Uint32 type;
     Uint32 timestamp;
-    Uint32 windowID;
     SDL_TouchID touchId;
     float dTheta;
     float dDist;
@@ -483,11 +478,12 @@ struct SDL_DollarGestureEvent
 {
     Uint32 type;
     Uint32 timestamp;
-    Uint32 windowID;
     SDL_TouchID touchId;
     SDL_GestureID gestureId;
     Uint32 numFingers;
     float error;
+    float x;
+    float y;
 }
 
 struct SDL_DropEvent
@@ -508,7 +504,7 @@ struct SDL_UserEvent
     Uint32 type;
     Uint32 timestamp;
     Uint32 windowID;
-    int code;
+    Sint32 code;
     void* data1;
     void* data2;
 }
@@ -524,6 +520,7 @@ struct SDL_SysWMEvent
 union SDL_Event
 {
     Uint32 type;
+    SDL_GenericEvent generic;
     SDL_WindowEvent window;
     SDL_KeyboardEvent key;
     SDL_TextEditingEvent edit;
@@ -532,6 +529,7 @@ union SDL_Event
     SDL_MouseButtonEvent button;
     SDL_MouseWheelEvent wheel;
     SDL_JoyAxisEvent jaxis;
+    SDL_JoyBallEvent jball;
     SDL_JoyHatEvent jhat;
     SDL_JoyButtonEvent jbutton;
     SDL_JoyDeviceEvent jdevice;
@@ -542,7 +540,6 @@ union SDL_Event
     SDL_UserEvent user;
     SDL_SysWMEvent syswm;
     SDL_TouchFingerEvent tfinger;
-    SDL_TouchButtonEvent tbutton;
     SDL_MultiGestureEvent mgesture;
     SDL_DollarGestureEvent dgesture;
     SDL_DropEvent drop;
@@ -570,7 +567,7 @@ enum
 
 // SDL_gamecontroller.h
 struct SDL_GameController;
-alias int SDL_CONTROLLER_BINDTYPE;
+alias int SDL_GameControllerBindType;
 enum
 {
     SDL_CONTROLLER_BINDTYPE_NONE = 0,
@@ -579,27 +576,25 @@ enum
     SDL_CONTROLLER_BINDTYPE_HAT,
 }
 
-struct _SDL_GameControllerHatBind
-{
-    int hat;
-    int hat_mask;
-}
-
 struct SDL_GameControllerButtonBind
 {
-    SDL_CONTROLLER_BINDTYPE m_eBindType;
-    union inner
+    SDL_GameControllerBindType bindType;
+    union value
     {
         int button;
         int axis;
-        _SDL_GameControllerHatBind hat;
+        struct hat
+        {
+            int hat;
+            int hat_mask;
+        }
     }
-    alias inner.button button;
-    alias inner.axis axis;
-    alias inner.hat hat;
+    alias value.button button;
+    alias value.axis axis;
+    alias value.hat hat;
 }
 
-alias int SDL_CONTROLLER_AXIS;
+alias int SDL_GameControllerAxis;
 enum
 {
     SDL_CONTROLLER_AXIS_INVALID = -1,
@@ -612,7 +607,7 @@ enum
     SDL_CONTROLLER_AXIS_MAX
 }
 
-alias int SDL_CONTROLLER_BUTTON;
+alias int SDL_GameControllerButton;
 enum
 {
     SDL_CONTROLLER_BUTTON_INVALID = -1,
@@ -779,6 +774,7 @@ enum : string
     SDL_HINT_VIDEO_MINIMIZE_ON_FOCUS_LOSS = "SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS",
     SDL_HINT_IDLE_TIMER_DISABLED = "SDL_IOS_IDLE_TIMER_DISABLED",
     SDL_HINT_ORIENTATIONS = "SDL_IOS_ORIENTATIONS",
+    SDL_HINT_XINPUT_ENABLED = "SDL_XINPUT_ENABLED",
     SDL_HINT_GAMECONTROLLERCONFIG = "SDL_GAMECONTROLLERCONFIG",
 }
 
@@ -798,7 +794,12 @@ struct JoystickGUID
     Uint8[16] data;
 }
 
-alias int SDL_JoystickID;
+struct SDL_JoystickGUID
+{
+    Uint8[16] data;
+}
+
+alias Sint32 SDL_JoystickID;
 
 enum : Uint8
 {
@@ -1136,6 +1137,9 @@ enum
     SDL_SCANCODE_KBDILLUMUP = 280,
     SDL_SCANCODE_EJECT = 281,
     SDL_SCANCODE_SLEEP = 282,
+
+    SDL_SCANCODE_APP1 = 283,
+    SDL_SCANCODE_APP2 = 284,
 
     SDL_NUM_SCANCODES = 512
 }
@@ -2000,36 +2004,12 @@ alias Sint64 SDL_FingerID;
 struct SDL_Finger
 {
     SDL_FingerID id;
-    Uint16 x;
-    Uint16 y;
-    Uint16 pressure;
-    Uint16 xdelta;
-    Uint16 ydelta;
-    Uint16 last_x, last_y, last_pressure;
-    SDL_bool down;
+    float x;
+    float y;
+    float pressure;
 }
 
-struct SDL_Touch
-{
-    extern(C) void function(SDL_Touch*) FreeTouch;
-    float pressure_max, pressure_min;
-    float x_max, x_min;
-    float y_max, y_min;
-    Uint16 xres, yres, pressureres;
-    float native_xres, native_yres, native_pressureres;
-    float tilt;
-    float rotation;
-    SDL_TouchID id;
-    SDL_Window* focus;
-    char* name;
-    Uint8 buttonstate;
-    SDL_bool relative_mode;
-    SDL_bool flush_motion;
-    int num_fingers;
-    int max_fingers;
-    SDL_Finger** fingers;
-    void* driverdata;
-}
+enum SDL_TOUCH_MOUSEID = cast(Uint32)-1;
 
 // SDL_video.h
 struct SDL_DisplayMode
