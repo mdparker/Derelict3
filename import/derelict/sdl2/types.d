@@ -1590,9 +1590,10 @@ enum
 alias SDL_FOURCC SDL_DEFINE_PIXELFOURCC;
 Uint32 SDL_DEFINE_PIXELFORMAT(int type, int order, int layout, int bits, int bytes)
 {
-    return (1<<31) | (type << 24) | (order << 20) | (layout << 16) | (bits << 8) | (bytes << 0);
+    return (1<<28) | (type << 24) | (order << 20) | (layout << 16) | (bits << 8) | (bytes << 0);
 }
 
+Uint32 SDL_PIXELFLAG(Uint32 X) { return (X >> 28) & 0x0F; }
 Uint32 SDL_PIXELTYPE(Uint32 X) { return (X >> 24) & 0x0F; }
 Uint32 SDL_PIXELORDER(Uint32 X) { return (X >> 20) & 0x0F; }
 Uint32 SDL_PIXELLAYOUT(Uint32 X) { return (X >> 16) & 0x0F; }
@@ -1738,6 +1739,8 @@ enum
     SDL_PIXELFORMAT_YVYU =
         SDL_DEFINE_PIXELFOURCC('Y', 'V', 'Y', 'U')
 }
+
+static assert(SDL_PIXELFORMAT_BGRX8888 == 0x16661804);
 
 struct SDL_Color
 {
