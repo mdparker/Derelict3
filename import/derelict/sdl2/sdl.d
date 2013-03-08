@@ -138,7 +138,7 @@ class DerelictSDL2Loader : SharedLibLoader
             bindFunc(cast(void**)&SDL_GameControllerGetStringForButton, "SDL_GameControllerGetStringForButton");
             bindFunc(cast(void**)&SDL_GameControllerGetBindForButton, "SDL_GameControllerGetBindForButton");
             bindFunc(cast(void**)&SDL_GameControllerGetButton, "SDL_GameControllerGetButton");
-            bindFunc(cast(void**)&SDL_GameControllerClose, "SDL_GameControllerClose");   
+            bindFunc(cast(void**)&SDL_GameControllerClose, "SDL_GameControllerClose");
             bindFunc(cast(void**)&SDL_RecordGesture, "SDL_RecordGesture");
             bindFunc(cast(void**)&SDL_SaveAllDollarTemplates, "SDL_SaveAllDollarTemplates");
             bindFunc(cast(void**)&SDL_SaveDollarTemplate, "SDL_SaveDollarTemplate");
