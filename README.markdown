@@ -125,9 +125,9 @@ This is a binding to [libtcod 1.5.1](http://doryen.eptalys.net/libtcod/download/
 auto color = TCOD_color_subract(*TCOD_white, *TCOD_red);
 ```
 
-#Downloads
+#DerelictSDL2
 
-On the [download page](https://github.com/aldacron/Derelict3/downloads), you'll find precompiled Windows DLLs for SDL2 and SDL2_image, since they aren't quite so easy to for some people to compile.
+This is currently based on the latest SDL2 source snapshot found at the bottom of [this page](http://www.libsdl.org/hg.php). I try to keep it up to date, but its not uncommon for me to lag behind the latest snapshot releases by several days. If you're using the latest SDL2 mercurial head, there will most likely be inonsistencies to one degree or another. The SDL2 ABI was recently frozen (in early March), so things should stablize soon enough.
 
 #Finally
 
