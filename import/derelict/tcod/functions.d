@@ -203,7 +203,7 @@ extern(C)
     alias nothrow void function(const(TCOD_heightmap_t)*, float, float, float*, float) da_TCOD_heightmap_get_normal;
     alias nothrow int function(const(TCOD_heightmap_t), float, float) da_TCOD_heightmap_count_cells;
     alias nothrow uint8 function(const(TCOD_heightmap_t)*, float) da_TCOD_heightmap_has_land_on_border;
-    alias nothrow void function(const(TCOD_heightmap_t)*, float*, float*, float*) da_TCOD_heightmap_get_minmax;
+    alias nothrow void function(const(TCOD_heightmap_t)*, float*, float*) da_TCOD_heightmap_get_minmax;
     alias nothrow void function(const(TCOD_heightmap_t)*, TCOD_heightmap_t*) da_TCOD_heightmap_copy;
     alias nothrow void function(TCOD_heightmap_t*, float) da_TCOD_heightmap_add;
     alias nothrow void function(TCOD_heightmap_t*, float) da_TCOD_heightmap_scale;
