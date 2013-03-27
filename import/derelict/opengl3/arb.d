@@ -590,6 +590,287 @@ enum : uint
 
     // ARB_texture_storage
     GL_TEXTURE_IMMUTABLE_FORMAT       = 0x912F,
+
+    // ARB_ES3_compatibility
+    GL_COMPRESSED_RGB8_ETC2           = 0x9274,
+    GL_COMPRESSED_SRGB8_ETC2          = 0x9275,
+    GL_COMPRESSED_RGB8_PUNCHTHROUGH_ALPHA1_ETC2 = 0x9276,
+    GL_COMPRESSED_SRGB8_PUNCHTHROUGH_ALPHA1_ETC2 = 0x9277,
+    GL_COMPRESSED_RGBA8_ETC2_EAC      = 0x9278,
+    GL_COMPRESSED_SRGB8_ALPHA8_ETC2_EAC = 0x9279,
+    GL_COMPRESSED_R11_EAC             = 0x9270,
+    GL_COMPRESSED_SIGNED_R11_EAC      = 0x9271,
+    GL_COMPRESSED_RG11_EAC            = 0x9272,
+    GL_COMPRESSED_SIGNED_RG11_EAC     = 0x9273,
+    GL_PRIMITIVE_RESTART_FIXED_INDEX  = 0x8D69,
+    GL_ANY_SAMPLES_PASSED_CONSERVATIVE = 0x8D6A,
+    GL_MAX_ELEMENT_INDEX              = 0x8D6B,
+
+    // ARB_compute_shader
+    GL_COMPUTE_SHADER                 = 0x91B9,
+    GL_MAX_COMPUTE_UNIFORM_BLOCKS     = 0x91BB,
+    GL_MAX_COMPUTE_TEXTURE_IMAGE_UNITS = 0x91BC,
+    GL_MAX_COMPUTE_IMAGE_UNIFORMS     = 0x91BD,
+    GL_MAX_COMPUTE_SHARED_MEMORY_SIZE = 0x8262,
+    GL_MAX_COMPUTE_UNIFORM_COMPONENTS = 0x8263,
+    GL_MAX_COMPUTE_ATOMIC_COUNTER_BUFFERS = 0x8264,
+    GL_MAX_COMPUTE_ATOMIC_COUNTERS    = 0x8265,
+    GL_MAX_COMBINED_COMPUTE_UNIFORM_COMPONENTS = 0x8266,
+    GL_MAX_COMPUTE_LOCAL_INVOCATIONS  = 0x90EB,
+    GL_MAX_COMPUTE_WORK_GROUP_COUNT   = 0x91BE,
+    GL_MAX_COMPUTE_WORK_GROUP_SIZE    = 0x91BF,
+    GL_COMPUTE_LOCAL_WORK_SIZE        = 0x8267,
+    GL_UNIFORM_BLOCK_REFERENCED_BY_COMPUTE_SHADER = 0x90EC,
+    GL_ATOMIC_COUNTER_BUFFER_REFERENCED_BY_COMPUTE_SHADER = 0x90ED,
+    GL_DISPATCH_INDIRECT_BUFFER       = 0x90EE,
+    GL_DISPATCH_INDIRECT_BUFFER_BINDING = 0x90EF,
+    GL_COMPUTE_SHADER_BIT             = 0x00000020,
+
+    // KHR_debug
+    GL_DEBUG_OUTPUT_SYNCHRONOUS       = 0x8242,
+    GL_DEBUG_NEXT_LOGGED_MESSAGE_LENGTH = 0x8243,
+    GL_DEBUG_CALLBACK_FUNCTION        = 0x8244,
+    GL_DEBUG_CALLBACK_USER_PARAM      = 0x8245,
+    GL_DEBUG_SOURCE_API               = 0x8246,
+    GL_DEBUG_SOURCE_WINDOW_SYSTEM     = 0x8247,
+    GL_DEBUG_SOURCE_SHADER_COMPILER   = 0x8248,
+    GL_DEBUG_SOURCE_THIRD_PARTY       = 0x8249,
+    GL_DEBUG_SOURCE_APPLICATION       = 0x824A,
+    GL_DEBUG_SOURCE_OTHER             = 0x824B,
+    GL_DEBUG_TYPE_ERROR               = 0x824C,
+    GL_DEBUG_TYPE_DEPRECATED_BEHAVIOR = 0x824D,
+    GL_DEBUG_TYPE_UNDEFINED_BEHAVIOR  = 0x824E,
+    GL_DEBUG_TYPE_PORTABILITY         = 0x824F,
+    GL_DEBUG_TYPE_PERFORMANCE         = 0x8250,
+    GL_DEBUG_TYPE_OTHER               = 0x8251,
+    GL_DEBUG_TYPE_MARKER              = 0x8268,
+    GL_DEBUG_TYPE_PUSH_GROUP          = 0x8269,
+    GL_DEBUG_TYPE_POP_GROUP           = 0x826A,
+    GL_DEBUG_SEVERITY_NOTIFICATION    = 0x826B,
+    GL_MAX_DEBUG_GROUP_STACK_DEPTH    = 0x826C,
+    GL_DEBUG_GROUP_STACK_DEPTH        = 0x826D,
+    GL_BUFFER                         = 0x82E0,
+    GL_SHADER                         = 0x82E1,
+    GL_PROGRAM                        = 0x82E2,
+    GL_QUERY                          = 0x82E3,
+    GL_PROGRAM_PIPELINE               = 0x82E4,
+    GL_SAMPLER                        = 0x82E6,
+    GL_DISPLAY_LIST                   = 0x82E7,
+    GL_MAX_LABEL_LENGTH               = 0x82E8,
+    GL_MAX_DEBUG_MESSAGE_LENGTH       = 0x9143,
+    GL_MAX_DEBUG_LOGGED_MESSAGES      = 0x9144,
+    GL_DEBUG_LOGGED_MESSAGES          = 0x9145,
+    GL_DEBUG_SEVERITY_HIGH            = 0x9146,
+    GL_DEBUG_SEVERITY_MEDIUM          = 0x9147,
+    GL_DEBUG_SEVERITY_LOW             = 0x9148,
+    GL_DEBUG_OUTPUT                   = 0x92E0,
+    GL_CONTEXT_FLAG_DEBUG_BIT         = 0x00000002,
+
+    // ARB_explicit_uniform_location
+    GL_MAX_UNIFORM_LOCATIONS = 0x826E,
+
+    // ARB_framebuffer_no_attachments
+    GL_FRAMEBUFFER_DEFAULT_WIDTH      = 0x9310,
+    GL_FRAMEBUFFER_DEFAULT_HEIGHT     = 0x9311,
+    GL_FRAMEBUFFER_DEFAULT_LAYERS     = 0x9312,
+    GL_FRAMEBUFFER_DEFAULT_SAMPLES    = 0x9313,
+    GL_FRAMEBUFFER_DEFAULT_FIXED_SAMPLE_LOCATIONS = 0x9314,
+    GL_MAX_FRAMEBUFFER_WIDTH          = 0x9315,
+    GL_MAX_FRAMEBUFFER_HEIGHT         = 0x9316,
+    GL_MAX_FRAMEBUFFER_LAYERS         = 0x9317,
+    GL_MAX_FRAMEBUFFER_SAMPLES        = 0x9318,
+
+    // ARB_internalformat_query2
+    GL_INTERNALFORMAT_SUPPORTED       = 0x826F,
+    GL_INTERNALFORMAT_PREFERRED       = 0x8270,
+    GL_INTERNALFORMAT_RED_SIZE        = 0x8271,
+    GL_INTERNALFORMAT_GREEN_SIZE      = 0x8272,
+    GL_INTERNALFORMAT_BLUE_SIZE       = 0x8273,
+    GL_INTERNALFORMAT_ALPHA_SIZE      = 0x8274,
+    GL_INTERNALFORMAT_DEPTH_SIZE      = 0x8275,
+    GL_INTERNALFORMAT_STENCIL_SIZE    = 0x8276,
+    GL_INTERNALFORMAT_SHARED_SIZE     = 0x8277,
+    GL_INTERNALFORMAT_RED_TYPE        = 0x8278,
+    GL_INTERNALFORMAT_GREEN_TYPE      = 0x8279,
+    GL_INTERNALFORMAT_BLUE_TYPE       = 0x827A,
+    GL_INTERNALFORMAT_ALPHA_TYPE      = 0x827B,
+    GL_INTERNALFORMAT_DEPTH_TYPE      = 0x827C,
+    GL_INTERNALFORMAT_STENCIL_TYPE    = 0x827D,
+    GL_MAX_WIDTH                      = 0x827E,
+    GL_MAX_HEIGHT                     = 0x827F,
+    GL_MAX_DEPTH                      = 0x8280,
+    GL_MAX_LAYERS                     = 0x8281,
+    GL_MAX_COMBINED_DIMENSIONS        = 0x8282,
+    GL_COLOR_COMPONENTS               = 0x8283,
+    GL_DEPTH_COMPONENTS               = 0x8284,
+    GL_STENCIL_COMPONENTS             = 0x8285,
+    GL_COLOR_RENDERABLE               = 0x8286,
+    GL_DEPTH_RENDERABLE               = 0x8287,
+    GL_STENCIL_RENDERABLE             = 0x8288,
+    GL_FRAMEBUFFER_RENDERABLE         = 0x8289,
+    GL_FRAMEBUFFER_RENDERABLE_LAYERED = 0x828A,
+    GL_FRAMEBUFFER_BLEND              = 0x828B,
+    GL_READ_PIXELS                    = 0x828C,
+    GL_READ_PIXELS_FORMAT             = 0x828D,
+    GL_READ_PIXELS_TYPE               = 0x828E,
+    GL_TEXTURE_IMAGE_FORMAT           = 0x828F,
+    GL_TEXTURE_IMAGE_TYPE             = 0x8290,
+    GL_GET_TEXTURE_IMAGE_FORMAT       = 0x8291,
+    GL_GET_TEXTURE_IMAGE_TYPE         = 0x8292,
+    GL_MIPMAP                         = 0x8293,
+    GL_MANUAL_GENERATE_MIPMAP         = 0x8294,
+    GL_AUTO_GENERATE_MIPMAP           = 0x8295,
+    GL_COLOR_ENCODING                 = 0x8296,
+    GL_SRGB_READ                      = 0x8297,
+    GL_SRGB_WRITE                     = 0x8298,
+    GL_SRGB_DECODE_ARB                = 0x8299,
+    GL_FILTER                         = 0x829A,
+    GL_VERTEX_TEXTURE                 = 0x829B,
+    GL_TESS_CONTROL_TEXTURE           = 0x829C,
+    GL_TESS_EVALUATION_TEXTURE        = 0x829D,
+    GL_GEOMETRY_TEXTURE               = 0x829E,
+    GL_FRAGMENT_TEXTURE               = 0x829F,
+    GL_COMPUTE_TEXTURE                = 0x82A0,
+    GL_TEXTURE_SHADOW                 = 0x82A1,
+    GL_TEXTURE_GATHER                 = 0x82A2,
+    GL_TEXTURE_GATHER_SHADOW          = 0x82A3,
+    GL_SHADER_IMAGE_LOAD              = 0x82A4,
+    GL_SHADER_IMAGE_STORE             = 0x82A5,
+    GL_SHADER_IMAGE_ATOMIC            = 0x82A6,
+    GL_IMAGE_TEXEL_SIZE               = 0x82A7,
+    GL_IMAGE_COMPATIBILITY_CLASS      = 0x82A8,
+    GL_IMAGE_PIXEL_FORMAT             = 0x82A9,
+    GL_IMAGE_PIXEL_TYPE               = 0x82AA,
+    GL_SIMULTANEOUS_TEXTURE_AND_DEPTH_TEST = 0x82AC,
+    GL_SIMULTANEOUS_TEXTURE_AND_STENCIL_TEST = 0x82AD,
+    GL_SIMULTANEOUS_TEXTURE_AND_DEPTH_WRITE = 0x82AE,
+    GL_SIMULTANEOUS_TEXTURE_AND_STENCIL_WRITE = 0x82AF,
+    GL_TEXTURE_COMPRESSED_BLOCK_WIDTH = 0x82B1,
+    GL_TEXTURE_COMPRESSED_BLOCK_HEIGHT = 0x82B2,
+    GL_TEXTURE_COMPRESSED_BLOCK_SIZE  = 0x82B3,
+    GL_CLEAR_BUFFER                   = 0x82B4,
+    GL_TEXTURE_VIEW                   = 0x82B5,
+    GL_VIEW_COMPATIBILITY_CLASS       = 0x82B6,
+    GL_FULL_SUPPORT                   = 0x82B7,
+    GL_CAVEAT_SUPPORT                 = 0x82B8,
+    GL_IMAGE_CLASS_4_X_32             = 0x82B9,
+    GL_IMAGE_CLASS_2_X_32             = 0x82BA,
+    GL_IMAGE_CLASS_1_X_32             = 0x82BB,
+    GL_IMAGE_CLASS_4_X_16             = 0x82BC,
+    GL_IMAGE_CLASS_2_X_16             = 0x82BD,
+    GL_IMAGE_CLASS_1_X_16             = 0x82BE,
+    GL_IMAGE_CLASS_4_X_8              = 0x82BF,
+    GL_IMAGE_CLASS_2_X_8              = 0x82C0,
+    GL_IMAGE_CLASS_1_X_8              = 0x82C1,
+    GL_IMAGE_CLASS_11_11_10           = 0x82C2,
+    GL_IMAGE_CLASS_10_10_10_2         = 0x82C3,
+    GL_VIEW_CLASS_128_BITS            = 0x82C4,
+    GL_VIEW_CLASS_96_BITS             = 0x82C5,
+    GL_VIEW_CLASS_64_BITS             = 0x82C6,
+    GL_VIEW_CLASS_48_BITS             = 0x82C7,
+    GL_VIEW_CLASS_32_BITS             = 0x82C8,
+    GL_VIEW_CLASS_24_BITS             = 0x82C9,
+    GL_VIEW_CLASS_16_BITS             = 0x82CA,
+    GL_VIEW_CLASS_8_BITS              = 0x82CB,
+    GL_VIEW_CLASS_S3TC_DXT1_RGB       = 0x82CC,
+    GL_VIEW_CLASS_S3TC_DXT1_RGBA      = 0x82CD,
+    GL_VIEW_CLASS_S3TC_DXT3_RGBA      = 0x82CE,
+    GL_VIEW_CLASS_S3TC_DXT5_RGBA      = 0x82CF,
+    GL_VIEW_CLASS_RGTC1_RED           = 0x82D0,
+    GL_VIEW_CLASS_RGTC2_RG            = 0x82D1,
+    GL_VIEW_CLASS_BPTC_UNORM          = 0x82D2,
+    GL_VIEW_CLASS_BPTC_FLOAT          = 0x82D3,
+
+    // ARB_program_interface_query
+    GL_UNIFORM                        = 0x92E1,
+    GL_UNIFORM_BLOCK                  = 0x92E2,
+    GL_PROGRAM_INPUT                  = 0x92E3,
+    GL_PROGRAM_OUTPUT                 = 0x92E4,
+    GL_BUFFER_VARIABLE                = 0x92E5,
+    GL_SHADER_STORAGE_BLOCK           = 0x92E6,
+    GL_VERTEX_SUBROUTINE              = 0x92E8,
+    GL_TESS_CONTROL_SUBROUTINE        = 0x92E9,
+    GL_TESS_EVALUATION_SUBROUTINE     = 0x92EA,
+    GL_GEOMETRY_SUBROUTINE            = 0x92EB,
+    GL_FRAGMENT_SUBROUTINE            = 0x92EC,
+    GL_COMPUTE_SUBROUTINE             = 0x92ED,
+    GL_VERTEX_SUBROUTINE_UNIFORM      = 0x92EE,
+    GL_TESS_CONTROL_SUBROUTINE_UNIFORM = 0x92EF,
+    GL_TESS_EVALUATION_SUBROUTINE_UNIFORM = 0x92F0,
+    GL_GEOMETRY_SUBROUTINE_UNIFORM    = 0x92F1,
+    GL_FRAGMENT_SUBROUTINE_UNIFORM    = 0x92F2,
+    GL_COMPUTE_SUBROUTINE_UNIFORM     = 0x92F3,
+    GL_TRANSFORM_FEEDBACK_VARYING     = 0x92F4,
+    GL_ACTIVE_RESOURCES               = 0x92F5,
+    GL_MAX_NAME_LENGTH                = 0x92F6,
+    GL_MAX_NUM_ACTIVE_VARIABLES       = 0x92F7,
+    GL_MAX_NUM_COMPATIBLE_SUBROUTINES = 0x92F8,
+    GL_NAME_LENGTH                    = 0x92F9,
+    GL_TYPE                           = 0x92FA,
+    GL_ARRAY_SIZE                     = 0x92FB,
+    GL_OFFSET                         = 0x92FC,
+    GL_BLOCK_INDEX                    = 0x92FD,
+    GL_ARRAY_STRIDE                   = 0x92FE,
+    GL_MATRIX_STRIDE                  = 0x92FF,
+    GL_IS_ROW_MAJOR                   = 0x9300,
+    GL_ATOMIC_COUNTER_BUFFER_INDEX    = 0x9301,
+    GL_BUFFER_BINDING                 = 0x9302,
+    GL_BUFFER_DATA_SIZE               = 0x9303,
+    GL_NUM_ACTIVE_VARIABLES           = 0x9304,
+    GL_ACTIVE_VARIABLES               = 0x9305,
+    GL_REFERENCED_BY_VERTEX_SHADER    = 0x9306,
+    GL_REFERENCED_BY_TESS_CONTROL_SHADER = 0x9307,
+    GL_REFERENCED_BY_TESS_EVALUATION_SHADER = 0x9308,
+    GL_REFERENCED_BY_GEOMETRY_SHADER  = 0x9309,
+    GL_REFERENCED_BY_FRAGMENT_SHADER  = 0x930A,
+    GL_REFERENCED_BY_COMPUTE_SHADER   = 0x930B,
+    GL_TOP_LEVEL_ARRAY_SIZE           = 0x930C,
+    GL_TOP_LEVEL_ARRAY_STRIDE         = 0x930D,
+    GL_LOCATION                       = 0x930E,
+    GL_LOCATION_INDEX                 = 0x930F,
+    GL_IS_PER_PATCH                   = 0x92E7,
+
+    // ARB_shader_storage_buffer_object
+    GL_SHADER_STORAGE_BUFFER          = 0x90D2,
+    GL_SHADER_STORAGE_BUFFER_BINDING  = 0x90D3,
+    GL_SHADER_STORAGE_BUFFER_START    = 0x90D4,
+    GL_SHADER_STORAGE_BUFFER_SIZE     = 0x90D5,
+    GL_MAX_VERTEX_SHADER_STORAGE_BLOCKS = 0x90D6,
+    GL_MAX_GEOMETRY_SHADER_STORAGE_BLOCKS = 0x90D7,
+    GL_MAX_TESS_CONTROL_SHADER_STORAGE_BLOCKS = 0x90D8,
+    GL_MAX_TESS_EVALUATION_SHADER_STORAGE_BLOCKS = 0x90D9,
+    GL_MAX_FRAGMENT_SHADER_STORAGE_BLOCKS = 0x90DA,
+    GL_MAX_COMPUTE_SHADER_STORAGE_BLOCKS = 0x90DB,
+    GL_MAX_COMBINED_SHADER_STORAGE_BLOCKS = 0x90DC,
+    GL_MAX_SHADER_STORAGE_BUFFER_BINDINGS = 0x90DD,
+    GL_MAX_SHADER_STORAGE_BLOCK_SIZE  = 0x90DE,
+    GL_SHADER_STORAGE_BUFFER_OFFSET_ALIGNMENT = 0x90DF,
+    GL_SHADER_STORAGE_BARRIER_BIT     = 0x2000,
+    GL_MAX_COMBINED_SHADER_OUTPUT_RESOURCES = GL_MAX_COMBINED_IMAGE_UNITS_AND_FRAGMENT_OUTPUTS,
+
+    // ARB_stencil_texturing
+    GL_DEPTH_STENCIL_TEXTURE_MODE = 0x90EA,
+
+    // ARB_texture_buffer_range
+    GL_TEXTURE_BUFFER_OFFSET = 0x919D,
+    GL_TEXTURE_BUFFER_SIZE = 0x919E,
+    GL_TEXTURE_BUFFER_OFFSET_ALIGNMENT = 0x919F,
+
+    // ARB_texture_view
+    GL_TEXTURE_VIEW_MIN_LEVEL         = 0x82DB,
+    GL_TEXTURE_VIEW_NUM_LEVELS        = 0x82DC,
+    GL_TEXTURE_VIEW_MIN_LAYER         = 0x82DD,
+    GL_TEXTURE_VIEW_NUM_LAYERS        = 0x82DE,
+    GL_TEXTURE_IMMUTABLE_LEVELS       = 0x82DF,
+
+    // ARB_vertex_attrib_binding
+    GL_VERTEX_ATTRIB_BINDING          = 0x82D4,
+    GL_VERTEX_ATTRIB_RELATIVE_OFFSET  = 0x82D5,
+    GL_VERTEX_BINDING_DIVISOR         = 0x82D6,
+    GL_VERTEX_BINDING_OFFSET          = 0x82D7,
+    GL_VERTEX_BINDING_STRIDE          = 0x82D8,
+    GL_MAX_VERTEX_ATTRIB_RELATIVE_OFFSET = 0x82D9,
+    GL_MAX_VERTEX_ATTRIB_BINDINGS     = 0x82DA,
 }
 
 private __gshared bool _ARB_depth_buffer_float;
@@ -2282,6 +2563,427 @@ private void load_ARB_texture_storage()
     }
 }
 
+// ARB_array_of_arrays
+private __gshared bool _ARB_array_of_arrays;
+bool ARB_array_of_arrays() @property { return _ARB_array_of_arrays; }
+
+// ARB_fragment_layer_viewport
+private __gshared bool _ARB_fragment_layer_viewport;
+bool ARB_fragment_layer_viewport() @property { return _ARB_fragment_layer_viewport; }
+
+// ARB_shader_image_size
+private __gshared bool _ARB_shader_image_size;
+bool ARB_shader_image_size() @property { return _ARB_shader_image_size; }
+
+// ARB_ES3_compatibility
+private __gshared bool _ARB_ES3_compatibility;
+bool ARB_ES3_compatibility() @property { return _ARB_ES3_compatibility; }
+
+// ARB_clear_buffer_object
+extern(System)
+{
+    alias nothrow void function(GLenum,GLenum,GLenum,GLenum,const(void)*) da_glClearBufferData;
+    alias nothrow void function(GLenum,GLenum,GLintptr,GLsizeiptr,GLenum,GLenum,const(void)*) da_glClearBufferSubData;
+    alias nothrow void function(GLuint,GLenum,GLenum,GLenum,const(void)*) da_glClearNamedBufferDataEXT;
+    alias nothrow void function(GLuint,GLenum,GLenum,GLenum,GLsizeiptr,GLsizeiptr,const(void)*) da_glClearNamedBufferSubDataEXT;
+}
+
+__gshared
+{
+    da_glClearBufferData glClearBufferData;
+    da_glClearBufferSubData glClearBufferSubData;
+    da_glClearNamedBufferDataEXT glClearNamedBufferDataEXT;
+    da_glClearNamedBufferSubDataEXT glClearNamedBufferSubDataEXT;
+}
+private __gshared bool _ARB_clear_buffer_object;
+bool ARB_clear_buffer_object() @property { return _ARB_clear_buffer_object; }
+private void load_ARB_clear_buffer_object()
+{
+    try
+    {
+        bindGLFunc(cast(void**)&glClearBufferData, "glClearBufferData");
+        bindGLFunc(cast(void**)&glClearBufferSubData, "glClearBufferSubData");
+        bindGLFunc(cast(void**)&glClearNamedBufferDataEXT, "glClearNamedBufferDataEXT");
+        bindGLFunc(cast(void**)&glClearNamedBufferSubDataEXT, "glClearNamedBufferSubDataEXT");
+        _ARB_clear_buffer_object = true;
+    }
+    catch(Exception e)
+    {
+        _ARB_clear_buffer_object = false;
+    }
+}
+
+// ARB_compute_shader
+extern(System)
+{
+    alias nothrow void function(GLuint,GLuint,GLuint) da_glDispatchCompute;
+    alias nothrow void function(GLintptr) da_glDispatchComputeIndirect;
+}
+
+__gshared
+{
+    da_glDispatchCompute glDispatchCompute;
+    da_glDispatchComputeIndirect glDispatchComputeIndirect;
+}
+private __gshared bool _ARB_compute_shader;
+bool ARB_compute_shader() @property { return _ARB_compute_shader; }
+private void load_ARB_compute_shader()
+{
+    try
+    {
+        bindGLFunc(cast(void**)&glDispatchCompute, "glDispatchCompute");
+        bindGLFunc(cast(void**)&glDispatchComputeIndirect, "glDispatchComputeIndirect");
+        _ARB_compute_shader = true;
+    }
+    catch(Exception e)
+    {
+        _ARB_compute_shader = false;
+    }
+}
+
+// ARB_copy_image
+private __gshared bool _ARB_copy_image;
+bool ARB_copy_image() @property { return _ARB_copy_image; }
+
+// KHR_debug
+extern(System) alias nothrow void function(GLenum,GLenum,GLuint,GLenum,GLsizei,const(GLchar)*,GLvoid*) da_glDebug;
+__gshared da_glDebug glDebug;
+private __gshared bool _KHR_debug;
+bool KHR_debug() @property { return _KHR_debug; }
+private void load_KHR_debug()
+{
+    try
+    {
+        bindGLFunc(cast(void**)&glDebug, "glDebug");
+        _KHR_debug = true;
+    }
+    catch(Exception e)
+    {
+        _KHR_debug = false;
+    }
+}
+
+// ARB_explicit_uniform_location
+private __gshared bool _ARB_explicit_uniform_location;
+bool ARB_explicit_uniform_location() @property { return _ARB_explicit_uniform_location; }
+
+// ARB_framebuffer_no_attachments
+extern(System)
+{
+    alias nothrow void function(GLenum,GLenum,GLint) da_glFramebufferParameteri;
+    alias nothrow void function(GLenum,GLenum,GLint*) da_glGetFramebufferParameteriv;
+    alias nothrow void function(GLuint,GLenum,GLint) da_glNamedFramebufferParameteriEXT;
+    alias nothrow void function(GLuint,GLenum,GLint*) da_glGetNamedFramebufferParameterivEXT;
+}
+
+__gshared
+{
+    da_glFramebufferParameteri glFramebufferParameteri;
+    da_glGetFramebufferParameteriv glGetFramebufferParameteriv;
+    da_glNamedFramebufferParameteriEXT glNamedFramebufferParameteriEXT;
+    da_glGetNamedFramebufferParameterivEXT glGetNamedFramebufferParameterivEXT;
+}
+private __gshared bool _ARB_framebuffer_no_attachments;
+bool ARB_framebuffer_no_attachments() @property { return _ARB_framebuffer_no_attachments; }
+private void load_ARB_framebuffer_no_attachments()
+{
+    try
+    {
+        bindGLFunc(cast(void**)&glFramebufferParameteri, "glFramebufferParameteri");
+        bindGLFunc(cast(void**)&glGetFramebufferParameteriv, "glGetFramebufferParameteriv");
+        bindGLFunc(cast(void**)&glNamedFramebufferParameteriEXT, "glNamedFramebufferParameteriEXT");
+        bindGLFunc(cast(void**)&glGetNamedFramebufferParameterivEXT, "glGetNamedFramebufferParameterivEXT");
+        _ARB_framebuffer_no_attachments = true;
+    }
+    catch(Exception e)
+    {
+        _ARB_framebuffer_no_attachments = false;
+    }
+}
+
+// ARB_internalformat_query2
+extern(System) alias nothrow void function(GLenum,GLenum,GLenum,GLsizei,GLint64*) da_glGetInternalformati64v;
+__gshared da_glGetInternalformati64v glGetInternalformati64v;
+private __gshared bool _ARB_internalformat_query2;
+bool ARB_internalformat_query2() @property { return _ARB_internalformat_query2; }
+private void load_ARB_internalformat_query2()
+{
+    try
+    {
+        bindGLFunc(cast(void**)&glGetInternalformati64v, "glGetInternalformati64v");
+        _ARB_internalformat_query2 = true;
+    }
+    catch(Exception e)
+    {
+        _ARB_internalformat_query2= false;
+    }
+}
+
+// ARB_invalidate_subdata
+extern(System)
+{
+    alias nothrow void function(GLuint,GLint,GLint,GLint,GLint,GLsizei,GLsizei,GLsizei) da_glInvalidateTexSubImage;
+    alias nothrow void function(GLuint,GLint) da_glInvalidateTexImage;
+    alias nothrow void function(GLuint,GLintptr,GLsizeiptr) da_glInvalidateBufferSubData;
+    alias nothrow void function(GLuint) da_glInvalidateBufferData;
+    alias nothrow void function(GLenum,GLsizei,const(GLenum)*) da_glInvalidateFramebuffer;
+    alias nothrow void function(GLenum,GLsizei,const(GLenum)*,GLint,GLint,GLsizei,GLsizei) da_glInvalidateSubFramebuffer;
+}
+
+__gshared
+{
+    da_glInvalidateTexSubImage glInvalidateTexSubImage;
+    da_glInvalidateTexImage glInvalidateTexImage;
+    da_glInvalidateBufferSubData glInvalidateBufferSubData;
+    da_glInvalidateBufferData glInvalidateBufferData;
+    da_glInvalidateFramebuffer glInvalidateFramebuffer;
+    da_glInvalidateSubFramebuffer glInvalidateSubFramebuffer;
+}
+private __gshared bool _ARB_invalidate_subdata;
+bool ARB_invalidate_subdata() @property { return _ARB_invalidate_subdata; }
+private void load_ARB_invalidate_subdata()
+{
+    try
+    {
+        bindGLFunc(cast(void**)&glInvalidateTexSubImage, "glInvalidateTexSubImage");
+        bindGLFunc(cast(void**)&glInvalidateTexImage, "glInvalidateTexImage");
+        bindGLFunc(cast(void**)&glInvalidateBufferSubData, "glInvalidateBufferSubData");
+        bindGLFunc(cast(void**)&glInvalidateBufferData, "glInvalidateBufferData");
+        bindGLFunc(cast(void**)&glInvalidateFramebuffer, "glInvalidateFramebuffer");
+        bindGLFunc(cast(void**)&glInvalidateSubFramebuffer, "glInvalidateSubFramebuffer");
+        _ARB_invalidate_subdata = true;
+    }
+    catch(Exception e)
+    {
+        _ARB_invalidate_subdata = false;
+    }
+}
+
+// ARB_multi_draw_indirect
+extern(System) alias nothrow void function(GLenum,const(void)*,GLsizei,GLsizei) da_glMultiDrawArraysIndirect;
+extern(System) alias nothrow void function(GLenum,GLenum,const(void)*,GLsizei,GLsizei) da_glMultiDrawElementsIndirect;
+__gshared da_glMultiDrawArraysIndirect glMultiDrawArraysIndirect;
+__gshared da_glMultiDrawElementsIndirect glMultiDrawElementsIndirect;
+private __gshared bool _ARB_multi_draw_indirect;
+bool ARB_multi_draw_indirect() @property { return _ARB_multi_draw_indirect; }
+private void load_ARB_multi_draw_indirect()
+{
+    try
+    {
+        bindGLFunc(cast(void**)&glMultiDrawArraysIndirect, "glMultiDrawArraysIndirect");
+        bindGLFunc(cast(void**)&glMultiDrawElementsIndirect, "glMultiDrawElementsIndirect");
+        _ARB_multi_draw_indirect = true;
+    }
+    catch(Exception e)
+    {
+        _ARB_multi_draw_indirect = false;
+    }
+}
+
+// ARB_program_interface_query
+extern(System)
+{
+    alias nothrow void function(GLuint,GLenum,GLenum,GLint*) da_glGetProgramInterfaceiv;
+    alias nothrow GLuint function(GLuint,GLenum,const(GLchar)*) da_glGetProgramResourceIndex;
+    alias nothrow void function(GLuint,GLenum,GLuint,GLsizei,GLsizei*,GLchar*) da_glGetProgramResourceName;
+    alias nothrow void function(GLuint,GLenum,GLuint,GLsizei,const(GLenum)*,GLsizei,GLsizei*,GLint*) da_glGetProgramResourceiv;
+    alias nothrow GLint function(GLuint,GLenum,const(GLchar)*) da_glGetProgramResourceLocation;
+    alias nothrow GLint function(GLuint,GLenum,const(GLchar)*) da_glGetProgramResourceLocationIndex;
+}
+
+__gshared
+{
+    da_glGetProgramInterfaceiv glGetProgramInterfaceiv;
+    da_glGetProgramResourceIndex glGetProgramResourceIndex;
+    da_glGetProgramResourceName glGetProgramResourceName;
+    da_glGetProgramResourceiv glGetProgramResourceiv;
+    da_glGetProgramResourceLocation glGetProgramResourceLocation;
+    da_glGetProgramResourceLocationIndex glGetProgramResourceLocationIndex;
+}
+
+private __gshared bool _ARB_program_interface_query;
+bool ARB_program_interface_query() @property { return _ARB_program_interface_query; }
+private void load_ARB_program_interface_query()
+{
+    try
+    {
+        bindGLFunc(cast(void**)&glGetProgramInterfaceiv, "glGetProgramInterfaceiv");
+        bindGLFunc(cast(void**)&glGetProgramResourceIndex, "glGetProgramResourceIndex");
+        bindGLFunc(cast(void**)&glGetProgramResourceName, "glGetProgramResourceName");
+        bindGLFunc(cast(void**)&glGetProgramResourceiv, "glGetProgramResourceiv");
+        bindGLFunc(cast(void**)&glGetProgramResourceLocation, "glGetProgramResourceLocation");
+        bindGLFunc(cast(void**)&glGetProgramResourceLocationIndex, "glGetProgramResourceLocationIndex");
+        _ARB_program_interface_query = true;
+    }
+    catch(Exception e)
+    {
+        _ARB_program_interface_query = false;
+    }
+}
+
+// ARB_robust_buffer_access_behavior
+private __gshared bool _ARB_robust_buffer_access_behavior;
+bool ARB_robust_buffer_access_behavior() @property { return _ARB_robust_buffer_access_behavior; }
+
+// ARB_shader_storage_buffer_object
+extern(System) alias nothrow void function(GLuint,GLuint,GLuint) da_glShaderStorageBlockBinding;
+__gshared da_glShaderStorageBlockBinding glShaderStorageBlockBinding;
+private __gshared bool _ARB_shader_storage_buffer_object;
+bool ARB_shader_storage_buffer_object() @property { return _ARB_shader_storage_buffer_object; }
+private void load_ARB_shader_storage_buffer_object()
+{
+    try
+    {
+        bindGLFunc(cast(void**)&glShaderStorageBlockBinding, "glShaderStorageBlockBinding");
+        _ARB_shader_storage_buffer_object = true;
+    }
+    catch(Exception e)
+    {
+        _ARB_shader_storage_buffer_object = false;
+    }
+}
+
+// ARB_stencil_texturing
+private __gshared bool _ARB_stencil_texturing;
+bool ARB_stencil_texturing() @property { return _ARB_stencil_texturing; }
+
+// ARB_texture_buffer_range
+extern(System) alias nothrow void function(GLenum,GLenum,GLuint,GLintptr,GLsizeiptr) da_glTexBufferRange;
+extern(System) alias nothrow void function(GLuint,GLenum,GLenum,GLuint,GLintptr,GLsizeiptr) da_glTextureBufferRangeEXT;
+__gshared da_glTexBufferRange glTexBufferRange;
+__gshared da_glTextureBufferRangeEXT glTextureBufferRangeEXT;
+private __gshared bool _ARB_texture_buffer_range;
+bool ARB_texture_buffer_range() @property { return _ARB_texture_buffer_range; }
+private void load_ARB_texture_buffer_range()
+{
+    try
+    {
+        bindGLFunc(cast(void**)&glTexBufferRange, "glTexBufferRange");
+        bindGLFunc(cast(void**)&glTextureBufferRangeEXT, "glTextureBufferRangeEXT");
+        _ARB_texture_buffer_range = true;
+    }
+    catch(Exception e)
+    {
+        _ARB_texture_buffer_range = false;
+    }
+}
+
+// ARB_texture_query_levels
+private __gshared bool _ARB_texture_query_levels;
+bool ARB_texture_query_levels() @property { return _ARB_texture_query_levels; }
+
+// ARB_texture_storage_multisample
+extern(System)
+{
+    alias nothrow void function(GLenum,GLsizei,GLenum,GLsizei,GLsizei,GLboolean) da_glTexStorage2DMultisample;
+    alias nothrow void function(GLenum,GLsizei,GLenum,GLsizei,GLsizei,GLsizei,GLboolean) da_glTexStorage3DMultisample;
+    alias nothrow void function(GLuint,GLenum,GLsizei,GLenum,GLsizei,GLsizei,GLboolean) da_glTextureStorage2DMultisampleEXT;
+    alias nothrow void function(GLuint,GLenum,GLsizei,GLenum,GLsizei,GLsizei,GLsizei,GLboolean) da_glTextureStorage3DMultisampleEXT;
+}
+
+__gshared
+{
+    da_glTexStorage2DMultisample glTexStorage2DMultisample;
+    da_glTexStorage3DMultisample glTexStorage3DMultisample;
+    da_glTextureStorage2DMultisampleEXT glTextureStorage2DMultisampleEXT;
+    da_glTextureStorage3DMultisampleEXT glTextureStorage3DMultisampleEXT;
+}
+
+private __gshared bool _ARB_texture_storage_multisample;
+bool ARB_texture_storage_multisample() @property { return _ARB_texture_storage_multisample; }
+private void load_ARB_texture_storage_multisample()
+{
+    try
+    {
+        bindGLFunc(cast(void**)&glTexStorage2DMultisample, "glTexStorage2DMultisample");
+        bindGLFunc(cast(void**)&glTexStorage3DMultisample, "glTexStorage3DMultisample");
+        bindGLFunc(cast(void**)&glTextureStorage2DMultisampleEXT, "glTextureStorage2DMultisampleEXT");
+        bindGLFunc(cast(void**)&glTextureStorage3DMultisampleEXT, "glTextureStorage3DMultisampleEXT");
+        _ARB_texture_storage_multisample = true;
+    }
+    catch(Exception e)
+    {
+        _ARB_texture_storage_multisample = false;
+    }
+}
+
+// ARB_texture_view
+extern(System) alias nothrow void function(GLuint,GLenum,GLuint,GLenum,GLuint,GLuint,GLuint,GLuint) da_glTextureView;
+__gshared da_glTextureView glTextureView;
+private __gshared bool _ARB_texture_view;
+bool ARB_texture_view() @property { return _ARB_texture_view; }
+private void load_ARB_texture_view()
+{
+    try
+    {
+        bindGLFunc(cast(void**)&glTextureView, "glTextureView");
+        _ARB_texture_view = true;
+    }
+    catch(Exception e)
+    {
+        _ARB_texture_view = false;
+    }
+}
+
+// ARB_vertex_attrib_binding
+extern(System)
+{
+    alias nothrow void function(GLuint,GLuint,GLintptr,GLsizei) da_glBindVertexBuffer;
+    alias nothrow void function(GLuint,GLint,GLenum,GLboolean,GLuint) da_glVertexAttribFormat;
+    alias nothrow void function(GLuint,GLint,GLenum,GLuint) da_glVertexAttribIFormat;
+    alias nothrow void function(GLuint,GLint,GLenum,GLuint) da_glVertexAttribLFormat;
+    alias nothrow void function(GLuint,GLuint) da_glVertexAttribBinding;
+    alias nothrow void function(GLuint,GLuint) da_glVertexBindingDivisor;
+    alias nothrow void function(GLuint,GLuint,GLuint,GLintptr,GLsizei) da_glVertexArrayBindVertexBufferEXT;
+    alias nothrow void function(GLuint,GLuint,GLint,GLenum,GLboolean,GLuint) da_glVertexArrayVertexAttribFormatEXT;
+    alias nothrow void function(GLuint,GLuint,GLint,GLenum,GLuint) da_glVertexArrayVertexAttribIFormatEXT;
+    alias nothrow void function(GLuint,GLuint,GLint,GLenum,GLuint) da_glVertexArrayVertexAttribLFormatEXT;
+    alias nothrow void function(GLuint,GLuint,GLuint) da_glVertexArrayVertexAttribBindingEXT;
+    alias nothrow void function(GLuint,GLuint,GLuint) da_glVertexArrayVertexBindingDivisorEXT;
+}
+
+__gshared
+{
+    da_glBindVertexBuffer glBindVertexBuffer;
+    da_glVertexAttribFormat glVertexAttribFormat;
+    da_glVertexAttribIFormat glVertexAttribIFormat;
+    da_glVertexAttribLFormat glVertexAttribLFormat;
+    da_glVertexAttribBinding glVertexAttribBinding;
+    da_glVertexBindingDivisor glVertexBindingDivisor;
+    da_glVertexArrayBindVertexBufferEXT glVertexArrayBindVertexBufferEXT;
+    da_glVertexArrayVertexAttribFormatEXT glVertexArrayVertexAttribFormatEXT;
+    da_glVertexArrayVertexAttribIFormatEXT glVertexArrayVertexAttribIFormatEXT;
+    da_glVertexArrayVertexAttribLFormatEXT glVertexArrayVertexAttribLFormatEXT;
+    da_glVertexArrayVertexAttribBindingEXT glVertexArrayVertexAttribBindingEXT;
+    da_glVertexArrayVertexBindingDivisorEXT glVertexArrayVertexBindingDivisorEXT;
+}
+
+private __gshared bool _ARB_vertex_attrib_binding;
+bool ARB_vertex_attrib_binding() @property { return _ARB_vertex_attrib_binding; }
+private void load_ARB_vertex_attrib_binding()
+{
+    try
+    {
+        bindGLFunc(cast(void**)&glBindVertexBuffer, "glBindVertexBuffer");
+        bindGLFunc(cast(void**)&glVertexAttribFormat, "glVertexAttribFormat");
+        bindGLFunc(cast(void**)&glVertexAttribIFormat, "glVertexAttribIFormat");
+        bindGLFunc(cast(void**)&glVertexAttribLFormat, "glVertexAttribLFormat");
+        bindGLFunc(cast(void**)&glVertexAttribBinding, "glVertexAttribBinding");
+        bindGLFunc(cast(void**)&glVertexBindingDivisor, "glVertexBindingDivisor");
+        bindGLFunc(cast(void**)&glVertexArrayBindVertexBufferEXT, "glVertexArrayBindVertexBufferEXT");
+        bindGLFunc(cast(void**)&glVertexArrayVertexAttribFormatEXT, "glVertexArrayVertexAttribFormatEXT");
+        bindGLFunc(cast(void**)&glVertexArrayVertexAttribIFormatEXT, "glVertexArrayVertexAttribIFormatEXT");
+        bindGLFunc(cast(void**)&glVertexArrayVertexAttribLFormatEXT, "glVertexArrayVertexAttribLFormatEXT");
+        bindGLFunc(cast(void**)&glVertexArrayVertexAttribBindingEXT, "glVertexArrayVertexAttribBindingEXT");
+        bindGLFunc(cast(void**)&glVertexArrayVertexBindingDivisorEXT, "glVertexArrayVertexBindingDivisorEXT");
+        _ARB_vertex_attrib_binding = true;
+    }
+    catch(Exception e)
+    {
+        _ARB_vertex_attrib_binding = false;
+    }
+}
+
 package void loadARB(GLVersion glversion)
 {
     if(glversion >= GLVersion.GL30)
@@ -2453,5 +3155,68 @@ package void loadARB(GLVersion glversion)
         _ARB_shading_language_packing = isExtSupported(glversion, "GL_ARB_shading_language_packing");
         _ARB_texture_storage = isExtSupported(glversion, "GL_ARB_texture_storage");
         if(_ARB_texture_storage) load_ARB_texture_storage();
+    }
+
+    if(glversion >= GLVersion.GL43)
+    {
+        _ARB_array_of_arrays = true;
+        _ARB_fragment_layer_viewport = true;
+        _ARB_shader_image_size = true;
+        _ARB_ES3_compatibility = true;
+        _ARB_clear_buffer_object = true;
+        _ARB_compute_shader = true;
+        _ARB_copy_image = true;
+        _KHR_debug = true;
+        _ARB_explicit_uniform_location = true;
+        _ARB_framebuffer_no_attachments = true;
+        _ARB_internalformat_query2 = true;
+        _ARB_invalidate_subdata = true;
+        _ARB_multi_draw_indirect = true;
+        _ARB_program_interface_query = true;
+        _ARB_robust_buffer_access_behavior = true;
+        _ARB_shader_storage_buffer_object  = true;
+        _ARB_stencil_texturing = true;
+        _ARB_texture_buffer_range = true;
+        _ARB_texture_query_levels = true;
+        _ARB_texture_storage_multisample = true;
+        _ARB_vertex_attrib_binding = true;
+    }
+    else
+    {
+        _ARB_array_of_arrays = isExtSupported(glversion, "GL_ARB_array_of_arrays");
+        _ARB_fragment_layer_viewport = isExtSupported(glversion, "GL_ARB_fragment_layer_viewport");
+        _ARB_shader_image_size = isExtSupported(glversion, "GL_ARB_shader_image_size");
+        _ARB_ES3_compatibility = isExtSupported(glversion, "GL_ARB_ES3_compatibility");
+        _ARB_clear_buffer_object = isExtSupported(glversion, "GL_ARB_clear_ buffer_object");
+        if(_ARB_clear_buffer_object ) load_ARB_clear_buffer_object();
+        _ARB_compute_shader = isExtSupported(glversion, "GL_ARB_compute_shader");
+        if(_ARB_compute_shader) load_ARB_compute_shader();
+        _ARB_copy_image = isExtSupported(glversion, "GL_ARB_copy_image");
+        _KHR_debug = isExtSupported(glversion, "GL_KHR_debug");
+        if(_KHR_debug) load_KHR_debug();
+        _ARB_explicit_uniform_location = isExtSupported(glversion, "GL_ARB_explicit_uniform_location");
+        _ARB_framebuffer_no_attachments = isExtSupported(glversion, "GL_ARB_framebuffer_no_attachments");
+        if(_ARB_framebuffer_no_attachments) load_ARB_framebuffer_no_attachments();
+        _ARB_internalformat_query2 = isExtSupported(glversion, "GL_ARB_internalformat_query2");
+        if(_ARB_internalformat_query2) load_ARB_internalformat_query2();
+        _ARB_invalidate_subdata = isExtSupported(glversion,"GL_ARB_invalidate_subdata");
+        if(_ARB_invalidate_subdata) load_ARB_invalidate_subdata();
+        _ARB_multi_draw_indirect = isExtSupported(glversion,"GL_ARB_multi_draw_indirect");
+        if(_ARB_multi_draw_indirect) load_ARB_multi_draw_indirect();
+        _ARB_program_interface_query = isExtSupported(glversion, "GL_ARB_program_interface_query");
+        if(_ARB_program_interface_query) load_ARB_program_interface_query();
+        _ARB_robust_buffer_access_behavior = isExtSupported(glversion, "GL_ARB_robust_buffer_access_behavior");
+        _ARB_shader_storage_buffer_object = isExtSupported(glversion, "GL_ARB_shader_storage_buffer_object");
+        if(_ARB_shader_storage_buffer_object) load_ARB_shader_storage_buffer_object();
+        _ARB_stencil_texturing = isExtSupported(glversion, "GL_ARB_stencil_texturing");
+        _ARB_texture_buffer_range = isExtSupported(glversion, "GL_ARB_texture_buffer_range");
+        if(_ARB_texture_buffer_range) load_ARB_texture_buffer_range();
+        _ARB_texture_query_levels = isExtSupported(glversion, "GL_ARB_texture_query_levels");
+        _ARB_texture_storage_multisample = isExtSupported(glversion, "GL_ARB_texture_storage_multisample");
+        if(_ARB_texture_storage_multisample) load_ARB_texture_storage_multisample();
+        _ARB_texture_view = isExtSupported(glversion,"GL_ARB_texture_view");
+        if(_ARB_texture_view) load_ARB_texture_view();
+        _ARB_vertex_attrib_binding = isExtSupported(glversion, "GL_ARB_vertex_attrib_binding");
+        if(_ARB_vertex_attrib_binding) load_ARB_vertex_attrib_binding();
     }
 }

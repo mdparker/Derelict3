@@ -668,6 +668,83 @@ class DerelictGL3Loader : SharedLibLoader
                 glVer = GLVersion.GL42;
             }
 
+            if(maxVer >= GLVersion.GL43)
+            {
+                // Reused from ARB_clear_buffer_object
+                bindGLFunc(cast(void**)&glClearBufferData, "glClearBufferData");
+                bindGLFunc(cast(void**)&glClearBufferSubData, "glClearBufferSubData");
+                bindGLFunc(cast(void**)&glClearNamedBufferDataEXT, "glClearNamedBufferDataEXT");
+                bindGLFunc(cast(void**)&glClearNamedBufferSubDataEXT, "glClearNamedBufferSubDataEXT");
+
+                // Reused from ARB_compute_shader
+                bindGLFunc(cast(void**)&glDispatchCompute, "glDispatchCompute");
+                bindGLFunc(cast(void**)&glDispatchComputeIndirect, "glDispatchComputeIndirect");
+
+                // Reused from KHR_debug
+                bindGLFunc(cast(void**)&glDebug, "glDebug");
+
+                // Reused from ARB_framebuffer_no_attachments
+                bindGLFunc(cast(void**)&glFramebufferParameteri, "glFramebufferParameteri");
+                bindGLFunc(cast(void**)&glGetFramebufferParameteriv, "glGetFramebufferParameteriv");
+                bindGLFunc(cast(void**)&glNamedFramebufferParameteriEXT, "glNamedFramebufferParameteriEXT");
+                bindGLFunc(cast(void**)&glGetNamedFramebufferParameterivEXT, "glGetNamedFramebufferParameterivEXT");
+
+                // Reused from ARB_internalformat_query2
+                bindGLFunc(cast(void**)&glGetInternalformati64v, "glGetInternalformati64v");
+
+                // Reused from ARB_invalidate_subdata
+                bindGLFunc(cast(void**)&glInvalidateTexSubImage, "glInvalidateTexSubImage");
+                bindGLFunc(cast(void**)&glInvalidateTexImage, "glInvalidateTexImage");
+                bindGLFunc(cast(void**)&glInvalidateBufferSubData, "glInvalidateBufferSubData");
+                bindGLFunc(cast(void**)&glInvalidateBufferData, "glInvalidateBufferData");
+                bindGLFunc(cast(void**)&glInvalidateFramebuffer, "glInvalidateFramebuffer");
+                bindGLFunc(cast(void**)&glInvalidateSubFramebuffer, "glInvalidateSubFramebuffer");
+
+                // Reused from ARB_multi_draw_indirect
+                bindGLFunc(cast(void**)&glMultiDrawArraysIndirect, "glMultiDrawArraysIndirect");
+                bindGLFunc(cast(void**)&glMultiDrawElementsIndirect, "glMultiDrawElementsIndirect");
+
+                // Reused from ARB_program_interface_query
+                bindGLFunc(cast(void**)&glGetProgramInterfaceiv, "glGetProgramInterfaceiv");
+                bindGLFunc(cast(void**)&glGetProgramResourceIndex, "glGetProgramResourceIndex");
+                bindGLFunc(cast(void**)&glGetProgramResourceName, "glGetProgramResourceName");
+                bindGLFunc(cast(void**)&glGetProgramResourceiv, "glGetProgramResourceiv");
+                bindGLFunc(cast(void**)&glGetProgramResourceLocation, "glGetProgramResourceLocation");
+                bindGLFunc(cast(void**)&glGetProgramResourceLocationIndex, "glGetProgramResourceLocationIndex");
+
+                // Reused from ARB_shader_storage_buffer_object
+                bindGLFunc(cast(void**)&glShaderStorageBlockBinding, "glShaderStorageBlockBinding");
+
+                // Reused from ARB_texture_buffer_range
+                bindGLFunc(cast(void**)&glTexBufferRange, "glTexBufferRange");
+                bindGLFunc(cast(void**)&glTextureBufferRangeEXT, "glTextureBufferRangeEXT");
+
+                // Reused from ARB_texture_storage_multisample
+                bindGLFunc(cast(void**)&glTexStorage2DMultisample, "glTexStorage2DMultisample");
+                bindGLFunc(cast(void**)&glTexStorage3DMultisample, "glTexStorage3DMultisample");
+                bindGLFunc(cast(void**)&glTextureStorage2DMultisampleEXT, "glTextureStorage2DMultisampleEXT");
+                bindGLFunc(cast(void**)&glTextureStorage3DMultisampleEXT, "glTextureStorage3DMultisampleEXT");
+
+                // Reused from ARB_texture_view
+                bindGLFunc(cast(void**)&glTextureView, "glTextureView");
+
+                // ARB_vertex_attrib_binding
+                bindGLFunc(cast(void**)&glBindVertexBuffer, "glBindVertexBuffer");
+                bindGLFunc(cast(void**)&glVertexAttribFormat, "glVertexAttribFormat");
+                bindGLFunc(cast(void**)&glVertexAttribIFormat, "glVertexAttribIFormat");
+                bindGLFunc(cast(void**)&glVertexAttribLFormat, "glVertexAttribLFormat");
+                bindGLFunc(cast(void**)&glVertexAttribBinding, "glVertexAttribBinding");
+                bindGLFunc(cast(void**)&glVertexBindingDivisor, "glVertexBindingDivisor");
+                bindGLFunc(cast(void**)&glVertexArrayBindVertexBufferEXT, "glVertexArrayBindVertexBufferEXT");
+                bindGLFunc(cast(void**)&glVertexArrayVertexAttribFormatEXT, "glVertexArrayVertexAttribFormatEXT");
+                bindGLFunc(cast(void**)&glVertexArrayVertexAttribIFormatEXT, "glVertexArrayVertexAttribIFormatEXT");
+                bindGLFunc(cast(void**)&glVertexArrayVertexAttribLFormatEXT, "glVertexArrayVertexAttribLFormatEXT");
+                bindGLFunc(cast(void**)&glVertexArrayVertexAttribBindingEXT, "glVertexArrayVertexAttribBindingEXT");
+                bindGLFunc(cast(void**)&glVertexArrayVertexBindingDivisorEXT, "glVertexArrayVertexBindingDivisorEXT");
+
+                glVer = GLVersion.GL43;
+            }
+
             loadARB(glVer);
             loadEXT(glVer);
 
@@ -762,7 +839,7 @@ class DerelictGL3Loader : SharedLibLoader
         {
             string verstr = to!string(glGetString(GL_VERSION));
             if(verstr.canFind("4.3"))
-                return GLVersion.HighestSupported;
+                return GLVersion.GL43;
             else if(verstr.canFind("4.2"))
                 return GLVersion.GL42;
             else if(verstr.canFind("4.1"))
