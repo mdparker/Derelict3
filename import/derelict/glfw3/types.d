@@ -230,7 +230,7 @@ enum
     GLFW_ACCUM_ALPHA_BITS     = 0x00021009,
     GLFW_AUX_BUFFERS          = 0x0002100A,
     GLFW_STEREO               = 0x0002100B,
-    GLFW_FSAA_SAMPLES         = 0x0002100C,
+    GLFW_SAMPLES              = 0x0002100C,
     GLFW_SRGB_CAPABLE         = 0x0002100D,
 
     GLFW_CLIENT_API           = 0x00022000,
@@ -266,7 +266,6 @@ enum
     GLFW_AXES                 = 0x00050002,
     GLFW_BUTTONS              = 0x00050003,
 
-    GLFW_NO_ERROR             = 0,
     GLFW_NOT_INITIALIZED      = 0x00070001,
     GLFW_NO_CURRENT_CONTEXT   = 0x00070002,
     GLFW_INVALID_ENUM         = 0x00070003,
@@ -296,7 +295,7 @@ extern(C)
     alias void function(int, const(char)*) GLFWerrorfun;
     alias void function(GLFWwindow*, int, int) GLFWwindowposfun;
     alias void function(GLFWwindow*, int, int) GLFWwindowsizefun;
-    alias int function(GLFWwindow*) GLFWwindowclosefun;
+    alias void function(GLFWwindow*) GLFWwindowclosefun;
     alias void function(GLFWwindow*) GLFWwindowrefreshfun;
     alias void function(GLFWwindow*, int) GLFWwindowfocusfun;
     alias void function(GLFWwindow*, int) GLFWwindowiconifyfun;
