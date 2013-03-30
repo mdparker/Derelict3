@@ -114,11 +114,11 @@ extern(C)
     alias nothrow Uint32 function(int) da_SDL_RegisterEvents;
 
     // SDL_gamecontroller.h
-    alias nothrow int function(int) da_SDL_IsGameController;
+    alias nothrow SDL_bool function(int) da_SDL_IsGameController;
     alias nothrow const(char)* function(int) da_SDL_GameControllerNameForIndex;
     alias nothrow SDL_GameController* function(int) da_SDL_GameControllerOpen;
     alias nothrow const(char)* function(SDL_GameController*) da_SDL_GameControllerName;
-    alias nothrow int function(SDL_GameController*) da_SDL_GameControllerGetAttached;
+    alias nothrow SDL_bool function(SDL_GameController*) da_SDL_GameControllerGetAttached;
     alias nothrow SDL_Joystick* function(SDL_GameController*) da_SDL_GameControllerGetJoystick;
     alias nothrow int function(int) da_SDL_GameControllerEventState;
     alias nothrow SDL_CONTROLLER_AXIS function(const(char)*) da_SDL_GameControllerGetAxisFromString;
