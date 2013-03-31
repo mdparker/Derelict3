@@ -29,8 +29,8 @@ module derelict.sdl2.ttf;
 
 private
 {
-	import core.stdc.config;
-	
+    import core.stdc.config;
+
     import derelict.util.loader;
     import derelict.util.system;
     import derelict.sdl2.types;
