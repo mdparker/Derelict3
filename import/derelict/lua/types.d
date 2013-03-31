@@ -57,10 +57,10 @@ const int LUA_ERRERR = 6;
 
 struct lua_State;
 
-alias int function(lua_State* L) lua_CFunction;
-alias const(char)* function(lua_State* L, void* ud, size_t* sz) lua_Reader;
-alias int function(lua_State* L, const(void)* p, size_t sz, void* ud) lua_Writer;
-alias void* function(void* ud, void* ptr, size_t osize, size_t nsize) lua_Alloc;
+alias extern(C) int function(lua_State* L) lua_CFunction;
+alias extern(C) const(char)* function(lua_State* L, void* ud, size_t* sz) lua_Reader;
+alias extern(C) int function(lua_State* L, const(void)* p, size_t sz, void* ud) lua_Writer;
+alias extern(C) void* function(void* ud, void* ptr, size_t osize, size_t nsize) lua_Alloc;
 
 const int LUA_TNONE = -1;
 const int LUA_TNIL = 0;
