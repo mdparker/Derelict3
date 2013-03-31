@@ -114,6 +114,9 @@ extern(C)
     alias nothrow Uint32 function(int) da_SDL_RegisterEvents;
 
     // SDL_gamecontroller.h
+    alias nothrow int function(const(char)*) da_SDL_GameControllerAddMapping;
+    alias nothrow char* function(SDL_JoystickGUID) da_SDL_GameControllerMappingForGUID;
+    alias nothrow char* function(SDL_GameController*) da_SDL_GameControllerMapping;
     alias nothrow SDL_bool function(int) da_SDL_IsGameController;
     alias nothrow const(char)* function(int) da_SDL_GameControllerNameForIndex;
     alias nothrow SDL_GameController* function(int) da_SDL_GameControllerOpen;
@@ -121,12 +124,15 @@ extern(C)
     alias nothrow SDL_bool function(SDL_GameController*) da_SDL_GameControllerGetAttached;
     alias nothrow SDL_Joystick* function(SDL_GameController*) da_SDL_GameControllerGetJoystick;
     alias nothrow int function(int) da_SDL_GameControllerEventState;
-    alias nothrow SDL_CONTROLLER_AXIS function(const(char)*) da_SDL_GameControllerGetAxisFromString;
-    alias nothrow SDL_GameControllerButtonBind function(SDL_GameController*, SDL_CONTROLLER_AXIS) da_SDL_GameControllerGetBindForAxis;
-    alias nothrow Sint16 function(SDL_GameController*, SDL_CONTROLLER_AXIS) da_SDL_GameControllerGetAxis;
-    alias nothrow SDL_CONTROLLER_BUTTON function(const(char*)) da_SDL_GameControllerGetButtonFromString;
-    alias nothrow SDL_GameControllerButtonBind function(SDL_GameController*, SDL_CONTROLLER_BUTTON) da_SDL_GameControllerGetBindForButton;
-    alias nothrow Uint8 function(SDL_GameController*, SDL_CONTROLLER_BUTTON) da_SDL_GameControllerGetButton;
+    alias nothrow void function() da_SDL_GameControllerUpdate;
+    alias nothrow SDL_GameControllerAxis function(const(char)*) da_SDL_GameControllerGetAxisFromString;
+    alias nothrow const(char)* function(SDL_GameControllerAxis) da_SDL_GameControllerGetStringForAxis;
+    alias nothrow SDL_GameControllerButtonBind function(SDL_GameController*, SDL_GameControllerAxis) da_SDL_GameControllerGetBindForAxis;
+    alias nothrow Sint16 function(SDL_GameController*, SDL_GameControllerAxis) da_SDL_GameControllerGetAxis;
+    alias nothrow SDL_GameControllerButton function(const(char*)) da_SDL_GameControllerGetButtonFromString;
+    alias nothrow const(char)* function(SDL_GameControllerButton) da_SDL_GameControllerGetStringForButton;
+    alias nothrow SDL_GameControllerButtonBind function(SDL_GameController*, SDL_GameControllerButton) da_SDL_GameControllerGetBindForButton;
+    alias nothrow Uint8 function(SDL_GameController*, SDL_GameControllerButton) da_SDL_GameControllerGetButton;
     alias nothrow void function(SDL_GameController*) da_SDL_GameControllerClose;
 
 
@@ -412,8 +418,10 @@ extern(C)
     alias nothrow SDL_bool function(SDL_TimerID) da_SDL_RemoveTimer;
 
     // SDL_touch.h
-    alias nothrow SDL_Touch* function(SDL_TouchID) da_SDL_GetTouch;
-    alias nothrow SDL_Finger* function(SDL_TouchID, SDL_FingerID) da_SDL_GetFinger;
+    alias nothrow int function() da_SDL_GetNumTouchDevices;
+    alias nothrow SDL_TouchID function(int) da_SDL_GetTouchDevice;
+    alias nothrow int function(SDL_TouchID) da_SDL_GetNumTouchFingers;
+    alias nothrow SDL_Finger* function(SDL_TouchID, int) da_SDL_GetTouchFinger;
 
     // SDL_version.h
     alias nothrow void function(SDL_version*) da_SDL_GetVersion;
@@ -594,6 +602,9 @@ __gshared
     da_SDL_EventState SDL_EventState;
     da_SDL_RegisterEvents SDL_RegisterEvents;
 
+    da_SDL_GameControllerAddMapping SDL_GameControllerAddMapping;
+    da_SDL_GameControllerMappingForGUID SDL_GameControllerMappingForGUID;
+    da_SDL_GameControllerMapping SDL_GameControllerMapping;
     da_SDL_IsGameController SDL_IsGameController;
     da_SDL_GameControllerNameForIndex SDL_GameControllerNameForIndex;
     da_SDL_GameControllerOpen SDL_GameControllerOpen;
@@ -601,10 +612,13 @@ __gshared
     da_SDL_GameControllerGetAttached SDL_GameControllerGetAttached;
     da_SDL_GameControllerGetJoystick SDL_GameControllerGetJoystick;
     da_SDL_GameControllerEventState SDL_GameControllerEventState;
+    da_SDL_GameControllerUpdate SDL_GameControllerUpdate;
     da_SDL_GameControllerGetAxisFromString SDL_GameControllerGetAxisFromString;
+    da_SDL_GameControllerGetStringForAxis SDL_GameControllerGetStringForAxis;
     da_SDL_GameControllerGetBindForAxis SDL_GameControllerGetBindForAxis;
     da_SDL_GameControllerGetAxis SDL_GameControllerGetAxis;
     da_SDL_GameControllerGetButtonFromString SDL_GameControllerGetButtonFromString;
+    da_SDL_GameControllerGetStringForButton SDL_GameControllerGetStringForButton;
     da_SDL_GameControllerGetBindForButton SDL_GameControllerGetBindForButton;
     da_SDL_GameControllerGetButton SDL_GameControllerGetButton;
     da_SDL_GameControllerClose SDL_GameControllerClose;
@@ -868,8 +882,10 @@ __gshared
     da_SDL_Delay SDL_Delay;
     da_SDL_AddTimer SDL_AddTimer;
 
-    da_SDL_GetTouch SDL_GetTouch;
-    da_SDL_GetFinger SDL_GetFinger;
+    da_SDL_GetNumTouchDevices SDL_GetNumTouchDevices;
+    da_SDL_GetTouchDevice SDL_GetTouchDevice;
+    da_SDL_GetNumTouchFingers SDL_GetNumTouchFingers;
+    da_SDL_GetTouchFinger SDL_GetTouchFinger;
 
     da_SDL_GetVersion SDL_GetVersion;
     da_SDL_GetRevision SDL_GetRevision;
