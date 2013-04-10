@@ -1005,7 +1005,7 @@ __gshared
 
 private __gshared bool _ARB_framebuffer_object;
 bool ARB_framebuffer_object() @property { return _ARB_framebuffer_object; }
-private void load_ARB_framebuffer_object()
+package void load_ARB_framebuffer_object(bool doThrow = false)
 {
     try
     {
@@ -1033,7 +1033,7 @@ private void load_ARB_framebuffer_object()
     }
     catch(Exception e)
     {
-        _ARB_framebuffer_object = false;
+        if(doThrow) throw e;
     }
 }
 
@@ -1045,7 +1045,7 @@ __gshared da_glFlushMappedBufferRange glFlushMappedBufferRange;
 
 private __gshared bool _ARB_map_buffer_range;
 bool ARB_map_buffer_range() @property { return _ARB_map_buffer_range; }
-private void load_ARB_map_buffer_range()
+package void load_ARB_map_buffer_range(bool doThrow = false)
 {
     try
     {
@@ -1055,7 +1055,7 @@ private void load_ARB_map_buffer_range()
     }
     catch(Exception e)
     {
-        _ARB_map_buffer_range = false;
+        if(doThrow) throw e;
     }
 }
 
@@ -1078,7 +1078,7 @@ __gshared
 
 private __gshared bool _ARB_vertex_array_object;
 bool ARB_vertex_array_object() @property { return _ARB_vertex_array_object; }
-private void load_ARB_vertex_array_object()
+package void load_ARB_vertex_array_object(bool doThrow = false)
 {
     try
     {
@@ -1090,7 +1090,7 @@ private void load_ARB_vertex_array_object()
     }
     catch(Exception e)
     {
-        _ARB_vertex_array_object = false;
+        if(doThrow) throw e;
     }
 }
 
@@ -1119,7 +1119,7 @@ __gshared
 
 private __gshared bool _ARB_uniform_buffer_object;
 bool ARB_uniform_buffer_object() @property { return _ARB_uniform_buffer_object; }
-private void load_ARB_uniform_buffer_object()
+package void load_ARB_uniform_buffer_object(bool doThrow = false)
 {
     try
     {
@@ -1134,7 +1134,7 @@ private void load_ARB_uniform_buffer_object()
     }
     catch(Exception e)
     {
-        _ARB_uniform_buffer_object = false;
+        if(doThrow) throw e;
     }
 }
 
@@ -1144,7 +1144,7 @@ __gshared da_glCopyBufferSubData glCopyBufferSubData;
 
 private __gshared bool _ARB_copy_buffer;
 bool ARB_copy_buffer() @property { return _ARB_copy_buffer; }
-private void load_ARB_copy_buffer()
+package void load_ARB_copy_buffer(bool doThrow = false)
 {
     try
     {
@@ -1153,7 +1153,7 @@ private void load_ARB_copy_buffer()
     }
     catch(Exception e)
     {
-        _ARB_copy_buffer = false;
+        throw e;
     }
 }
 
@@ -1176,7 +1176,7 @@ __gshared
 
 private __gshared bool _ARB_draw_elements_base_vertex;
 bool ARB_draw_elements_base_vertex() @property { return _ARB_draw_elements_base_vertex; }
-private void load_ARB_draw_elements_base_vertex()
+package void load_ARB_draw_elements_base_vertex(bool doThrow = false)
 {
     try
     {
@@ -1188,7 +1188,7 @@ private void load_ARB_draw_elements_base_vertex()
     }
     catch(Exception e)
     {
-        _ARB_draw_elements_base_vertex = false;
+        if(doThrow) throw e;
     }
 }
 
@@ -1198,7 +1198,7 @@ __gshared da_glProvokingVertex glProvokingVertex;
 
 private __gshared bool _ARB_provoking_vertex;
 bool ARB_provoking_vertex() @property { return _ARB_provoking_vertex; }
-private void load_ARB_provoking_vertex()
+package void load_ARB_provoking_vertex(bool doThrow = false)
 {
     try
     {
@@ -1207,7 +1207,7 @@ private void load_ARB_provoking_vertex()
     }
     catch(Exception e)
     {
-        _ARB_provoking_vertex = false;
+        if(doThrow) throw e;
     }
 }
 
@@ -1236,7 +1236,7 @@ __gshared
 
 private __gshared bool _ARB_sync;
 bool ARB_sync() @property { return _ARB_sync; }
-private void load_ARB_sync()
+package void load_ARB_sync(bool doThrow = false)
 {
     try
     {
@@ -1251,7 +1251,7 @@ private void load_ARB_sync()
     }
     catch(Exception e)
     {
-        _ARB_sync = false;
+        if(doThrow) throw e;
     }
 }
 
@@ -1274,7 +1274,7 @@ __gshared
 
 private __gshared bool _ARB_texture_multisample;
 bool ARB_texture_multisample() @property { return _ARB_texture_multisample; }
-private void load_ARB_texture_multisample()
+package void load_ARB_texture_multisample(bool doThrow = false)
 {
     try
     {
@@ -1286,7 +1286,7 @@ private void load_ARB_texture_multisample()
     }
     catch(Exception e)
     {
-        _ARB_texture_multisample = false;
+        if(doThrow) throw e;
     }
 }
 
@@ -1309,7 +1309,7 @@ __gshared
 
 private __gshared bool _ARB_draw_buffers_blend;
 bool ARB_draw_buffers_blend() @property { return _ARB_draw_buffers_blend; }
-private void load_ARB_draw_buffers_blend()
+package void load_ARB_draw_buffers_blend()
 {
     try
     {
@@ -1331,7 +1331,7 @@ __gshared da_glMinSampleShadingARB glMinSampleShadingARB;
 
 private __gshared bool _ARB_sample_shading;
 bool ARB_sample_shading() @property { return _ARB_sample_shading; }
-private void load_ARB_sample_shading()
+package void load_ARB_sample_shading()
 {
     try
     {
@@ -1367,7 +1367,7 @@ __gshared
 
 private __gshared bool _ARB_shading_language_include;
 bool ARB_shading_language_include() @property { return _ARB_shading_language_include; }
-private void load_ARB_shading_language_include()
+package void load_ARB_shading_language_include()
 {
     try
     {
@@ -1393,7 +1393,7 @@ __gshared da_glGetFragDataIndex glGetFragDataIndex;
 
 private __gshared bool _ARB_blend_func_extended;
 bool ARB_blend_func_extended() @property { return _ARB_blend_func_extended; }
-private void load_ARB_blend_func_extended()
+package void load_ARB_blend_func_extended(bool doThrow = false)
 {
     try
     {
@@ -1403,7 +1403,7 @@ private void load_ARB_blend_func_extended()
     }
     catch(Exception e)
     {
-        _ARB_blend_func_extended = false;
+        if(doThrow) throw e;
     }
 }
 
@@ -1446,7 +1446,7 @@ __gshared
 
 private __gshared bool _ARB_sampler_objects;
 bool ARB_sampler_objects() @property { return _ARB_sampler_objects; }
-private void load_ARB_sampler_objects()
+package void load_ARB_sampler_objects(bool doThrow = false)
 {
     try
     {
@@ -1468,7 +1468,7 @@ private void load_ARB_sampler_objects()
     }
     catch(Exception e)
     {
-        _ARB_sampler_objects = false;
+        if(doThrow) throw e;
     }
 }
 
@@ -1489,7 +1489,7 @@ __gshared
 
 private __gshared bool _ARB_timer_query;
 bool ARB_timer_query() @property { return _ARB_timer_query; }
-void load_ARB_timer_query()
+void load_ARB_timer_query(bool doThrow = false)
 {
     try
     {
@@ -1500,7 +1500,7 @@ void load_ARB_timer_query()
     }
     catch(Exception e)
     {
-        _ARB_timer_query = false;
+        if(doThrow) throw e;
     }
 }
 
@@ -1591,7 +1591,7 @@ __gshared
 
 private __gshared bool _ARB_vertex_type_2_10_10_10_rev;
 bool ARB_vertex_type_2_10_10_10_rev() @property { return _ARB_vertex_type_2_10_10_10_rev; }
-private void load_ARB_vertex_type_2_10_10_10_rev()
+package void load_ARB_vertex_type_2_10_10_10_rev(bool doThrow = false)
 {
     try
     {
@@ -1637,7 +1637,7 @@ private void load_ARB_vertex_type_2_10_10_10_rev()
     }
     catch(Exception e)
     {
-        _ARB_vertex_type_2_10_10_10_rev = false;
+        if(doThrow) throw e;
     }
 }
 
@@ -1653,7 +1653,7 @@ __gshared
 
 private __gshared bool _ARB_draw_indirect;
 bool ARB_draw_indirect() @property { return _ARB_draw_indirect; }
-private void load_ARB_draw_indirect()
+package void load_ARB_draw_indirect(bool doThrow = false)
 {
     try
     {
@@ -1663,7 +1663,7 @@ private void load_ARB_draw_indirect()
     }
     catch(Exception e)
     {
-        _ARB_draw_indirect = false;
+        if(doThrow) throw e;
     }
 }
 
@@ -1714,7 +1714,7 @@ __gshared
 
 private __gshared bool _ARB_gpu_shader_fp64;
 bool ARB_gpu_shader_fp64() @property { return _ARB_gpu_shader_fp64; }
-private void load_ARB_gpu_shader_fp64()
+package void load_ARB_gpu_shader_fp64(bool doThrow = false)
 {
     try
     {
@@ -1739,7 +1739,7 @@ private void load_ARB_gpu_shader_fp64()
     }
     catch(Exception e)
     {
-        _ARB_gpu_shader_fp64 = false;
+        if(doThrow) throw e;
     }
 }
 
@@ -1770,7 +1770,7 @@ __gshared
 
 private __gshared bool _ARB_shader_subroutine;
 bool ARB_shader_subroutine() @property { return _ARB_shader_subroutine; }
-private void load_ARB_shader_subroutine()
+package void load_ARB_shader_subroutine(bool doThrow = false)
 {
     try
     {
@@ -1786,7 +1786,7 @@ private void load_ARB_shader_subroutine()
     }
     catch(Exception e)
     {
-        _ARB_shader_subroutine = false;
+        if(doThrow) throw e;
     }
 }
 
@@ -1798,7 +1798,7 @@ __gshared da_glPatchParameterfv glPatchParameterfv;
 
 private __gshared bool _ARB_tessellation_shader;
 bool ARB_tessellation_shader() @property { return _ARB_tessellation_shader; }
-private void load_ARB_tessellation_shader()
+package void load_ARB_tessellation_shader(bool doThrow = false)
 {
     try
     {
@@ -1808,7 +1808,7 @@ private void load_ARB_tessellation_shader()
     }
     catch(Exception e)
     {
-        _ARB_tessellation_shader = false;
+        if(doThrow) throw e;
     }
 }
 
@@ -1837,7 +1837,7 @@ __gshared
 
 private __gshared bool _ARB_transform_feedback2;
 bool ARB_transform_feedback2() { return _ARB_transform_feedback2; }
-void load_ARB_transform_feedback2()
+void load_ARB_transform_feedback2(bool doThrow = false)
 {
     try
     {
@@ -1852,7 +1852,7 @@ void load_ARB_transform_feedback2()
     }
     catch(Exception e)
     {
-        _ARB_transform_feedback2 = false;
+        if(doThrow) throw e;
     }
 }
 
@@ -1875,7 +1875,7 @@ __gshared
 
 private __gshared bool _ARB_transform_feedback3;
 bool ARB_transform_feedback3() { return _ARB_transform_feedback3; }
-private void load_ARB_transform_feedback3()
+package void load_ARB_transform_feedback3(bool doThrow = false)
 {
     try
     {
@@ -1887,7 +1887,7 @@ private void load_ARB_transform_feedback3()
     }
     catch(Exception e)
     {
-        _ARB_transform_feedback3 = false;
+        if(doThrow) throw e;
     }
 }
 
@@ -1912,7 +1912,7 @@ __gshared
 
 private __gshared bool _ARB_ES2_compatibility;
 bool ARB_ES2_compatibility() @property { return _ARB_ES2_compatibility; }
-private void load_ARB_ES2_compatibility()
+package void load_ARB_ES2_compatibility(bool doThrow = false)
 {
     try
     {
@@ -1925,7 +1925,7 @@ private void load_ARB_ES2_compatibility()
     }
     catch(Exception e)
     {
-        _ARB_ES2_compatibility = false;
+        if(doThrow) throw e;
     }
 }
 
@@ -1946,7 +1946,7 @@ __gshared
 
 private __gshared bool _ARB_get_program_binary;
 bool ARB_get_program_binary() @property { return _ARB_get_program_binary; }
-private void load_ARB_get_program_binary()
+package void load_ARB_get_program_binary(bool doThrow = false)
 {
     try
     {
@@ -1957,7 +1957,7 @@ private void load_ARB_get_program_binary()
     }
     catch(Exception e)
     {
-        _ARB_get_program_binary = false;
+        if(doThrow) throw e;
     }
 }
 
@@ -2092,7 +2092,7 @@ __gshared
 
 private __gshared bool _ARB_separate_shader_objects;
 bool ARB_separate_shader_objects() @property { return _ARB_separate_shader_objects; }
-private void load_ARB_separate_shader_objects()
+package void load_ARB_separate_shader_objects(bool doThrow = false)
 {
     try
     {
@@ -2160,7 +2160,7 @@ private void load_ARB_separate_shader_objects()
     }
     catch(Exception e)
     {
-        _ARB_separate_shader_objects = false;
+        if(doThrow) throw e;
     }
 }
 
@@ -2195,7 +2195,7 @@ __gshared
 
 private __gshared bool _ARB_vertex_attrib_64bit;
 bool ARB_vertex_attrib_64bit() @property { return _ARB_vertex_attrib_64bit; }
-private void load_ARB_vertex_attrib_64bit()
+package void load_ARB_vertex_attrib_64bit(bool doThrow = false)
 {
     try
     {
@@ -2213,7 +2213,7 @@ private void load_ARB_vertex_attrib_64bit()
     }
     catch(Exception e)
     {
-        _ARB_vertex_attrib_64bit = false;
+        if(doThrow) throw e;
     }
 }
 
@@ -2248,7 +2248,7 @@ __gshared
 
 private __gshared bool _ARB_viewport_array;
 bool ARB_viewport_array() @property { return _ARB_viewport_array; }
-private void load_ARB_viewport_array()
+package void load_ARB_viewport_array(bool doThrow = false)
 {
     try
     {
@@ -2266,7 +2266,7 @@ private void load_ARB_viewport_array()
     }
     catch(Exception e)
     {
-        _ARB_viewport_array = false;
+        if(doThrow) throw e;
     }
 }
 
@@ -2276,7 +2276,7 @@ __gshared da_glCreateSyncFromCLeventARB glCreateSyncFromCLeventARB;
 
 private __gshared bool _ARB_cl_event;
 bool ARB_cl_event() @property { return _ARB_cl_event; }
-private void load_ARB_cl_event()
+package void load_ARB_cl_event()
 {
     try
     {
@@ -2308,7 +2308,7 @@ __gshared
 
 private __gshared bool _ARB_debug_output;
 bool ARB_debug_output() @property { return _ARB_debug_output; }
-private void load_ARB_debug_output()
+package void load_ARB_debug_output()
 {
     try
     {
@@ -2375,7 +2375,7 @@ __gshared
 
 private __gshared bool _ARB_robustness;
 bool ARB_robustness() @property { return _ARB_robustness; }
-private void load_ARB_robustness()
+package void load_ARB_robustness()
 {
     try
     {
@@ -2425,7 +2425,7 @@ __gshared
 
 private __gshared bool _ARB_base_instance;
 bool ARB_base_instance() @property { return _ARB_base_instance; }
-private void load_ARB_base_instance()
+package void load_ARB_base_instance(bool doThrow = false)
 {
     try
     {
@@ -2436,7 +2436,7 @@ private void load_ARB_base_instance()
     }
     catch(Exception e)
     {
-        _ARB_base_instance = false;
+        if(doThrow) throw e;
     }
 }
 
@@ -2448,7 +2448,7 @@ __gshared da_glDrawTransformFeedbackStreamInstanced glDrawTransformFeedbackStrea
 
 private __gshared bool _ARB_transform_feedback_instanced;
 bool ARB_transform_feedback_instanced() @property { return _ARB_transform_feedback_instanced; }
-private void load_ARB_transform_feedback_instanced()
+package void load_ARB_transform_feedback_instanced(bool doThrow = false)
 {
     try
     {
@@ -2458,7 +2458,7 @@ private void load_ARB_transform_feedback_instanced()
     }
     catch(Exception e)
     {
-        _ARB_transform_feedback_instanced = false;
+        if(doThrow) throw e;
     }
 }
 
@@ -2468,7 +2468,7 @@ __gshared da_glGetInternalformativ glGetInternalformativ;
 
 private __gshared bool _ARB_internalformat_query;
 bool ARB_internalformat_query() @property { return _ARB_internalformat_query; }
-private void load_ARB_internalformat_query()
+package void load_ARB_internalformat_query(bool doThrow = false)
 {
     try
     {
@@ -2477,7 +2477,7 @@ private void load_ARB_internalformat_query()
     }
     catch(Exception e)
     {
-        _ARB_internalformat_query = false;
+        if(doThrow) throw e;
     }
 }
 
@@ -2487,7 +2487,7 @@ __gshared da_glGetActiveAtomicCounterBufferiv glGetActiveAtomicCounterBufferiv;
 
 private __gshared bool _ARB_shader_atomic_counters;
 bool ARB_shader_atomic_counters() @property { return _ARB_shader_atomic_counters; }
-private void load_ARB_shader_atomic_counters()
+package void load_ARB_shader_atomic_counters(bool doThrow = false)
 {
     try
     {
@@ -2496,7 +2496,7 @@ private void load_ARB_shader_atomic_counters()
     }
     catch(Exception e)
     {
-        _ARB_shader_atomic_counters = false;
+        if(doThrow) throw e;
     }
 }
 
@@ -2508,7 +2508,7 @@ __gshared da_glMemoryBarrier glMemoryBarrier;
 
 private __gshared bool _ARB_shader_image_load_store;
 bool ARB_shader_image_load_store() @property { return _ARB_shader_image_load_store; }
-private void load_ARB_shader_image_load_store()
+package void load_ARB_shader_image_load_store(bool doThrow = false)
 {
     try
     {
@@ -2518,7 +2518,7 @@ private void load_ARB_shader_image_load_store()
     }
     catch(Exception e)
     {
-        _ARB_shader_image_load_store = false;
+        if(doThrow) throw e;
     }
 }
 
@@ -2545,7 +2545,7 @@ __gshared
 
 private __gshared bool _ARB_texture_storage;
 bool ARB_texture_storage() @property { return _ARB_texture_storage; }
-private void load_ARB_texture_storage()
+package void load_ARB_texture_storage(bool doThrow = false)
 {
     try
     {
@@ -2559,7 +2559,7 @@ private void load_ARB_texture_storage()
     }
     catch(Exception e)
     {
-        _ARB_texture_storage = false;
+        if(doThrow) throw e;
     }
 }
 
@@ -2597,7 +2597,7 @@ __gshared
 }
 private __gshared bool _ARB_clear_buffer_object;
 bool ARB_clear_buffer_object() @property { return _ARB_clear_buffer_object; }
-private void load_ARB_clear_buffer_object()
+package void load_ARB_clear_buffer_object(bool doThrow = false)
 {
     try
     {
@@ -2609,7 +2609,7 @@ private void load_ARB_clear_buffer_object()
     }
     catch(Exception e)
     {
-        _ARB_clear_buffer_object = false;
+        if(doThrow) throw e;
     }
 }
 
@@ -2627,7 +2627,7 @@ __gshared
 }
 private __gshared bool _ARB_compute_shader;
 bool ARB_compute_shader() @property { return _ARB_compute_shader; }
-private void load_ARB_compute_shader()
+package void load_ARB_compute_shader(bool doThrow = false)
 {
     try
     {
@@ -2637,7 +2637,7 @@ private void load_ARB_compute_shader()
     }
     catch(Exception e)
     {
-        _ARB_compute_shader = false;
+        if(doThrow) throw e;
     }
 }
 
@@ -2650,7 +2650,7 @@ extern(System) alias nothrow void function(GLenum,GLenum,GLuint,GLenum,GLsizei,c
 __gshared da_glDebug glDebug;
 private __gshared bool _KHR_debug;
 bool KHR_debug() @property { return _KHR_debug; }
-private void load_KHR_debug()
+package void load_KHR_debug(bool doThrow = false)
 {
     try
     {
@@ -2659,7 +2659,7 @@ private void load_KHR_debug()
     }
     catch(Exception e)
     {
-        _KHR_debug = false;
+        if(doThrow) throw e;
     }
 }
 
@@ -2685,7 +2685,7 @@ __gshared
 }
 private __gshared bool _ARB_framebuffer_no_attachments;
 bool ARB_framebuffer_no_attachments() @property { return _ARB_framebuffer_no_attachments; }
-private void load_ARB_framebuffer_no_attachments()
+package void load_ARB_framebuffer_no_attachments(bool doThrow = false)
 {
     try
     {
@@ -2697,7 +2697,7 @@ private void load_ARB_framebuffer_no_attachments()
     }
     catch(Exception e)
     {
-        _ARB_framebuffer_no_attachments = false;
+        if(doThrow) throw e;
     }
 }
 
@@ -2706,7 +2706,7 @@ extern(System) alias nothrow void function(GLenum,GLenum,GLenum,GLsizei,GLint64*
 __gshared da_glGetInternalformati64v glGetInternalformati64v;
 private __gshared bool _ARB_internalformat_query2;
 bool ARB_internalformat_query2() @property { return _ARB_internalformat_query2; }
-private void load_ARB_internalformat_query2()
+package void load_ARB_internalformat_query2(bool doThrow = false)
 {
     try
     {
@@ -2715,7 +2715,7 @@ private void load_ARB_internalformat_query2()
     }
     catch(Exception e)
     {
-        _ARB_internalformat_query2= false;
+        if(doThrow) throw e;
     }
 }
 
@@ -2741,7 +2741,7 @@ __gshared
 }
 private __gshared bool _ARB_invalidate_subdata;
 bool ARB_invalidate_subdata() @property { return _ARB_invalidate_subdata; }
-private void load_ARB_invalidate_subdata()
+package void load_ARB_invalidate_subdata(bool doThrow = false)
 {
     try
     {
@@ -2755,7 +2755,7 @@ private void load_ARB_invalidate_subdata()
     }
     catch(Exception e)
     {
-        _ARB_invalidate_subdata = false;
+        if(doThrow) throw e;
     }
 }
 
@@ -2766,7 +2766,7 @@ __gshared da_glMultiDrawArraysIndirect glMultiDrawArraysIndirect;
 __gshared da_glMultiDrawElementsIndirect glMultiDrawElementsIndirect;
 private __gshared bool _ARB_multi_draw_indirect;
 bool ARB_multi_draw_indirect() @property { return _ARB_multi_draw_indirect; }
-private void load_ARB_multi_draw_indirect()
+package void load_ARB_multi_draw_indirect(bool doThrow = false)
 {
     try
     {
@@ -2776,7 +2776,7 @@ private void load_ARB_multi_draw_indirect()
     }
     catch(Exception e)
     {
-        _ARB_multi_draw_indirect = false;
+        if(doThrow) throw e;
     }
 }
 
@@ -2803,7 +2803,7 @@ __gshared
 
 private __gshared bool _ARB_program_interface_query;
 bool ARB_program_interface_query() @property { return _ARB_program_interface_query; }
-private void load_ARB_program_interface_query()
+package void load_ARB_program_interface_query(bool doThrow = false)
 {
     try
     {
@@ -2817,7 +2817,7 @@ private void load_ARB_program_interface_query()
     }
     catch(Exception e)
     {
-        _ARB_program_interface_query = false;
+        if(doThrow) throw e;
     }
 }
 
@@ -2830,7 +2830,7 @@ extern(System) alias nothrow void function(GLuint,GLuint,GLuint) da_glShaderStor
 __gshared da_glShaderStorageBlockBinding glShaderStorageBlockBinding;
 private __gshared bool _ARB_shader_storage_buffer_object;
 bool ARB_shader_storage_buffer_object() @property { return _ARB_shader_storage_buffer_object; }
-private void load_ARB_shader_storage_buffer_object()
+package void load_ARB_shader_storage_buffer_object(bool doThrow = false)
 {
     try
     {
@@ -2839,7 +2839,7 @@ private void load_ARB_shader_storage_buffer_object()
     }
     catch(Exception e)
     {
-        _ARB_shader_storage_buffer_object = false;
+        if(doThrow) throw e;
     }
 }
 
@@ -2854,7 +2854,7 @@ __gshared da_glTexBufferRange glTexBufferRange;
 __gshared da_glTextureBufferRangeEXT glTextureBufferRangeEXT;
 private __gshared bool _ARB_texture_buffer_range;
 bool ARB_texture_buffer_range() @property { return _ARB_texture_buffer_range; }
-private void load_ARB_texture_buffer_range()
+package void load_ARB_texture_buffer_range(bool doThrow = false)
 {
     try
     {
@@ -2864,7 +2864,7 @@ private void load_ARB_texture_buffer_range()
     }
     catch(Exception e)
     {
-        _ARB_texture_buffer_range = false;
+        if(doThrow) throw e;
     }
 }
 
@@ -2891,7 +2891,7 @@ __gshared
 
 private __gshared bool _ARB_texture_storage_multisample;
 bool ARB_texture_storage_multisample() @property { return _ARB_texture_storage_multisample; }
-private void load_ARB_texture_storage_multisample()
+package void load_ARB_texture_storage_multisample(bool doThrow = false)
 {
     try
     {
@@ -2903,7 +2903,7 @@ private void load_ARB_texture_storage_multisample()
     }
     catch(Exception e)
     {
-        _ARB_texture_storage_multisample = false;
+        if(doThrow) throw e;
     }
 }
 
@@ -2912,7 +2912,7 @@ extern(System) alias nothrow void function(GLuint,GLenum,GLuint,GLenum,GLuint,GL
 __gshared da_glTextureView glTextureView;
 private __gshared bool _ARB_texture_view;
 bool ARB_texture_view() @property { return _ARB_texture_view; }
-private void load_ARB_texture_view()
+package void load_ARB_texture_view(bool doThrow = false)
 {
     try
     {
@@ -2921,7 +2921,7 @@ private void load_ARB_texture_view()
     }
     catch(Exception e)
     {
-        _ARB_texture_view = false;
+        if(doThrow) throw e;
     }
 }
 
@@ -2960,7 +2960,7 @@ __gshared
 
 private __gshared bool _ARB_vertex_attrib_binding;
 bool ARB_vertex_attrib_binding() @property { return _ARB_vertex_attrib_binding; }
-private void load_ARB_vertex_attrib_binding()
+package void load_ARB_vertex_attrib_binding(bool doThrow = false)
 {
     try
     {
@@ -2980,243 +2980,109 @@ private void load_ARB_vertex_attrib_binding()
     }
     catch(Exception e)
     {
-        _ARB_vertex_attrib_binding = false;
+        if(doThrow) throw e;
     }
 }
 
 package void loadARB(GLVersion glversion)
 {
-    if(glversion >= GLVersion.GL30)
+    if(glversion  < GLVersion.GL30)
     {
-        _ARB_framebuffer_object = true;
-        _ARB_map_buffer_range = true;
-        _ARB_vertex_array_object = true;
-    }
-    else
-    {
-        _ARB_framebuffer_object = isExtSupported(glversion, "GL_ARB_framebuffer_object");
-        if(_ARB_framebuffer_object) load_ARB_framebuffer_object();
-        _ARB_map_buffer_range = isExtSupported(glversion, "GL_ARB_map_buffer_range");
-        if(_ARB_map_buffer_range) load_ARB_map_buffer_range();
-        _ARB_vertex_array_object = isExtSupported(glversion, "GL_ARB_vertex_array_object");
-        if(_ARB_vertex_array_object) load_ARB_vertex_array_object();
+        if(isExtSupported(glversion, "GL_ARB_framebuffer_object")) load_ARB_framebuffer_object();
+        if(isExtSupported(glversion, "GL_ARB_map_buffer_range")) load_ARB_map_buffer_range();
+        if(isExtSupported(glversion, "GL_ARB_vertex_array_object")) load_ARB_vertex_array_object();
     }
 
-    if(glversion >= GLVersion.GL31)
+    if(glversion < GLVersion.GL31)
     {
-        _ARB_copy_buffer = true;
-        _ARB_uniform_buffer_object = true;
-    }
-    else
-    {
-        _ARB_copy_buffer = isExtSupported(glversion, "GL_ARB_copy_buffer");
-        if(_ARB_copy_buffer) load_ARB_copy_buffer();
-        _ARB_uniform_buffer_object = isExtSupported(glversion, "GL_ARB_uniform_buffer_object");
-        if(_ARB_uniform_buffer_object) load_ARB_uniform_buffer_object();
+        if(isExtSupported(glversion, "GL_ARB_copy_buffer")) load_ARB_copy_buffer();
+        if(isExtSupported(glversion, "GL_ARB_uniform_buffer_object")) load_ARB_uniform_buffer_object();
     }
 
-    if(glversion >= GLVersion.GL32)
+    if(glversion < GLVersion.GL32)
     {
-        _ARB_draw_elements_base_vertex = true;
-        _ARB_provoking_vertex = true;
-        _ARB_sync = true;
-        _ARB_texture_multisample = true;
-    }
-    else
-    {
-        _ARB_draw_elements_base_vertex = isExtSupported(glversion, "GL_ARB_draw_elements_base_vertex");
-        if(_ARB_draw_elements_base_vertex) load_ARB_draw_elements_base_vertex();
-        _ARB_provoking_vertex = isExtSupported(glversion, "GL_ARB_provoking_vertex");
-        if(_ARB_provoking_vertex) load_ARB_provoking_vertex();
-        _ARB_sync = isExtSupported(glversion, "GL_ARB_sync");
-        if(_ARB_sync) load_ARB_sync();
-        _ARB_texture_multisample = isExtSupported(glversion, "GL_ARB_texture_multisample");
-        if(_ARB_texture_multisample) load_ARB_texture_multisample();
+        if(isExtSupported(glversion, "GL_ARB_draw_elements_base_vertex")) load_ARB_draw_elements_base_vertex();
+        if(isExtSupported(glversion, "GL_ARB_provoking_vertex")) load_ARB_provoking_vertex();
+        if(isExtSupported(glversion, "GL_ARB_sync")) load_ARB_sync();
+        if(isExtSupported(glversion, "GL_ARB_texture_multisample")) load_ARB_texture_multisample();
     }
 
-    if(glversion >= GLVersion.GL33)
+    if(glversion < GLVersion.GL33)
     {
-        _ARB_blend_func_extended = true;
-        _ARB_sampler_objects = true;
-        _ARB_explicit_attrib_location = true;
-        _ARB_occlusion_query2 = true;
-        _ARB_shader_bit_encoding = true;
-        _ARB_texture_rgb10_a2ui = true;
-        _ARB_texture_swizzle = true;
-        _ARB_timer_query = true;
-        _ARB_vertex_type_2_10_10_10_rev = true;
-    }
-    else
-    {
-        _ARB_blend_func_extended = isExtSupported(glversion, "GL_ARB_blend_func_extended");
-        if(_ARB_blend_func_extended) load_ARB_blend_func_extended();
-        _ARB_sampler_objects = isExtSupported(glversion, "GL_ARB_sampler_objects");
-        if(_ARB_sampler_objects) load_ARB_sampler_objects();
+        if(isExtSupported(glversion, "GL_ARB_blend_func_extended")) load_ARB_blend_func_extended();
+        if(isExtSupported(glversion, "GL_ARB_sampler_objects")) load_ARB_sampler_objects();
         _ARB_explicit_attrib_location = isExtSupported(glversion, "GL_ARB_explicit_attrib_location");
         _ARB_occlusion_query2 = isExtSupported(glversion, "GL_ARB_occlusion_query2");
         _ARB_shader_bit_encoding = isExtSupported(glversion, "GL_ARB_shader_bit_encoding");
         _ARB_texture_rgb10_a2ui = isExtSupported(glversion, "GL_ARB_texture_rgb10_a2ui");
         _ARB_texture_swizzle = isExtSupported(glversion, "GL_ARB_texture_swizzle");
-        _ARB_timer_query = isExtSupported(glversion, "GL_ARB_timer_query");
-        if(_ARB_timer_query) load_ARB_timer_query();
-        _ARB_vertex_type_2_10_10_10_rev = isExtSupported(glversion, "GL_ARB_vertex_type_2_10_10_10_rev");
-        if(_ARB_vertex_type_2_10_10_10_rev) load_ARB_vertex_type_2_10_10_10_rev();
+        if(isExtSupported(glversion, "GL_ARB_timer_query")) load_ARB_timer_query();
+        if(isExtSupported(glversion, "GL_ARB_vertex_type_2_10_10_10_rev")) load_ARB_vertex_type_2_10_10_10_rev();
     }
 
-    if(glversion >= GLVersion.GL40)
-    {
-        _ARB_texture_query_lod = true;
-        _ARB_draw_indirect = true;
-        _ARB_gpu_shader5 = true;
-        _ARB_gpu_shader_fp64 = true;
-        _ARB_shader_subroutine = true;
-        _ARB_tessellation_shader = true;
-        _ARB_texture_buffer_object_rgb32 = true;
-        _ARB_texture_cube_map_array = true;
-        _ARB_texture_gather = true;
-        _ARB_transform_feedback2 = true;
-        _ARB_transform_feedback3 = true;
-    }
-    else
+    if(glversion < GLVersion.GL40)
     {
         _ARB_texture_query_lod = isExtSupported(glversion, "GL_ARB_texture_query_lod");
-        _ARB_draw_indirect = isExtSupported(glversion, "GL_ARB_draw_indirect");
-        if(_ARB_draw_indirect) load_ARB_draw_indirect();
+        if(isExtSupported(glversion, "GL_ARB_draw_indirect")) load_ARB_draw_indirect();
         _ARB_gpu_shader5 = isExtSupported(glversion, "GL_ARB_gpu_shader5");
-        _ARB_gpu_shader_fp64 = isExtSupported(glversion, "GL_ARB_gpu_shader_fp64");
-        if(_ARB_gpu_shader_fp64) load_ARB_gpu_shader_fp64();
-        _ARB_shader_subroutine = isExtSupported(glversion, "GL_ARB_shader_subroutine");
-        if(_ARB_shader_subroutine) load_ARB_shader_subroutine();
-        _ARB_tessellation_shader = isExtSupported(glversion, "GL_ARB_tessellation_shader");
-        if(_ARB_tessellation_shader) load_ARB_tessellation_shader();
+        if(isExtSupported(glversion, "GL_ARB_gpu_shader_fp64")) load_ARB_gpu_shader_fp64();
+        if(isExtSupported(glversion, "GL_ARB_shader_subroutine")) load_ARB_shader_subroutine();
+        if(isExtSupported(glversion, "GL_ARB_tessellation_shader")) load_ARB_tessellation_shader();
         _ARB_texture_buffer_object_rgb32 = isExtSupported(glversion, "GL_ARB_texture_buffer_object_rgb32");
         _ARB_texture_cube_map_array = isExtSupported(glversion, "GL_ARB_texture_cube_map_array");
         _ARB_texture_gather = isExtSupported(glversion, "GL_ARB_texture_gather");
-        _ARB_transform_feedback2 = isExtSupported(glversion, "GL_ARB_transform_feedback2");
-        if(_ARB_transform_feedback2) load_ARB_transform_feedback2();
-        _ARB_transform_feedback3 = isExtSupported(glversion, "GL_ARB_transform_feedback3");
-        if(_ARB_transform_feedback3) load_ARB_transform_feedback3();
+        if(isExtSupported(glversion, "GL_ARB_transform_feedback2")) load_ARB_transform_feedback2();
+        if(isExtSupported(glversion, "GL_ARB_transform_feedback3")) load_ARB_transform_feedback3();
     }
 
-    if(glversion >= GLVersion.GL41)
+    if(glversion < GLVersion.GL41)
     {
-        _ARB_ES2_compatibility = true;
-        _ARB_get_program_binary = true;
-        _ARB_separate_shader_objects = true;
-        _ARB_shader_precision = true;
-        _ARB_vertex_attrib_64bit = true;
-        _ARB_viewport_array = true;
-    }
-    else
-    {
-        _ARB_ES2_compatibility = isExtSupported(glversion, "GL_ARB_ES2_compatibility");
-        if(_ARB_ES2_compatibility) load_ARB_ES2_compatibility();
-        _ARB_get_program_binary = isExtSupported(glversion, "GL_ARB_get_program_binary");
-        if(_ARB_get_program_binary) load_ARB_get_program_binary();
-        _ARB_separate_shader_objects = isExtSupported(glversion, "GL_ARB_separate_shader_objects");
-        if(_ARB_separate_shader_objects) load_ARB_separate_shader_objects();
+        if(isExtSupported(glversion, "GL_ARB_ES2_compatibility")) load_ARB_ES2_compatibility();
+        if(isExtSupported(glversion, "GL_ARB_get_program_binary")) load_ARB_get_program_binary();
+        if(isExtSupported(glversion, "GL_ARB_separate_shader_objects")) load_ARB_separate_shader_objects();
         _ARB_shader_precision = isExtSupported(glversion, "GL_ARB_shader_precision");
-        _ARB_vertex_attrib_64bit = isExtSupported(glversion, "GL_ARB_vertex_attrib_64bit");
-        if(_ARB_vertex_attrib_64bit) load_ARB_vertex_attrib_64bit();
-        _ARB_viewport_array = isExtSupported(glversion, "GL_ARB_viewport_array");
-        if(_ARB_viewport_array) load_ARB_viewport_array();
+        if(isExtSupported(glversion, "GL_ARB_vertex_attrib_64bit")) load_ARB_vertex_attrib_64bit();
+        if(isExtSupported(glversion, "GL_ARB_viewport_array")) load_ARB_viewport_array();
     }
 
-    if(glversion >= GLVersion.GL42)
+    if(glversion < GLVersion.GL42)
     {
-        _ARB_base_instance = true;
-        _ARB_shading_language_420pack = true;
-        _ARB_transform_feedback_instanced = true;
-        _ARB_compressed_texture_pixel_storage = true;
-        _ARB_conservative_depth = true;
-        _ARB_internalformat_query = true;
-        _ARB_map_buffer_alignment = true;
-        _ARB_shader_atomic_counters = true;
-        _ARB_shader_image_load_store = true;
-        _ARB_shading_language_packing = true;
-        _ARB_texture_storage = true;
-    }
-    else
-    {
-        _ARB_base_instance = isExtSupported(glversion, "GL_ARB_base_instance");
-        if(_ARB_base_instance) load_ARB_base_instance();
+        if(isExtSupported(glversion, "GL_ARB_base_instance")) load_ARB_base_instance();
         _ARB_shading_language_420pack = isExtSupported(glversion, "GL_ARB_shading_language_420pack");
-        _ARB_transform_feedback_instanced = isExtSupported(glversion, "GL_ARB_transform_feedback_instanced");
-        if(_ARB_transform_feedback_instanced) load_ARB_transform_feedback_instanced();
+        if(isExtSupported(glversion, "GL_ARB_transform_feedback_instanced")) load_ARB_transform_feedback_instanced();
         _ARB_compressed_texture_pixel_storage = isExtSupported(glversion, "GL_ARB_compressed_texture_pixel_storage");
         _ARB_conservative_depth = isExtSupported(glversion, "GL_ARB_conservative_depth");
-        _ARB_internalformat_query = isExtSupported(glversion, "GL_ARB_internalformat_query");
-        if(_ARB_internalformat_query) load_ARB_internalformat_query();
+        if(isExtSupported(glversion, "GL_ARB_internalformat_query")) load_ARB_internalformat_query();
         _ARB_map_buffer_alignment = isExtSupported(glversion, "GL_ARB_map_buffer_alignment");
-        _ARB_shader_atomic_counters = isExtSupported(glversion, "GL_ARB_shader_atomic_counters");
-        if(_ARB_shader_atomic_counters) load_ARB_shader_atomic_counters();
-        _ARB_shader_image_load_store = isExtSupported(glversion, "GL_ARB_shader_image_load_store");
-        if(_ARB_shader_image_load_store) load_ARB_shader_image_load_store();
+        if(isExtSupported(glversion, "GL_ARB_shader_atomic_counters")) load_ARB_shader_atomic_counters();
+        if(isExtSupported(glversion, "GL_ARB_shader_image_load_store")) load_ARB_shader_image_load_store();
         _ARB_shading_language_packing = isExtSupported(glversion, "GL_ARB_shading_language_packing");
-        _ARB_texture_storage = isExtSupported(glversion, "GL_ARB_texture_storage");
-        if(_ARB_texture_storage) load_ARB_texture_storage();
+        if(isExtSupported(glversion, "GL_ARB_texture_storage")) load_ARB_texture_storage();
     }
 
-    if(glversion >= GLVersion.GL43)
-    {
-        _ARB_array_of_arrays = true;
-        _ARB_fragment_layer_viewport = true;
-        _ARB_shader_image_size = true;
-        _ARB_ES3_compatibility = true;
-        _ARB_clear_buffer_object = true;
-        _ARB_compute_shader = true;
-        _ARB_copy_image = true;
-        _KHR_debug = true;
-        _ARB_explicit_uniform_location = true;
-        _ARB_framebuffer_no_attachments = true;
-        _ARB_internalformat_query2 = true;
-        _ARB_invalidate_subdata = true;
-        _ARB_multi_draw_indirect = true;
-        _ARB_program_interface_query = true;
-        _ARB_robust_buffer_access_behavior = true;
-        _ARB_shader_storage_buffer_object  = true;
-        _ARB_stencil_texturing = true;
-        _ARB_texture_buffer_range = true;
-        _ARB_texture_query_levels = true;
-        _ARB_texture_storage_multisample = true;
-        _ARB_vertex_attrib_binding = true;
-    }
-    else
+    if(glversion< GLVersion.GL43)
     {
         _ARB_array_of_arrays = isExtSupported(glversion, "GL_ARB_array_of_arrays");
         _ARB_fragment_layer_viewport = isExtSupported(glversion, "GL_ARB_fragment_layer_viewport");
         _ARB_shader_image_size = isExtSupported(glversion, "GL_ARB_shader_image_size");
         _ARB_ES3_compatibility = isExtSupported(glversion, "GL_ARB_ES3_compatibility");
-        _ARB_clear_buffer_object = isExtSupported(glversion, "GL_ARB_clear_ buffer_object");
-        if(_ARB_clear_buffer_object ) load_ARB_clear_buffer_object();
-        _ARB_compute_shader = isExtSupported(glversion, "GL_ARB_compute_shader");
-        if(_ARB_compute_shader) load_ARB_compute_shader();
+        if(isExtSupported(glversion, "GL_ARB_clear_ buffer_object") ) load_ARB_clear_buffer_object();
+        if(isExtSupported(glversion, "GL_ARB_compute_shader")) load_ARB_compute_shader();
         _ARB_copy_image = isExtSupported(glversion, "GL_ARB_copy_image");
-        _KHR_debug = isExtSupported(glversion, "GL_KHR_debug");
-        if(_KHR_debug) load_KHR_debug();
+        if(isExtSupported(glversion, "GL_KHR_debug")) load_KHR_debug();
         _ARB_explicit_uniform_location = isExtSupported(glversion, "GL_ARB_explicit_uniform_location");
-        _ARB_framebuffer_no_attachments = isExtSupported(glversion, "GL_ARB_framebuffer_no_attachments");
-        if(_ARB_framebuffer_no_attachments) load_ARB_framebuffer_no_attachments();
-        _ARB_internalformat_query2 = isExtSupported(glversion, "GL_ARB_internalformat_query2");
-        if(_ARB_internalformat_query2) load_ARB_internalformat_query2();
-        _ARB_invalidate_subdata = isExtSupported(glversion,"GL_ARB_invalidate_subdata");
-        if(_ARB_invalidate_subdata) load_ARB_invalidate_subdata();
-        _ARB_multi_draw_indirect = isExtSupported(glversion,"GL_ARB_multi_draw_indirect");
-        if(_ARB_multi_draw_indirect) load_ARB_multi_draw_indirect();
-        _ARB_program_interface_query = isExtSupported(glversion, "GL_ARB_program_interface_query");
-        if(_ARB_program_interface_query) load_ARB_program_interface_query();
+        if(isExtSupported(glversion, "GL_ARB_framebuffer_no_attachments")) load_ARB_framebuffer_no_attachments();
+        if(isExtSupported(glversion, "GL_ARB_internalformat_query2")) load_ARB_internalformat_query2();
+        if(isExtSupported(glversion,"GL_ARB_invalidate_subdata")) load_ARB_invalidate_subdata();
+        if(isExtSupported(glversion,"GL_ARB_multi_draw_indirect")) load_ARB_multi_draw_indirect();
+        if(isExtSupported(glversion, "GL_ARB_program_interface_query")) load_ARB_program_interface_query();
         _ARB_robust_buffer_access_behavior = isExtSupported(glversion, "GL_ARB_robust_buffer_access_behavior");
-        _ARB_shader_storage_buffer_object = isExtSupported(glversion, "GL_ARB_shader_storage_buffer_object");
-        if(_ARB_shader_storage_buffer_object) load_ARB_shader_storage_buffer_object();
+        if(isExtSupported(glversion, "GL_ARB_shader_storage_buffer_object")) load_ARB_shader_storage_buffer_object();
         _ARB_stencil_texturing = isExtSupported(glversion, "GL_ARB_stencil_texturing");
-        _ARB_texture_buffer_range = isExtSupported(glversion, "GL_ARB_texture_buffer_range");
-        if(_ARB_texture_buffer_range) load_ARB_texture_buffer_range();
+        if(isExtSupported(glversion, "GL_ARB_texture_buffer_range")) load_ARB_texture_buffer_range();
         _ARB_texture_query_levels = isExtSupported(glversion, "GL_ARB_texture_query_levels");
-        _ARB_texture_storage_multisample = isExtSupported(glversion, "GL_ARB_texture_storage_multisample");
-        if(_ARB_texture_storage_multisample) load_ARB_texture_storage_multisample();
-        _ARB_texture_view = isExtSupported(glversion,"GL_ARB_texture_view");
-        if(_ARB_texture_view) load_ARB_texture_view();
-        _ARB_vertex_attrib_binding = isExtSupported(glversion, "GL_ARB_vertex_attrib_binding");
-        if(_ARB_vertex_attrib_binding) load_ARB_vertex_attrib_binding();
+        if(isExtSupported(glversion, "GL_ARB_texture_storage_multisample")) load_ARB_texture_storage_multisample();
+        if(isExtSupported(glversion,"GL_ARB_texture_view")) load_ARB_texture_view();
+        if(isExtSupported(glversion, "GL_ARB_vertex_attrib_binding")) load_ARB_vertex_attrib_binding();
     }
 }
