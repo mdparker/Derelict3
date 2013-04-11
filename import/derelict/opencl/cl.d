@@ -28,7 +28,7 @@ private
     }
     else static if(Derelict_OS_Posix)
     {
-        enum libNames = "lOpenCL.so.1,lOpenCL.so";
+        enum libNames = "libOpenCL.so.1,libOpenCL.so";
     }
     else
         static assert(0, "Need to implement OpenCL libNames for this operating system.");
