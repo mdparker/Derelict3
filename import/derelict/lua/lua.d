@@ -47,7 +47,7 @@ private {
     }
     else static if(Derelict_OS_Posix)
     {
-        enum libNames = "liblua52.a";
+		enum libNames = "liblua5.2.so";
     }
     else
         static assert(0, "Need to implement lua libNames for this operating system.");
@@ -80,7 +80,6 @@ class DerelictLuaLoader : SharedLibLoader
             bindFunc(cast(void**)&lua_iscfunction, "lua_iscfunction");
             bindFunc(cast(void**)&lua_isuserdata, "lua_isuserdata");
             bindFunc(cast(void**)&lua_type, "lua_type");
-            bindFunc(cast(void**)&lua_typename, "lua_typename");
             bindFunc(cast(void**)&lua_typename, "lua_typename");
             bindFunc(cast(void**)&lua_tonumberx, "lua_tonumberx");
             bindFunc(cast(void**)&lua_tointegerx, "lua_tointegerx");
