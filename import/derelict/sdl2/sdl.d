@@ -39,7 +39,7 @@ private
     import derelict.util.system;
 
     static if(Derelict_OS_Windows)
-        enum libNames = "SDL2.dll";
+        enum libNames = "SDL2.dll,SDL.dll";
     else static if(Derelict_OS_Mac)
         enum libNames = "/usr/local/lib/libSDL2.dylib, ../Frameworks/SDL2.framework/SDL2, /Library/Frameworks/SDL2.framework/SDL2, /System/Library/Frameworks/SDL2.framework/SDL2";
     else static if(Derelict_OS_Posix)
