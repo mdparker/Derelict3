@@ -29,6 +29,7 @@ module derelict.util.loader;
 
 private
 {
+	import std.stdio;
 	import std.array : split;
 	import std.string : strip;
 	
@@ -91,6 +92,8 @@ protected:
     void bindFunc(void** ptr, string funcName, bool doThrow = true)
     {
         void* func = lib.loadSymbol(funcName, doThrow);
+		if (!doThrow && func == null)
+			writeln("[SharedLibLoader] Can't load function: " ~ funcName);
         *ptr = func;
     }
 
