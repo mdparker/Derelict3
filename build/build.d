@@ -93,6 +93,7 @@ enum packLua = "Lua";
 enum packTCOD = "TCOD";
 enum packOGG = "OGG";
 enum packPQ = "PQ";
+enum packOpenCL = "OpenCL";
 
 // Source paths
 enum srcDerelict = "../import/derelict/";
@@ -113,6 +114,7 @@ enum srcLua = srcDerelict ~ "lua/";
 enum srcTCOD = srcDerelict ~ "tcod/";
 enum srcOGG = srcDerelict ~ "ogg/";
 enum srcPQ = srcDerelict ~ "pq/";
+enum srcOpenCL = srcDerelict ~ "opencl/";
 
 // Map package names to source paths.
 string[string] pathMap;
@@ -141,7 +143,8 @@ static this()
         packLua : srcLua,
         packTCOD : srcTCOD,
         packOGG : srcOGG,
-        packPQ : srcPQ
+        packPQ : srcPQ,
+        packOpenCL : srcOpenCL
     ];
 }
 
