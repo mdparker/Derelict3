@@ -89,9 +89,11 @@ class DerelictCLLoader : SharedLibLoader
                 bindFunc(cast(void**)&clRetainDevice, "clRetainDevice");
                 bindFunc(cast(void**)&clReleaseDevice, "clReleaseDevice");
                 bindFunc(cast(void**)&clCreateImage, "clCreateImage");
+                bindFunc(cast(void**)&clCreateProgramWithBuiltInKernels, "clCreateProgramWithBuiltInKernels");
                 bindFunc(cast(void**)&clCompileProgram, "clCompileProgram");
                 bindFunc(cast(void**)&clLinkProgram, "clLinkProgram");
                 bindFunc(cast(void**)&clUnloadPlatformCompiler, "clUnloadPlatformCompiler");
+                bindFunc(cast(void**)&clGetKernelArgInfo, "clGetKernelArgInfo");
                 bindFunc(cast(void**)&clEnqueueFillBuffer, "clEnqueueFillBuffer");
                 bindFunc(cast(void**)&clEnqueueFillImage, "clEnqueueFillImage");
                 bindFunc(cast(void**)&clEnqueueMigrateMemObjects, "clEnqueueMigrateMemObjects");
@@ -157,7 +159,6 @@ class DerelictCLLoader : SharedLibLoader
             bindFunc(cast(void**)&clGetSamplerInfo, "clGetSamplerInfo");
             bindFunc(cast(void**)&clCreateProgramWithSource, "clCreateProgramWithSource");
             bindFunc(cast(void**)&clCreateProgramWithBinary, "clCreateProgramWithBinary");
-            bindFunc(cast(void**)&clCreateProgramWithBuiltInKernels, "clCreateProgramWithBuiltInKernels");
             bindFunc(cast(void**)&clRetainProgram, "clRetainProgram");
             bindFunc(cast(void**)&clReleaseProgram, "clReleaseProgram");
             bindFunc(cast(void**)&clBuildProgram, "clBuildProgram");
@@ -169,7 +170,6 @@ class DerelictCLLoader : SharedLibLoader
             bindFunc(cast(void**)&clReleaseKernel, "clReleaseKernel");
             bindFunc(cast(void**)&clSetKernelArg, "clSetKernelArg");
             bindFunc(cast(void**)&clGetKernelInfo, "clGetKernelInfo");
-            bindFunc(cast(void**)&clGetKernelArgInfo, "clGetKernelArgInfo");
             bindFunc(cast(void**)&clGetKernelWorkGroupInfo, "clGetKernelWorkGroupInfo");
             bindFunc(cast(void**)&clWaitForEvents, "clWaitForEvents");
             bindFunc(cast(void**)&clGetEventInfo, "clGetEventInfo");
