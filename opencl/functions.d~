@@ -131,6 +131,7 @@ __gshared
 	da_clGetSamplerInfo clGetSamplerInfo;
 	da_clCreateProgramWithSource clCreateProgramWithSource;
 	da_clCreateProgramWithBinary clCreateProgramWithBinary;
+	da_clCreateProgramWithBuiltInKernels clCreateProgramWithBuiltInKernels;
 	da_clRetainProgram clRetainProgram;
 	da_clReleaseProgram clReleaseProgram;
 	da_clBuildProgram clBuildProgram;
@@ -142,6 +143,7 @@ __gshared
 	da_clReleaseKernel clReleaseKernel;
 	da_clSetKernelArg clSetKernelArg;
 	da_clGetKernelInfo clGetKernelInfo;
+	da_clGetKernelArgInfo clGetKernelArgInfo;
 	da_clGetKernelWorkGroupInfo clGetKernelWorkGroupInfo;
 	da_clWaitForEvents clWaitForEvents;
 	da_clGetEventInfo clGetEventInfo;
@@ -188,11 +190,9 @@ __gshared
 	da_clRetainDevice clRetainDevice;
 	da_clReleaseDevice clReleaseDevice;
 	da_clCreateImage clCreateImage;
-	da_clCreateProgramWithBuiltInKernels clCreateProgramWithBuiltInKernels;
 	da_clCompileProgram clCompileProgram;
 	da_clLinkProgram clLinkProgram;
 	da_clUnloadPlatformCompiler clUnloadPlatformCompiler;
-	da_clGetKernelArgInfo clGetKernelArgInfo;
 	da_clEnqueueFillBuffer clEnqueueFillBuffer;
 	da_clEnqueueFillImage clEnqueueFillImage;
 	da_clEnqueueMigrateMemObjects clEnqueueMigrateMemObjects;
