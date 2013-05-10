@@ -601,6 +601,7 @@ __gshared
     da_glClearIndex glClearIndex;
     da_glIndexMask glIndexMask;
     da_glPushAttrib glPushAttrib;
+    da_glPopAttrib glPopAttrib;
     da_glMap1d glMap1d;
     da_glMap1f glMap1f;
     da_glMap2d glMap2d;
