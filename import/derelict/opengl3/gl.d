@@ -356,6 +356,7 @@ class DerelictGLLoader : DerelictGL3Loader
             bindFunc(cast(void**)&glClearIndex, "glClearIndex");
             bindFunc(cast(void**)&glIndexMask, "glIndexMask");
             bindFunc(cast(void**)&glPushAttrib, "glPushAttrib");
+            bindFunc(cast(void**)&glPopAttrib, "glPopAttrib");
             bindFunc(cast(void**)&glMap1d, "glMap1d");
             bindFunc(cast(void**)&glMap1f, "glMap1f");
             bindFunc(cast(void**)&glMap2d, "glMap2d");
