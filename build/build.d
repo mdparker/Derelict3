@@ -2,7 +2,7 @@ module derelict;
 
 import std.path : dirName;
 import std.stdio : writefln, writeln;
-import std.process : shell, ErrnoException;
+import std.process : system;
 import std.file : dirEntries, SpanMode;
 import std.array : endsWith;
 import std.string : format, toUpper, capitalize;
@@ -175,14 +175,8 @@ int main(string[] args)
 void buildAll()
 {
     writeln("Building all packages.");
-    try
-    {
-        foreach(key; pathMap.keys)
-            buildPackage(key);
-    }
-    // Eat any ErrnoException. The compiler will print the right thing on a failed build, no need
-    // to clutter the output with exception info.
-    catch(ErrnoException e) {}
+    foreach(key; pathMap.keys)
+        buildPackage(key);
 }
 
 // Build only the packages specified on the command line.
@@ -198,25 +192,21 @@ void buildSome(string[] args)
         return false;
     }
 
-    try
+    // If any of the args matches a key in the pathMap, build
+    // that package.
+    foreach(s; args)
     {
-        // If any of the args matches a key in the pathMap, build
-        // that package.
-        foreach(s; args)
+        if(!buildIt(s))
         {
+            s = s.toUpper();
             if(!buildIt(s))
             {
-                s = s.toUpper();
+                s = s.capitalize();
                 if(!buildIt(s))
-                {
-                    s = s.capitalize();
-                    if(!buildIt(s))
-                        writefln("Unknown package '%s'", s);
-                }
+                    writefln("Unknown package '%s'", s);
             }
         }
     }
-    catch(ErrnoException e) {}
 }
 
 void buildPackage(string packageName)
@@ -238,8 +228,7 @@ void buildPackage(string packageName)
 
     string libName = format("%s%s%s%s", prefix, "Derelict", packageName, extension);
     string arg = buildCompileString(joined, libName);
-
-    string s = shell(arg);
-    writeln(s);
+    
+    system(arg);
     writeln("Build succeeded.");
 }
