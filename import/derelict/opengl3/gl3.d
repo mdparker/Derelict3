@@ -507,41 +507,47 @@ class DerelictGL3Loader : SharedLibLoader
         GLVersion findMaxAvailable()
         {
             string verstr = to!string(glGetString(GL_VERSION));
-            if(verstr.canFind("4.3"))
-                return GLVersion.GL43;
-            else if(verstr.canFind("4.2"))
-                return GLVersion.GL42;
-            else if(verstr.canFind("4.1"))
-                return GLVersion.GL41;
-            else if(verstr.canFind("4.0"))
-                return GLVersion.GL40;
-            else if(verstr.canFind("3.3"))
-                return GLVersion.GL33;
-            else if(verstr.canFind("3.2"))
-                return GLVersion.GL32;
-            else if(verstr.canFind("3.1"))
-                return GLVersion.GL31;
-            else if(verstr.canFind("3.0"))
-                return GLVersion.GL30;
-            else if(verstr.canFind("2.1"))
-                return GLVersion.GL21;
-            else if(verstr.canFind("2.0"))
-                return GLVersion.GL20;
-            else if(verstr.canFind("1.5"))
-                return GLVersion.GL15;
-            else if(verstr.canFind("1.4"))
-                return GLVersion.GL14;
-            else if(verstr.canFind("1.3"))
-                return GLVersion.GL13;
-            else if(verstr.canFind("1.2"))
-                return GLVersion.GL12;
-            else if(verstr.canFind("1.1"))
-                return GLVersion.GL11;
+            // Pull out the first part of the version string to remove 
+            //potential interference from driver version numbers.
+            verstr = verstr[0..verstr.countUntil(' ')];
 
-            // assume new version of OpenGL
-            // TODO this needs to be more robust -- check to make sure that there this
-            // is a valid version number and it's actually higher than the highest supported
-            return GLVersion.HighestSupported;
+            switch(verstr) {
+                case "4.3":
+                    return GLVersion.GL43;
+                case "4.2":
+                    return GLVersion.GL42;
+                case "4.1":
+                    return GLVersion.GL41;
+                case "4.0":
+                    return GLVersion.GL40;
+                case "3.3":
+                    return GLVersion.GL33;
+                case "3.2":
+                    return GLVersion.GL32;
+                case "3.1":
+                    return GLVersion.GL31;
+                case "3.0":
+                    return GLVersion.GL30;
+                case "2.1":
+                    return GLVersion.GL21;
+                case "2.0":
+                    return GLVersion.GL20;
+                case "1.5":
+                    return GLVersion.GL15;
+                case "1.4":
+                    return GLVersion.GL14;
+                case "1.3":
+                    return GLVersion.GL13;
+                case "1.2":
+                    return GLVersion.GL12;
+                case "1.1":
+                    return GLVersion.GL11;
+                default:
+                    // assume new version of OpenGL
+                    // TODO this needs to be more robust -- check to make sure that there this
+                    // is a valid version number and it's actually higher than the highest supported
+                    return GLVersion.HighestSupported;
+            }
         }
     }
 
