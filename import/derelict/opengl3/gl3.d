@@ -509,14 +509,14 @@ class DerelictGL3Loader : SharedLibLoader
             string verstr = to!string(glGetString(GL_VERSION));
             // Pull out the first part of the version string to remove 
             //potential interference from driver version numbers.
-            verstr = verstr[0..3];
+            verstr = verstr[0..verstr.countUntil(' ')];
 
             switch(verstr) {
                 case "4.3":
                     return GLVersion.GL43;
                 case "4.2":
                     return GLVersion.GL42;
-                case "4.1"
+                case "4.1":
                     return GLVersion.GL41;
                 case "4.0":
                     return GLVersion.GL40;
