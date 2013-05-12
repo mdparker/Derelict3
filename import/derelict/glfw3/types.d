@@ -37,7 +37,8 @@ enum
 enum
 {
     GLFW_RELEASE = 0,
-    GLFW_PRESS = 1
+    GLFW_PRESS = 1,
+    GLFW_REPEAT = 2
 }
 
 enum
