@@ -1017,7 +1017,7 @@ package void load_ARB_framebuffer_object(bool doThrow = false)
         bindGLFunc(cast(void**)&glGetRenderbufferParameteriv, "glGetRenderbufferParameteriv");
         bindGLFunc(cast(void**)&glIsFramebuffer, "glIsFramebuffer");
         bindGLFunc(cast(void**)&glBindFramebuffer, "glBindFramebuffer");
-        bindGLFunc(cast(void**)&glDeleteFramebuffers, "glBindBufferRange");
+        bindGLFunc(cast(void**)&glDeleteFramebuffers, "glDeleteFramebuffers");
         bindGLFunc(cast(void**)&glGenFramebuffers, "glGenFramebuffers");
         bindGLFunc(cast(void**)&glCheckFramebufferStatus, "glCheckFramebufferStatus");
         bindGLFunc(cast(void**)&glFramebufferTexture1D, "glFramebufferTexture1D");
