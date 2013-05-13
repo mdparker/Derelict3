@@ -91,8 +91,8 @@ bool lua_isnoneornil(lua_State* L, int idx) {
     return lua_type(L, idx) <= 0;
 }
 
-const(char)* lua_pushliteral(lua_State* L, const(char)* s) {
-    return lua_pushlstring(L, s, (s.sizeof / char.sizeof) - 1);
+const(char)* lua_pushliteral(lua_State* L, string s) {
+    return lua_pushlstring(L, s.ptr, s.length - 1);
 }
 void lua_pushglobaltable(lua_State* L) {
     lua_rawgeti(L, LUA_REGISTRYINDEX, LUA_RIDX_GLOBALS);
@@ -108,12 +108,12 @@ int luaL_loadfile(lua_State* L, const(char)* f) {
     return luaL_loadfilex(L, f, null);
 }
 
-void luaL_newlibtable(lua_State* L, luaL_Reg* l) {
-    lua_createtable(L, 0, l.sizeof / l[0].sizeof - 1);
+void luaL_newlibtable(lua_State* L, const(luaL_Reg)[] l) {
+    lua_createtable(L, 0, l.length - 1);
 }
-void luaL_newlib(lua_State* L, luaL_Reg* l) {
+void luaL_newlib(lua_State* L, luaL_Reg[] l) {
     luaL_newlibtable(L, l);
-    luaL_setfuncs(L, l, 0);
+    luaL_setfuncs(L, l.ptr, 0);
 }
 /*int luaL_argcheck(lua_State* L, cond, int numarg, const(char)*extramsg) {
     ((void)((cond) || luaL_argerror(L, (numarg), (extramsg))))
