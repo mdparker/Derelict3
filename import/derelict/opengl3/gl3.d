@@ -81,6 +81,8 @@ class DerelictGL3Loader : SharedLibLoader
                 throw new DerelictException("DerelictGL3.reload failure: An OpenGL context is not currently active.");
 
             GLVersion glVer = GLVersion.GL11;
+            scope(exit) _loadedVersion = glVer;
+
             GLVersion maxVer = findMaxAvailable();
 
             if(maxVer >= GLVersion.GL12)
@@ -417,7 +419,6 @@ class DerelictGL3Loader : SharedLibLoader
             loadARB(glVer);
             loadEXT(glVer);
 
-            _loadedVersion = glVer;
             return glVer;
         }
     }
@@ -507,7 +508,7 @@ class DerelictGL3Loader : SharedLibLoader
         GLVersion findMaxAvailable()
         {
             string verstr = to!string(glGetString(GL_VERSION));
-            // Pull out the first part of the version string to remove 
+            // Pull out the first part of the version string to remove
             //potential interference from driver version numbers.
             verstr = verstr[0..verstr.countUntil(' ')];
 
