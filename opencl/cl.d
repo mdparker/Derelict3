@@ -28,7 +28,7 @@ private
     }
     else static if(Derelict_OS_Mac)
     {
-        "../Frameworks/OpenCL.framework/OpenCL, /Library/Frameworks/OpenCL.framework/OpenCL, /System/Library/Frameworks/OpenCL.framework/OpenCL";
+        enum libNames = "../Frameworks/OpenCL.framework/OpenCL, /Library/Frameworks/OpenCL.framework/OpenCL, /System/Library/Frameworks/OpenCL.framework/OpenCL";
     }
     else static if(Derelict_OS_Posix)
     {
