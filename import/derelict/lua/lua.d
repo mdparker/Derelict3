@@ -41,13 +41,9 @@ private {
     {
         enum libNames = "lua52.dll";
     }
-    else static if(Derelict_OS_Mac)
-    {
-        enum libNames = "liblua52.a";
-    }
     else static if(Derelict_OS_Posix)
     {
-        enum libNames = "liblua52.a";
+        enum libNames = "liblua5.2.so";
     }
     else
         static assert(0, "Need to implement lua libNames for this operating system.");
