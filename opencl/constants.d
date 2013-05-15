@@ -698,7 +698,7 @@ enum
 }
 
 // Additional cl_context_properties
-enum 
+enum
 {
     CL_GL_CONTEXT_KHR                           = 0x2008,
     CL_EGL_DISPLAY_KHR                          = 0x2009,
@@ -724,7 +724,7 @@ enum cl_khr_d3d10_sharing                           = 1;
 
 // Error Codes
 enum
-{   
+{
     CL_INVALID_D3D10_DEVICE_KHR                     = -1002,
     CL_INVALID_D3D10_RESOURCE_KHR                   = -1003,
     CL_D3D10_RESOURCE_ALREADY_ACQUIRED_KHR          = -1004,
@@ -1067,6 +1067,6 @@ string CL_PROGRAM_STRING_DEBUG_INFO(size_t line, string file)
         file = tr(file, "\\", "/");
         ret = "#line " ~ to!string(line) ~ " \"" ~ file ~ "\"" ~ "\n\n";
     }
-    
+
     return ret;
 }

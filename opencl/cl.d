@@ -26,6 +26,10 @@ private
     {
         enum libNames = "opencl.dll";
     }
+    else static if(Derelict_OS_Mac)
+    {
+        "../Frameworks/OpenCL.framework/OpenCL, /Library/Frameworks/OpenCL.framework/OpenCL, /System/Library/Frameworks/OpenCL.framework/OpenCL";
+    }
     else static if(Derelict_OS_Posix)
     {
         enum libNames = "libOpenCL.so.1,libOpenCL.so";
@@ -55,7 +59,7 @@ class DerelictCLLoader : SharedLibLoader
             {
                 // OpenCL 1.0 Deprecated in 1.1
                 bindFunc(cast(void**)&clSetCommandQueueProperty, "clSetCommandQueueProperty");
-            }    
+            }
 
             if(clVer >= CLVersion.CL11)
             {
@@ -105,9 +109,13 @@ class DerelictCLLoader : SharedLibLoader
             derelict.opencl.cl_ext.reload(&bindFunc, clVer);
             derelict.opencl.cl_gl_ext.reload(&bindFunc, clVer);
             derelict.opencl.cl_gl.reload(&bindFunc, clVer);
-            derelict.opencl.cl_d3d10.reload(&bindFunc, clVer);
-            derelict.opencl.cl_d3d11.reload(&bindFunc, clVer);
-            derelict.opencl.cl_dx9_media_sharing.reload(&bindFunc, clVer);
+            
+            if(Derelict_OS_Windows)
+            {
+                derelict.opencl.cl_d3d10.reload(&bindFunc, clVer);
+                derelict.opencl.cl_d3d11.reload(&bindFunc, clVer);
+                derelict.opencl.cl_dx9_media_sharing.reload(&bindFunc, clVer);
+            }
 
             _loadedVersion = clVer;
             return clVer;
@@ -118,9 +126,13 @@ class DerelictCLLoader : SharedLibLoader
             derelict.opencl.cl_ext.loadEXT(&bindFunc, _loadedVersion);
             derelict.opencl.cl_gl_ext.loadEXT(&bindFunc, _loadedVersion);
             derelict.opencl.cl_gl.loadEXT(&bindFunc, _loadedVersion);
-            derelict.opencl.cl_d3d10.loadEXT(&bindFunc, _loadedVersion);
-            derelict.opencl.cl_d3d11.loadEXT(&bindFunc, _loadedVersion);
-            derelict.opencl.cl_dx9_media_sharing.loadEXT(&bindFunc, _loadedVersion);
+            
+            if(Derelict_OS_Windows)
+            {
+                derelict.opencl.cl_d3d10.loadEXT(&bindFunc, _loadedVersion);
+                derelict.opencl.cl_d3d11.loadEXT(&bindFunc, _loadedVersion);
+                derelict.opencl.cl_dx9_media_sharing.loadEXT(&bindFunc, _loadedVersion);
+            }
         }
     }
 
@@ -196,9 +208,13 @@ class DerelictCLLoader : SharedLibLoader
             derelict.opencl.cl_ext.loadSymbols(&bindFunc);
             derelict.opencl.cl_gl_ext.loadSymbols(&bindFunc);
             derelict.opencl.cl_gl.loadSymbols(&bindFunc);
-            derelict.opencl.cl_d3d10.loadSymbols(&bindFunc);
-            derelict.opencl.cl_d3d11.loadSymbols(&bindFunc);
-            derelict.opencl.cl_dx9_media_sharing.loadSymbols(&bindFunc);
+
+            if(Derelict_OS_Windows)
+            {
+                derelict.opencl.cl_d3d10.loadSymbols(&bindFunc);
+                derelict.opencl.cl_d3d11.loadSymbols(&bindFunc);
+                derelict.opencl.cl_dx9_media_sharing.loadSymbols(&bindFunc);
+            }
 
             _loadedVersion = CLVersion.CL10;
         }
