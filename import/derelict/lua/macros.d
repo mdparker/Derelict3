@@ -109,7 +109,7 @@ int luaL_loadfile(lua_State* L, const(char)* f) {
 }
 
 void luaL_newlibtable(lua_State* L, const(luaL_Reg)[] l) {
-    lua_createtable(L, 0, l.length - 1);
+    lua_createtable(L, 0, cast(int)(l.length) - 1);
 }
 void luaL_newlib(lua_State* L, luaL_Reg[] l) {
     luaL_newlibtable(L, l);
