@@ -507,6 +507,43 @@ class DerelictGL3Loader : SharedLibLoader
     {
         GLVersion findMaxAvailable()
         {
+            const(char)* verstr = glGetString(GL_VERSION);
+            char major = *verstr;
+            char minor = *(verstr + 2);
+
+            switch(major)
+            {
+                case '4':
+                    if(minor == '3') return GLVersion.GL43;
+                    else if(minor == '2') return GLVersion.GL42;
+                    else if(minor == '1') return GLVersion.GL41;
+                    else if(minor == '0') return GLVersion.GL40;
+                    break;
+
+                case '3':
+                    if(minor == '3') return GLVersion.GL33;
+                    else if(minor == '2') return GLVersion.GL32;
+                    else if(minor == '1') return GLVersion.GL31;
+                    else return GLVersion.GL30;
+
+                case '2':
+                    if(minor == '1') return GLVersion.GL21;
+                    else return GLVersion.GL20;
+
+                case '1':
+                    if(minor == '5') return GLVersion.GL15;
+                    else if(minor == '4') return GLVersion.GL14;
+                    else if(minor == '3') return GLVersion.GL13;
+                    else if(minor == '2') return GLVersion.GL12;
+                    else return GLVersion.GL11;
+
+                default:
+                    break;
+
+            }
+
+            return GLVersion.HighestSupported;
+        /*
             string verstr = to!string(glGetString(GL_VERSION));
             // Pull out the first part of the version string to remove
             //potential interference from driver version numbers.
@@ -548,7 +585,8 @@ class DerelictGL3Loader : SharedLibLoader
                     // TODO this needs to be more robust -- check to make sure that there this
                     // is a valid version number and it's actually higher than the highest supported
                     return GLVersion.HighestSupported;
-            }
+
+            } */
         }
     }
 
