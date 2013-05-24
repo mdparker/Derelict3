@@ -507,6 +507,10 @@ class DerelictGL3Loader : SharedLibLoader
     {
         GLVersion findMaxAvailable()
         {
+            /* glGetString(GL_VERSION) is guaranteed to return a constant string
+             of the format "[major].[minor].[build] xxxx", where xxxx is vendor-specific
+             information. Here, I'm pulling two characters out of the string, the major
+             and minor version numbers. */
             const(char)* verstr = glGetString(GL_VERSION);
             char major = *verstr;
             char minor = *(verstr + 2);
@@ -518,6 +522,12 @@ class DerelictGL3Loader : SharedLibLoader
                     else if(minor == '2') return GLVersion.GL42;
                     else if(minor == '1') return GLVersion.GL41;
                     else if(minor == '0') return GLVersion.GL40;
+
+                    /* No default condition here, since it's possible for new
+                     minor versions of the 4.x series to be released before
+                     support is added to Derelict. That case is handled outside
+                     of the switch. When no more 4.x versions are released, this
+                     should be changed to return GL40 by default. */
                     break;
 
                 case '3':
@@ -538,55 +548,18 @@ class DerelictGL3Loader : SharedLibLoader
                     else return GLVersion.GL11;
 
                 default:
+                    /* glGetString(GL_VERSION) is guaranteed to return a result
+                     of a specific format, so if this point is reached it is
+                     going to be because a major version higher than what Derelict
+                     supports was encountered. That case is handled outside the
+                     switch. */
                     break;
 
             }
 
+            /* It's highly likely at this point that the version is higher than
+             what Derelict supports, so return the highest supported version. */
             return GLVersion.HighestSupported;
-        /*
-            string verstr = to!string(glGetString(GL_VERSION));
-            // Pull out the first part of the version string to remove
-            //potential interference from driver version numbers.
-            verstr = verstr[0..verstr.countUntil(' ')];
-
-            switch(verstr) {
-                case "4.3":
-                    return GLVersion.GL43;
-                case "4.2":
-                    return GLVersion.GL42;
-                case "4.1":
-                    return GLVersion.GL41;
-                case "4.0":
-                    return GLVersion.GL40;
-                case "3.3":
-                    return GLVersion.GL33;
-                case "3.2":
-                    return GLVersion.GL32;
-                case "3.1":
-                    return GLVersion.GL31;
-                case "3.0":
-                    return GLVersion.GL30;
-                case "2.1":
-                    return GLVersion.GL21;
-                case "2.0":
-                    return GLVersion.GL20;
-                case "1.5":
-                    return GLVersion.GL15;
-                case "1.4":
-                    return GLVersion.GL14;
-                case "1.3":
-                    return GLVersion.GL13;
-                case "1.2":
-                    return GLVersion.GL12;
-                case "1.1":
-                    return GLVersion.GL11;
-                default:
-                    // assume new version of OpenGL
-                    // TODO this needs to be more robust -- check to make sure that there this
-                    // is a valid version number and it's actually higher than the highest supported
-                    return GLVersion.HighestSupported;
-
-            } */
         }
     }
 
