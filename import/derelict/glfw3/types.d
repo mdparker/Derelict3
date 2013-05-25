@@ -29,15 +29,23 @@ module derelict.glfw3.types;
 
 enum
 {
-    GLFW_VERSION_MAJOR = 3,
-    GLFW_VERSION_MINOR = 0,
-    GLFW_VERSION_REVISION = 0
+    GLFW_VERSION_MAJOR      = 3,
+    GLFW_VERSION_MINOR      = 0,
+    GLFW_VERSION_REVISION   = 0
 }
 
 enum
 {
-    GLFW_RELEASE = 0,
-    GLFW_PRESS = 1
+    GLFW_RELEASE    = 0,
+    GLFW_PRESS      = 1,
+    GLFW_REPEAT     = 2
+}
+
+enum{
+    GLFW_MOD_SHIFT      = 0x0001,
+    GLFW_MOD_CONTROL    = 0x0002,
+    GLFW_MOD_ALT        = 0x0004,
+    GLFW_MOD_SUPER      = 0x0008
 }
 
 enum
