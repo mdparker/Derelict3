@@ -15,7 +15,7 @@ enum FullVersion  = MajorVersion ~"."~ MinorVersion ~"."~ BumpVersion;
 
 version(Windows)
 {
-    Enum prefix = "";
+    enum prefix = "";
     version(Shared) enum extension = ".dll";
     else enum extension = ".lib";
 }
@@ -177,8 +177,8 @@ void buildAll()
     try
     {
         foreach(key; pathMap.keys)
-	    buildPackage(key);
-	writeln("\nAll builds complete\n");
+            buildPackage(key);
+        writeln("\nAll builds complete\n");
     }
     // Eat any ErrnoException. The compiler will print the right thing on a failed build, no need
     // to clutter the output with exception info.
@@ -205,19 +205,19 @@ void buildSome(string[] args)
         // If any of the args matches a key in the pathMap, build
         // that package.
         foreach(s; args)
-	{
+        {
             if(!buildIt(s))
-	    {
+            {
                 s = s.toUpper();
                 if(!buildIt(s))
-		{
+                {
                     s = s.capitalize();
                     if(!buildIt(s))
-	                writefln("Unknown package '%s'", s);
-	        }
-	    }
+                        writefln("Unknown package '%s'", s);
+                }
+            }
         }
-	writeln("\nSelected builds complete\n");
+        writeln("\nSelected builds complete\n");
     }
     catch(ErrnoException e)
     {
