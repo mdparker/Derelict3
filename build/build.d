@@ -2,10 +2,11 @@ module derelict;
 
 import std.path : dirName;
 import std.stdio : writefln, writeln;
-import std.process : shell, ErrnoException;
+import std.process : system, ErrnoException;
 import std.file : dirEntries, SpanMode;
 import std.array : endsWith;
 import std.string : format, toUpper, capitalize;
+import std.exception : enforce;
 
 enum MajorVersion = "3";
 enum MinorVersion = "0";
@@ -145,7 +146,7 @@ static this()
     ];
 }
 
-int main(string[] args)
+void main(string[] args)
 {
     // Determine the path to this executable so that imports and source files can be found
     // no matter what the working directory.
@@ -167,8 +168,6 @@ int main(string[] args)
         buildAll();
     else
         buildSome(args[1 .. $]);
-
-    return 0;
 }
 
 // Build all of the Derelict libraries.
@@ -179,10 +178,14 @@ void buildAll()
     {
         foreach(key; pathMap.keys)
             buildPackage(key);
+        writeln("\nAll builds complete\n");
     }
     // Eat any ErrnoException. The compiler will print the right thing on a failed build, no need
     // to clutter the output with exception info.
-    catch(ErrnoException e) {}
+    catch(ErrnoException e)
+    {
+        writeln("\nBuild Failed!\n");
+    }
 }
 
 // Build only the packages specified on the command line.
@@ -197,7 +200,6 @@ void buildSome(string[] args)
         }
         return false;
     }
-
     try
     {
         // If any of the args matches a key in the pathMap, build
@@ -215,8 +217,12 @@ void buildSome(string[] args)
                 }
             }
         }
+        writeln("\nSelected builds complete\n");
     }
-    catch(ErrnoException e) {}
+    catch(ErrnoException e)
+    {
+        writeln("\nBuild Failed!\n");
+    }
 }
 
 void buildPackage(string packageName)
@@ -238,8 +244,7 @@ void buildPackage(string packageName)
 
     string libName = format("%s%s%s%s", prefix, "Derelict", packageName, extension);
     string arg = buildCompileString(joined, libName);
-
-    string s = shell(arg);
-    writeln(s);
+    
+    (system(arg) == 0).enforce(new ErrnoException("Build failure"));
     writeln("Build succeeded.");
 }
