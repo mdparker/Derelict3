@@ -1,0 +1,17 @@
+{
+	"name": "Derelict3",
+	"description": "A collection of dynamic D bindings to C libraries, useful for multimedia and game development.",
+	"homepage": "https://github.com/aldacron/Derelict3",
+	"copyright": "Copyright © 2012, Mike Parker",
+    "license": "Boost",
+    "targetType": "library",
+    "targetName": "Derelict3",
+    "targetPath": "lib",
+    "sourcePaths": ["import"],
+    "dflags": ["-O", "-w", "-release"],
+	"authors": [
+		"Mike Parker"
+	],
+	"dependencies": {
+	}
+}
