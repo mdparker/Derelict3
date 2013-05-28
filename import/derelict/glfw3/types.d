@@ -297,13 +297,13 @@ extern(C)
     alias void function(GLFWwindow*) GLFWwindowrefreshfun;
     alias void function(GLFWwindow*, int) GLFWwindowfocusfun;
     alias void function(GLFWwindow*, int) GLFWwindowiconifyfun;
-    alias void function(GLFWwindow*, int, int) GLFWmousebuttonfun;
+    alias void function(GLFWwindow*, int, int, int) GLFWmousebuttonfun;
     alias void function(GLFWwindow*, double, double) GLFWcursorposfun;
     alias void function(GLFWwindow*, int) GLFWcursorenterfun;
     alias void function(GLFWwindow*, double, double) GLFWscrollfun;
-    alias void function(GLFWwindow*, int, int) GLFWkeyfun;
-    alias void function(GLFWwindow*, int) GLFWcharfun;
-    alias void function(GLFWmonitor*) GLFWmonitorfun;
+    alias void function(GLFWwindow*, int, int, int) GLFWkeyfun;
+    alias void function(GLFWwindow*, uint) GLFWcharfun;
+    alias void function(GLFWmonitor*, int) GLFWmonitorfun;
 }
 
 struct GLFWvidmode
