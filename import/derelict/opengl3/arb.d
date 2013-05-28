@@ -2646,15 +2646,52 @@ private __gshared bool _ARB_copy_image;
 bool ARB_copy_image() @property { return _ARB_copy_image; }
 
 // KHR_debug
-extern(System) alias nothrow void function(GLenum,GLenum,GLuint,GLenum,GLsizei,const(GLchar)*,GLvoid*) da_glDebug;
-__gshared da_glDebug glDebug;
+extern(System)
+{
+    // GLDEBUGPROC is a callback type -- don't try to load it!
+    alias nothrow void function(GLenum,GLenum,GLuint,GLenum,GLsizei,const(GLchar)*,GLvoid*) GLDEBUGPROC;
+
+    // These are the functions that need loading.
+    alias nothrow void function(GLenum,GLenum,GLenum,GLsizei,const(GLuint*),GLboolean) da_glDebugMessageControl;
+    alias nothrow void function(GLenum,GLenum,GLuint,GLenum,GLsizei,const(GLchar)*) da_glDebugMessageInsert;
+    alias nothrow void function(GLDEBUGPROC,const(void)*) da_glDebugMessageCallback;
+    alias nothrow GLuint function(GLuint,GLsizei,GLenum*,GLenum*,GLuint*,GLenum*,GLsizei*,GLchar*) da_glGetDebugMessageLog;
+    alias nothrow void function(GLenum,GLuint,GLsizei,const(GLchar)*) da_glPushDebugGroup;
+    alias nothrow void function() da_glPopDebugGroup;
+    alias nothrow void function(GLenum,GLuint,GLsizei,GLsizei,const(GLchar)*) da_glObjectLabel;
+    alias nothrow void function(GLenum,GLuint,GLsizei,GLsizei*,GLchar*) da_glGetObjectLabel;
+    alias nothrow void function(const(void)*,GLsizei,const(GLchar)*) da_glObjectPtrLabel;
+    alias nothrow void function(const(void)*,GLsizei,GLsizei*,GLchar*) da_glGetObjectPtrLabel;
+}
+__gshared
+{
+    da_glDebugMessageControl glDebugMessageControl;
+    da_glDebugMessageInsert glDebugMessageInsert;
+    da_glDebugMessageCallback glDebugMessageCallback;
+    da_glGetDebugMessageLog glGetDebugMessageLog;
+    da_glPushDebugGroup glPushDebugGroup;
+    da_glPopDebugGroup glPopDebugGroup;
+    da_glObjectLabel glObjectLabel;
+    da_glGetObjectLabel glGetObjectLabel;
+    da_glObjectPtrLabel glObjectPtrLabel;
+    da_glGetObjectPtrLabel glGetObjectPtrLabel;
+}
 private __gshared bool _KHR_debug;
 bool KHR_debug() @property { return _KHR_debug; }
 package void load_KHR_debug(bool doThrow = false)
 {
     try
     {
-        bindGLFunc(cast(void**)&glDebug, "glDebug");
+        bindGLFunc(cast(void**)&glDebugMessageControl, "glDebugMessageControl");
+        bindGLFunc(cast(void**)&glDebugMessageInsert, "glDebugMessageInsert");
+        bindGLFunc(cast(void**)&glDebugMessageCallback, "glDebugMessageCallback");
+        bindGLFunc(cast(void**)&glGetDebugMessageLog, "glGetDebugMessageLog");
+        bindGLFunc(cast(void**)&glPushDebugGroup, "glPushDebugGroup");
+        bindGLFunc(cast(void**)&glPopDebugGroup, "glPopDebugGroup");
+        bindGLFunc(cast(void**)&glObjectLabel, "glObjectLabel");
+        bindGLFunc(cast(void**)&glGetObjectLabel, "glGetObjectLabel");
+        bindGLFunc(cast(void**)&glObjectPtrLabel, "glObjectPtrLabel");
+        bindGLFunc(cast(void**)&glGetObjectPtrLabel, "glGetObjectPtrLabel");
         _KHR_debug = true;
     }
     catch(Exception e)
