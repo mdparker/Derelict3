@@ -49,7 +49,7 @@ else version(GNU)
     version(Shared)
         enum compilerOptions = "-s -O3 -Wall -shared";
     else
-        enum compilerOptions = "-s -O3 -Wall";
+        enum compilerOptions = "-c -s -O3 -Wall";
     string buildCompileString(string files, string libName)
     {
         version(Shared)
