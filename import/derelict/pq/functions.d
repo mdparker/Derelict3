@@ -125,28 +125,28 @@ extern(C) nothrow
 	alias int function(PGconn* conn) da_PQflush;
 	/* Accessor functions for PGresult objects */
 	alias PGresult* function(PGconn* conn, int fnid, int* result_buf, int* result_len, int result_is_int, PQArgBlock* args, int nargs) da_PQfn;
-	alias ExecStatusType function(immutable PGresult* res) da_PQresultStatus;
+	alias ExecStatusType function(const PGresult* res) da_PQresultStatus;
 	alias char* function(ExecStatusType status) da_PQresStatus;
-	alias char* function(immutable PGresult* res) da_PQresultErrorMessage;
+	alias char* function(const PGresult* res) da_PQresultErrorMessage;
 	alias char* function(PGresult* res, int fieldcode) da_PQresultErrorField;
-	alias int function(immutable PGresult* res) da_PQntuples;
-	alias int function(immutable PGresult* res) da_PQnfields;
+	alias int function(const PGresult* res) da_PQntuples;
+	alias int function(const PGresult* res) da_PQnfields;
 	alias int function(PGresult* res) da_PQbinaryTuples;
 	alias char* function(PGresult* res, int field_num) da_PQfname;
-	alias int function(immutable PGresult* res, immutable char* field_name) da_PQfnumber;
+	alias int function(const PGresult* res, immutable char* field_name) da_PQfnumber;
 	alias Oid function(PGresult* res, int field_num) da_PQftable;
 	alias int function(PGresult* res, int field_num) da_PQftablecol;
-	alias valueFormat function(immutable PGresult* res, int field_num) da_PQfformat;
-	alias Oid function(immutable PGresult* res, int field_num) da_PQftype;
+	alias valueFormat function(const PGresult* res, int field_num) da_PQfformat;
+	alias Oid function(const PGresult* res, int field_num) da_PQftype;
 	alias int function(PGresult* res, int field_num) da_PQfsize;
 	alias int function(PGresult* res, int field_num) da_PQfmod;
-	alias char* function(immutable PGresult* res) da_PQcmdStatus;
+	alias char* function(const PGresult* res) da_PQcmdStatus;
 	alias char* function(PGresult* res) da_PQoidStatus;
 	alias Oid function(PGresult* res) da_PQoidValue;
 	alias char* function(PGresult* res) da_PQcmdTuples;
-	alias immutable(ubyte)* function(immutable PGresult* res, int tup_num, int field_num) da_PQgetvalue;
-	alias int function(immutable PGresult* res, int tup_num, int field_num) da_PQgetlength;
-	alias int function(immutable PGresult* res, int tup_num, int field_num) da_PQgetisnull;
+	alias immutable(ubyte)* function(const PGresult* res, int tup_num, int field_num) da_PQgetvalue;
+	alias int function(const PGresult* res, int tup_num, int field_num) da_PQgetlength;
+	alias int function(const PGresult* res, int tup_num, int field_num) da_PQgetisnull;
 	alias int function(PGresult* res) da_PQnparams;
 	alias Oid function(PGresult* res, int param_num) da_PQparamtype;
 	/* Describe prepared statements and portals */
@@ -155,7 +155,7 @@ extern(C) nothrow
 	alias int function(PGconn* conn, char* stmt) da_PQsendDescribePrepared;
 	alias int function(PGconn* conn, char* portal) da_PQsendDescribePortal;
 
-	alias void function(immutable PGresult* res) da_PQclear;
+	alias void function(const PGresult* res) da_PQclear;
 	alias void function(void* ptr) da_PQfreemem;
 	/* Create and manipulate PGresults */
 	alias PGresult* function(PGconn* conn, ExecStatusType status) da_PQmakeEmptyPGresult;
