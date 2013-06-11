@@ -44,6 +44,7 @@ extern(C) nothrow
 
 	alias PQconninfoOption* function() da_PQconndefaults;
 	alias PQconninfoOption* function(char* conninfo, char** errmsg) da_PQconninfoParse;
+	alias PQconninfoOption* function(PGconn* conn) da_PQconninfo;
 	alias void function(PQconninfoOption* connOptions) da_PQconninfoFree;
 
 	alias int function(PGconn* conn) da_PQresetStart;
@@ -181,10 +182,13 @@ extern(C) nothrow
 	alias int function(PGconn* conn, int fd, char* fuf, size_t len) da_lo_read;
 	alias int function(PGconn* conn, int fd, const char* buf, size_t len) da_lo_write;
 	alias int function(PGconn* conn, int fd, int offset, int whence) da_lo_lseek;
+	alias pg_int64 function(PGconn* conn, int fd, pg_int64 offset, int whence) da_lo_lseek64;
 	alias Oid function(PGconn* conn, int mode) da_lo_creat;
 	alias Oid function(PGconn* conn, Oid lobjId) da_lo_create;
 	alias int function(PGconn* conn, int fd) da_lo_tell;
+	alias pg_int64 function(PGconn* conn, int fd) da_lo_tell64;
 	alias int function(PGconn* conn, int fd, size_t len) da_lo_truncate;
+	alias int function(PGconn* conn, int fd, pg_int64 len) da_lo_truncate64;
 	alias int function(PGconn* conn, Oid lobjId) da_lo_unlink;
 	alias Oid function(PGconn* conn, const char* filename) da_lo_import;
 	alias Oid function(PGconn* conn, const char* filename, Oid lobjId) da_lo_import_with_oid;
@@ -215,6 +219,7 @@ __gshared
 	da_PQfinish PQfinish;
 	da_PQconndefaults PQconndefaults;
 	da_PQconninfoParse PQconninfoParse;
+	da_PQconninfo PQconninfo;
 	da_PQconninfoFree PQconninfoFree;
 	da_PQresetStart PQresetStart;
 	da_PQresetPoll PQresetPoll;
@@ -329,10 +334,13 @@ __gshared
 	da_lo_read lo_read;
 	da_lo_write lo_write;
 	da_lo_lseek lo_lseek;
+	da_lo_lseek64 lo_lseek64;
 	da_lo_creat lo_creat;
 	da_lo_create lo_create;
 	da_lo_tell lo_tell;
+	da_lo_tell64 lo_tell64;
 	da_lo_truncate lo_truncate;
+	da_lo_truncate64 lo_truncate64;
 	da_lo_unlink lo_unlink;
 	da_lo_import lo_import;
 	da_lo_import_with_oid lo_import_with_oid;

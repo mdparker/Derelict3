@@ -42,12 +42,14 @@ enum PQVersion : int
 	PQ_921 = 90201,
 	PQ_922 = 90202,
 	PQ_923 = 90203,
+	PQ_930 = 90300,
 }
 
 extern(C)
 {
 	alias uint Oid;
 	alias char pqbool;
+	alias long pg_int64;
 	public import std.c.stdio : FILE;
 
 	enum PG_COPYRES_ATTRS       = 0x01;
