@@ -90,12 +90,12 @@ extern(C) nothrow
 
 	alias pgthreadlock_t function(pgthreadlock_t newhandler) da_PQregisterThreadLock;
 	/* Simple synchronous query */
-	alias PGresult* function(PGconn* conn, const char* query) da_PQexec;
-	alias PGresult* function(PGconn* conn, const char* command, int nParams, Oid* paramTypes, const ubyte** paramValues, int* paramLengths, int* paramFormats, int resultFormat) da_PQexecParams;
+	alias PGresult* function(PGconn* conn, const(char)* query) da_PQexec;
+	alias PGresult* function(PGconn* conn, const(char)* command, int nParams, Oid* paramTypes, const(ubyte)** paramValues, int* paramLengths, int* paramFormats, int resultFormat) da_PQexecParams;
 	alias PGresult* function(PGconn* conn, char* stmtName, char* query, int nParams, Oid* paramTypes) da_PQprepare;
 	alias PGresult* function(PGconn* conn, char* stmtName, int nParams, char** paramValues, int* paramFormats, int resultFormat) da_PQexecPrepared;
-	alias int function(PGconn* conn, const char* query) da_PQsendQuery;
-	alias int function(PGconn* conn, const char* command, int nParams, Oid* paramTypes, const ubyte** paramValues, int* paramLengths, int* paramFormats, int resultFormat) da_PQsendQueryParams;
+	alias int function(PGconn* conn, const(char)* query) da_PQsendQuery;
+	alias int function(PGconn* conn, const(char)* command, int nParams, Oid* paramTypes, const(ubyte)** paramValues, int* paramLengths, int* paramFormats, int resultFormat) da_PQsendQueryParams;
 	alias int function(PGconn* conn, char* stmtName, char* query, int nParams, Oid* paramTypes) da_PQsendPrepare;
 	alias int function(PGconn* conn, char* stmtName, int nParams, char** paramValues, int* paramLengths, int* paramFormats, int resultFormat) da_PQsendQueryPrepared;
 	alias int function(PGconn* conn) da_PQsetSingleRowMode;
@@ -125,28 +125,28 @@ extern(C) nothrow
 	alias int function(PGconn* conn) da_PQflush;
 	/* Accessor functions for PGresult objects */
 	alias PGresult* function(PGconn* conn, int fnid, int* result_buf, int* result_len, int result_is_int, PQArgBlock* args, int nargs) da_PQfn;
-	alias ExecStatusType function(const PGresult* res) da_PQresultStatus;
+	alias ExecStatusType function(const(PGresult)* res) da_PQresultStatus;
 	alias char* function(ExecStatusType status) da_PQresStatus;
-	alias char* function(const PGresult* res) da_PQresultErrorMessage;
+	alias char* function(const(PGresult)* res) da_PQresultErrorMessage;
 	alias char* function(PGresult* res, int fieldcode) da_PQresultErrorField;
-	alias int function(const PGresult* res) da_PQntuples;
-	alias int function(const PGresult* res) da_PQnfields;
+	alias int function(const(PGresult)* res) da_PQntuples;
+	alias int function(const(PGresult)* res) da_PQnfields;
 	alias int function(PGresult* res) da_PQbinaryTuples;
 	alias char* function(PGresult* res, int field_num) da_PQfname;
-	alias int function(const PGresult* res, immutable char* field_name) da_PQfnumber;
+	alias int function(const(PGresult)* res, immutable char* field_name) da_PQfnumber;
 	alias Oid function(PGresult* res, int field_num) da_PQftable;
 	alias int function(PGresult* res, int field_num) da_PQftablecol;
-	alias valueFormat function(const PGresult* res, int field_num) da_PQfformat;
-	alias Oid function(const PGresult* res, int field_num) da_PQftype;
+	alias valueFormat function(const(PGresult)* res, int field_num) da_PQfformat;
+	alias Oid function(const(PGresult)* res, int field_num) da_PQftype;
 	alias int function(PGresult* res, int field_num) da_PQfsize;
 	alias int function(PGresult* res, int field_num) da_PQfmod;
-	alias char* function(const PGresult* res) da_PQcmdStatus;
+	alias char* function(const(PGresult)* res) da_PQcmdStatus;
 	alias char* function(PGresult* res) da_PQoidStatus;
 	alias Oid function(PGresult* res) da_PQoidValue;
 	alias char* function(PGresult* res) da_PQcmdTuples;
-	alias immutable(ubyte)* function(const PGresult* res, int tup_num, int field_num) da_PQgetvalue;
-	alias int function(const PGresult* res, int tup_num, int field_num) da_PQgetlength;
-	alias int function(const PGresult* res, int tup_num, int field_num) da_PQgetisnull;
+	alias immutable(ubyte)* function(const(PGresult)* res, int tup_num, int field_num) da_PQgetvalue;
+	alias int function(const(PGresult)* res, int tup_num, int field_num) da_PQgetlength;
+	alias int function(const(PGresult)* res, int tup_num, int field_num) da_PQgetisnull;
 	alias int function(PGresult* res) da_PQnparams;
 	alias Oid function(PGresult* res, int param_num) da_PQparamtype;
 	/* Describe prepared statements and portals */
@@ -155,18 +155,18 @@ extern(C) nothrow
 	alias int function(PGconn* conn, char* stmt) da_PQsendDescribePrepared;
 	alias int function(PGconn* conn, char* portal) da_PQsendDescribePortal;
 
-	alias void function(const PGresult* res) da_PQclear;
+	alias void function(const(PGresult)* res) da_PQclear;
 	alias void function(void* ptr) da_PQfreemem;
 	/* Create and manipulate PGresults */
 	alias PGresult* function(PGconn* conn, ExecStatusType status) da_PQmakeEmptyPGresult;
-	alias PGresult* function(const PGresult* src, int flags) da_PQcopyResult;
+	alias PGresult* function(const(PGresult)* src, int flags) da_PQcopyResult;
 	alias int function(PGresult* res, int numAttributes, PGresAttDesc* attDescs) da_PQsetResultAttrs;
 	alias void* function(PGresult* res, size_t nBytes) da_PQresultAlloc;
 	alias int function(PGresult* res, int tup_num, int field_num, char* value, int len) da_PQsetvalue;
 	/* Quoting strings before inclusion in queries. */
 	alias size_t function(PGconn* conn, char* to, char* from, size_t length, int* error) da_PQescapeStringConn;
-	alias char* function(PGconn* conn, const char* str, size_t len) da_PQescapeLiteral;
-	alias char* function(PGconn* conn, const char* str, size_t length) da_PQescapeIdentifier;
+	alias char* function(PGconn* conn, const(char)* str, size_t len) da_PQescapeLiteral;
+	alias char* function(PGconn* conn, const(char)* str, size_t length) da_PQescapeIdentifier;
 	alias ubyte* function(PGconn* conn, ubyte* from, size_t from_length, size_t* to_length) da_PQescapeByteaConn;
 	alias ubyte* function(ubyte* strtext, size_t* retbuflen) da_PQunescapeBytea;
 	/* These forms are deprecated! */
@@ -180,7 +180,7 @@ extern(C) nothrow
 	alias int function(PGconn* conn, Oid lobjId, int mode) da_lo_open;
 	alias int function(PGconn* conn, int fd) da_lo_close;
 	alias int function(PGconn* conn, int fd, char* fuf, size_t len) da_lo_read;
-	alias int function(PGconn* conn, int fd, const char* buf, size_t len) da_lo_write;
+	alias int function(PGconn* conn, int fd, const(char)* buf, size_t len) da_lo_write;
 	alias int function(PGconn* conn, int fd, int offset, int whence) da_lo_lseek;
 	alias pg_int64 function(PGconn* conn, int fd, pg_int64 offset, int whence) da_lo_lseek64;
 	alias Oid function(PGconn* conn, int mode) da_lo_creat;
@@ -190,9 +190,9 @@ extern(C) nothrow
 	alias int function(PGconn* conn, int fd, size_t len) da_lo_truncate;
 	alias int function(PGconn* conn, int fd, pg_int64 len) da_lo_truncate64;
 	alias int function(PGconn* conn, Oid lobjId) da_lo_unlink;
-	alias Oid function(PGconn* conn, const char* filename) da_lo_import;
-	alias Oid function(PGconn* conn, const char* filename, Oid lobjId) da_lo_import_with_oid;
-	alias int function(PGconn* conn, Oid lobjId, const char* filename) da_lo_export;
+	alias Oid function(PGconn* conn, const(char)* filename) da_lo_import;
+	alias Oid function(PGconn* conn, const(char)* filename, Oid lobjId) da_lo_import_with_oid;
+	alias int function(PGconn* conn, Oid lobjId, const(char)* filename) da_lo_export;
 
 	alias int function() da_PQlibVersion;
 	alias int function(char* s, int encoding) da_PQmblen;
@@ -200,8 +200,8 @@ extern(C) nothrow
 	alias int function() da_PQenv2encoding;
 	alias char* function(char* passwd, char* user) da_PQencryptPassword;
 
-	alias int function(const char* name) da_pg_char_to_encoding;
-	alias const char* function(int encoding) da_pg_encoding_to_char;
+	alias int function(const(char)* name) da_pg_char_to_encoding;
+	alias const(char)* function(int encoding) da_pg_encoding_to_char;
 	alias int function(int encoding) da_pg_valid_server_encoding_id;
 
 	alias int function(PGconn* conn, PGEventProc proc, immutable char* name, void* passThrough) da_PQregisterEventProc;
