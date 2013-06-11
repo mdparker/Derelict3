@@ -217,6 +217,13 @@ class DerelictPQLoader : SharedLibLoader
             {
                 bindFunc(cast(void**)&PQsetSingleRowMode, "PQsetSingleRowMode");
             }
+            if(_loadedVersion >= PQVersion.PQ_930)
+            {
+                bindFunc(cast(void**)&PQconninfo, "PQconninfo");
+                bindFunc(cast(void**)&lo_lseek64, "lo_lseek64");
+                bindFunc(cast(void**)&lo_tell64, "lo_tell64");
+                bindFunc(cast(void**)&lo_truncate64, "lo_truncate64");
+            }
         }
     }
 
