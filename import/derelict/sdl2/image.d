@@ -50,9 +50,9 @@ alias SDL_GetError IMG_GetError;
 
 enum : Uint8
 {
-    SDL_IMAGE_MAJOR_VERSION     = 1,
-    SDL_IMAGE_MINOR_VERSION     = 2,
-    SDL_IMAGE_PATCHLEVEL        = 11,
+    SDL_IMAGE_MAJOR_VERSION     = 2,
+    SDL_IMAGE_MINOR_VERSION     = 0,
+    SDL_IMAGE_PATCHLEVEL        = 0,
 }
 
 void SDL_IMAGE_VERSION(SDL_version* X)
@@ -77,10 +77,16 @@ extern(C)
     alias nothrow int function(int) da_IMG_Init;
     alias nothrow int function() da_IMG_Quit;
     alias nothrow const(SDL_version)* function() da_IMG_Linked_Version;
-    alias nothrow SDL_Surface* function(SDL_RWops*, int, char*) da_IMG_LoadTyped_RW;
-    alias nothrow SDL_Surface* function(in char*) da_IMG_Load;
+    alias nothrow SDL_Surface* function(SDL_RWops*, int, const(char)*) da_IMG_LoadTyped_RW;
+    alias nothrow SDL_Surface* function(const(char)*) da_IMG_Load;
     alias nothrow SDL_Surface* function(SDL_RWops*, int) da_IMG_Load_RW;
-    alias nothrow int function(int) da_IMG_InvertAlpha;
+
+    alias nothrow SDL_Texture* function(SDL_Renderer*, const(char)*) da_IMG_LoadTexture;
+    alias nothrow SDL_Texture* function(SDL_Renderer*, SDL_RWops*, int) da_IMG_LoadTexture_RW;
+    alias nothrow SDL_Texture* function(SDL_Renderer*, SDL_RWops*, int, const(char)*) da_IMG_LoadTextureTyped_RW;
+
+    alias nothrow int function(SDL_RWops*) da_IMG_isICO;
+    alias nothrow int function(SDL_RWops*) da_IMG_isCUR;
     alias nothrow int function(SDL_RWops*) da_IMG_isBMP;
     alias nothrow int function(SDL_RWops*) da_IMG_isGIF;
     alias nothrow int function(SDL_RWops*) da_IMG_isJPG;
@@ -92,8 +98,10 @@ extern(C)
     alias nothrow int function(SDL_RWops*) da_IMG_isXCF;
     alias nothrow int function(SDL_RWops*) da_IMG_isXPM;
     alias nothrow int function(SDL_RWops*) da_IMG_isXV;
-    alias nothrow int function(SDL_RWops*) da_IMG_isICO;
-    alias nothrow int function(SDL_RWops*) da_IMG_isCUR;
+    alias nothrow int function(SDL_RWops*) da_IMG_isWEBP;
+
+    alias nothrow SDL_Surface* function(SDL_RWops*) da_IMG_LoadICO_RW;
+    alias nothrow SDL_Surface* function(SDL_RWops*) da_IMG_LoadCUR_RW;
     alias nothrow SDL_Surface* function(SDL_RWops*) da_IMG_LoadBMP_RW;
     alias nothrow SDL_Surface* function(SDL_RWops*) da_IMG_LoadGIF_RW;
     alias nothrow SDL_Surface* function(SDL_RWops*) da_IMG_LoadJPG_RW;
@@ -106,8 +114,8 @@ extern(C)
     alias nothrow SDL_Surface* function(SDL_RWops*) da_IMG_LoadXCF_RW;
     alias nothrow SDL_Surface* function(SDL_RWops*) da_IMG_LoadXPM_RW;
     alias nothrow SDL_Surface* function(SDL_RWops*) da_IMG_LoadXV_RW;
-    alias nothrow SDL_Surface* function(SDL_RWops*) da_IMG_LoadICO_RW;
-    alias nothrow SDL_Surface* function(SDL_RWops*) da_IMG_LoadCUR_RW;
+    alias nothrow SDL_Surface* function(SDL_RWops*) da_IMG_LoadWEBP_RW;
+
     alias nothrow SDL_Surface* function(char**) da_IMG_ReadXPMFromArray;
 }
 
@@ -119,7 +127,11 @@ __gshared
     da_IMG_LoadTyped_RW IMG_LoadTyped_RW;
     da_IMG_Load IMG_Load;
     da_IMG_Load_RW IMG_Load_RW;
-    da_IMG_InvertAlpha IMG_InvertAlpha;
+    da_IMG_LoadTexture IMG_LoadTexture;
+    da_IMG_LoadTexture_RW IMG_LoadTexture_RW;
+    da_IMG_LoadTextureTyped_RW IMG_LoadTextureTyped_RW;
+    da_IMG_isICO IMG_isICO;
+    da_IMG_isCUR IMG_isCUR;
     da_IMG_isBMP IMG_isBMP;
     da_IMG_isGIF IMG_isGIF;
     da_IMG_isJPG IMG_isJPG;
@@ -131,8 +143,9 @@ __gshared
     da_IMG_isXCF IMG_isXCF;
     da_IMG_isXPM IMG_isXPM;
     da_IMG_isXV IMG_isXV;
-    da_IMG_isICO IMG_isICO;
-    da_IMG_isCUR IMG_isCUR;
+    da_IMG_isWEBP IMG_isWEBP;
+    da_IMG_LoadICO_RW IMG_LoadICO_RW;
+    da_IMG_LoadCUR_RW IMG_LoadCUR_RW;
     da_IMG_LoadBMP_RW IMG_LoadBMP_RW;
     da_IMG_LoadGIF_RW IMG_LoadGIF_RW;
     da_IMG_LoadJPG_RW IMG_LoadJPG_RW;
@@ -145,8 +158,7 @@ __gshared
     da_IMG_LoadXCF_RW IMG_LoadXCF_RW;
     da_IMG_LoadXPM_RW IMG_LoadXPM_RW;
     da_IMG_LoadXV_RW IMG_LoadXV_RW;
-    da_IMG_LoadICO_RW IMG_LoadICO_RW;
-    da_IMG_LoadCUR_RW IMG_LoadCUR_RW;
+    da_IMG_LoadWEBP_RW IMG_LoadWEBP_RW;
     da_IMG_ReadXPMFromArray IMG_ReadXPMFromArray;
 }
 
@@ -163,7 +175,11 @@ class DerelictSDL2ImageLoader : SharedLibLoader
             bindFunc(cast(void**)&IMG_LoadTyped_RW, "IMG_LoadTyped_RW");
             bindFunc(cast(void**)&IMG_Load, "IMG_Load");
             bindFunc(cast(void**)&IMG_Load_RW, "IMG_Load_RW");
-            bindFunc(cast(void**)&IMG_InvertAlpha, "IMG_InvertAlpha");
+            bindFunc(cast(void**)&IMG_LoadTexture, "IMG_LoadTexture");
+            bindFunc(cast(void**)&IMG_LoadTexture_RW, "IMG_LoadTexture_RW");
+            bindFunc(cast(void**)&IMG_LoadTextureTyped_RW, "IMG_LoadTextureTyped_RW");
+            bindFunc(cast(void**)&IMG_isICO, "IMG_isICO");
+            bindFunc(cast(void**)&IMG_isCUR, "IMG_isCUR");
             bindFunc(cast(void**)&IMG_isBMP, "IMG_isBMP");
             bindFunc(cast(void**)&IMG_isGIF, "IMG_isGIF");
             bindFunc(cast(void**)&IMG_isJPG, "IMG_isJPG");
@@ -175,8 +191,9 @@ class DerelictSDL2ImageLoader : SharedLibLoader
             bindFunc(cast(void**)&IMG_isXCF, "IMG_isXCF");
             bindFunc(cast(void**)&IMG_isXPM, "IMG_isXPM");
             bindFunc(cast(void**)&IMG_isXV, "IMG_isXV");
-            bindFunc(cast(void**)&IMG_isICO, "IMG_isICO");
-            bindFunc(cast(void**)&IMG_isCUR, "IMG_isCUR");
+            bindFunc(cast(void**)&IMG_isWEBP, "IMG_isWEBP");
+            bindFunc(cast(void**)&IMG_LoadICO_RW, "IMG_LoadICO_RW");
+            bindFunc(cast(void**)&IMG_LoadCUR_RW, "IMG_LoadCUR_RW");
             bindFunc(cast(void**)&IMG_LoadBMP_RW, "IMG_LoadBMP_RW");
             bindFunc(cast(void**)&IMG_LoadGIF_RW, "IMG_LoadGIF_RW");
             bindFunc(cast(void**)&IMG_LoadJPG_RW, "IMG_LoadJPG_RW");
@@ -189,9 +206,8 @@ class DerelictSDL2ImageLoader : SharedLibLoader
             bindFunc(cast(void**)&IMG_LoadXCF_RW, "IMG_LoadXCF_RW");
             bindFunc(cast(void**)&IMG_LoadXPM_RW, "IMG_LoadXPM_RW");
             bindFunc(cast(void**)&IMG_LoadXV_RW, "IMG_LoadXV_RW");
-            bindFunc(cast(void**)&IMG_LoadICO_RW, "IMG_LoadICO_RW");
-            bindFunc(cast(void**)&IMG_LoadCUR_RW, "IMG_LoadCUR_RW");
-            bindFunc(cast(void**)&IMG_ReadXPMFromArray, "IMG_ReadXPMFromArray");
+            bindFunc(cast(void**)&IMG_isXV, "IMG_isXV");
+            bindFunc(cast(void**)&IMG_LoadWEBP_RW, "IMG_LoadWEBP_RW");
         }
     }
 
