@@ -23,16 +23,7 @@ The first thing to notice is that all source modules are located under a single 
 
 Second, Derelict is now D2 only. You should still be able to use Tango with Derelict via the recently announced D2 port. But if you need D1, go back to Derelict 2.
 
-Third, the build process has changed. No more makefiles. I hate them with a passion. The decision to support D2-only made it practical to slap together a simple build script. You can specify which packages to build, or specify none to build all. You can run it with rdmd like so:
-
-```
-cd $Derelict/build
-rdmd build.d
-
-rdmd build.d Util GL3
-```
-
-Or, if you prefer (as I do), you can compile it once with your D2 compiler (DMD, GDC, or LDC2) and execute it as often as you need to. You'll only need to recompile the build script if you pull down any changes to it from the repository.
+Third, the build process has changed. No more makefiles. I hate them with a passion. The decision to support D2-only made it practical to slap together a simple build script. You can specify which packages to build, or specify none to build all. You can compile it once with your D2 compiler (DMD, GDC, or LDC2) and execute it as often as you need to. You'll only need to recompile the build script if you pull down any changes to it from the repository.
 
 ```
 cd $Derelict/build
