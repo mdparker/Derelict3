@@ -10,13 +10,6 @@ http://dblog.aldacron.net/forum/index.php
 The old forum also has a lot of information (when the site works):
 http://www.dsource.org/forums/viewforum.php?f=19
 
-#Downloads
-
-For Windows users, you can download the following DLLs from my Dropbox so that you don't need to build them yourself. If you find that the DLL fails to load, or that a symbol is missing, please post an issue to let me know the binding needs updating.
-
-SDL2 -- https://www.dropbox.com/s/jmttaphy1o59q3b/SDL2.dll
-GLFW3 --https://www.dropbox.com/s/5h2tohrxqutg66r/glfw3.dll
-
 This is a quick & dirty intro until I get the time to put together proper documentation. Several things have changed from Derelict 2.
 
 The first thing to notice is that all source modules are located under a single import tree. When you build, .di files are no longer generated. So when building your app, you can just put the 'import' folder on the compiler's import path and away you go.
