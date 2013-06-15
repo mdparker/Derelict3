@@ -115,11 +115,6 @@ This is a binding to [libtcod 1.5.1](http://doryen.eptalys.net/libtcod/download/
 ```D
 auto color = TCOD_color_subract(*TCOD_white, *TCOD_red);
 ```
-
-#DerelictSDL2
-
-This is currently based on the latest SDL2 source snapshot found at the bottom of [this page](http://www.libsdl.org/hg.php). I try to keep it up to date, but its not uncommon for me to lag behind the latest snapshot releases by several days. If you're using the latest SDL2 mercurial head, there will most likely be inonsistencies to one degree or another. The SDL2 ABI was recently frozen (in early March), so things should stablize soon enough.
-
 #Finally
 
 Please bear in mind that this is all in an ALPHA state. It's perfectly usable as is, but there needs to be more work done on the build script, testing on different platforms/compilers, and, of course, the addition of a few more packages. Pull requests for bugfixes and enhancements are extremely welcome. However, I make no promises about accepting pull requests that add new packages. I'll have to take a wait-and-see approach on that for now.
