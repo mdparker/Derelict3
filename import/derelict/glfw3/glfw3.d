@@ -81,6 +81,7 @@ class DerelictGLFW3Loader : SharedLibLoader
             bindFunc(cast(void**)&glfwSetWindowPos, "glfwSetWindowPos");
             bindFunc(cast(void**)&glfwGetWindowSize, "glfwGetWindowSize");
             bindFunc(cast(void**)&glfwSetWindowSize, "glfwSetWindowSize");
+            bindFunc(cast(void**)&glfwGetFramebufferSize, "glfwGetFramebufferSize");
             bindFunc(cast(void**)&glfwIconifyWindow, "glfwIconifyWindow");
             bindFunc(cast(void**)&glfwRestoreWindow, "glfwRestoreWindow");
             bindFunc(cast(void**)&glfwShowWindow, "glfwShowWindow");
@@ -95,6 +96,7 @@ class DerelictGLFW3Loader : SharedLibLoader
             bindFunc(cast(void**)&glfwSetWindowRefreshCallback, "glfwSetWindowRefreshCallback");
             bindFunc(cast(void**)&glfwSetWindowFocusCallback, "glfwSetWindowFocusCallback");
             bindFunc(cast(void**)&glfwSetWindowIconifyCallback, "glfwSetWindowIconifyCallback");
+            bindFunc(cast(void**)&glfwSetFramebufferSizeCallback, "glfwSetFramebufferSizeCallback");
             bindFunc(cast(void**)&glfwPollEvents, "glfwPollEvents");
             bindFunc(cast(void**)&glfwWaitEvents, "glfwWaitEvents");
             bindFunc(cast(void**)&glfwGetInputMode, "glfwGetInputMode");

@@ -68,6 +68,7 @@ extern(C)
     alias nothrow void function(GLFWwindow*, int, int) da_glfwSetWindowPos;
     alias nothrow void function(GLFWwindow*, int*, int*) da_glfwGetWindowSize;
     alias nothrow void function(GLFWwindow*, int, int) da_glfwSetWindowSize;
+    alias nothrow void function(GLFWwindow*, int*, int*) da_glfwGetFramebufferSize;
     alias nothrow void function(GLFWwindow*) da_glfwIconifyWindow;
     alias nothrow void function(GLFWwindow*) da_glfwRestoreWindow;
     alias nothrow void function(GLFWwindow*) da_glfwShowWindow;
@@ -82,6 +83,7 @@ extern(C)
     alias nothrow GLFWwindowrefreshfun function(GLFWwindow*, GLFWwindowrefreshfun) da_glfwSetWindowRefreshCallback;
     alias nothrow GLFWwindowfocusfun function(GLFWwindow*, GLFWwindowfocusfun) da_glfwSetWindowFocusCallback;
     alias nothrow GLFWwindowiconifyfun function(GLFWwindow*, GLFWwindowiconifyfun) da_glfwSetWindowIconifyCallback;
+    alias nothrow GLFWframebuffersizefun function(GLFWwindow*, GLFWframebuffersizefun) da_glfwSetFramebufferSizeCallback;
 
     alias nothrow void function() da_glfwPollEvents;
     alias nothrow void function() da_glfwWaitEvents;
@@ -147,6 +149,7 @@ __gshared
     da_glfwSetWindowPos glfwSetWindowPos;
     da_glfwGetWindowSize glfwGetWindowSize;
     da_glfwSetWindowSize glfwSetWindowSize;
+    da_glfwGetFramebufferSize glfwGetFramebufferSize;
     da_glfwIconifyWindow glfwIconifyWindow;
     da_glfwRestoreWindow glfwRestoreWindow;
     da_glfwShowWindow glfwShowWindow;
@@ -161,6 +164,7 @@ __gshared
     da_glfwSetWindowRefreshCallback glfwSetWindowRefreshCallback;
     da_glfwSetWindowFocusCallback glfwSetWindowFocusCallback;
     da_glfwSetWindowIconifyCallback glfwSetWindowIconifyCallback;
+    da_glfwSetFramebufferSizeCallback glfwSetFramebufferSizeCallback;
     da_glfwPollEvents glfwPollEvents;
     da_glfwWaitEvents glfwWaitEvents;
     da_glfwGetInputMode glfwGetInputMode;
