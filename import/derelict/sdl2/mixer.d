@@ -39,20 +39,28 @@ private
     else static if(Derelict_OS_Mac)
         enum libNames = "../Frameworks/SDL2_mixer.framework/SDL2_mixer, /Library/Frameworks/SDL2_mixer.framework/SDL2_mixer, /System/Library/Frameworks/SDL2_mixer.framework/SDL2_mixer";
     else static if(Derelict_OS_Posix)
-        enum libNames = "libSDL2_mixer.so, libSDL2_mixer-1.2.so, libSDL2_mixer-1.2.so.0";
+        enum libNames = "libSDL2_mixer.so, libSDL2_mixer-2.0.so, libSDL2_mixer-2.0.so.0";
     else
         static assert(0, "Need to implement SDL2_mixer libNames for this operating system.");
 }
 
 enum : Uint8
 {
-    SDL_MIXER_MAJOR_VERSION     = 1,
-    SDL_MIXER_MINOR_VERSION     = 2,
-    SDL_MIXER_PATCHLEVEL        = 13,
+    SDL_MIXER_MAJOR_VERSION     = 2,
+    SDL_MIXER_MINOR_VERSION     = 0,
+    SDL_MIXER_PATCHLEVEL        = 0,
 }
 alias SDL_MIXER_MAJOR_VERSION MIX_MAJOR_VERSION;
 alias SDL_MIXER_MINOR_VERSION MIX_MINOR_VERSION;
 alias SDL_MIXER_PATCHLEVEL MIX_PATCH_LEVEL;
+
+void SDL_MIXER_VERSION(SDL_version* X)
+{
+    X.major     = SDL_MIXER_MAJOR_VERSION;
+    X.minor     = SDL_MIXER_MINOR_VERSION;
+    X.patch     = SDL_MIXER_PATCHLEVEL;
+}
+alias SDL_MIXER_VERSION SDL_MIX_VERSION;
 
 alias SDL_SetError Mix_SetError;
 alias SDL_GetError Mix_GetError;
@@ -62,9 +70,25 @@ enum : int
 {
     MIX_INIT_FLAC = 0x00000001,
     MIX_INIT_MOD = 0x00000002,
-    MIX_INIT_MP3 = 0x00000004,
-    MIX_INIT_OGG = 0x00000008,
-    MIX_INIT_FLUIDSYNTH = 0x00000010,
+    MIX_INIT_MODPLUG = 0x00000004,
+    MIX_INIT_MP3 = 0x00000008,
+    MIX_INIT_OGG = 0x00000010,
+    MIX_INIT_FLUIDSYNTH = 0x00000020,
+}
+
+enum
+{
+    MIX_CHANNELS              = 8,
+    MIX_DEFAULT_FREQUENCY     = 22050,
+    MIX_DEFAULT_CHANNELS      = 2,
+    MIX_MAX_VOLUME            = 128,
+    MIX_CHANNEL_POST          = -2,
+}
+
+version (LittleEndian) {
+    enum MIX_DEFAULT_FORMAT = AUDIO_S16LSB;
+} else {
+    enum MIX_DEFAULT_FORMAT = AUDIO_S16MSB;
 }
 
 struct Mix_Chunk
@@ -98,23 +122,7 @@ enum : int
    MUS_MODPLUG,
 };
 
-struct _Mix_Music;
-alias _Mix_Music Mix_Music;
-
-enum
-{
-    MIX_CHANNELS              = 8,
-    MIX_DEFAULT_FREQUENCY     = 22050,
-    MIX_DEFAULT_CHANNELS      = 2,
-    MIX_MAX_VOLUME            = 128,
-    MIX_CHANNEL_POST          = -2,
-}
-
-version (LittleEndian) {
-    enum { MIX_DEFAULT_FORMAT = AUDIO_S16LSB }
-} else {
-    enum { MIX_DEFAULT_FORMAT = AUDIO_S16MSB }
-}
+struct Mix_Music;
 
 string MIX_EFFECTSMAXSPEED = "MIX_EFFECTSMAXSPEED";
 
@@ -123,15 +131,6 @@ extern(C)
     alias void function(int chan, void* stream, int len, void* udata) Mix_EffectFunc_t;
     alias void function(int chan, void* udata) Mix_EffectDone_t;
 }
-
-void SDL_MIXER_VERSION(SDL_version* X)
-{
-    X.major = SDL_MIXER_MAJOR_VERSION;
-    X.minor = SDL_MIXER_MINOR_VERSION;
-    X.patch = SDL_MIXER_PATCHLEVEL;
-}
-alias SDL_MIXER_VERSION MIX_VERSION;
-
 
 Mix_Chunk* Mix_LoadWAV(const(char)* file)
 {
@@ -157,8 +156,8 @@ extern (C)
     alias nothrow int function(int) da_Mix_AllocateChannels;
     alias nothrow int function(int*, Uint16*, int*) da_Mix_QuerySpec;
     alias nothrow Mix_Chunk* function(SDL_RWops*, int) da_Mix_LoadWAV_RW;
-    alias nothrow Mix_Music* function(in char*) da_Mix_LoadMUS;
-    alias nothrow Mix_Music* function(SDL_RWops*) da_Mix_LoadMUS_RW;
+    alias nothrow Mix_Music* function(const(char)*) da_Mix_LoadMUS;
+    alias nothrow Mix_Music* function(SDL_RWops*, int) da_Mix_LoadMUS_RW;
     alias nothrow Mix_Music* function(SDL_RWops*, Mix_MusicType, int) da_Mix_LoadMUSType_RW;
     alias nothrow Mix_Chunk* function(Uint8*) da_Mix_QuickLoad_WAV;
     alias nothrow Mix_Chunk* function(Uint8*, Uint32) da_Mix_QuickLoad_RAW;
@@ -168,11 +167,11 @@ extern (C)
     alias nothrow const(char)* function(int) da_Mix_GetChunkDecoder;
     alias nothrow int function() da_Mix_GetNumMusicDecoders;
     alias nothrow const(char)* function(int) da_Mix_GetMusicDecoder;
-    alias nothrow Mix_MusicType function(in Mix_Music*) da_Mix_GetMusicType;
+    alias nothrow Mix_MusicType function(const(Mix_Music)*) da_Mix_GetMusicType;
     alias nothrow void function(void function(void*, Uint8*, int) da_Mix_func, void*) da_Mix_SetPostMix;
     alias nothrow void function(void function(void*, Uint8*, int) da_Mix_func, void*) da_Mix_HookMusic;
     alias nothrow void function(void function() music_finished) da_Mix_HookMusicFinished;
-    alias nothrow void*  function() da_Mix_GetMusicHookData;
+    alias nothrow void* function() da_Mix_GetMusicHookData;
     alias nothrow void function(void function(int channel) channel_finished) da_Mix_ChannelFinished;
     alias nothrow int function(int, Mix_EffectFunc_t, Mix_EffectDone_t, void*) da_Mix_RegisterEffect;
     alias nothrow int function(int, Mix_EffectFunc_t) da_Mix_UnregisterEffect;
