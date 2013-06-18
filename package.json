@@ -4,7 +4,7 @@
 	"license": "Boost",
 	"authors": [
 		"Mike Parker",
-		"See the contributors page at github."
+		"https://github.com/aldacron/Derelict3/graphs/contributors"
 	],
 
 	"targetPath": "lib",
