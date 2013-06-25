@@ -303,7 +303,7 @@ extern(C)
     alias void function(GLFWwindow*, double, double) GLFWcursorposfun;
     alias void function(GLFWwindow*, int) GLFWcursorenterfun;
     alias void function(GLFWwindow*, double, double) GLFWscrollfun;
-    alias void function(GLFWwindow*, int, int, int) GLFWkeyfun;
+    alias void function(GLFWwindow*, int, int, int, int) GLFWkeyfun;
     alias void function(GLFWwindow*, uint) GLFWcharfun;
     alias void function(GLFWmonitor*, int) GLFWmonitorfun;
 }
