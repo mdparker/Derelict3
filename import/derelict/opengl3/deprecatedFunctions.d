@@ -213,7 +213,7 @@ extern(System)
     alias nothrow void function(GLfloat c) da_glClearIndex;
     alias nothrow void function(GLuint) da_glIndexMask;
     alias nothrow void function(GLbitfield) da_glPushAttrib;
-    alias nothrow void function(GLbitfield) da_glPopAttrib;
+    alias nothrow void function() da_glPopAttrib;
     alias nothrow void function(GLenum,GLdouble,GLdouble,GLint,GLint,const(GLdouble)*) da_glMap1d;
     alias nothrow void function(GLenum,GLfloat,GLfloat,GLint,GLint,const(GLfloat)*) da_glMap1f;
     alias nothrow void function(GLenum,GLdouble,GLdouble,GLint,GLint,GLdouble,GLdouble,GLint,GLint,GLdouble*) da_glMap2d;
