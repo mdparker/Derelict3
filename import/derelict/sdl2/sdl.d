@@ -48,6 +48,13 @@ private
         static assert(0, "Need to implement SDL2 libNames for this operating system.");
 }
 
+/*
+This function is not part of the public interface,  but SDL expects it to be called before any subsystems have been intiailized.
+Normally, this happens via linking with libSDLmain, but since that doesn't happen when using Derelict, then the loader must
+load this function and call it before the load method returns. Otherwise, bad things can happen.
+*/
+private extern(C) alias nothrow void function() da_SDL_SetMainReady;
+
 class DerelictSDL2Loader : SharedLibLoader
 {
     protected
@@ -454,6 +461,11 @@ class DerelictSDL2Loader : SharedLibLoader
             bindFunc(cast(void**)&SDL_GL_GetSwapInterval, "SDL_GL_GetSwapInterval");
             bindFunc(cast(void**)&SDL_GL_SwapWindow, "SDL_GL_SwapWindow");
             bindFunc(cast(void**)&SDL_GL_DeleteContext, "SDL_GL_DeleteContext");
+
+
+            da_SDL_SetMainReady setReady;
+            bindFunc(cast(void**)&setReady, "SDL_SetMainReady");
+            setReady();
         }
     }
 
