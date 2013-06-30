@@ -39,16 +39,16 @@ static if(Derelict_OS_Posix)
     alias uint VisualID;
     alias byte*   XPointer;
 
-	alias void Display;
-	alias uint XID;
-	alias XID Window;
-	alias XID Drawable;
-	alias XID Font;
-	alias XID Pixmap;
-	alias XID Cursor;
-	alias XID Colormap;
-	alias XID GContext;
-	alias XID KeySym;
+    alias void Display;
+    alias uint XID;
+    alias XID Window;
+    alias XID Drawable;
+    alias XID Font;
+    alias XID Pixmap;
+    alias XID Cursor;
+    alias XID Colormap;
+    alias XID GContext;
+    alias XID KeySym;
 
     struct XExtData
     {
