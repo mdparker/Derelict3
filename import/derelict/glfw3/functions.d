@@ -41,42 +41,49 @@ extern(C)
     alias nothrow void function(int*, int*, int*) da_glfwGetVersion;
     alias nothrow const(char)* function() da_glfwGetVersionString;
 
-    alias nothrow void function(GLFWerrorfun) da_glfwSetErrorCallback;
+    alias nothrow GLFWerrorfun function(GLFWerrorfun) da_glfwSetErrorCallback;
 
     alias nothrow GLFWmonitor** function(int*) da_glfwGetMonitors;
     alias nothrow GLFWmonitor* function() da_glfwGetPrimaryMonitor;
-    alias nothrow int function(GLFWmonitor*, int) da_glfwGetMonitorParam;
+    alias nothrow void function(GLFWmonitor*, int*, int*) da_glfwGetMonitorPos;
+    alias nothrow void function(GLFWmonitor*, int*, int*) da_glfwGetMonitorPhysicalSize;
     alias nothrow const(char)* function(GLFWmonitor*) da_glfwGetMonitorName;
-    alias nothrow void function(GLFWmonitorfun) da_glfwSetMonitorCallback;
+    alias nothrow GLFWmonitorfun function(GLFWmonitorfun) da_glfwSetMonitorCallback;
 
     alias nothrow const(GLFWvidmode)* function(GLFWmonitor*, int*) da_glfwGetVideoModes;
-    alias nothrow GLFWvidmode function(GLFWmonitor*) da_glfwGetVideoMode;
+    alias nothrow const(GLFWvidmode)* function(GLFWmonitor*) da_glfwGetVideoMode;
 
-    alias nothrow void function(float) da_glfwSetGamma;
-    alias nothrow void function(GLFWgammaramp*) da_glfwGetGammaRamp;
-    alias nothrow void function(in GLFWgammaramp*) da_glfwSetGammaRamp;
+    alias nothrow void function(GLFWmonitor*,float) da_glfwSetGamma;
+    alias nothrow const(GLFWgammaramp*) function(GLFWmonitor*) da_glfwGetGammaRamp;
+    alias nothrow void function(GLFWmonitor*,const(GLFWgammaramp)*) da_glfwSetGammaRamp;
 
     alias nothrow void function() da_glfwDefaultWindowHints;
     alias nothrow void function(int, int) da_glfwWindowHint;
     alias nothrow GLFWwindow* function(int, int, const(char)*, GLFWmonitor*, GLFWwindow*) da_glfwCreateWindow;
     alias nothrow void function(GLFWwindow*) da_glfwDestroyWindow;
+    alias nothrow int function(GLFWwindow*) da_glfwWindowShouldClose;
+    alias nothrow void function(GLFWwindow*, int) da_glfwSetWindowShouldClose;
     alias nothrow void function(GLFWwindow*, const(char)*) da_glfwSetWindowTitle;
+    alias nothrow void function(GLFWwindow*, int*, int*) da_glfwGetWindowPos;
+    alias nothrow void function(GLFWwindow*, int, int) da_glfwSetWindowPos;
     alias nothrow void function(GLFWwindow*, int*, int*) da_glfwGetWindowSize;
     alias nothrow void function(GLFWwindow*, int, int) da_glfwSetWindowSize;
+    alias nothrow void function(GLFWwindow*, int*, int*) da_glfwGetFramebufferSize;
     alias nothrow void function(GLFWwindow*) da_glfwIconifyWindow;
     alias nothrow void function(GLFWwindow*) da_glfwRestoreWindow;
     alias nothrow void function(GLFWwindow*) da_glfwShowWindow;
     alias nothrow void function(GLFWwindow*) da_glfwHideWindow;
     alias nothrow GLFWmonitor* function(GLFWwindow*) da_glfwGetWindowMonitor;
-    alias nothrow int function(GLFWwindow*, int) da_glfwGetWindowParam;
+    alias nothrow int function(GLFWwindow*, int) da_glfwGetWindowAttrib;
     alias nothrow void function(GLFWwindow*, void*) da_glfwSetWindowUserPointer;
     alias nothrow void* function(GLFWwindow*) da_glfwGetWindowUserPointer;
-    alias nothrow void function(GLFWwindow*, GLFWwindowposfun) da_glfwSetWindowPosCallback;
-    alias nothrow void function(GLFWwindow*, GLFWwindowsizefun) da_glfwSetWindowSizeCallback;
-    alias nothrow void function(GLFWwindow*, GLFWwindowclosefun) da_glfwSetWindowCloseCallback;
-    alias nothrow void function(GLFWwindow*, GLFWwindowrefreshfun) da_glfwSetWindowRefreshCallback;
-    alias nothrow void function(GLFWwindow*, GLFWwindowfocusfun) da_glfwSetWindowFocusCallback;
-    alias nothrow void function(GLFWwindow*, GLFWwindowiconifyfun) da_glfwSetWindowIconifyCallback;
+    alias nothrow GLFWwindowposfun function(GLFWwindow*, GLFWwindowposfun) da_glfwSetWindowPosCallback;
+    alias nothrow GLFWwindowsizefun function(GLFWwindow*, GLFWwindowsizefun) da_glfwSetWindowSizeCallback;
+    alias nothrow GLFWwindowclosefun function(GLFWwindow*, GLFWwindowclosefun) da_glfwSetWindowCloseCallback;
+    alias nothrow GLFWwindowrefreshfun function(GLFWwindow*, GLFWwindowrefreshfun) da_glfwSetWindowRefreshCallback;
+    alias nothrow GLFWwindowfocusfun function(GLFWwindow*, GLFWwindowfocusfun) da_glfwSetWindowFocusCallback;
+    alias nothrow GLFWwindowiconifyfun function(GLFWwindow*, GLFWwindowiconifyfun) da_glfwSetWindowIconifyCallback;
+    alias nothrow GLFWframebuffersizefun function(GLFWwindow*, GLFWframebuffersizefun) da_glfwSetFramebufferSizeCallback;
 
     alias nothrow void function() da_glfwPollEvents;
     alias nothrow void function() da_glfwWaitEvents;
@@ -85,19 +92,18 @@ extern(C)
     alias nothrow void function(GLFWwindow*, int, int) da_glfwSetInputMode;
     alias nothrow int function(GLFWwindow*, int) da_glfwGetKey;
     alias nothrow int function(GLFWwindow*, int) da_glfwGetMouseButton;
-    alias nothrow void function(GLFWwindow*, int*, int*) da_glfwGetCursorPos;
-    alias nothrow void function(GLFWwindow*, int, int) da_glfwSetCursorPos;
-    alias nothrow void function(GLFWwindow*, double*, double*) da_glfwGetScrollOffset;
-    alias nothrow void function(GLFWwindow*, GLFWkeyfun) da_glfwSetKeyCallback;
-    alias nothrow void function(GLFWwindow*, GLFWcharfun) da_glfwSetCharCallback;
-    alias nothrow void function(GLFWwindow*, GLFWmousebuttonfun) da_glfwSetMouseButtonCallback;
-    alias nothrow void function(GLFWwindow*, GLFWcursorposfun) da_glfwSetCursorPosCallback;
-    alias nothrow void function(GLFWwindow*, GLFWcursorenterfun) da_glfwSetCursorEnterCallback;
-    alias nothrow void function(GLFWwindow*, GLFWscrollfun) da_glfwSetScrollCallback;
+    alias nothrow void function(GLFWwindow*, double*, double*) da_glfwGetCursorPos;
+    alias nothrow void function(GLFWwindow*, double, double) da_glfwSetCursorPos;
+    alias nothrow GLFWkeyfun function(GLFWwindow*, GLFWkeyfun) da_glfwSetKeyCallback;
+    alias nothrow GLFWcharfun function(GLFWwindow*, GLFWcharfun) da_glfwSetCharCallback;
+    alias nothrow GLFWmousebuttonfun function(GLFWwindow*, GLFWmousebuttonfun) da_glfwSetMouseButtonCallback;
+    alias nothrow GLFWcursorposfun function(GLFWwindow*, GLFWcursorposfun) da_glfwSetCursorPosCallback;
+    alias nothrow GLFWcursorenterfun function(GLFWwindow*, GLFWcursorenterfun) da_glfwSetCursorEnterCallback;
+    alias nothrow GLFWscrollfun function(GLFWwindow*, GLFWscrollfun) da_glfwSetScrollCallback;
 
-    alias nothrow int function(int, int) da_glfwGetJoystickParam;
-    alias nothrow int function(int, float*, int) da_glfwGetJoystickAxes;
-    alias nothrow int function(int, ubyte*, int) da_glfwGetJoystickButtons;
+    alias nothrow int function(int) da_glfwJoystickPresent;
+    alias nothrow float* function(int, int*) da_glfwGetJoystickAxes;
+    alias nothrow ubyte* function(int, int*) da_glfwGetJoystickButtons;
     alias nothrow const(char)* function(int) da_glfwGetJoystickName;
 
     alias nothrow void function(GLFWwindow*, const(char)*) da_glfwSetClipboardString;
@@ -111,7 +117,7 @@ extern(C)
     alias nothrow void function(GLFWwindow*) da_glfwSwapBuffers;
     alias nothrow void function(int) da_glfwSwapInterval;
     alias nothrow int function(const(char)*) da_glfwExtensionSupported;
-    alias nothrow void* function(const(char)*) da_glfwGetProcAddress;
+    alias nothrow GLFWglproc function(const(char)*) da_glfwGetProcAddress;
 }
 
 __gshared
@@ -123,9 +129,10 @@ __gshared
     da_glfwSetErrorCallback glfwSetErrorCallback;
     da_glfwGetMonitors glfwGetMonitors;
     da_glfwGetPrimaryMonitor glfwGetPrimaryMonitor;
+    da_glfwGetMonitorPos glfwGetMonitorPos;
+    da_glfwGetMonitorPhysicalSize glfwGetMonitorPhysicalSize;
     da_glfwGetMonitorName glfwGetMonitorName;
     da_glfwSetMonitorCallback glfwSetMonitorCallback;
-    da_glfwGetMonitorParam glfwGetMonitorParam;
     da_glfwGetVideoModes glfwGetVideoModes;
     da_glfwGetVideoMode glfwGetVideoMode;
     da_glfwSetGamma glfwSetGamma;
@@ -135,15 +142,20 @@ __gshared
     da_glfwWindowHint glfwWindowHint;
     da_glfwCreateWindow glfwCreateWindow;
     da_glfwDestroyWindow glfwDestroyWindow;
+    da_glfwWindowShouldClose glfwWindowShouldClose;
+    da_glfwSetWindowShouldClose glfwSetWindowShouldClose;
     da_glfwSetWindowTitle glfwSetWindowTitle;
+    da_glfwGetWindowPos glfwGetWindowPos;
+    da_glfwSetWindowPos glfwSetWindowPos;
     da_glfwGetWindowSize glfwGetWindowSize;
     da_glfwSetWindowSize glfwSetWindowSize;
+    da_glfwGetFramebufferSize glfwGetFramebufferSize;
     da_glfwIconifyWindow glfwIconifyWindow;
     da_glfwRestoreWindow glfwRestoreWindow;
     da_glfwShowWindow glfwShowWindow;
     da_glfwHideWindow glfwHideWindow;
     da_glfwGetWindowMonitor glfwGetWindowMonitor;
-    da_glfwGetWindowParam glfwGetWindowParam;
+    da_glfwGetWindowAttrib glfwGetWindowAttrib;
     da_glfwSetWindowUserPointer glfwSetWindowUserPointer;
     da_glfwGetWindowUserPointer glfwGetWindowUserPointer;
     da_glfwSetWindowPosCallback glfwSetWindowPosCallback;
@@ -152,6 +164,7 @@ __gshared
     da_glfwSetWindowRefreshCallback glfwSetWindowRefreshCallback;
     da_glfwSetWindowFocusCallback glfwSetWindowFocusCallback;
     da_glfwSetWindowIconifyCallback glfwSetWindowIconifyCallback;
+    da_glfwSetFramebufferSizeCallback glfwSetFramebufferSizeCallback;
     da_glfwPollEvents glfwPollEvents;
     da_glfwWaitEvents glfwWaitEvents;
     da_glfwGetInputMode glfwGetInputMode;
@@ -160,14 +173,13 @@ __gshared
     da_glfwGetMouseButton glfwGetMouseButton;
     da_glfwGetCursorPos glfwGetCursorPos;
     da_glfwSetCursorPos glfwSetCursorPos;
-    da_glfwGetScrollOffset glfwGetScrollOffset;
     da_glfwSetKeyCallback glfwSetKeyCallback;
     da_glfwSetCharCallback glfwSetCharCallback;
     da_glfwSetMouseButtonCallback glfwSetMouseButtonCallback;
     da_glfwSetCursorPosCallback glfwSetCursorPosCallback;
     da_glfwSetCursorEnterCallback glfwSetCursorEnterCallback;
     da_glfwSetScrollCallback glfwSetScrollCallback;
-    da_glfwGetJoystickParam glfwGetJoystickParam;
+    da_glfwJoystickPresent glfwJoystickPresent;
     da_glfwGetJoystickAxes glfwGetJoystickAxes;
     da_glfwGetJoystickButtons glfwGetJoystickButtons;
     da_glfwGetJoystickName glfwGetJoystickName;

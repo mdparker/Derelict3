@@ -16,16 +16,7 @@ The first thing to notice is that all source modules are located under a single 
 
 Second, Derelict is now D2 only. You should still be able to use Tango with Derelict via the recently announced D2 port. But if you need D1, go back to Derelict 2.
 
-Third, the build process has changed. No more makefiles. I hate them with a passion. The decision to support D2-only made it practical to slap together a simple build script. You can specify which packages to build, or specify none to build all. You can run it with rdmd like so:
-
-```
-cd $Derelict/build
-rdmd build.d
-
-rdmd build.d Util GL3
-```
-
-Or, if you prefer (as I do), you can compile it once with your D2 compiler (DMD, GDC, or LDC2) and execute it as often as you need to. You'll only need to recompile the build script if you pull down any changes to it from the repository.
+Third, the build process has changed. No more makefiles. I hate them with a passion. The decision to support D2-only made it practical to slap together a simple build script. You can specify which packages to build, or specify none to build all. You can compile it once with your D2 compiler (DMD, GDC, or LDC2) and execute it as often as you need to. You'll only need to recompile the build script if you pull down any changes to it from the repository.
 
 ```
 cd $Derelict/build
@@ -124,11 +115,6 @@ This is a binding to [libtcod 1.5.1](http://doryen.eptalys.net/libtcod/download/
 ```D
 auto color = TCOD_color_subract(*TCOD_white, *TCOD_red);
 ```
-
-#Downloads
-
-On the [download page](https://github.com/aldacron/Derelict3/downloads), you'll find precompiled Windows DLLs for SDL2 and SDL2_image, since they aren't quite so easy to for some people to compile.
-
 #Finally
 
 Please bear in mind that this is all in an ALPHA state. It's perfectly usable as is, but there needs to be more work done on the build script, testing on different platforms/compilers, and, of course, the addition of a few more packages. Pull requests for bugfixes and enhancements are extremely welcome. However, I make no promises about accepting pull requests that add new packages. I'll have to take a wait-and-see approach on that for now.

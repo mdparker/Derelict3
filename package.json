@@ -1,0 +1,151 @@
+{
+	"name": "derelict",
+	"description": "Dynamic bindings to a number of multimedia related C libraries, including OpenGL, OpenAL, SDL and others",
+	"license": "Boost",
+	"authors": [
+		"Mike Parker",
+		"https://github.com/aldacron/Derelict3/graphs/contributors"
+	],
+
+	"targetPath": "lib",
+
+	"dependencies": {
+		"derelict:alure": "~master",
+		"derelict:assimp": "~master",
+		"derelict:devil": "~master",
+		"derelict:freeglut": "~master",
+		"derelict:freeimage": "~master",
+		"derelict:freetype": "~master",
+		"derelict:glfw3": "~master",
+		"derelict:lua": "~master",
+		"derelict:ode": "~master",
+		"derelict:ogg": "~master",
+		"derelict:openal": "~master",
+		"derelict:opengl3": "~master",
+		"derelict:pq": "~master",
+		"derelict:sdl2": "~master",
+		"derelict:sfml2": "~master",
+		"derelict:tcod": "~master",
+	},
+
+	"subPackages" : [
+		{
+			"name": "util",
+			"targetPath": "lib",
+			"sourcePaths": ["import/derelict/util"],
+			"importPaths": ["import"]
+		},
+		{
+			"name": "alure",
+			"dependencies": {"derelict:util": "~master"},
+			"targetPath": "lib",
+			"sourcePaths": ["import/derelict/alure"],
+			"importPaths": ["import"]
+		},
+		{
+			"name": "assimp",
+			"dependencies": {"derelict:util": "~master"},
+			"targetPath": "lib",
+			"sourcePaths": ["import/derelict/assimp"],
+			"importPaths": ["import"]
+		},
+		{
+			"name": "devil",
+			"dependencies": {"derelict:util": "~master"},
+			"targetPath": "lib",
+			"sourcePaths": ["import/derelict/devil"],
+			"importPaths": ["import"]
+		},
+		{
+			"name": "freeglut",
+			"dependencies": {"derelict:util": "~master"},
+			"targetPath": "lib",
+			"sourcePaths": ["import/derelict/freeglut"],
+			"importPaths": ["import"]
+		},
+		{
+			"name": "freeimage",
+			"dependencies": {"derelict:util": "~master"},
+			"targetPath": "lib",
+			"sourcePaths": ["import/derelict/freeimage"],
+			"importPaths": ["import"]
+		},
+		{
+			"name": "freetype",
+			"dependencies": {"derelict:util": "~master"},
+			"targetPath": "lib",
+			"sourcePaths": ["import/derelict/freetype"],
+			"importPaths": ["import"]
+		},
+		{
+			"name": "glfw3",
+			"dependencies": {"derelict:util": "~master"},
+			"targetPath": "lib",
+			"sourcePaths": ["import/derelict/glfw3"],
+			"importPaths": ["import"]
+		},
+		{
+			"name": "lua",
+			"dependencies": {"derelict:util": "~master"},
+			"targetPath": "lib",
+			"sourcePaths": ["import/derelict/lua"],
+			"importPaths": ["import"]
+		},
+		{
+			"name": "ode",
+			"dependencies": {"derelict:util": "~master"},
+			"targetPath": "lib",
+			"sourcePaths": ["import/derelict/ode"],
+			"importPaths": ["import"]
+		},
+		{
+			"name": "ogg",
+			"dependencies": {"derelict:util": "~master"},
+			"targetPath": "lib",
+			"sourcePaths": ["import/derelict/ogg"],
+			"importPaths": ["import"]
+		},
+		{
+			"name": "openal",
+			"dependencies": {"derelict:util": "~master"},
+			"targetPath": "lib",
+			"sourcePaths": ["import/derelict/openal"],
+			"importPaths": ["import"]
+		},
+		{
+			"name": "opengl3",
+			"dependencies": {"derelict:util": "~master"},
+			"targetPath": "lib",
+			"sourcePaths": ["import/derelict/opengl3"],
+			"importPaths": ["import"]
+		},
+		{
+			"name": "pq",
+			"dependencies": {"derelict:util": "~master"},
+			"targetPath": "lib",
+			"sourcePaths": ["import/derelict/pq"],
+			"importPaths": ["import"]
+		},
+		{
+			"name": "sdl2",
+			"dependencies": {"derelict:util": "~master"},
+			"targetPath": "lib",
+			"sourcePaths": ["import/derelict/sdl2"],
+			"importPaths": ["import"]
+		},
+		{
+			"name": "sfml2",
+			"dependencies": {"derelict:util": "~master"},
+			"targetPath": "lib",
+			"sourcePaths": ["import/derelict/sfml2"],
+			"importPaths": ["import"]
+		},
+		{
+			"name": "tcod",
+			"dependencies": {"derelict:util": "~master"},
+			"targetPath": "lib",
+			"sourcePaths": ["import/derelict/tcod"],
+			"importPaths": ["import"]
+		}
+	]
+}

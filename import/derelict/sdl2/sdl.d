@@ -48,6 +48,13 @@ private
         static assert(0, "Need to implement SDL2 libNames for this operating system.");
 }
 
+/*
+This function is not part of the public interface,  but SDL expects it to be called before any subsystems have been intiailized.
+Normally, this happens via linking with libSDLmain, but since that doesn't happen when using Derelict, then the loader must
+load this function and call it before the load method returns. Otherwise, bad things can happen.
+*/
+private extern(C) alias nothrow void function() da_SDL_SetMainReady;
+
 class DerelictSDL2Loader : SharedLibLoader
 {
     protected
@@ -119,6 +126,9 @@ class DerelictSDL2Loader : SharedLibLoader
             bindFunc(cast(void**)&SDL_FilterEvents, "SDL_FilterEvents");
             bindFunc(cast(void**)&SDL_EventState, "SDL_EventState");
             bindFunc(cast(void**)&SDL_RegisterEvents, "SDL_RegisterEvents");
+            bindFunc(cast(void**)&SDL_GameControllerAddMapping, "SDL_GameControllerAddMapping");
+            bindFunc(cast(void**)&SDL_GameControllerMappingForGUID, "SDL_GameControllerMappingForGUID");
+            bindFunc(cast(void**)&SDL_GameControllerMapping, "SDL_GameControllerMapping");
             bindFunc(cast(void**)&SDL_IsGameController, "SDL_IsGameController");
             bindFunc(cast(void**)&SDL_GameControllerNameForIndex, "SDL_GameControllerNameForIndex");
             bindFunc(cast(void**)&SDL_GameControllerOpen, "SDL_GameControllerOpen");
@@ -126,13 +136,16 @@ class DerelictSDL2Loader : SharedLibLoader
             bindFunc(cast(void**)&SDL_GameControllerGetAttached, "SDL_GameControllerGetAttached");
             bindFunc(cast(void**)&SDL_GameControllerGetJoystick, "SDL_GameControllerGetJoystick");
             bindFunc(cast(void**)&SDL_GameControllerEventState, "SDL_GameControllerEventState");
+            bindFunc(cast(void**)&SDL_GameControllerUpdate, "SDL_GameControllerUpdate");
             bindFunc(cast(void**)&SDL_GameControllerGetAxisFromString, "SDL_GameControllerGetAxisFromString");
+            bindFunc(cast(void**)&SDL_GameControllerGetStringForAxis, "SDL_GameControllerGetStringForAxis");
             bindFunc(cast(void**)&SDL_GameControllerGetBindForAxis, "SDL_GameControllerGetBindForAxis");
             bindFunc(cast(void**)&SDL_GameControllerGetAxis, "SDL_GameControllerGetAxis");
             bindFunc(cast(void**)&SDL_GameControllerGetButtonFromString, "SDL_GameControllerGetButtonFromString");
+            bindFunc(cast(void**)&SDL_GameControllerGetStringForButton, "SDL_GameControllerGetStringForButton");
             bindFunc(cast(void**)&SDL_GameControllerGetBindForButton, "SDL_GameControllerGetBindForButton");
             bindFunc(cast(void**)&SDL_GameControllerGetButton, "SDL_GameControllerGetButton");
-            bindFunc(cast(void**)&SDL_GameControllerClose, "SDL_GameControllerClose");   
+            bindFunc(cast(void**)&SDL_GameControllerClose, "SDL_GameControllerClose");
             bindFunc(cast(void**)&SDL_RecordGesture, "SDL_RecordGesture");
             bindFunc(cast(void**)&SDL_SaveAllDollarTemplates, "SDL_SaveAllDollarTemplates");
             bindFunc(cast(void**)&SDL_SaveDollarTemplate, "SDL_SaveDollarTemplate");
@@ -372,8 +385,10 @@ class DerelictSDL2Loader : SharedLibLoader
             bindFunc(cast(void**)&SDL_GetPerformanceFrequency, "SDL_GetPerformanceFrequency");
             bindFunc(cast(void**)&SDL_Delay, "SDL_Delay");
             bindFunc(cast(void**)&SDL_AddTimer, "SDL_AddTimer");
-            bindFunc(cast(void**)&SDL_GetTouch, "SDL_GetTouch");
-            bindFunc(cast(void**)&SDL_GetFinger, "SDL_GetFinger");
+            bindFunc(cast(void**)&SDL_GetNumTouchDevices, "SDL_GetNumTouchDevices");
+            bindFunc(cast(void**)&SDL_GetTouchDevice, "SDL_GetTouchDevice");
+            bindFunc(cast(void**)&SDL_GetNumTouchFingers, "SDL_GetNumTouchFingers");
+            bindFunc(cast(void**)&SDL_GetTouchFinger, "SDL_GetTouchFinger");
             bindFunc(cast(void**)&SDL_GetVersion, "SDL_GetVersion");
             bindFunc(cast(void**)&SDL_GetRevision, "SDL_GetRevision");
             bindFunc(cast(void**)&SDL_GetRevisionNumber, "SDL_GetRevisionNumber");
@@ -446,6 +461,11 @@ class DerelictSDL2Loader : SharedLibLoader
             bindFunc(cast(void**)&SDL_GL_GetSwapInterval, "SDL_GL_GetSwapInterval");
             bindFunc(cast(void**)&SDL_GL_SwapWindow, "SDL_GL_SwapWindow");
             bindFunc(cast(void**)&SDL_GL_DeleteContext, "SDL_GL_DeleteContext");
+
+
+            da_SDL_SetMainReady setReady;
+            bindFunc(cast(void**)&setReady, "SDL_SetMainReady");
+            setReady();
         }
     }
 

@@ -37,6 +37,7 @@ extern(C) {
     //lua.h
     alias nothrow lua_State* function(lua_Alloc f, void* ud) da_lua_newstate;
     alias nothrow void function(lua_State* L) da_lua_close;
+    alias nothrow lua_State* function(lua_State*) da_lua_newthread;
     alias nothrow lua_CFunction function(lua_State* L, lua_CFunction panicf) da_lua_atpanic;
     alias nothrow const(lua_Number)* function(lua_State* L) da_lua_version;
     alias nothrow int function(lua_State* L, int idx) da_lua_absindex;
@@ -193,6 +194,7 @@ __gshared
     //lua.h
     da_lua_newstate lua_newstate;
     da_lua_close lua_close;
+    da_lua_newthread lua_newthread;
     da_lua_atpanic lua_atpanic;
     da_lua_version lua_version;
     da_lua_absindex lua_absindex;

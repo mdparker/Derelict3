@@ -2,18 +2,14 @@ module derelict.opengl3.gl;
 
 public
 {
-    import derelict.opengl3.types;
-    import derelict.opengl3.constants;
     import derelict.opengl3.deprecatedConstants;
-    import derelict.opengl3.functions;
     import derelict.opengl3.deprecatedFunctions;
-    import derelict.opengl3.arb;
+    import derelict.opengl3.gl3;
 }
 
 private
 {
     import derelict.util.loader;
-    import derelict.opengl3.gl3;
     import derelict.opengl3.internal;
 }
 
@@ -25,7 +21,7 @@ class DerelictGLLoader : DerelictGL3Loader
         {
             GLVersion maxVer = super.reload();
 
-            if(maxVer >= GLVersion.GL12)
+            if(maxVer >= GLVersion.GL12 && isExtSupported(GLVersion.GL12, "GL_ARB_imaging"))
             {
                 bindGLFunc(cast(void**)&glColorTable, "glColorTable");
                 bindGLFunc(cast(void**)&glColorSubTable, "glColorSubTable");
@@ -360,6 +356,7 @@ class DerelictGLLoader : DerelictGL3Loader
             bindFunc(cast(void**)&glClearIndex, "glClearIndex");
             bindFunc(cast(void**)&glIndexMask, "glIndexMask");
             bindFunc(cast(void**)&glPushAttrib, "glPushAttrib");
+            bindFunc(cast(void**)&glPopAttrib, "glPopAttrib");
             bindFunc(cast(void**)&glMap1d, "glMap1d");
             bindFunc(cast(void**)&glMap1f, "glMap1f");
             bindFunc(cast(void**)&glMap2d, "glMap2d");

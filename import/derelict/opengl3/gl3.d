@@ -38,8 +38,8 @@ public
 
 private
 {
+    import std.algorithm;
     import std.conv;
-    import std.string;
 
     import derelict.util.loader;
     import derelict.util.exception;
@@ -81,6 +81,8 @@ class DerelictGL3Loader : SharedLibLoader
                 throw new DerelictException("DerelictGL3.reload failure: An OpenGL context is not currently active.");
 
             GLVersion glVer = GLVersion.GL11;
+            scope(exit) _loadedVersion = glVer;
+
             GLVersion maxVer = findMaxAvailable();
 
             if(maxVer >= GLVersion.GL12)
@@ -254,37 +256,9 @@ class DerelictGL3Loader : SharedLibLoader
 
             if(maxVer >= GLVersion.GL30)
             {
-                // Reused from ARB_framebuffer_object
-                bindGLFunc(cast(void**)&glIsRenderbuffer, "glIsRenderbuffer");
-                bindGLFunc(cast(void**)&glBindRenderbuffer, "glBindRenderbuffer");
-                bindGLFunc(cast(void**)&glDeleteRenderbuffers, "glDeleteRenderbuffers");
-                bindGLFunc(cast(void**)&glGenRenderbuffers, "glGenRenderbuffers");
-                bindGLFunc(cast(void**)&glRenderbufferStorage, "glRenderbufferStorage");
-                bindGLFunc(cast(void**)&glGetRenderbufferParameteriv, "glGetRenderbufferParameteriv");
-                bindGLFunc(cast(void**)&glIsFramebuffer, "glIsFramebuffer");
-                bindGLFunc(cast(void**)&glBindFramebuffer, "glBindFramebuffer");
-                bindGLFunc(cast(void**)&glDeleteFramebuffers, "glBindBufferRange");
-                bindGLFunc(cast(void**)&glGenFramebuffers, "glGenFramebuffers");
-                bindGLFunc(cast(void**)&glCheckFramebufferStatus, "glCheckFramebufferStatus");
-                bindGLFunc(cast(void**)&glFramebufferTexture1D, "glFramebufferTexture1D");
-                bindGLFunc(cast(void**)&glFramebufferTexture2D, "glFramebufferTexture2D");
-                bindGLFunc(cast(void**)&glFramebufferTexture3D, "glFramebufferTexture3D");
-                bindGLFunc(cast(void**)&glFramebufferRenderbuffer, "glFramebufferRenderbuffer");
-                bindGLFunc(cast(void**)&glGetFramebufferAttachmentParameteriv, "glGetFramebufferAttachmentParameteriv");
-                bindGLFunc(cast(void**)&glGenerateMipmap, "glGenerateMipmap");
-                bindGLFunc(cast(void**)&glBlitFramebuffer, "glBlitFramebuffer");
-                bindGLFunc(cast(void**)&glRenderbufferStorageMultisample, "glRenderbufferStorageMultisample");
-                bindGLFunc(cast(void**)&glFramebufferTextureLayer, "glFramebufferTextureLayer");
-
-                // Reused from ARB_map_buffer_range
-                bindGLFunc(cast(void**)&glMapBufferRange, "glMapBufferRange");
-                bindGLFunc(cast(void**)&glFlushMappedBufferRange, "glFlushMappedBufferRange");
-
-                // Reused from ARB_vertex_array_object
-                bindGLFunc(cast(void**)&glBindVertexArray, "glBindVertexArray");
-                bindGLFunc(cast(void**)&glDeleteVertexArrays, "glDeleteVertexArrays");
-                bindGLFunc(cast(void**)&glGenVertexArrays, "glGenVertexArrays");
-                bindGLFunc(cast(void**)&glIsVertexArray, "glIsVertexArray");
+                load_ARB_framebuffer_object(true);
+                load_ARB_map_buffer_range(true);
+                load_ARB_vertex_array_object(true);
 
                 bindGLFunc(cast(void**)&glColorMaski, "glColorMaski");
                 bindGLFunc(cast(void**)&glGetBooleani_v, "glGetBooleani_v");
@@ -349,17 +323,8 @@ class DerelictGL3Loader : SharedLibLoader
 
             if(maxVer >= GLVersion.GL31)
             {
-                // Reused from ARB_copy_buffer
-                bindGLFunc(cast(void**)&glCopyBufferSubData, "glCopyBufferSubData");
-
-                // Reused from ARB_uniform_buffer_object
-                bindGLFunc(cast(void**)&glGetUniformIndices, "glGetUniformIndices");
-                bindGLFunc(cast(void**)&glGetActiveUniformsiv, "glGetActiveUniformsiv");
-                bindGLFunc(cast(void**)&glGetActiveUniformName, "glGetActiveUniformName");
-                bindGLFunc(cast(void**)&glGetUniformBlockIndex, "glGetUniformBlockIndex");
-                bindGLFunc(cast(void**)&glGetActiveUniformBlockiv, "glGetActiveUniformBlockiv");
-                bindGLFunc(cast(void**)&glGetActiveUniformBlockName, "glGetActiveUniformBlockName");
-                bindGLFunc(cast(void**)&glUniformBlockBinding, "glUniformBlockBinding");
+                load_ARB_copy_buffer(true);
+                load_ARB_uniform_buffer_object(true);
 
                 bindGLFunc(cast(void**)&glDrawArraysInstanced, "glDrawArraysInstanced");
                 bindGLFunc(cast(void**)&glDrawElementsInstanced, "glDrawElementsInstanced");
@@ -370,29 +335,10 @@ class DerelictGL3Loader : SharedLibLoader
 
             if(maxVer >= GLVersion.GL32)
             {
-                // Reused from ARB_draw_elements_base_vertex
-                bindGLFunc(cast(void**)&glDrawElementsBaseVertex, "glDrawElementsBaseVertex");
-                bindGLFunc(cast(void**)&glDrawRangeElementsBaseVertex, "glDrawRangeElementsBaseVertex");
-                bindGLFunc(cast(void**)&glDrawElementsInstancedBaseVertex, "glDrawElementsInstancedBaseVertex");
-                bindGLFunc(cast(void**)&glMultiDrawElementsBaseVertex, "glMultiDrawElementsBaseVertex");
-
-                // Reused from ARB_provoking_vertex
-                bindGLFunc(cast(void**)&glProvokingVertex, "glProvokingVertex");
-
-                // Reused from ARB_sync
-                bindGLFunc(cast(void**)&glFenceSync, "glFenceSync");
-                bindGLFunc(cast(void**)&glIsSync, "glIsSync");
-                bindGLFunc(cast(void**)&glDeleteSync, "glDeleteSync");
-                bindGLFunc(cast(void**)&glClientWaitSync, "glClientWaitSync");
-                bindGLFunc(cast(void**)&glWaitSync, "glWaitSync");
-                bindGLFunc(cast(void**)&glGetInteger64v, "glGetInteger64v");
-                bindGLFunc(cast(void**)&glGetSynciv, "glGetSynciv");
-
-                // Reused from ARB_texture_multisample
-                bindGLFunc(cast(void**)&glTexImage2DMultisample, "glTexImage2DMultisample");
-                bindGLFunc(cast(void**)&glTexImage3DMultisample, "glTexImage3DMultisample");
-                bindGLFunc(cast(void**)&glGetMultisamplefv, "glGetMultisamplefv");
-                bindGLFunc(cast(void**)&glSampleMaski, "glSampleMaski");
+                load_ARB_draw_elements_base_vertex(true);
+                load_ARB_provoking_vertex(true);
+                load_ARB_sync(true);
+                load_ARB_texture_multisample(true);
 
                 bindGLFunc(cast(void**)&glGetInteger64i_v, "glGetInteger64i_v");
                 bindGLFunc(cast(void**)&glGetBufferParameteri64v, "glGetBufferParameteri64v");
@@ -402,70 +348,10 @@ class DerelictGL3Loader : SharedLibLoader
 
             if(maxVer >= GLVersion.GL33)
             {
-                // Reused from ARB_blend_func_extended
-                bindGLFunc(cast(void**)&glBindFragDataLocationIndexed, "glBindFragDataLocationIndexed");
-                bindGLFunc(cast(void**)&glGetFragDataIndex, "glGetFragDataIndex");
-
-                // Reused from ARB_sampler_objects
-                bindGLFunc(cast(void**)&glGenSamplers, "glGenSamplers");
-                bindGLFunc(cast(void**)&glDeleteSamplers, "glDeleteSamplers");
-                bindGLFunc(cast(void**)&glIsSampler, "glIsSampler");
-                bindGLFunc(cast(void**)&glBindSampler, "glBindSampler");
-                bindGLFunc(cast(void**)&glSamplerParameteri, "glSamplerParameteri");
-                bindGLFunc(cast(void**)&glSamplerParameteriv, "glSamplerParameteriv");
-                bindGLFunc(cast(void**)&glSamplerParameterf, "glSamplerParameterf");
-                bindGLFunc(cast(void**)&glSamplerParameterfv, "glSamplerParameterfv");
-                bindGLFunc(cast(void**)&glSamplerParameterIiv, "glSamplerParameterIiv");
-                bindGLFunc(cast(void**)&glSamplerParameterIuiv, "glSamplerParameterIuiv");
-                bindGLFunc(cast(void**)&glGetSamplerParameteriv, "glGetSamplerParameteriv");
-                bindGLFunc(cast(void**)&glGetSamplerParameterIiv, "glGetSamplerParameterIiv");
-                bindGLFunc(cast(void**)&glGetSamplerParameterfv, "glGetSamplerParameterfv");
-                bindGLFunc(cast(void**)&glGetSamplerParameterIuiv, "glGetSamplerParameterIuiv");
-
-                // Reused from ARB_timer_query
-                bindGLFunc(cast(void**)&glQueryCounter, "glQueryCounter");
-                bindGLFunc(cast(void**)&glGetQueryObjecti64v, "glGetQueryObjecti64v");
-                bindGLFunc(cast(void**)&glGetQueryObjectui64v, "glGetQueryObjectui64v");
-
-                // Reused from ARB_vertex_type_2_10_10_10_rev
-                bindGLFunc(cast(void**)&glVertexP2ui, "glVertexP2ui");
-                bindGLFunc(cast(void**)&glVertexP2uiv, "glVertexP2uiv");
-                bindGLFunc(cast(void**)&glVertexP3ui, "glVertexP3ui");
-                bindGLFunc(cast(void**)&glVertexP3uiv, "glVertexP3uiv");
-                bindGLFunc(cast(void**)&glVertexP4ui, "glVertexP4ui");
-                bindGLFunc(cast(void**)&glVertexP4uiv, "glVertexP4uiv");
-                bindGLFunc(cast(void**)&glTexCoordP1ui, "glTexCoordP1ui");
-                bindGLFunc(cast(void**)&glTexCoordP1uiv, "glTexCoordP1uiv");
-                bindGLFunc(cast(void**)&glTexCoordP2ui, "glTexCoordP2ui");
-                bindGLFunc(cast(void**)&glTexCoordP2uiv, "glTexCoordP2uiv");
-                bindGLFunc(cast(void**)&glTexCoordP3ui, "glTexCoordP3ui");
-                bindGLFunc(cast(void**)&glTexCoordP3uiv, "glTexCoordP3uiv");
-                bindGLFunc(cast(void**)&glTexCoordP4ui, "glTexCoordP4ui");
-                bindGLFunc(cast(void**)&glTexCoordP4uiv, "glTexCoordP4uiv");
-                bindGLFunc(cast(void**)&glMultiTexCoordP1ui, "glMultiTexCoordP1ui");
-                bindGLFunc(cast(void**)&glMultiTexCoordP1uiv, "glMultiTexCoordP1uiv");
-                bindGLFunc(cast(void**)&glMultiTexCoordP2ui, "glMultiTexCoordP2ui");
-                bindGLFunc(cast(void**)&glMultiTexCoordP2uiv, "glMultiTexCoordP2uiv");
-                bindGLFunc(cast(void**)&glMultiTexCoordP3ui, "glMultiTexCoordP3ui");
-                bindGLFunc(cast(void**)&glMultiTexCoordP3uiv, "glMultiTexCoordP3uiv");
-                bindGLFunc(cast(void**)&glMultiTexCoordP4ui, "glMultiTexCoordP4ui");
-                bindGLFunc(cast(void**)&glMultiTexCoordP4uiv, "glMultiTexCoordP4uiv");
-                bindGLFunc(cast(void**)&glNormalP3ui, "glNormalP3ui");
-                bindGLFunc(cast(void**)&glNormalP3uiv, "glNormalP3uiv");
-                bindGLFunc(cast(void**)&glColorP3ui, "glColorP3ui");
-                bindGLFunc(cast(void**)&glColorP3uiv, "glColorP3uiv");
-                bindGLFunc(cast(void**)&glColorP4ui, "glColorP4ui");
-                bindGLFunc(cast(void**)&glColorP4uiv, "glColorP4uiv");
-                bindGLFunc(cast(void**)&glSecondaryColorP3ui, "glSecondaryColorP3ui");
-                bindGLFunc(cast(void**)&glSecondaryColorP3uiv, "glSecondaryColorP3uiv");
-                bindGLFunc(cast(void**)&glVertexAttribP1ui, "glVertexAttribP1ui");
-                bindGLFunc(cast(void**)&glVertexAttribP1uiv, "glVertexAttribP1uiv");
-                bindGLFunc(cast(void**)&glVertexAttribP2ui, "glVertexAttribP2ui");
-                bindGLFunc(cast(void**)&glVertexAttribP2uiv, "glVertexAttribP2uiv");
-                bindGLFunc(cast(void**)&glVertexAttribP3ui, "glVertexAttribP3ui");
-                bindGLFunc(cast(void**)&glVertexAttribP3uiv, "glVertexAttribP3uiv");
-                bindGLFunc(cast(void**)&glVertexAttribP4ui, "glVertexAttribP4ui");
-                bindGLFunc(cast(void**)&glVertexAttribP4uiv, "glVertexAttribP4uiv");
+                load_ARB_blend_func_extended(true);
+                load_ARB_sampler_objects(true);
+                load_ARB_timer_query(true);
+                load_ARB_vertex_type_2_10_10_10_rev(true);
 
                 bindGLFunc(cast(void**)&glVertexAttribDivisor, "glVertexAttribDivisor");
                 glVer = GLVersion.GL33;
@@ -473,57 +359,12 @@ class DerelictGL3Loader : SharedLibLoader
 
             if(maxVer >= GLVersion.GL40)
             {
-                // Reused from ARB_draw_indirect
-                bindGLFunc(cast(void**)&glDrawArraysIndirect, "glDrawArraysIndirect");
-                bindGLFunc(cast(void**)&glDrawElementsIndirect, "glDrawElementsIndirect");
-
-                // Reused from ARB_gpu_shader_fp64
-                bindGLFunc(cast(void**)&glUniform1d, "glUniform1d");
-                bindGLFunc(cast(void**)&glUniform2d, "glUniform2d");
-                bindGLFunc(cast(void**)&glUniform3d, "glUniform3d");
-                bindGLFunc(cast(void**)&glUniform4d, "glUniform4d");
-                bindGLFunc(cast(void**)&glUniform1dv, "glUniform1dv");
-                bindGLFunc(cast(void**)&glUniform2dv, "glUniform2dv");
-                bindGLFunc(cast(void**)&glUniform3dv, "glUniform3dv");
-                bindGLFunc(cast(void**)&glUniform4dv, "glUniform4dv");
-                bindGLFunc(cast(void**)&glUniformMatrix2dv, "glUniformMatrix2dv");
-                bindGLFunc(cast(void**)&glUniformMatrix3dv, "glUniformMatrix3dv");
-                bindGLFunc(cast(void**)&glUniformMatrix4dv, "glUniformMatrix4dv");
-                bindGLFunc(cast(void**)&glUniformMatrix2x3dv, "glUniformMatrix2x3dv");
-                bindGLFunc(cast(void**)&glUniformMatrix2x4dv, "glUniformMatrix2x4dv");
-                bindGLFunc(cast(void**)&glUniformMatrix3x2dv, "glUniformMatrix3x2dv");
-                bindGLFunc(cast(void**)&glUniformMatrix3x4dv, "glUniformMatrix3x4dv");
-                bindGLFunc(cast(void**)&glUniformMatrix4x2dv, "glUniformMatrix4x2dv");
-                bindGLFunc(cast(void**)&glUniformMatrix4x3dv, "glUniformMatrix4x3dv");
-
-                // Reused from ARB_shader_subroutine
-                bindGLFunc(cast(void**)&glGetSubroutineUniformLocation, "glGetSubroutineUniformLocation");
-                bindGLFunc(cast(void**)&glGetSubroutineIndex, "glGetSubroutineIndex");
-                bindGLFunc(cast(void**)&glGetActiveSubroutineUniformiv, "glGetActiveSubroutineUniformiv");
-                bindGLFunc(cast(void**)&glGetActiveSubroutineUniformName, "glGetActiveSubroutineUniformName");
-                bindGLFunc(cast(void**)&glGetActiveSubroutineName, "glGetActiveSubroutineName");
-                bindGLFunc(cast(void**)&glUniformSubroutinesuiv, "glUniformSubroutinesuiv");
-                bindGLFunc(cast(void**)&glGetUniformSubroutineuiv, "glGetUniformSubroutineuiv");
-                bindGLFunc(cast(void**)&glGetProgramStageiv, "glGetProgramStageiv");
-
-                // Reused from ARB_tessellation_shader
-                bindGLFunc(cast(void**)&glPatchParameteri, "glPatchParameteri");
-                bindGLFunc(cast(void**)&glPatchParameterfv, "glPatchParameterfv");
-
-                // Reused from ARB_transform_feedback2
-                bindGLFunc(cast(void**)&glBindTransformFeedback, "glBindTransformFeedback");
-                bindGLFunc(cast(void**)&glDeleteTransformFeedbacks, "glDeleteTransformFeedbacks");
-                bindGLFunc(cast(void**)&glGenTransformFeedbacks, "glGenTransformFeedbacks");
-                bindGLFunc(cast(void**)&glIsTransformFeedback, "glIsTransformFeedback");
-                bindGLFunc(cast(void**)&glPauseTransformFeedback, "glPauseTransformFeedback");
-                bindGLFunc(cast(void**)&glResumeTransformFeedback, "glResumeTransformFeedback");
-                bindGLFunc(cast(void**)&glDrawTransformFeedback, "glDrawTransformFeedback");
-
-                // Reused from ARB_transform_feedback3
-                bindGLFunc(cast(void**)&glDrawTransformFeedbackStream, "glDrawTransformFeedbackStream");
-                bindGLFunc(cast(void**)&glBeginQueryIndexed, "glBeginQueryIndexed");
-                bindGLFunc(cast(void**)&glEndQueryIndexed, "glEndQueryIndexed");
-                bindGLFunc(cast(void**)&glGetQueryIndexediv, "glGetQueryIndexediv");
+                load_ARB_draw_indirect(true);
+                load_ARB_gpu_shader_fp64(true);
+                load_ARB_shader_subroutine(true);
+                load_ARB_tessellation_shader(true);
+                load_ARB_transform_feedback2(true);
+                load_ARB_transform_feedback3(true);
 
                 bindGLFunc(cast(void**)&glMinSampleShading, "glMinSampleShading");
                 bindGLFunc(cast(void**)&glBlendEquationi, "glBlendEquationi");
@@ -535,143 +376,49 @@ class DerelictGL3Loader : SharedLibLoader
 
             if(maxVer >= GLVersion.GL41)
             {
-                // Reused from ARB_ES2_compatibility
-                bindGLFunc(cast(void**)&glReleaseShaderCompiler, "glReleaseShaderCompiler");
-                bindGLFunc(cast(void**)&glShaderBinary, "glShaderBinary");
-                bindGLFunc(cast(void**)&glGetShaderPrecisionFormat, "glGetShaderPrecisionFormat");
-                bindGLFunc(cast(void**)&glDepthRangef, "glDepthRangef");
-                bindGLFunc(cast(void**)&glClearDepthf, "glClearDepthf");
-
-                // Reused from ARB_get_program_binary
-                bindGLFunc(cast(void**)&glGetProgramBinary, "glGetProgramBinary");
-                bindGLFunc(cast(void**)&glProgramBinary, "glProgramBinary");
-                bindGLFunc(cast(void**)&glProgramParameteri, "glProgramParameteri");
-
-                // Reused from ARB_separate_shader_objects
-                bindGLFunc(cast(void**)&glUseProgramStages, "glUseProgramStages");
-                bindGLFunc(cast(void**)&glActiveShaderProgram, "glActiveShaderProgram");
-                bindGLFunc(cast(void**)&glCreateShaderProgramv, "glCreateShaderProgramv");
-                bindGLFunc(cast(void**)&glBindProgramPipeline, "glBindProgramPipeline");
-                bindGLFunc(cast(void**)&glDeleteProgramPipelines, "glDeleteProgramPipelines");
-                bindGLFunc(cast(void**)&glGenProgramPipelines, "glGenProgramPipelines");
-                bindGLFunc(cast(void**)&glIsProgramPipeline, "glIsProgramPipeline");
-                bindGLFunc(cast(void**)&glGetProgramPipelineiv, "glGetProgramPipelineiv");
-                bindGLFunc(cast(void**)&glProgramUniform1i, "glProgramUniform1i");
-                bindGLFunc(cast(void**)&glProgramUniform1iv, "glProgramUniform1iv");
-                bindGLFunc(cast(void**)&glProgramUniform1f, "glProgramUniform1f");
-                bindGLFunc(cast(void**)&glProgramUniform1fv, "glProgramUniform1fv");
-                bindGLFunc(cast(void**)&glProgramUniform1d, "glProgramUniform1d");
-                bindGLFunc(cast(void**)&glProgramUniform1dv, "glProgramUniform1dv");
-                bindGLFunc(cast(void**)&glProgramUniform1ui, "glProgramUniform1ui");
-                bindGLFunc(cast(void**)&glProgramUniform1uiv, "glProgramUniform1uiv");
-                bindGLFunc(cast(void**)&glProgramUniform2i, "glProgramUniform2i");
-                bindGLFunc(cast(void**)&glProgramUniform2iv, "glProgramUniform2iv");
-                bindGLFunc(cast(void**)&glProgramUniform2f, "glProgramUniform2f");
-                bindGLFunc(cast(void**)&glProgramUniform2fv, "glProgramUniform2fv");
-                bindGLFunc(cast(void**)&glProgramUniform2d, "glProgramUniform2d");
-                bindGLFunc(cast(void**)&glProgramUniform2dv, "glProgramUniform2dv");
-                bindGLFunc(cast(void**)&glProgramUniform2ui, "glProgramUniform2ui");
-                bindGLFunc(cast(void**)&glProgramUniform2uiv, "glProgramUniform2uiv");
-                bindGLFunc(cast(void**)&glProgramUniform3i, "glProgramUniform3i");
-                bindGLFunc(cast(void**)&glProgramUniform3iv, "glProgramUniform3iv");
-                bindGLFunc(cast(void**)&glProgramUniform3f, "glProgramUniform3f");
-                bindGLFunc(cast(void**)&glProgramUniform3fv, "glProgramUniform3fv");
-                bindGLFunc(cast(void**)&glProgramUniform3d, "glProgramUniform3d");
-                bindGLFunc(cast(void**)&glProgramUniform3dv, "glProgramUniform3dv");
-                bindGLFunc(cast(void**)&glProgramUniform3ui, "glProgramUniform3ui");
-                bindGLFunc(cast(void**)&glProgramUniform3uiv, "glProgramUniform3uiv");
-                bindGLFunc(cast(void**)&glProgramUniform4i, "glProgramUniform4i");
-                bindGLFunc(cast(void**)&glProgramUniform4iv, "glProgramUniform4iv");
-                bindGLFunc(cast(void**)&glProgramUniform4f, "glProgramUniform4f");
-                bindGLFunc(cast(void**)&glProgramUniform4fv, "glProgramUniform4fv");
-                bindGLFunc(cast(void**)&glProgramUniform4d, "glProgramUniform4d");
-                bindGLFunc(cast(void**)&glProgramUniform4dv, "glProgramUniform4dv");
-                bindGLFunc(cast(void**)&glProgramUniform4ui, "glProgramUniform4ui");
-                bindGLFunc(cast(void**)&glProgramUniform4uiv, "glProgramUniform4uiv");
-                bindGLFunc(cast(void**)&glProgramUniformMatrix2fv, "glProgramUniformMatrix2fv");
-                bindGLFunc(cast(void**)&glProgramUniformMatrix3fv, "glProgramUniformMatrix3fv");
-                bindGLFunc(cast(void**)&glProgramUniformMatrix4fv, "glProgramUniformMatrix4fv");
-                bindGLFunc(cast(void**)&glProgramUniformMatrix2dv, "glProgramUniformMatrix2dv");
-                bindGLFunc(cast(void**)&glProgramUniformMatrix3dv, "glProgramUniformMatrix3dv");
-                bindGLFunc(cast(void**)&glProgramUniformMatrix4dv, "glProgramUniformMatrix4dv");
-                bindGLFunc(cast(void**)&glProgramUniformMatrix2x3fv, "glProgramUniformMatrix2x3fv");
-                bindGLFunc(cast(void**)&glProgramUniformMatrix3x2fv, "glProgramUniformMatrix3x2fv");
-                bindGLFunc(cast(void**)&glProgramUniformMatrix2x4fv, "glProgramUniformMatrix2x4fv");
-                bindGLFunc(cast(void**)&glProgramUniformMatrix4x2fv, "glProgramUniformMatrix4x2fv");
-                bindGLFunc(cast(void**)&glProgramUniformMatrix3x4fv, "glProgramUniformMatrix3x4fv");
-                bindGLFunc(cast(void**)&glProgramUniformMatrix4x3fv, "glProgramUniformMatrix4x3fv");
-                bindGLFunc(cast(void**)&glProgramUniformMatrix2x3dv, "glProgramUniformMatrix2x3dv");
-                bindGLFunc(cast(void**)&glProgramUniformMatrix3x2dv, "glProgramUniformMatrix3x2dv");
-                bindGLFunc(cast(void**)&glProgramUniformMatrix2x4dv, "glProgramUniformMatrix2x4dv");
-                bindGLFunc(cast(void**)&glProgramUniformMatrix4x2dv, "glProgramUniformMatrix4x2dv");
-                bindGLFunc(cast(void**)&glProgramUniformMatrix3x4dv, "glProgramUniformMatrix3x4dv");
-                bindGLFunc(cast(void**)&glProgramUniformMatrix4x3dv, "glProgramUniformMatrix4x3dv");
-                bindGLFunc(cast(void**)&glValidateProgramPipeline, "glValidateProgramPipeline");
-                bindGLFunc(cast(void**)&glGetProgramPipelineInfoLog, "glGetProgramPipelineInfoLog");
-
-                // Reused from ARB_vertex_attrib_64bit
-                bindGLFunc(cast(void**)&glVertexAttribL1d, "glVertexAttribL1d");
-                bindGLFunc(cast(void**)&glVertexAttribL2d, "glVertexAttribL2d");
-                bindGLFunc(cast(void**)&glVertexAttribL3d, "glVertexAttribL3d");
-                bindGLFunc(cast(void**)&glVertexAttribL4d, "glVertexAttribL4d");
-                bindGLFunc(cast(void**)&glVertexAttribL1dv, "glVertexAttribL1dv");
-                bindGLFunc(cast(void**)&glVertexAttribL2dv, "glVertexAttribL2dv");
-                bindGLFunc(cast(void**)&glVertexAttribL3dv, "glVertexAttribL3dv");
-                bindGLFunc(cast(void**)&glVertexAttribL4dv, "glVertexAttribL4dv");
-                bindGLFunc(cast(void**)&glVertexAttribLPointer, "glVertexAttribLPointer");
-                bindGLFunc(cast(void**)&glGetVertexAttribLdv, "glGetVertexAttribLdv");
-
-                // Reused from ARB_viewport_array
-                bindGLFunc(cast(void**)&glViewportArrayv, "glViewportArrayv");
-                bindGLFunc(cast(void**)&glViewportIndexedf, "glViewportIndexedf");
-                bindGLFunc(cast(void**)&glViewportIndexedfv, "glViewportIndexedfv");
-                bindGLFunc(cast(void**)&glScissorArrayv, "glScissorArrayv");
-                bindGLFunc(cast(void**)&glScissorIndexed, "glScissorIndexed");
-                bindGLFunc(cast(void**)&glScissorIndexedv, "glScissorIndexedv");
-                bindGLFunc(cast(void**)&glDepthRangeArrayv, "glDepthRangeArrayv");
-                bindGLFunc(cast(void**)&glDepthRangeIndexed, "glDepthRangeIndexed");
-                bindGLFunc(cast(void**)&glGetFloati_v, "glGetFloati_v");
-                bindGLFunc(cast(void**)&glGetDoublei_v, "glGetDoublei_v");
+                load_ARB_ES2_compatibility(true);
+                load_ARB_get_program_binary(true);
+                load_ARB_separate_shader_objects(true);
+                load_ARB_vertex_attrib_64bit(true);
+                load_ARB_viewport_array(true);
 
                 glVer = GLVersion.GL41;
             }
 
             if(maxVer >= GLVersion.GL42)
             {
-                // Reused from ARB_base_instance
-                bindGLFunc(cast(void**)&glDrawArraysInstancedBaseInstance, "glDrawArraysInstancedBaseInstance");
-                bindGLFunc(cast(void**)&glDrawElementsInstancedBaseInstance, "glDrawElementsInstancedBaseInstance");
-                bindGLFunc(cast(void**)&glDrawElementsInstancedBaseVertexBaseInstance, "glDrawElementsInstancedBaseVertexBaseInstance");
-
-                // Reused from ARB_transform_feedback_instanced
-                bindGLFunc(cast(void**)&glDrawTransformFeedbackInstanced, "glDrawTransformFeedbackInstanced");
-                bindGLFunc(cast(void**)&glDrawTransformFeedbackStreamInstanced, "glDrawTransformFeedbackStreamInstanced");
-
-                // Reused from ARB_internalformat_query
-                bindGLFunc(cast(void**)&glGetInternalformativ, "glGetInternalformativ");
-
-                // Reused from ARB_shader_atomic_counters
-                bindGLFunc(cast(void**)&glGetActiveAtomicCounterBufferiv, "glGetActiveAtomicCounterBufferiv");
-
-                // Reused from ARB_shader_image_load_store
-                bindGLFunc(cast(void**)&glBindImageTexture, "glBindImageTexture");
-                bindGLFunc(cast(void**)&glMemoryBarrier, "glMemoryBarrier");
-
-                // Reused from ARB_texture_storage
-                bindGLFunc(cast(void**)&glTexStorage1D, "glTexStorage1D");
-                bindGLFunc(cast(void**)&glTexStorage2D, "glTexStorage2D");
-                bindGLFunc(cast(void**)&glTexStorage3D, "glTexStorage3D");
-                bindGLFunc(cast(void**)&glTextureStorage1DEXT, "glTextureStorage1DEXT");
-                bindGLFunc(cast(void**)&glTextureStorage2DEXT, "glTextureStorage2DEXT");
-                bindGLFunc(cast(void**)&glTextureStorage3DEXT, "glTextureStorage3DEXT");
+                load_ARB_base_instance(true);
+                load_ARB_transform_feedback_instanced(true);
+                load_ARB_internalformat_query(true);
+                load_ARB_shader_atomic_counters(true);
+                load_ARB_shader_image_load_store(true);
+                load_ARB_texture_storage(true);
 
                 glVer = GLVersion.GL42;
+            }
+
+            if(maxVer >= GLVersion.GL43)
+            {
+                load_ARB_clear_buffer_object(true);
+                load_ARB_compute_shader(true);
+                load_KHR_debug(true);
+                load_ARB_framebuffer_no_attachments(true);
+                load_ARB_internalformat_query2(true);
+                load_ARB_invalidate_subdata(true);
+                load_ARB_multi_draw_indirect(true);
+                load_ARB_program_interface_query(true);
+                load_ARB_shader_storage_buffer_object(true);
+                load_ARB_texture_buffer_range(true);
+                load_ARB_texture_storage_multisample(true);
+                load_ARB_texture_view(true);
+                load_ARB_vertex_attrib_binding(true);
+
+                glVer = GLVersion.GL43;
             }
 
             loadARB(glVer);
             loadEXT(glVer);
 
-            _loadedVersion = glVer;
             return glVer;
         }
     }
@@ -760,39 +507,58 @@ class DerelictGL3Loader : SharedLibLoader
     {
         GLVersion findMaxAvailable()
         {
-            string verstr = to!string(glGetString(GL_VERSION));
-            if(verstr.indexOf("4.2") != -1)
-                return GLVersion.GL42;
-            else if(verstr.indexOf("4.1") != -1)
-                return GLVersion.GL41;
-            else if(verstr.indexOf("4.0") != -1)
-                return GLVersion.GL40;
-            else if(verstr.indexOf("3.3") != -1)
-                return GLVersion.GL33;
-            else if(verstr.indexOf("3.2") != -1)
-                return GLVersion.GL32;
-            else if(verstr.indexOf("3.1") != -1)
-                return GLVersion.GL31;
-            else if(verstr.indexOf("3.0") != -1)
-                return GLVersion.GL30;
-            else if(verstr.indexOf("2.1") != -1)
-                return GLVersion.GL21;
-            else if(verstr.indexOf("2.0") != -1)
-                return GLVersion.GL20;
-            else if(verstr.indexOf("1.5") != -1)
-                return GLVersion.GL15;
-            else if(verstr.indexOf("1.4") != -1)
-                return GLVersion.GL14;
-            else if(verstr.indexOf("1.3") != -1)
-                return GLVersion.GL13;
-            else if(verstr.indexOf("1.2") != -1)
-                return GLVersion.GL12;
-            else if(verstr.indexOf("1.1") != -1)
-                return GLVersion.GL11;
+            /* glGetString(GL_VERSION) is guaranteed to return a constant string
+             of the format "[major].[minor].[build] xxxx", where xxxx is vendor-specific
+             information. Here, I'm pulling two characters out of the string, the major
+             and minor version numbers. */
+            const(char)* verstr = glGetString(GL_VERSION);
+            char major = *verstr;
+            char minor = *(verstr + 2);
 
-            // assume new version of OpenGL
-            // TODO this needs to be more robust -- check to make sure that there this
-            // is a valid version number and it's actually higher than the highest supported
+            switch(major)
+            {
+                case '4':
+                    if(minor == '3') return GLVersion.GL43;
+                    else if(minor == '2') return GLVersion.GL42;
+                    else if(minor == '1') return GLVersion.GL41;
+                    else if(minor == '0') return GLVersion.GL40;
+
+                    /* No default condition here, since it's possible for new
+                     minor versions of the 4.x series to be released before
+                     support is added to Derelict. That case is handled outside
+                     of the switch. When no more 4.x versions are released, this
+                     should be changed to return GL40 by default. */
+                    break;
+
+                case '3':
+                    if(minor == '3') return GLVersion.GL33;
+                    else if(minor == '2') return GLVersion.GL32;
+                    else if(minor == '1') return GLVersion.GL31;
+                    else return GLVersion.GL30;
+
+                case '2':
+                    if(minor == '1') return GLVersion.GL21;
+                    else return GLVersion.GL20;
+
+                case '1':
+                    if(minor == '5') return GLVersion.GL15;
+                    else if(minor == '4') return GLVersion.GL14;
+                    else if(minor == '3') return GLVersion.GL13;
+                    else if(minor == '2') return GLVersion.GL12;
+                    else return GLVersion.GL11;
+
+                default:
+                    /* glGetString(GL_VERSION) is guaranteed to return a result
+                     of a specific format, so if this point is reached it is
+                     going to be because a major version higher than what Derelict
+                     supports was encountered. That case is handled outside the
+                     switch. */
+                    break;
+
+            }
+
+            /* It's highly likely at this point that the version is higher than
+             what Derelict supports, so return the highest supported version. */
             return GLVersion.HighestSupported;
         }
     }
