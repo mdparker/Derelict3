@@ -137,28 +137,6 @@ static if(Derelict_OS_Posix && !Derelict_OS_Mac)
     // functions as types
     extern(System)
     {
-        //GLX version 1.3
-        alias nothrow GLXFBConfig* function(Display* dpy, int screen, int* nelements) da_glXGetFBConfigs;
-        alias nothrow GLXFBConfig* function(Display* dpy, int screen, const int* attrib_list, int* nelements) da_glXChooseFBConfig;
-        alias nothrow int function(Display* dpy, GLXFBConfig config, int attribute, int* value) da_glXGetFBConfigAttrib;
-        alias nothrow XVisualInfo* function(Display* dpy, GLXFBConfig config) da_glXGetVisualFromFBConfig;
-        alias nothrow GLXWindow function(Display* dpy, GLXFBConfig config, Window win, const int* attrib_list) da_glXCreateWindow;
-        alias nothrow void function(Display* dpy, GLXWindow win) da_glXDestroyWindow;
-        alias nothrow GLXPixmap function(Display* dpy, GLXFBConfig config, Pixmap pixmap, const int* attrib_list) da_glXCreatePixmap;
-        alias nothrow void function(Display* dpy, GLXPixmap pixmap) da_glXDestroyPixmap;
-        alias nothrow GLXPbuffer function(Display* dpy, GLXFBConfig config, const int* attrib_list) da_glXCreatePbuffer;
-        alias nothrow void function(Display* dpy, GLXPbuffer pbuf) da_glXDestroyPbuffer;
-        alias nothrow void function(Display* dpy, GLXDrawable draw, int attribute, uint* value) da_glXQueryDrawable;
-        alias nothrow GLXContext function(Display* dpy, GLXFBConfig config, int render_type, GLXContext share_list, Bool direct) da_glXCreateNewContext;
-        alias nothrow Bool function(Display* dpy, GLXDrawable draw, GLXDrawable read, GLXContext ctx) da_glXMakeContextCurrent;
-        alias nothrow GLXDrawable function() da_glXGetCurrentReadDrawable;
-        alias nothrow int function(Display* dpy, GLXContext ctx, int attribute, int* value) da_glXQueryContext;
-        alias nothrow void function(Display* dpy, GLXDrawable draw, ulong event_mask) da_glXSelectEvent;
-        alias nothrow void function(Display* dpy, GLXDrawable draw, ulong* event_mask) da_glXGetSelectedEvent;
-
-        // GLX version 1.4
-        alias nothrow __GLXextFuncPtr function(const GLubyte *procName) da_glXGetProcAddress;
-
         // GLX_ARB_create_context
         alias nothrow GLXContext function(Display *dpy, GLXFBConfig config, GLXContext share_context, Bool direct, const int *attrib_list) da_glXCreateContextAttribsARB;
 
@@ -287,28 +265,6 @@ static if(Derelict_OS_Posix && !Derelict_OS_Mac)
     // function declarations
     __gshared
     {
-        //GLX version 1.3
-        da_glXGetFBConfigs glXGetFBConfigs;
-        da_glXChooseFBConfig glXChooseFBConfig;
-        da_glXGetFBConfigAttrib glXGetFBConfigAttrib;
-        da_glXGetVisualFromFBConfig glXGetVisualFromFBConfig;
-        da_glXCreateWindow glXCreateWindow;
-        da_glXDestroyWindow glXDestroyWindow;
-        da_glXCreatePixmap glXCreatePixmap;
-        da_glXDestroyPixmap glXDestroyPixmap;
-        da_glXCreatePbuffer glXCreatePbuffer;
-        da_glXDestroyPbuffer glXDestroyPbuffer;
-        da_glXQueryDrawable glXQueryDrawable;
-        da_glXCreateNewContext glXCreateNewContext;
-        da_glXMakeContextCurrent glXMakeContextCurrent;
-        da_glXGetCurrentReadDrawable glXGetCurrentReadDrawable;
-        da_glXQueryContext glXQueryContext;
-        da_glXSelectEvent glXSelectEvent;
-        da_glXGetSelectedEvent glXGetSelectedEvent;
-        
-        // GLX version 1.4
-        da_glXGetProcAddress glXGetProcAddress;
-        
         // GLX_ARB_create_context
         da_glXCreateContextAttribsARB glXCreateContextAttribsARB;
         
@@ -486,28 +442,6 @@ static if(Derelict_OS_Posix && !Derelict_OS_Mac)
 
     package void loadXEXT(GLVersion glversion)
     {
-        // GLX version 1.3
-        bindGLFunc(cast(void**)&glXGetFBConfigs, "glXGetFBConfigs");
-        bindGLFunc(cast(void**)&glXChooseFBConfig, "glXChooseFBConfig");
-        bindGLFunc(cast(void**)&glXGetFBConfigAttrib, "glXGetFBConfigAttrib");
-        bindGLFunc(cast(void**)&glXGetVisualFromFBConfig, "glXGetVisualFromFBConfig");
-        bindGLFunc(cast(void**)&glXCreateWindow, "glXCreateWindow");
-        bindGLFunc(cast(void**)&glXDestroyWindow, "glXDestroyWindow");
-        bindGLFunc(cast(void**)&glXCreatePixmap, "glXCreatePixmap");
-        bindGLFunc(cast(void**)&glXDestroyPixmap, "glXDestroyPixmap");
-        bindGLFunc(cast(void**)&glXCreatePbuffer, "glXCreatePbuffer");
-        bindGLFunc(cast(void**)&glXDestroyPbuffer, "glXDestroyPbuffer");
-        bindGLFunc(cast(void**)&glXQueryDrawable, "glXQueryDrawable");
-        bindGLFunc(cast(void**)&glXCreateNewContext, "glXCreateNewContext");
-        bindGLFunc(cast(void**)&glXMakeContextCurrent, "glXMakeContextCurrent");
-        bindGLFunc(cast(void**)&glXGetCurrentReadDrawable, "glXGetCurrentReadDrawable");
-        bindGLFunc(cast(void**)&glXQueryContext, "glXQueryContext");
-        bindGLFunc(cast(void**)&glXSelectEvent, "glXSelectEvent");
-        bindGLFunc(cast(void**)&glXGetSelectedEvent, "glXGetSelectedEvent");
-
-        // GLX version 1.4
-        bindGLFunc(cast(void**)&glXGetProcAddress, "glXGetProcAddress");
-
         // GLX_ARB_create_context
         _GLX_ARB_create_context = isExtSupported(glversion, "GLX_ARB_create_context");
         if (_GLX_ARB_create_context)
