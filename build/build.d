@@ -91,7 +91,6 @@ enum packFG = "FG";
 enum packFI = "FI";
 enum packSFML2 = "SFML2";
 enum packLua = "Lua";
-enum packOpenDBX = "OpenDBX";
 enum packTCOD = "TCOD";
 enum packOGG = "OGG";
 enum packPQ = "PQ";
@@ -112,7 +111,6 @@ enum srcFG  = srcDerelict ~ "freeglut/";
 enum srcFI = srcDerelict ~ "freeimage/";
 enum srcSFML2 = srcDerelict ~ "sfml2/";
 enum srcLua = srcDerelict ~ "lua/";
-enum srcOpenDBX = srcDerelict ~ "opendbx/";
 enum srcTCOD = srcDerelict ~ "tcod/";
 enum srcOGG = srcDerelict ~ "ogg/";
 enum srcPQ = srcDerelict ~ "pq/";
@@ -141,7 +139,6 @@ static this()
         packFG : srcFG,
         packFI : srcFI,
         packSFML2 : srcSFML2,
-        packOpenDBX : srcOpenDBX,
         packLua : srcLua,
         packTCOD : srcTCOD,
         packOGG : srcOGG,
