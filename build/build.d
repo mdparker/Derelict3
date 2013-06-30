@@ -1,6 +1,6 @@
-module derelict;
+module build;
 
-import std.path : dirName;
+import std.path : dirName, buildNormalizedPath;
 import std.stdio : writefln, writeln;
 import std.process : system, ErrnoException;
 import std.file : dirEntries, SpanMode;
@@ -13,62 +13,68 @@ enum MinorVersion = "0";
 enum BumpVersion  = "0";
 enum FullVersion  = MajorVersion ~"."~ MinorVersion ~"."~ BumpVersion;
 
-version(Windows)
+version(DigitalMars) {
+    enum DMD = true;
+    enum GDC = false;
+    enum LDC = false;
+}
+else version(GNU) {
+    enum DMD = false;
+    enum GDC = true;
+    enum LDC = false;
+}
+else version(LDC) {
+    enum DMD = false;
+    enum GDC = false;
+    enum LDC = true;
+}
+
+version(Windows) {
+    enum Windows = true;
+    enum Posix = false;
+}
+else version(Posix) {
+    enum Windows = false;
+    enum Posix = true;
+}
+
+static if(Windows && DMD)
 {
     enum prefix = "";
-    version(Shared) enum extension = ".dll";
-    else enum extension = ".lib";
+    enum extension = ".lib";
 }
-else version(Posix)
-{
+else static if(Posix || GDC || LDC) {
     enum prefix = "lib";
-    version(Shared) enum extension = ".so";
-    else enum extension = ".a";
+    enum extension = ".a";
 }
-else
-{
-    static assert(false, "Unknown operating system.");
-}
+else static assert(false, "Unknown operating system and compiler.");
 
 // Compiler configuration
 version(DigitalMars)
 {
-    version(Shared)
-        static assert(false, "Shared library support is not yet available with DMD.");
-
     pragma(msg, "Using the Digital Mars DMD compiler.");
     enum compilerOptions = "-lib -O -release -inline -property -w -wi";
     string buildCompileString(string files, string libName)
     {
-        return format("dmd %s -I%s -of%s%s %s", compilerOptions, importPath, outdir, libName, files);
+        return format("dmd %s -I%s -of%s/dmd/%s %s", compilerOptions, importPath, outdir, libName, files);
     }
 }
 else version(GNU)
 {
     pragma(msg, "Using the GNU GDC compiler.");
-    version(Shared)
-        enum compilerOptions = "-s -O3 -Wall -shared";
-    else
-        enum compilerOptions = "-c -s -O3 -Wall";
+    enum compilerOptions = "-c -s -O3 -Wall";
     string buildCompileString(string files, string libName)
     {
-        version(Shared)
-            return format("gdc %s -Xlinker -soname=%s.%s -I../import -o %s%s.%s %s", compilerOptions, libName,MajorVersion, outdir, libName, FullVersion, files);
-        else
-            return format("gdc %s -I../import -o %s%s %s", compilerOptions, outdir, libName, files);
+        return format("gdc %s -I..%s -o %s/gdc/%s %s", compilerOptions, importPath, outdir, libName, files);
     }
 }
 else version(LDC)
 {
     pragma(msg, "Using the LDC compiler.");
-    version(Shared) enum compilerOptions = "-shared -O -release -enable-inlining -property -w -wi";
-    else enum compilerOptions = "-lib -O -release -enable-inlining -property -w -wi";
+    enum compilerOptions = "-lib -O -release -enable-inlining -property -w -wi";
     string buildCompileString(string files, string libName)
     {
-        version(Shared)
-            return format("ldc2 %s -soname=%s.%s -I../import -of%s%s.%s %s", compilerOptions, libName, MajorVersion, outdir, libName, FullVersion, files);
-        else
-            return format("ldc2 %s -I../import -of%s%s %s", compilerOptions, outdir, libName, files);
+        return format("ldc2 %s -I%s -of%s/ldc%s %s", compilerOptions, importPath, outdir, libName, files);
     }
 }
 else
@@ -119,7 +125,7 @@ enum srcPQ = srcDerelict ~ "pq/";
 string[string] pathMap;
 string buildPath;
 string importPath = "../import";
-string outdir = "../lib/";
+string outdir = "../lib";
 
 static this()
 {
@@ -150,18 +156,18 @@ void main(string[] args)
 {
     // Determine the path to this executable so that imports and source files can be found
     // no matter what the working directory.
-    buildPath = args[0].dirName() ~ "/";
+    buildPath = args[0].dirName();
 
     if(buildPath != "./")
     {
         // Concat the build path with the import directory.
-        importPath = buildPath ~ importPath;
-        outdir = buildPath ~ outdir;
+        importPath = buildNormalizedPath(buildPath, importPath);
+        outdir = buildNormalizedPath(buildPath, outdir);
 
         // fix up the package paths
         auto keys = pathMap.keys;
         foreach(i, s; pathMap.values)
-            pathMap[keys[i]] = buildPath ~ s;
+            pathMap[keys[i]] = buildNormalizedPath(buildPath, s);
     }
 
     if(args.length == 1)
@@ -241,10 +247,11 @@ void buildPackage(string packageName)
             joined ~= " " ~ s;
         }
     }
-
+    writeln();
     string libName = format("%s%s%s%s", prefix, "Derelict", packageName, extension);
     string arg = buildCompileString(joined, libName);
-    
+    writeln(arg);
+
     (system(arg) == 0).enforce(new ErrnoException("Build failure"));
     writeln("Build succeeded.");
 }
