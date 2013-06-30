@@ -34,6 +34,11 @@ public
     import derelict.opengl3.functions;
     import derelict.opengl3.arb;
     import derelict.opengl3.ext;
+
+	static if(Derelict_OS_Posix)
+	{
+		import derelict.opengl3.xext;
+	}
 }
 
 private
@@ -418,6 +423,11 @@ class DerelictGL3Loader : SharedLibLoader
 
             loadARB(glVer);
             loadEXT(glVer);
+
+			static if(Derelict_OS_Posix)
+			{ 
+				loadXEXT(glVer);
+			}
 
             return glVer;
         }
