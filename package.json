@@ -22,6 +22,7 @@
 		"derelict:ogg": "~master",
 		"derelict:openal": "~master",
 		"derelict:opengl3": "~master",
+		"derelict:physfs": "~master",
 		"derelict:pq": "~master",
 		"derelict:sdl2": "~master",
 		"derelict:sfml2": "~master",
@@ -114,6 +115,13 @@
 		},
 		{
 			"name": "opengl3",
+			"dependencies": {"derelict:util": "~master"},
+			"targetPath": "lib",
+			"sourcePaths": ["import/derelict/opengl3"],
+			"importPaths": ["import"]
+		},
+		{
+			"name": "physfs",
 			"dependencies": {"derelict:util": "~master"},
 			"targetPath": "lib",
 			"sourcePaths": ["import/derelict/opengl3"],
