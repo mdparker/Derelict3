@@ -82,47 +82,33 @@ else
     static assert(false, "Unknown compiler.");
 }
 
-// Package names
-enum packUtil = "Util";
-enum packGL3 = "GL3";
-enum packGLFW3 = "GLFW3";
-enum packIL = "IL";
-enum packAL = "AL";
-enum packALURE  = "ALURE";
-enum packFT = "FT";
-enum packSDL2 = "SDL2";
-enum packODE = "ODE";
-enum packASSIMP = "ASSIMP";
-enum packFG = "FG";
-enum packFI = "FI";
-enum packSFML2 = "SFML2";
-enum packLua = "Lua";
-enum packTCOD = "TCOD";
-enum packOGG = "OGG";
-enum packPQ = "PQ";
+struct Package {
+    string name;
+    string path;
+}
 
-// Source paths
 enum srcDerelict = "../import/derelict/";
-enum srcUtil = srcDerelict ~ "util/";
-enum srcGL3 = srcDerelict ~ "opengl3/";
-enum srcGLFW3  = srcDerelict ~ "glfw3/";
-enum srcIL = srcDerelict ~ "devil/";
-enum srcAL= srcDerelict ~ "openal/";
-enum srcALURE = srcDerelict ~ "alure/";
-enum srcFT = srcDerelict ~ "freetype/";
-enum srcSDL2 = srcDerelict ~ "sdl2/";
-enum srcODE = srcDerelict ~ "ode/";
-enum srcASSIMP = srcDerelict ~ "assimp/";
-enum srcFG  = srcDerelict ~ "freeglut/";
-enum srcFI = srcDerelict ~ "freeimage/";
-enum srcSFML2 = srcDerelict ~ "sfml2/";
-enum srcLua = srcDerelict ~ "lua/";
-enum srcTCOD = srcDerelict ~ "tcod/";
-enum srcOGG = srcDerelict ~ "ogg/";
-enum srcPQ = srcDerelict ~ "pq/";
+enum packUtil = Package( "Util", srcDerelict ~ "util/");
+enum packGL3 = Package( "GL3", srcDerelict ~ "opengl3/" );
+enum packGLFW3 = Package( "GLFW3", srcDerelict ~ "glfw3/" );
+enum packIL = Package( "IL", srcDerelict ~ "devil/" );
+enum packAL = Package( "AL", srcDerelict ~ "openal/" );
+enum packALURE = Package( "ALURE", srcDerelict ~ "alure/" );
+enum packFT = Package( "FT", srcDerelict ~ "freetype/" );
+enum packSDL2 = Package( "SDL2", srcDerelict ~ "SDL2/" );
+enum packODE = Package( "ODE", srcDerelict ~ "ode/" );
+enum packASSIMP = Package( "ASSIMP", srcDerelict ~ "assimp/" );
+enum packFG = Package( "FG", srcDerelict ~ "freeglut/" );
+enum packFI = Package( "FI", srcDerelict ~ "freeimage/" );
+enum packSFML2 = Package( "SFML2", srcDerelict ~ "sfml2/" );
+enum packLua = Package( "Lua", srcDerelict ~ "lua/" );
+enum packTCOD = Package( "TCOD", srcDerelict ~ "tcod/" );
+enum packOGG = Package( "OGG", srcDerelict ~ "ogg/" );
+enum packPQ = Package( "PQ", srcDerelict ~ "pq/" );
+enum packPFS = Package( "PhysFS", srcDerelict ~ "physfs/" );
 
 // Map package names to source paths.
-string[string] pathMap;
+Package[string] pathMap;
 string buildPath;
 string importPath = "../import";
 string outdir = "../lib";
@@ -132,23 +118,24 @@ static this()
     // Initializes the source path map.
     pathMap =
     [
-        packUtil : srcUtil,
-        packGL3 : srcGL3,
-        packGLFW3 : srcGLFW3,
-        packIL : srcIL,
-        packAL : srcAL,
-        packALURE : srcALURE,
-        packFT : srcFT,
-        packSDL2 : srcSDL2,
-        packODE : srcODE,
-        packASSIMP : srcASSIMP,
-        packFG : srcFG,
-        packFI : srcFI,
-        packSFML2 : srcSFML2,
-        packLua : srcLua,
-        packTCOD : srcTCOD,
-        packOGG : srcOGG,
-        packPQ : srcPQ
+        packUtil.name.toUpper() : packUtil,
+        packGL3.name.toUpper() : packGL3,
+        packGLFW3.name.toUpper() : packGLFW3,
+        packIL.name.toUpper() : packIL,
+        packAL.name.toUpper() : packAL,
+        packALURE.name.toUpper() : packALURE,
+        packFT.name.toUpper() : packFT,
+        packSDL2.name.toUpper() : packSDL2,
+        packODE.name.toUpper() : packODE,
+        packASSIMP.name.toUpper() : packASSIMP,
+        packFG.name.toUpper() : packFG,
+        packFI.name.toUpper() : packFI,
+        packSFML2.name.toUpper() : packSFML2,
+        packLua.name.toUpper() : packLua,
+        packTCOD.name.toUpper() : packTCOD,
+        packOGG.name.toUpper() : packOGG,
+        packPQ.name.toUpper() : packPQ,
+        packPFS.name.toUpper() : packPFS
     ];
 }
 
@@ -165,9 +152,8 @@ void main(string[] args)
         outdir = buildNormalizedPath(buildPath, outdir);
 
         // fix up the package paths
-        auto keys = pathMap.keys;
-        foreach(i, s; pathMap.values)
-            pathMap[keys[i]] = buildNormalizedPath(buildPath, s);
+        foreach(ref pack; pathMap)
+            pack.path = buildNormalizedPath(buildPath, pack.path);
     }
 
     if(args.length == 1)
@@ -182,8 +168,8 @@ void buildAll()
     writeln("Building all packages.");
     try
     {
-        foreach(key; pathMap.keys)
-            buildPackage(key);
+        foreach(pack; pathMap)
+            buildPackage(pack);
         writeln("\nAll builds complete\n");
     }
     // Eat any ErrnoException. The compiler will print the right thing on a failed build, no need
@@ -197,31 +183,16 @@ void buildAll()
 // Build only the packages specified on the command line.
 void buildSome(string[] args)
 {
-    bool buildIt(string s)
-    {
-        if(s in pathMap)
-        {
-            buildPackage(s);
-            return true;
-        }
-        return false;
-    }
     try
     {
         // If any of the args matches a key in the pathMap, build
         // that package.
         foreach(s; args)
         {
-            if(!buildIt(s))
-            {
-                s = s.toUpper();
-                if(!buildIt(s))
-                {
-                    s = s.capitalize();
-                    if(!buildIt(s))
-                        writefln("Unknown package '%s'", s);
-                }
-            }
+            auto key = s.toUpper();
+            Package *p = key in pathMap;
+            if( !p ) writefln("Unknown package '%s'", s);
+            else buildPackage( *p );
         }
         writeln("\nSelected builds complete\n");
     }
@@ -231,15 +202,14 @@ void buildSome(string[] args)
     }
 }
 
-void buildPackage(string packageName)
+void buildPackage(Package pack)
 {
-    writefln("Building Derelict%s", packageName);
+    writefln("Building Derelict%s", pack.name);
     writeln();
 
-    // Build up a string of all .d files in the directory that maps to packageName.
+    // Build up a string of all .d files in the package directory.
     string joined;
-    auto p = pathMap[packageName];
-    foreach(string s; dirEntries(pathMap[packageName], SpanMode.breadth))
+    foreach(string s; dirEntries(pack.path, SpanMode.breadth))
     {
         if(s.endsWith(".d"))
         {
@@ -248,7 +218,7 @@ void buildPackage(string packageName)
         }
     }
     writeln();
-    string libName = format("%s%s%s%s", prefix, "Derelict", packageName, extension);
+    string libName = format("%s%s%s%s", prefix, "Derelict", pack.name, extension);
     string arg = buildCompileString(joined, libName);
     writeln(arg);
 
