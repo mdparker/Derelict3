@@ -98,6 +98,7 @@ enum packFT = Package( "FT", srcDerelict ~ "freetype/" );
 enum packSDL2 = Package( "SDL2", srcDerelict ~ "SDL2/" );
 enum packODE = Package( "ODE", srcDerelict ~ "ode/" );
 enum packASSIMP = Package( "ASSIMP", srcDerelict ~ "assimp/" );
+enum packASSIMP3 = Package( "ASSIMP3", srcDerelict ~ "assimp3/" );
 enum packFG = Package( "FG", srcDerelict ~ "freeglut/" );
 enum packFI = Package( "FI", srcDerelict ~ "freeimage/" );
 enum packSFML2 = Package( "SFML2", srcDerelict ~ "sfml2/" );
@@ -128,6 +129,7 @@ static this()
         packSDL2.name.toUpper() : packSDL2,
         packODE.name.toUpper() : packODE,
         packASSIMP.name.toUpper() : packASSIMP,
+        packASSIMP3.name.toUpper() : packASSIMP3,
         packFG.name.toUpper() : packFG,
         packFI.name.toUpper() : packFI,
         packSFML2.name.toUpper() : packSFML2,

@@ -12,6 +12,7 @@
 	"dependencies": {
 		"derelict:alure": "~master",
 		"derelict:assimp": "~master",
+		"derelict:assimp3": "~master",
 		"derelict:devil": "~master",
 		"derelict:freeglut": "~master",
 		"derelict:freeimage": "~master",
@@ -48,6 +49,13 @@
 			"dependencies": {"derelict:util": "~master"},
 			"targetPath": "lib",
 			"sourcePaths": ["import/derelict/assimp"],
+			"importPaths": ["import"]
+		},
+		{
+			"name": "assimp3",
+			"dependencies": {"derelict:util": "~master"},
+			"targetPath": "lib",
+			"sourcePaths": ["import/derelict/assimp3"],
 			"importPaths": ["import"]
 		},
 		{
