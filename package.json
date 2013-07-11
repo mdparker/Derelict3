@@ -132,7 +132,7 @@
 			"name": "physfs",
 			"dependencies": {"derelict:util": "~master"},
 			"targetPath": "lib",
-			"sourcePaths": ["import/derelict/opengl3"],
+			"sourcePaths": ["import/derelict/physfs"],
 			"importPaths": ["import"]
 		},
 		{

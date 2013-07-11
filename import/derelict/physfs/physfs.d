@@ -43,7 +43,7 @@ private {
         static assert(0, "Need to implement PhysFS libNames for this operating system.");
 }
 
-class DerelictPhysFSLoader : SharedLibLoader {
+class DerelictPHYSFSLoader : SharedLibLoader {
     protected override void loadSymbols() {
         bindFunc(cast(void**)&PHYSFS_getLinkedVersion, "PHYSFS_getLinkedVersion");
         bindFunc(cast(void**)&PHYSFS_init, "PHYSFS_init");
@@ -138,12 +138,12 @@ class DerelictPhysFSLoader : SharedLibLoader {
     }
 }
 
-__gshared DerelictPhysFSLoader DerelictPhysFS;
+__gshared DerelictPHYSFSLoader DerelictPHYSFS;
 
 shared static this() {
-    DerelictPhysFS = new DerelictPhysFSLoader;
+    DerelictPHYSFS = new DerelictPHYSFSLoader;
 }
 
 shared static ~this() {
-    DerelictPhysFS.unload();
+    DerelictPHYSFS.unload();
 }
