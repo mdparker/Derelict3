@@ -23,13 +23,13 @@ cd $Derelict/build
 dmd build.d
 
 # Build all Derelict packages
-build
+./build
 
 # Build specific packages.
-build Util GL3
+./build Util GL3
 
 # Package names are case insensitive
-build util gl3
+./build util gl3
 ```
 Passing -version=Shared on the command line will cause the script to build the Derelict libs as shared libraries (currently, this is unsupported with DMD, but should work with both LDC and GDC).
 
