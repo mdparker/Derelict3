@@ -23,13 +23,13 @@ cd $Derelict/build
 dmd build.d
 
 # Build all Derelict packages
-build
+./build
 
 # Build specific packages.
-build Util GL3
+./build Util GL3
 
 # Package names are case insensitive
-build util gl3
+./build util gl3
 ```
 #DerelictGL3
 
