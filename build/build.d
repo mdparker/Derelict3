@@ -101,7 +101,7 @@ else version(LDC)
     enum compilerOptions = "-lib -O -release -enable-inlining -property -w -wi";
     string buildCompileString(string files, string libName)
     {
-        return format("ldc2 %s -I%s -of%s/ldc%s %s", compilerOptions, importPath, outdir, libName, files);
+        return format("ldc2 %s -I%s -of%s/ldc/%s %s", compilerOptions, importPath, outdir, libName, files);
     }
 }
 else
