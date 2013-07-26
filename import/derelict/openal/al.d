@@ -102,6 +102,7 @@ class DerelictALLoader : SharedLibLoader
             bindFunc(cast(void**)&alGetSource3f, "alGetSource3f");
             bindFunc(cast(void**)&alGetSourcefv, "alGetSourcefv");
             bindFunc(cast(void**)&alGetSourcei, "alGetSourcei");
+            bindFunc(cast(void**)&alGetSource3i, "alGetSource3i");
             bindFunc(cast(void**)&alGetSourceiv, "alGetSourceiv");
 
             bindFunc(cast(void**)&alSourcePlayv, "alSourcePlayv");

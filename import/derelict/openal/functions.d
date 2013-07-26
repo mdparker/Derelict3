@@ -50,7 +50,7 @@ extern(C)
     alias nothrow ALenum function() da_alGetError;
 
     alias nothrow ALboolean function(in char*) da_alIsExtensionPresent;
-    alias nothrow ALboolean function(in char*) da_alGetProcAddress;
+    alias nothrow ALvoid* function(in char*) da_alGetProcAddress;
     alias nothrow ALenum function(in char*) da_alGetEnumValue;
 
     alias nothrow void function(ALenum, ALfloat) da_alListenerf;
