@@ -1,11 +1,37 @@
 #Derelict 3
 
+###Dynamic D bindings to C libraries for multimedia and game development.
+
+######Derelict 3 contains bindings to the following libraries (click the links for more info):
+* [Alure](http://kcat.strangesoft.net/alure.html)
+* [Assimp](http://assimp.sourceforge.net/)
+* [Assimp3](http://assimp.sourceforge.net/)
+* [Devil](http://openil.sourceforge.net/)
+* [Freeglut](http://freeglut.sourceforge.net/)
+* [Freeimage](http://freeimage.sourceforge.net/)
+* [Freetype](http://www.freetype.org/)
+* [Glfw3](http://www.glfw.org/)
+* [Lua](http://www.lua.org/)
+* [Ode](http://www.ode.org/)
+* [Ogg](http://xiph.org/ogg/)[Vorbis](http://xiph.org/vorbis/)
+* [Openal](http://connect.creativelabs.com/openal/)
+* [Opengl3](http://www.opengl.org/)
+* [physfs](http://icculus.org/physfs/)
+* [Pq](http://www.postgresql.org/download/)
+* [Sdl2](http://www.libsdl.org/)
+* [Sfml2](http://www.sfml-dev.org/)
+* [Tcod](http://doryen.eptalys.net/libtcod/)
+
+as well as an internal utility library names [util](#util).
+
+####The Forum
+Visit for help, suggestions and discussion:
+http://dblog.aldacron.net/forum/index.php
+
 Consider the current repo an ALPHA version! If you don't know what Derelict is, see the old project page for info on Derelict 1 & 2:
 
 http://www.dsource.org/projects/derelict/
 
-And visit the forum for help:
-http://dblog.aldacron.net/forum/index.php
 
 The old forum also has a lot of information (when the site works):
 http://www.dsource.org/forums/viewforum.php?f=19
