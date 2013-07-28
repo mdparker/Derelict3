@@ -274,7 +274,7 @@ enum
     SDL_LASTEVENT = 0xFFFF
 }
 
-struct SDL_GenericEvent
+struct SDL_CommonEvent
 {
     Uint32 type;
     Uint32 timestamp;
@@ -331,10 +331,7 @@ struct SDL_MouseMotionEvent
     Uint32 timestamp;
     Uint32 windowID;
     Uint32 which;
-    Uint8 state;
-    Uint8 padding1;
-    Uint8 padding2;
-    Uint8 padding3;
+    Uint32 state;
     Sint32 x;
     Sint32 y;
     Sint32 xrel;
@@ -502,6 +499,12 @@ struct SDL_QuitEvent
     Uint32 timestamp;
 }
 
+struct SDL_OSEvent
+{
+    Uint32 type;
+    Uint32 timestamp;
+}
+
 struct SDL_UserEvent
 {
     Uint32 type;
@@ -523,7 +526,7 @@ struct SDL_SysWMEvent
 union SDL_Event
 {
     Uint32 type;
-    SDL_GenericEvent generic;
+    SDL_CommonEvent common;
     SDL_WindowEvent window;
     SDL_KeyboardEvent key;
     SDL_TextEditingEvent edit;
