@@ -5,10 +5,10 @@
 ######Derelict 3 contains bindings to the following libraries:
 * [Alure](http://kcat.strangesoft.net/alure.html)
 * [Assimp 2 & 3](http://assimp.sourceforge.net/)
-* [Devil](http://openil.sourceforge.net/)
-* [Freeglut](http://freeglut.sourceforge.net/)
-* [Freeimage](http://freeimage.sourceforge.net/)
-* [Freetype](http://www.freetype.org/)
+* [DevIL](http://openil.sourceforge.net/)
+* [FreeGLUT](http://freeglut.sourceforge.net/)
+* [FreeImage](http://freeimage.sourceforge.net/)
+* [FreeType](http://www.freetype.org/)
 * [GLFW3](http://www.glfw.org/)
 * [Lua](http://www.lua.org/)
 * [ODE](http://www.ode.org/)
@@ -19,10 +19,8 @@
 * [PhysFS](http://icculus.org/physfs/)
 * [libPQ](http://www.postgresql.org/download/)
 * [SDL2](http://www.libsdl.org/)
-* [Sfml2](http://www.sfml-dev.org/)
-* [Tcod](http://doryen.eptalys.net/libtcod)
-
-Derelict 3 should be considered as an alpha version. For the older Derelict 1 and 2 see [here](#derelict-1--2)
+* [SFML2](http://www.sfml-dev.org/)
+* [libtcod](http://doryen.eptalys.net/libtcod)
 
 ###The Forum
 Visit for help, suggestions and discussion:
@@ -51,7 +49,7 @@ build util gl3
 Please bear in mind that this is all in an ALPHA state. It's perfectly usable as is, but there needs to be more work done on the build script, testing on different platforms/compilers, and, of course, the addition of a few more packages. Pull requests for bugfixes and enhancements are extremely welcome. However, I make no promises about accepting pull requests that add new packages. I'll have to take a wait-and-see approach on that for now.
 
 
-##Derelict 1 & 2
+##Older Versions
 Project page: http://www.dsource.org/projects/derelict/
 
 Old forum: http://www.dsource.org/forums/viewforum.php?f=19
