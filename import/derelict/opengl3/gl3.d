@@ -39,8 +39,8 @@ public
     {
         import derelict.opengl3.winext;
     }
-	
-	static if(Derelict_OS_Posix)
+    
+    static if(Derelict_OS_Posix)
     {
         import derelict.opengl3.xext;
     }
@@ -433,8 +433,8 @@ class DerelictGL3Loader : SharedLibLoader
             { 
                 loadWinEXT(glVer);
             }
-			
-			static if(Derelict_OS_Posix)
+            
+            static if(Derelict_OS_Posix)
             { 
                 loadXEXT(glVer);
             }
