@@ -36,7 +36,6 @@ static if(Derelict_OS_Windows)
     {
         import std.string;
         import std.conv;
-        import std.exception;
         
         import derelict.opengl3.types;
         import derelict.opengl3.constants;
@@ -681,10 +680,7 @@ static if(Derelict_OS_Windows)
             code ~= "if (_" ~ array[0] ~ ") {";
             for (int index = 2; index < array.length; index += 2)
             {
-                code ~= array[index] ~ " = cast(da_" ~ array[index] ~ ") loadGLFunc(\"" ~ array[index] ~ "\");";
-                
-                //Ensures the driver returned a valid function pointer
-                code ~= "enforce(" ~ array[index] ~ ");";
+                code ~= array[index] ~ " = cast(da_" ~ array[index] ~ ") bindGLFunc(\"" ~ array[index] ~ "\");";
             }
             code ~= "}";
         }
