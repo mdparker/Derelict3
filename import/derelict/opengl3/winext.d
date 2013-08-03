@@ -36,6 +36,7 @@ static if(Derelict_OS_Windows)
     {
         import std.string;
         import std.conv;
+        import std.exception;
         
         import derelict.opengl3.types;
         import derelict.opengl3.constants;
@@ -46,6 +47,16 @@ static if(Derelict_OS_Windows)
 
     enum : GLenum
     {
+        // WGL_ARB_buffer_region
+        WGL_FRONT_COLOR_BUFFER_BIT_ARB      = 0x00000001,
+        WGL_BACK_COLOR_BUFFER_BIT_ARB       = 0x00000002,
+        WGL_DEPTH_BUFFER_BIT_ARB            = 0x00000004,
+        WGL_STENCIL_BUFFER_BIT_ARB          = 0x00000008,
+
+        // WGL_ARB_multisample
+        WGL_SAMPLE_BUFFERS_ARB              = 0x2041,
+        WGL_SAMPLES_ARB                     = 0x2042,
+
         // WGL_ARB_pixel_format
         WGL_NUMBER_PIXEL_FORMATS_ARB        = 0x2000,
         WGL_DRAW_TO_WINDOW_ARB              = 0x2001,
@@ -97,6 +108,58 @@ static if(Derelict_OS_Windows)
         WGL_TYPE_RGBA_ARB                   = 0x202B,
         WGL_TYPE_COLORINDEX_ARB             = 0x202C,
 
+        // WGL_ARB_make_current_read
+        ERROR_INVALID_PIXEL_TYPE_ARB            = 0x2043,
+        ERROR_INCOMPATIBLE_DEVICE_CONTEXTS_ARB  = 0x2054,
+
+        // WGL_ARB_pbuffer
+        WGL_DRAW_TO_PBUFFER_ARB             = 0x202D,
+        WGL_MAX_PBUFFER_PIXELS_ARB          = 0x202E,
+        WGL_MAX_PBUFFER_WIDTH_ARB           = 0x202F,
+        WGL_MAX_PBUFFER_HEIGHT_ARB          = 0x2030,
+        WGL_PBUFFER_LARGEST_ARB             = 0x2033,
+        WGL_PBUFFER_WIDTH_ARB               = 0x2034,
+        WGL_PBUFFER_HEIGHT_ARB              = 0x2035,
+        WGL_PBUFFER_LOST_ARB                = 0x2036,
+
+        // WGL_ARB_render_texture
+        WGL_BIND_TO_TEXTURE_RGB_ARB         = 0x2070,
+        WGL_BIND_TO_TEXTURE_RGBA_ARB        = 0x2071,
+        WGL_TEXTURE_FORMAT_ARB              = 0x2072,
+        WGL_TEXTURE_TARGET_ARB              = 0x2073,
+        WGL_MIPMAP_TEXTURE_ARB              = 0x2074,
+        WGL_TEXTURE_RGB_ARB                 = 0x2075,
+        WGL_TEXTURE_RGBA_ARB                = 0x2076,
+        WGL_NO_TEXTURE_ARB                  = 0x2077,
+        WGL_TEXTURE_CUBE_MAP_ARB            = 0x2078,
+        WGL_TEXTURE_1D_ARB                  = 0x2079,
+        WGL_TEXTURE_2D_ARB                  = 0x207A,
+        WGL_MIPMAP_LEVEL_ARB                = 0x207B,
+        WGL_CUBE_MAP_FACE_ARB               = 0x207C,
+        WGL_TEXTURE_CUBE_MAP_POSITIVE_X_ARB = 0x207D,
+        WGL_TEXTURE_CUBE_MAP_NEGATIVE_X_ARB = 0x207E,
+        WGL_TEXTURE_CUBE_MAP_POSITIVE_Y_ARB = 0x207F,
+        WGL_TEXTURE_CUBE_MAP_NEGATIVE_Y_ARB = 0x2080,
+        WGL_TEXTURE_CUBE_MAP_POSITIVE_Z_ARB = 0x2081,
+        WGL_TEXTURE_CUBE_MAP_NEGATIVE_Z_ARB = 0x2082,
+        WGL_FRONT_LEFT_ARB                  = 0x2083,
+        WGL_FRONT_RIGHT_ARB                 = 0x2084,
+        WGL_BACK_LEFT_ARB                   = 0x2085,
+        WGL_BACK_RIGHT_ARB                  = 0x2086,
+        WGL_AUX0_ARB                        = 0x2087,
+        WGL_AUX1_ARB                        = 0x2088,
+        WGL_AUX2_ARB                        = 0x2089,
+        WGL_AUX3_ARB                        = 0x208A,
+        WGL_AUX4_ARB                        = 0x208B,
+        WGL_AUX5_ARB                        = 0x208C,
+        WGL_AUX6_ARB                        = 0x208D,
+        WGL_AUX7_ARB                        = 0x208E,
+        WGL_AUX8_ARB                        = 0x208F,
+        WGL_AUX9_ARB                        = 0x2090,
+
+        // WGL_ARB_pixel_format_float
+        WGL_TYPE_RGBA_FLOAT_ARB  = 0x21A0,
+
         // WGL_ARB_create_context
         WGL_CONTEXT_DEBUG_BIT_ARB               = 0x0001,
         WGL_CONTEXT_FORWARD_COMPATIBLE_BIT_ARB  = 0x0002,
@@ -110,98 +173,536 @@ static if(Derelict_OS_Windows)
         WGL_CONTEXT_CORE_PROFILE_BIT_ARB            = 0x00000001,
         WGL_CONTEXT_COMPATIBILITY_PROFILE_BIT_ARB   = 0x00000002,
         WGL_CONTEXT_PROFILE_MASK_ARB                = 0x9126,
+
+        // WGL_ARB_framebuffer_sRGB
+        WGL_FRAMEBUFFER_SRGB_CAPABLE_ARB    = 0x20A9,
+    }
+    
+    enum : GLenum
+    {
+        // WGL_EXT_depth_float
+        WGL_DEPTH_FLOAT_EXT                 = 0x2040,
+
+        // WGL_EXT_framebuffer_sRGB
+        WGL_FRAMEBUFFER_SRGB_CAPABLE_EXT    = 0x20A9,
+
+        // WGL_EXT_make_current_read
+        ERROR_INVALID_PIXEL_TYPE_EXT        = 0x2043,
+
+        // WGL_EXT_multisample
+        WGL_SAMPLE_BUFFERS_EXT              = 0x2041,
+        WGL_SAMPLES_EXT                     = 0x2042,
+
+        // WGL_EXT_pbuffer
+        WGL_DRAW_TO_PBUFFER_EXT             = 0x202D,
+        WGL_MAX_PBUFFER_PIXELS_EXT          = 0x202E,
+        WGL_MAX_PBUFFER_WIDTH_EXT           = 0x202F,
+        WGL_MAX_PBUFFER_HEIGHT_EXT          = 0x2030,
+        WGL_OPTIMAL_PBUFFER_WIDTH_EXT       = 0x2031,
+        WGL_OPTIMAL_PBUFFER_HEIGHT_EXT      = 0x2032,
+        WGL_PBUFFER_LARGEST_EXT             = 0x2033,
+        WGL_PBUFFER_WIDTH_EXT               = 0x2034,
+        WGL_PBUFFER_HEIGHT_EXT              = 0x2035,
+
+        // WGL_EXT_pixel_format
+        WGL_NUMBER_PIXEL_FORMATS_EXT        = 0x2000,
+        WGL_DRAW_TO_WINDOW_EXT              = 0x2001,
+        WGL_DRAW_TO_BITMAP_EXT              = 0x2002,
+        WGL_ACCELERATION_EXT                = 0x2003,
+        WGL_NEED_PALETTE_EXT                = 0x2004,
+        WGL_NEED_SYSTEM_PALETTE_EXT         = 0x2005,
+        WGL_SWAP_LAYER_BUFFERS_EXT          = 0x2006,
+        WGL_SWAP_METHOD_EXT                 = 0x2007,
+        WGL_NUMBER_OVERLAYS_EXT             = 0x2008,
+        WGL_NUMBER_UNDERLAYS_EXT            = 0x2009,
+        WGL_TRANSPARENT_EXT                 = 0x200A,
+        WGL_TRANSPARENT_VALUE_EXT           = 0x200B,
+        WGL_SHARE_DEPTH_EXT                 = 0x200C,
+        WGL_SHARE_STENCIL_EXT               = 0x200D,
+        WGL_SHARE_ACCUM_EXT                 = 0x200E,
+        WGL_SUPPORT_GDI_EXT                 = 0x200F,
+        WGL_SUPPORT_OPENGL_EXT              = 0x2010,
+        WGL_DOUBLE_BUFFER_EXT               = 0x2011,
+        WGL_STEREO_EXT                      = 0x2012,
+        WGL_PIXEL_TYPE_EXT                  = 0x2013,
+        WGL_COLOR_BITS_EXT                  = 0x2014,
+        WGL_RED_BITS_EXT                    = 0x2015,
+        WGL_RED_SHIFT_EXT                   = 0x2016,
+        WGL_GREEN_BITS_EXT                  = 0x2017,
+        WGL_GREEN_SHIFT_EXT                 = 0x2018,
+        WGL_BLUE_BITS_EXT                   = 0x2019,
+        WGL_BLUE_SHIFT_EXT                  = 0x201A,
+        WGL_ALPHA_BITS_EXT                  = 0x201B,
+        WGL_ALPHA_SHIFT_EXT                 = 0x201C,
+        WGL_ACCUM_BITS_EXT                  = 0x201D,
+        WGL_ACCUM_RED_BITS_EXT              = 0x201E,
+        WGL_ACCUM_GREEN_BITS_EXT            = 0x201F,
+        WGL_ACCUM_BLUE_BITS_EXT             = 0x2020,
+        WGL_ACCUM_ALPHA_BITS_EXT            = 0x2021,
+        WGL_DEPTH_BITS_EXT                  = 0x2022,
+        WGL_STENCIL_BITS_EXT                = 0x2023,
+        WGL_AUX_BUFFERS_EXT                 = 0x2024,
+        WGL_NO_ACCELERATION_EXT             = 0x2025,
+        WGL_GENERIC_ACCELERATION_EXT        = 0x2026,
+        WGL_FULL_ACCELERATION_EXT           = 0x2027,
+        WGL_SWAP_EXCHANGE_EXT               = 0x2028,
+        WGL_SWAP_COPY_EXT                   = 0x2029,
+        WGL_SWAP_UNDEFINED_EXT              = 0x202A,
+        WGL_TYPE_RGBA_EXT                   = 0x202B,
+        WGL_TYPE_COLORINDEX_EXT             = 0x202C,
+
+        // WGL_EXT_pixel_format_packed_float
+        WGL_TYPE_RGBA_UNSIGNED_FLOAT_EXT    = 0x20A8,
+    }
+    
+    enum : GLenum
+    {
+        // WGL_NV_float_buffer
+        WGL_FLOAT_COMPONENTS_NV                     = 0x20B0,
+        WGL_BIND_TO_TEXTURE_RECTANGLE_FLOAT_R_NV    = 0x20B1,
+        WGL_BIND_TO_TEXTURE_RECTANGLE_FLOAT_RG_NV   = 0x20B2,
+        WGL_BIND_TO_TEXTURE_RECTANGLE_FLOAT_RGB_NV  = 0x20B3,
+        WGL_BIND_TO_TEXTURE_RECTANGLE_FLOAT_RGBA_NV = 0x20B4,
+        WGL_TEXTURE_FLOAT_R_NV                      = 0x20B5,
+        WGL_TEXTURE_FLOAT_RG_NV                     = 0x20B6,
+        WGL_TEXTURE_FLOAT_RGB_NV                    = 0x20B7,
+        WGL_TEXTURE_FLOAT_RGBA_NV                   = 0x20B8,
+
+        // WGL_NV_multisample_coverage
+        WGL_COVERAGE_SAMPLES_NV             = 0x2042,
+        WGL_COLOR_SAMPLES_NV                = 0x20B9,
+
+        // WGL_NV_render_depth_texture
+        // WGL_NO_TEXTURE_ARB                       = 0x2077, <-- Declared in WGL_ARB_render_texture
+        WGL_BIND_TO_TEXTURE_DEPTH_NV            = 0x20A3,
+        WGL_BIND_TO_TEXTURE_RECTANGLE_DEPTH_NV  = 0x20A4,
+        WGL_DEPTH_TEXTURE_FORMAT_NV             = 0x20A5,
+        WGL_TEXTURE_DEPTH_COMPONENT_NV          = 0x20A6,
+        WGL_DEPTH_COMPONENT_NV                  = 0x20A7,
+
+        // WGL_NV_render_texture_rectangle
+        WGL_BIND_TO_TEXTURE_RECTANGLE_RGB_NV    = 0x20A0,
+        WGL_BIND_TO_TEXTURE_RECTANGLE_RGBA_NV   = 0x20A1,
+        WGL_TEXTURE_RECTANGLE_NV                = 0x20A2,
+
+        // WGL_NV_video_output
+        WGL_BIND_TO_VIDEO_RGB_NV            = 0x20C0,
+        WGL_BIND_TO_VIDEO_RGBA_NV           = 0x20C1,
+        WGL_BIND_TO_VIDEO_RGB_AND_DEPTH_NV  = 0x20C2,
+        WGL_VIDEO_OUT_COLOR_NV              = 0x20C3,
+        WGL_VIDEO_OUT_ALPHA_NV              = 0x20C4,
+        WGL_VIDEO_OUT_DEPTH_NV              = 0x20C5,
+        WGL_VIDEO_OUT_COLOR_AND_ALPHA_NV    = 0x20C6,
+        WGL_VIDEO_OUT_COLOR_AND_DEPTH_NV    = 0x20C7,
+        WGL_VIDEO_OUT_FRAME                 = 0x20C8,
+        WGL_VIDEO_OUT_FIELD_1               = 0x20C9,
+        WGL_VIDEO_OUT_FIELD_2               = 0x20CA,
+        WGL_VIDEO_OUT_STACKED_FIELDS_1_2    = 0x20CB,
+        WGL_VIDEO_OUT_STACKED_FIELDS_2_1    = 0x20CC,
+    }
+    
+    enum : GLenum
+    {
+        // WGL_ATI_pixel_format_float
+        WGL_TYPE_RGBA_FLOAT_ATI             = 0x21A0,
+        GL_RGBA_FLOAT_MODE_ATI              = 0x8820,
+        //GL_COLOR_CLEAR_UNCLAMPED_VALUE_ATI    = 0x8835, <-- Already declared above.
+
+        // WGL_ATI_render_texture_rectangle
+        WGL_TEXTURE_RECTANGLE_ATI           = 0x21A5,
+    }
+
+    enum : GLenum
+    {
+        // WGL_AMD_gpu_association
+        WGL_GPU_VENDOR_AMD                  = 0x1F00,
+        WGL_GPU_RENDERER_STRING_AMD         = 0x1F01,
+        WGL_GPU_OPENGL_VERSION_STRING_AMD   = 0x1F02,
+        WGL_GPU_FASTEST_TARGET_GPUS_AMD     = 0x21A2,
+        WGL_GPU_RAM_AMD                     = 0x21A3,
+        WGL_GPU_CLOCK_AMD                   = 0x21A4,
+        WGL_GPU_NUM_PIPES_AMD               = 0x21A5,
+        WGL_GPU_NUM_SIMD_AMD                = 0x21A6,
+        WGL_GPU_NUM_RB_AMD                  = 0x21A7,
+        WGL_GPU_NUM_SPI_AMD                 = 0x21A8,
+    }
+
+    enum : GLenum
+    {
+        // WGL_I3D_digital_video_control
+        WGL_DIGITAL_VIDEO_CURSOR_ALPHA_FRAMEBUFFER_I3D  = 0x2050,
+        WGL_DIGITAL_VIDEO_CURSOR_ALPHA_VALUE_I3D        = 0x2051,
+        WGL_DIGITAL_VIDEO_CURSOR_INCLUDED_I3D           = 0x2052,
+        WGL_DIGITAL_VIDEO_GAMMA_CORRECTED_I3D           = 0x2053,
+
+        // WGL_I3D_gamma
+        WGL_GAMMA_TABLE_SIZE_I3D            = 0x204E,
+        WGL_GAMMA_EXCLUDE_DESKTOP_I3D       = 0x204F,
+
+        // WGL_I3D_genlock
+        WGL_GENLOCK_SOURCE_MULTIVIEW_I3D        = 0x2044,
+        WGL_GENLOCK_SOURCE_EXTERNAL_SYNC_I3D    = 0x2045,
+        WGL_GENLOCK_SOURCE_EXTERNAL_FIELD_I3D   = 0x2046,
+        WGL_GENLOCK_SOURCE_EXTERNAL_TTL_I3D     = 0x2047,
+        WGL_GENLOCK_SOURCE_DIGITAL_SYNC_I3D     = 0x2048,
+        WGL_GENLOCK_SOURCE_DIGITAL_FIELD_I3D    = 0x2049,
+        WGL_GENLOCK_SOURCE_EDGE_FALLING_I3D     = 0x204A,
+        WGL_GENLOCK_SOURCE_EDGE_RISING_I3D      = 0x204B,
+        WGL_GENLOCK_SOURCE_EDGE_BOTH_I3D        = 0x204C,
+
+        // WGL_I3D_image_buffer
+        WGL_IMAGE_BUFFER_MIN_ACCESS_I3D         = 0x00000001,
+        WGL_IMAGE_BUFFER_LOCK_I3D               = 0x00000002,
+    }
+
+    enum : GLenum
+    {
+        // WGL_3DFX_multisample
+        WGL_SAMPLE_BUFFERS_3DFX             = 0x2060,
+        WGL_SAMPLES_3DFX                    = 0x2061,
+    }
+
+    enum : GLenum
+    {
+        // WGL_3DL_stereo_control
+        WGL_STEREO_EMITTER_ENABLE_3DL       = 0x2055,
+        WGL_STEREO_EMITTER_DISABLE_3DL      = 0x2056,
+        WGL_STEREO_POLARITY_NORMAL_3DL      = 0x2057,
+        WGL_STEREO_POLARITY_INVERT_3DL      = 0x2058,
+    }
+    
+    alias HANDLE HPBUFFERARB;
+    alias HANDLE HPBUFFEREXT;
+
+    alias HANDLE HGPUNV;
+    alias GPU_DEVICE* PGPU_DEVICE;
+    alias HANDLE HVIDEOOUTPUTDEVICENV;
+    alias HANDLE HPVIDEODEV;
+
+    struct GPU_DEVICE
+    {
+        DWORD cb;
+        char DeviceName[32];
+        char DeviceString[128];
+        DWORD flags;
+        RECT rcVirtualScreen;
+    }
+    
+    private immutable auto extensionTable = [
+        ["WGL_ARB_buffer_region",
+        "HANDLE function(HDC, int, UINT)", "wglCreateBufferRegionARB",
+        "void function(HANDLE)", "wglDeleteBufferRegionARB",
+        "BOOL function(HANDLE, int, int, int, int)", "wglSaveBufferRegionARB",
+        "BOOL function(HANDLE, int, int, int, int, int, int)", "wglRestoreBufferRegionARB"],
+        
+        ["WGL_ARB_multisample"],
+        
+        ["WGL_ARB_pixel_format",
+        "BOOL function(HDC, int, int, UINT, in int*, int*)", "wglGetPixelFormatAttribivARB",
+        "BOOL function(HDC, int, int, UINT, in int*, float*)", "wglGetPixelFormatAttribfvARB",
+        "BOOL function(HDC, in int*, in float*, UINT, int*, UINT*)", "wglChoosePixelFormatARB",],
+
+        ["WGL_ARB_make_current_read",
+        "BOOL function(HDC, HDC, HGLRC)", "wglMakeContextCurrentARB",
+        "HDC function()", "wglGetCurrentReadDCARB",],
+
+        ["WGL_ARB_pbuffer",
+        "HPBUFFERARB function(HDC, int, int, int, in int*)", "wglCreatePbufferARB",
+        "HDC function(HPBUFFERARB)", "wglGetPbufferDCARB",
+        "int function(HPBUFFERARB, HDC)", "wglReleasePbufferDCARB",
+        "BOOL function(HPBUFFERARB)", "wglDestroyPbufferARB",
+        "BOOL function(HPBUFFERARB, int, int*)", "wglQueryPbufferARB",],
+
+        ["WGL_ARB_render_texture",
+        "BOOL function(HPBUFFERARB, int)", "wglBindTexImageARB",
+        "BOOL function(HPBUFFERARB, int)", "wglReleaseTexImageARB",
+        "BOOL function(HPBUFFERARB, in int*)", "wglSetPbufferAttribARB",],
+
+        ["WGL_ARB_pixel_format_float"],
+        
+        ["WGL_ARB_create_context",
+        "HGLRC function(HDC, HGLRC, in int*)", "wglCreateContextAttribsARB",],
+
+        ["WGL_ARB_create_context_profile"],
+        
+        ["WGL_ARB_framebuffer_sRGB"],
+        
+        ["WGL_EXT_depth_float"],
+        
+        ["WGL_EXT_display_color_table",
+        "GLboolean function(GLushort)", "wglBindDisplayColorTableEXT",
+        "GLboolean function(GLushort)", "wglCreateDisplayColorTableEXT",
+        "void function(GLushort)", "wglDestroyDisplayColorTableEXT",
+        "GLboolean function(GLushort*, GLuint)", "wglLoadDisplayColorTableEXT",],
+
+        ["WGL_EXT_framebuffer_sRGB"],
+        
+        ["WGL_EXT_make_current_read",
+        "BOOL function(HDC, HDC, HGLRC)", "wglMakeContextCurrentEXT",
+        "HDC function()", "wglGetCurrentReadDCEXT",],
+
+        ["WGL_EXT_multisample"],
+        
+        ["WGL_EXT_pbuffer",
+        "HPBUFFEREXT function(HDC, int, int, int, in int*)", "wglCreatePbufferEXT",
+        "BOOL function(HPBUFFEREXT)", "wglDestroyPbufferEXT",
+        "HDC function(HPBUFFEREXT)", "wglGetPbufferDCEXT",
+        "BOOL function(HPBUFFEREXT, int, int*)", "wglQueryPbufferEXT",
+        "int function(HPBUFFEREXT, HDC)", "wglReleasePbufferDCEXT",],
+
+        ["WGL_EXT_pixel_format",
+        "BOOL function(HDC, in int*, in FLOAT*, UINT, int*, UINT*)", "wglChoosePixelFormatEXT",
+        "BOOL function(HDC, int, int, UINT, int*, FLOAT*)", "wglGetPixelFormatAttribfvEXT",
+        "BOOL function(HDC, int, int, UINT, int*, int*)", "wglGetPixelFormatAttribivEXT",],
+
+        ["WGL_EXT_pixel_format_packed_float"],
+        
+        ["WGL_EXT_swap_control",
+        "int function()", "wglGetSwapIntervalEXT",
+        "BOOL function(int)", "wglSwapIntervalEXT",],
+
+        ["WGL_NV_copy_image",
+        "BOOL function(HGLRC, GLuint, GLenum, GLint, GLint, GLint, GLint, HGLRC, GLuint, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei)", "wglCopyImageSubDataNV",],
+
+        ["WGL_NV_float_buffer"],
+        
+        ["WGL_NV_gpu_affinity",
+        "HDC function(in HGPUNV*)", "wglCreateAffinityDCNV",
+        "BOOL function(HDC)", "wglDeleteDCNV",
+        "BOOL function(HGPUNV, UINT, PGPU_DEVICE)", "wglEnumGpuDevicesNV",
+        "BOOL function(HDC, UINT, HGPUNV*)", "wglEnumGpusFromAffinityDCNV",
+        "BOOL function(UINT, HGPUNV*)", "wglEnumGpusNV",],
+
+        ["WGL_NV_multisample_coverage"],
+        
+        ["WGL_NV_present_video",
+        "BOOL function(HDC, uint, HVIDEOOUTPUTDEVICENV, in int*)", "wglBindVideoDeviceNV",
+        "int function(HDC, HVIDEOOUTPUTDEVICENV*)", "wglEnumerateVideoDevicesNV",
+        "BOOL function(HDC, int, int*)", "wglQueryCurrentContextNV",],
+
+        ["WGL_NV_render_depth_texture"],
+        
+        ["WGL_NV_render_texture_rectangle"],
+        
+        ["WGL_NV_swap_group",
+        "BOOL function(GLuint, GLuint)", "wglBindSwapBarrierNV",
+        "BOOL function(HDC, GLuint)", "wglJoinSwapGroupNV",
+        "BOOL function(HDC, GLuint*)", "wglQueryFrameCountNV",
+        "BOOL function(HDC, GLuint*, GLuint*)", "wglQueryMaxSwapGroupsNV",
+        "BOOL function(HDC, GLuint*, GLuint*)", "wglQuerySwapGroupNV",
+        "BOOL function(HDC)", "wglResetFrameCountNV",],
+
+        ["WGL_NV_vertex_array_range",
+        "void* function(GLsizei, GLfloat, GLfloat, GLfloat)", "wglAllocateMemoryNV",
+        "void function(void*)", "wglFreeMemoryNV",],
+
+        ["WGL_NV_video_output",
+        "BOOL function(HPVIDEODEV, HPBUFFERARB, int)", "wglBindVideoImageNV",
+        "BOOL function(HDC, int, HPVIDEODEV*)", "wglGetVideoDeviceNV",
+        "BOOL function(HPVIDEODEV, uint*, uint*)", "wglGetVideoInfoNV",
+        "BOOL function(HPVIDEODEV)", "wglReleaseVideoDeviceNV",
+        "BOOL function(HPBUFFERARB, int)", "wglReleaseVideoImageNV",
+        "BOOL function(HPBUFFERARB, int, uint*, BOOL)", "wglSendPbufferToVideoNV",],
+
+        ["WGL_ATI_pixel_format_float"],
+        
+        ["WGL_ATI_render_texture_rectangle"],
+        
+        ["WGL_AMD_gpu_association",
+        "void function(HGLRC, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLbitfield, GLenum)", "wglBlitContextFramebufferAMD",
+        "HGLRC function(UINT)", "wglCreateAssociatedContextAMD",
+        "HGLRC function(UINT, HGLRC, in int*)", "wglCreateAssociatedContextAttribsAMD",
+        "BOOL function(HGLRC)", "wglDeleteAssociatedContextAMD",
+        "UINT function(HGLRC)", "wglGetContextGPUIDAMD",
+        "HGLRC function()", "wglGetCurrentAssociatedContextAMD",
+        "UINT function(UINT, UINT*)", "wglGetGPUIDsAMD",
+        "INT function(UINT, INT, GLenum, UINT, void*)", "wglGetGPUInfoAMD",
+        "BOOL function(HGLRC)", "wglMakeAssociatedContextCurrentAMD",],
+
+        ["WGL_I3D_digital_video_control",
+        "BOOL function(HDC, int, int*)", "wglGetDigitalVideoParametersI3D",
+        "BOOL function(HDC, int, in int*)", "wglSetDigitalVideoParametersI3D",],
+
+        ["WGL_I3D_gamma",
+        "BOOL function(HDC, int, USHORT*, USHORT*, USHORT*)", "wglGetGammaTableI3D",
+        "BOOL function(HDC, int, int*)", "wglGetGammaTableParametersI3D",
+        "BOOL function(HDC, int, in USHORT*, in USHORT*, in USHORT*)", "wglSetGammaTableI3D",
+        "BOOL function(HDC, int, in int*)", "wglSetGammaTableParametersI3D",],
+
+        ["WGL_I3D_genlock",
+        "BOOL function(HDC)", "wglDisableGenlockI3D",
+        "BOOL function(HDC)", "wglEnableGenlockI3D",
+        "BOOL function(HDC, UINT)", "wglGenlockSampleRateI3D",
+        "BOOL function(HDC, UINT)", "wglGenlockSourceDelayI3D",
+        "BOOL function(HDC, UINT)", "wglGenlockSourceEdgeI3D",
+        "BOOL function(HDC, UINT)", "wglGenlockSourceI3D",
+        "BOOL function(HDC, UINT*)", "wglGetGenlockSampleRateI3D",
+        "BOOL function(HDC, UINT*)", "wglGetGenlockSourceDelayI3D",
+        "BOOL function(HDC, UINT*)", "wglGetGenlockSourceEdgeI3D",
+        "BOOL function(HDC, UINT*)", "wglGetGenlockSourceI3D",
+        "BOOL function(HDC, BOOL*)", "wglIsEnabledGenlockI3D",
+        "BOOL function(HDC, UINT*, UINT*)", "wglQueryGenlockMaxSourceDelayI3D",],
+
+        ["WGL_I3D_image_buffer",
+        "BOOL function(HDC, HANDLE*, LPVOID*, DWORD*, UINT)", "wglAssociateImageBufferEventsI3D",
+        "LPVOID function(HDC, DWORD, UINT)", "wglCreateImageBufferI3D",
+        "BOOL function(HDC, LPVOID)", "wglDestroyImageBufferI3D",
+        "BOOL function(HDC, LPVOID*, UINT)", "wglReleaseImageBufferEventsI3D",],
+
+        ["WGL_I3D_swap_frame_lock",
+        "BOOL function()", "wglDisableFrameLockI3D",
+        "BOOL function()", "wglEnableFrameLockI3D",
+        "BOOL function(BOOL*)", "wglIsEnabledFrameLockI3D",
+        "BOOL function(BOOL*)", "wglQueryFrameLockMasterI3D",],
+
+        ["WGL_I3D_swap_frame_usage",
+        "BOOL function()", "wglBeginFrameTrackingI3D",
+        "BOOL function()", "wglEndFrameTrackingI3D",
+        "BOOL function(float*)", "wglGetFrameUsageI3D",
+        "BOOL function(DWORD*, DWORD*, float*)", "wglQueryFrameTrackingI3D",],
+
+        ["WGL_OML_sync_control",
+        "BOOL function(HDC, int*, int*)", "wglGetMscRateOML",
+        "BOOL function(HDC, long*, long*, long*)", "wglGetSyncValuesOML",
+        "long function(HDC, long, long, long)", "wglSwapBuffersMscOML",
+        "long function(HDC, int, long, long, long)", "wglSwapLayerBuffersMscOML",
+        "BOOL function(HDC, long, long, long, long*, long*, long*)", "wglWaitForMscOML",
+        "BOOL function(HDC, long, long*, long*, long*)", "wglWaitForSbcOML",],
+
+        ["WGL_3DFX_multisample"],
+        
+        ["WGL_3DL_stereo_control",
+        "BOOL function(HDC, UINT)", "wglSetStereoEmitterState3DL",],
+    ];
+    
+    private string genTypes()
+    {
+        string code;
+        foreach (array; extensionTable)
+        {
+            for (int index = 1; index < array.length; index += 2)
+            {
+                code ~= "alias nothrow " ~ array[index] ~ " da_" ~ array[index + 1] ~ ";";
+            }
+        }
+        return code;
     }
     
     // functions as types
     extern(System)
     {
+        // WGL_EXT_extensions_string
+        alias nothrow const(char*) function() da_wglGetExtensionsStringEXT;
+
         // WGL_ARB_extensions_string
         alias nothrow const(char*) function(HDC) da_wglGetExtensionsStringARB;
         
-        // WGL_ARB_pixel_format
-        alias nothrow BOOL function(HDC, const(int)*, const(FLOAT)*, UINT, int*, UINT*) da_wglChoosePixelFormatARB;
-        
-        // WGL_ARB_create_context
-        alias nothrow HGLRC function(HDC, HGLRC, const(int)*) da_wglCreateContextAttribsARB;
+        mixin(genTypes());
+    }
+    
+    private string genDeclarations()
+    {
+        string code;
+        foreach (array; extensionTable)
+        {
+            for (int index = 2; index < array.length; index += 2)
+            {
+                code ~= "da_" ~ array[index] ~ " " ~ array[index] ~ ";";
+            }
+        }
+        return code;
     }
 
     // function declarations
     __gshared
     {
+        // WGL_EXT_extensions_string
+        da_wglGetExtensionsStringEXT wglGetExtensionsStringEXT;
+        
         // WGL_ARB_extensions_string
         da_wglGetExtensionsStringARB wglGetExtensionsStringARB;
         
-        // WGL_ARB_pixel_format
-        da_wglChoosePixelFormatARB wglChoosePixelFormatARB;
-        
-        // WGL_ARB_create_context
-        da_wglCreateContextAttribsARB wglCreateContextAttribsARB;
+        mixin(genDeclarations());
+    }
+    
+    private string genExtNames()
+    {
+        string code;
+        foreach (list; extensionTable)
+        {
+            code ~= "private __gshared bool _" ~ list[0] ~ ";";
+            code ~= "bool " ~ list[0] ~ "() @property { return _" ~ list[0] ~ "; }";
+        }
+        return code;
     }
 
-    private __gshared bool _WGL_ARB_pixel_format;
-    private __gshared bool _WGL_ARB_create_context;
-    
-    bool WGL_ARB_pixel_format() @property { return _WGL_ARB_pixel_format; }
-    bool WGL_ARB_create_context() @property { return _WGL_ARB_create_context; }
+    mixin(genExtNames());
     
     private bool isWinExtSupported(string name)
     {
-        if (!wglGetExtensionsStringARB) return false;
+        string extstr;
+        if (wglGetExtensionsStringARB)
+        {
+            extstr = to!string(wglGetExtensionsStringARB(wglGetCurrentDC()));
+        }
+        else if (wglGetExtensionsStringEXT)
+        {
+            extstr = to!string(wglGetExtensionsStringEXT());
+        }
+        else
+        {
+            return false;
+        }
         
-        string extstr = to!string(wglGetExtensionsStringARB(wglGetCurrentDC()));
         auto index = extstr.indexOf(name);
-        if(index != -1)
+        if (index != -1)
         {
             // It's possible that the extension name is actually a
             // substring of another extension. If not, then the
             // character following the name in the extenions string
             // should be a space (or possibly the null character).
             size_t idx = index + name.length;
-            if(extstr[idx] == ' ' || extstr[idx] == '\0')
+            if (idx == extstr.length || extstr[idx] == ' ')
+            {
                 return true;
+            }
         }
         
         return false;
     }
-
-    package void loadWinEXT(GLVersion glversion)
+    
+    private string genExtLoader()
     {
-        // WGL_ARB_extensions_string
-        try
+        string code;
+        foreach (array; extensionTable)
         {
-            wglGetExtensionsStringARB = cast(da_wglGetExtensionsStringARB)loadGLFunc("wglGetExtensionsStringARB");
-        } catch (Exception e)
+            code ~= "scope (failure) _" ~ array[0] ~ " = false;";
+            code ~= "_" ~ array[0] ~ " = isWinExtSupported(\"" ~ array[0] ~ "\");";
+            code ~= "if (_" ~ array[0] ~ ") {";
+            for (int index = 2; index < array.length; index += 2)
+            {
+                code ~= array[index] ~ " = cast(da_" ~ array[index] ~ ") loadGLFunc(\"" ~ array[index] ~ "\");";
+                
+                //Ensures the driver returned a valid function pointer
+                code ~= "enforce(" ~ array[index] ~ ");";
+            }
+            code ~= "}";
+        }
+        return code;
+    }
+
+    package void loadWinExtensions()
+    {
+        // WGL_EXT_extensions_string and WGL_ARB_extensions_string
+        wglGetExtensionsStringEXT = cast(da_wglGetExtensionsStringEXT) loadGLFunc("wglGetExtensionsStringEXT");
+        wglGetExtensionsStringARB = cast(da_wglGetExtensionsStringARB) loadGLFunc("wglGetExtensionsStringARB");
+        
+        // All WGL extensions depend on WGL_EXT_extensions_string or WGL_ARB_extensions_string
+        if (!(wglGetExtensionsStringEXT || wglGetExtensionsStringARB))
         {
-            // All WGL extensions depend on WGL_ARB_extensions_string
             return;
         }
         
-        // WGL_ARB_pixel_format
-        _WGL_ARB_pixel_format = isWinExtSupported("WGL_ARB_pixel_format");
-        if (_WGL_ARB_pixel_format)
-        {
-            try
-            {
-                wglChoosePixelFormatARB = cast(da_wglChoosePixelFormatARB)loadGLFunc("wglChoosePixelFormatARB");
-                _WGL_ARB_pixel_format = true;
-            } catch (Exception e)
-            {
-                _WGL_ARB_pixel_format = false;
-            }
-        }
-        
-        // WGL_ARB_create_context
-        _WGL_ARB_create_context = isWinExtSupported("WGL_ARB_create_context");
-        if (_WGL_ARB_create_context)
-        {
-            try
-            {
-                wglCreateContextAttribsARB = cast(da_wglCreateContextAttribsARB)loadGLFunc("wglCreateContextAttribsARB");
-                _WGL_ARB_create_context = true;
-            } catch (Exception e)
-            {
-                _WGL_ARB_create_context = false;
-            }
-       }
+        mixin(genExtLoader());
     }
 }
