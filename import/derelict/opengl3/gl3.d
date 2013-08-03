@@ -431,7 +431,7 @@ class DerelictGL3Loader : SharedLibLoader
 
             static if(Derelict_OS_Windows)
             { 
-                loadWinExtensions();
+                loadWGLExtensions();
             }
             
             static if(Derelict_OS_Posix)

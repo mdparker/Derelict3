@@ -687,7 +687,7 @@ static if(Derelict_OS_Windows)
         return code;
     }
 
-    package void loadWinExtensions()
+    package void loadWGLExtensions()
     {
         // WGL_EXT_extensions_string and WGL_ARB_extensions_string
         wglGetExtensionsStringEXT = cast(da_wglGetExtensionsStringEXT) loadGLFunc("wglGetExtensionsStringEXT");
