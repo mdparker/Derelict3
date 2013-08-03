@@ -35,6 +35,11 @@ public
     import derelict.opengl3.arb;
     import derelict.opengl3.ext;
 
+    static if(Derelict_OS_Windows)
+    {
+        import derelict.opengl3.winext;
+    }
+    
     static if(Derelict_OS_Posix)
     {
         import derelict.opengl3.xext;
@@ -424,6 +429,11 @@ class DerelictGL3Loader : SharedLibLoader
             loadARB(glVer);
             loadEXT(glVer);
 
+            static if(Derelict_OS_Windows)
+            { 
+                loadWinEXT(glVer);
+            }
+            
             static if(Derelict_OS_Posix)
             { 
                 loadXEXT(glVer);
