@@ -37,7 +37,7 @@ public
 
     static if(Derelict_OS_Windows)
     {
-        import derelict.opengl3.winext;
+        import derelict.opengl3.wglext;
     }
     
     static if(Derelict_OS_Posix)

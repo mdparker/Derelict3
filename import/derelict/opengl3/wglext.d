@@ -26,7 +26,7 @@ DEALINGS IN THE SOFTWARE.
 
 */
 
-module derelict.opengl3.winext;
+module derelict.opengl3.wglext;
 
 private import derelict.util.system;
 
@@ -680,7 +680,7 @@ static if(Derelict_OS_Windows)
             code ~= "if (_" ~ array[0] ~ ") {";
             for (int index = 2; index < array.length; index += 2)
             {
-                code ~= array[index] ~ " = cast(da_" ~ array[index] ~ ") bindGLFunc(\"" ~ array[index] ~ "\");";
+                code ~= "bindGLFunc(cast(void**)&" ~ array[index] ~ ",\"" ~ array[index] ~ "\");";
             }
             code ~= "}";
         }
