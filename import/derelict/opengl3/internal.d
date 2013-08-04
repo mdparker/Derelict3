@@ -66,30 +66,31 @@ package
                     if(strcmp(glGetStringi(GL_EXTENSIONS, i), cstr) == 0)
                         return true;
                 }
+                return false;
             }
             // Otherwise use the classic approach.
             else
             {
-                string extstr = to!string(glGetString(GL_EXTENSIONS));
-
-                while (true)
-                {
-                    auto index = extstr.indexOf(name);
-                    if( index == -1 ) break;
-
-                    // It's possible that the extension name is actually a
-                    // substring of another extension. If not, then the
-                    // character following the name in the extension string
-                    // should be a space (or possibly the null character).
-                    size_t idx = index + name.length;
-                    if( idx == extstr.length || extstr[idx] == ' ' )
-                    {
-                        return true;
-                    }
-
-                    extstr = extstr[index + 1 .. $];
-                }
+                return testEXT( glGetString(GL_EXTENSIONS), name );
             }
+
+        }
+
+        // Assumes that extname is null-terminated, i.e. a string literal
+        bool findEXT( const char *extstr, string extname ) {
+            import core.stdc.string;
+            auto res = strstr( extstr, extname.ptr );
+            while( res )
+            {
+                // It's possible that the extension name is actually a
+                // substring of another extension. If not, then the
+                // character following the name in the extension string
+                // should be a space (or possibly the null character).
+                if( res[ extname.length ] == ' ' || res[ extname.length ] == '\0')
+                    return true;
+                res = strstr( res + extname.length, extname.ptr );
+            }
+
             return false;
         }
 }

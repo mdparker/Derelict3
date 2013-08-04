@@ -277,27 +277,7 @@ version( Windows )
 
     private bool isWGLExtSupported(string name)
     {
-        string extstr = to!string(wglGetExtensionsStringARB(wglGetCurrentDC()));
-
-        while (true)
-        {
-            auto index = extstr.indexOf(name);
-            if( index == -1 ) break;
-
-            // It's possible that the extension name is actually a
-            // substring of another extension. If not, then the
-            // character following the name in the extension string
-            // should be a space (or possibly the null character).
-            size_t idx = index + name.length;
-            if( idx == extstr.length || extstr[idx] == ' ' )
-            {
-                return true;
-            }
-
-            extstr = extstr[index + 1 .. $];
-        }
-
-        return false;
+        return findEXT( wglGetExtensionsStringARB(wglGetCurrentDC()), name );
     }
 
     package void loadPlatformEXT( GLVersion glversion )
