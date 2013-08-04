@@ -71,7 +71,7 @@ package
             // Otherwise use the classic approach.
             else
             {
-                return testEXT( glGetString(GL_EXTENSIONS), name );
+                return findEXT( glGetString(GL_EXTENSIONS), name );
             }
 
         }
