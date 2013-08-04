@@ -277,14 +277,13 @@ version( Windows )
 
     private bool isWGLExtSupported(string name)
     {
-        static string extstr;
-        if( extstr == null ) extstr = to!string(wglGetExtensionsStringARB(wglGetCurrentDC()));
+        string extstr = to!string(wglGetExtensionsStringARB(wglGetCurrentDC()));
 
         while (true)
         {
             auto index = extstr.indexOf(name);
             if( index == -1 ) break;
-            
+
             // It's possible that the extension name is actually a
             // substring of another extension. If not, then the
             // character following the name in the extension string
@@ -294,7 +293,7 @@ version( Windows )
             {
                 return true;
             }
-            
+
             extstr = extstr[index + 1 .. $];
         }
 

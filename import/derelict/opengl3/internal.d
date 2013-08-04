@@ -70,14 +70,13 @@ package
             // Otherwise use the classic approach.
             else
             {
-                static string extstr;
-                if( extstr == null ) extstr = to!string(glGetString(GL_EXTENSIONS));
-                
+                string extstr = to!string(glGetString(GL_EXTENSIONS));
+
                 while (true)
                 {
                     auto index = extstr.indexOf(name);
                     if( index == -1 ) break;
-                    
+
                     // It's possible that the extension name is actually a
                     // substring of another extension. If not, then the
                     // character following the name in the extension string
@@ -87,7 +86,7 @@ package
                     {
                         return true;
                     }
-                    
+
                     extstr = extstr[index + 1 .. $];
                 }
             }
