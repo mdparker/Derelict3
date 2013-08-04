@@ -34,16 +34,6 @@ public
     import derelict.opengl3.functions;
     import derelict.opengl3.arb;
     import derelict.opengl3.ext;
-
-    static if(Derelict_OS_Windows)
-    {
-        import derelict.opengl3.winext;
-    }
-    
-    static if(Derelict_OS_Posix)
-    {
-        import derelict.opengl3.xext;
-    }
 }
 
 private
@@ -59,16 +49,19 @@ private
     static if(Derelict_OS_Windows)
     {
         import derelict.opengl3.wgl;
+        import derelict.opengl3.wglext;
         enum libNames = "opengl32.dll";
     }
     else static if(Derelict_OS_Mac)
     {
         import derelict.opengl3.cgl;
         enum libNames = "../Frameworks/OpenGL.framework/OpenGL, /Library/Frameworks/OpenGL.framework/OpenGL, /System/Library/Frameworks/OpenGL.framework/OpenGL";
+        void loadPlatformEXT(GLVersion) {}
     }
     else static if(Derelict_OS_Posix)
     {
         import derelict.opengl3.glx;
+        import derelict.opengl3.glxext;
         enum libNames = "libGL.so.1,libGL.so";
     }
     else
@@ -428,16 +421,7 @@ class DerelictGL3Loader : SharedLibLoader
 
             loadARB(glVer);
             loadEXT(glVer);
-
-            static if(Derelict_OS_Windows)
-            { 
-                loadWinEXT(glVer);
-            }
-            
-            static if(Derelict_OS_Posix)
-            { 
-                loadXEXT(glVer);
-            }
+            loadPlatformEXT( glVer );
 
             return glVer;
         }

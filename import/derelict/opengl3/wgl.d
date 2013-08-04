@@ -27,14 +27,15 @@ DEALINGS IN THE SOFTWARE.
 */
 module derelict.opengl3.wgl;
 
-private
-{
-    import std.string;
-    import derelict.util.wintypes;
-}
-
 version(Windows)
 {
+
+    private
+    {
+        import std.string;
+        import derelict.util.wintypes;
+    }
+
     extern(Windows)
     {
         alias nothrow BOOL function(void*,void*) da_wglCopyContext;

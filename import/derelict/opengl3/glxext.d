@@ -26,7 +26,7 @@ DEALINGS IN THE SOFTWARE.
 
 */
 
-module derelict.opengl3.xext;
+module derelict.opengl3.glxext;
 
 private import derelict.util.system;
 
@@ -277,7 +277,7 @@ static if(Derelict_OS_Posix && !Derelict_OS_Mac)
 		GLX_TRANSPARENT_RGB_EXT           = 0x8008,
 		GLX_TRANSPARENT_INDEX_EXT         = 0x8009
 	}
-	
+
 	enum : uint
 	{
 		GLX_VISUAL_CAVEAT_EXT             = 0x20,
@@ -429,20 +429,20 @@ static if(Derelict_OS_Posix && !Derelict_OS_Mac)
         char    pipeName[80]; /* Should be [GLX_HYPERPIPE_PIPE_NAME_LENGTH_SGIX] */
         int     networkId;
     }
-    
+
     struct GLXHyperpipeConfigSGIX {
         char    pipeName[80]; /* Should be [GLX_HYPERPIPE_PIPE_NAME_LENGTH_SGIX] */
         int     chann;
         uint participationType;
         int     timeSlice;
     }
-    
+
     struct GLXPipeRect {
         char pipeName[80]; /* Should be [GLX_HYPERPIPE_PIPE_NAME NGTH_SGIX] */
         int srcXOrigin, srcYOrigin, srcWidth, srcHeight;
         int destXOrigin, destYOrigin, destWidth, destHeight;
     }
-    
+
     struct GLXPipeRectLimits {
         char pipeNa[80]; /* Should be [GLX_HYPERPIPE_PIPE_NAME_LENGTH_SGIX] */
         int XOrigin, YOrigin, maxHeight, maxWidth;
@@ -581,43 +581,43 @@ static if(Derelict_OS_Posix && !Derelict_OS_Mac)
     {
         // GLX_ARB_create_context
         da_glXCreateContextAttribsARB glXCreateContextAttribsARB;
-        
+
         // GLX_ARB_get_proc_address
         da_glXGetProcAddressARB glXGetProcAddressARB;
-        
+
         // GLX_EXT_import_context
         da_glXGetCurrentDisplayEXT glXGetCurrentDisplayEXT;
         da_glXQueryContextInfoEXT glXQueryContextInfoEXT;
         da_glXGetContextIDEXT glXGetContextIDEXT;
         da_glXImportContextEXT glXImportContextEXT;
         da_glXFreeContextEXT glXFreeContextEXT;
-        
+
         // GLX_EXT_swap_control
         da_glXSwapIntervalEXT glXSwapIntervalEXT;
-        
+
         // GLX_EXT_texture_from_pixmap
         da_glXBindTexImageEXT glXBindTexImageEXT;
         da_glXReleaseTexImageEXT glXReleaseTexImageEXT;
-        
+
         // GLX_MESA_agp_offset
         da_glXGetAGPOffsetMESA glXGetAGPOffsetMESA;
-        
+
         // GLX_MESA_pixmap_colormap
         da_glXCreateGLXPixmapMESA glXCreateGLXPixmapMESA;
-        
+
         // GLX_MESA_release_buffers
         da_glXReleaseBuffersMESA glXReleaseBuffersMESA;
-        
+
         // GLX_MESA_set_3dfx_mode
         da_glXSet3DfxModeMESA glXSet3DfxModeMESA;
-        
+
         // GLX_NV_copy_image
         da_glXCopyImageSubDataNV glXCopyImageSubDataNV;
-        
+
         // GLX_NV_present_video
         da_glXEnumerateVideoDevicesNV glXEnumerateVideoDevicesNV;
         da_glXBindVideoDeviceNV glXBindVideoDeviceNV;
-        
+
         // GLX_NV_swap_group
         da_glXJoinSwapGroupNV glXJoinSwapGroupNV;
         da_glXBindSwapBarrierNV glXBindSwapBarrierNV;
@@ -625,14 +625,14 @@ static if(Derelict_OS_Posix && !Derelict_OS_Mac)
         da_glXQueryMaxSwapGroupsNV glXQueryMaxSwapGroupsNV;
         da_glXQueryFrameCountNV glXQueryFrameCountNV;
         da_glXResetFrameCountNV glXResetFrameCountNV;
-        
+
         // GLX_NV_video_capture
         da_glXBindVideoCaptureDeviceNV glXBindVideoCaptureDeviceNV;
         da_glXEnumerateVideoCaptureDevicesNV glXEnumerateVideoCaptureDevicesNV;
         da_glXLockVideoCaptureDeviceNV glXLockVideoCaptureDeviceNV;
         da_glXQueryVideoCaptureDeviceNV glXQueryVideoCaptureDeviceNV;
         da_glXReleaseVideoCaptureDeviceNV glXReleaseVideoCaptureDeviceNV;
-        
+
         // GLX_NV_video_output
         da_glXGetVideoDeviceNV glXGetVideoDeviceNV;
         da_glXReleaseVideoDeviceNV glXReleaseVideoDeviceNV;
@@ -640,14 +640,14 @@ static if(Derelict_OS_Posix && !Derelict_OS_Mac)
         da_glXReleaseVideoImageNV glXReleaseVideoImageNV;
         da_glXSendPbufferToVideoNV glXSendPbufferToVideoNV;
         da_glXGetVideoInfoNV glXGetVideoInfoNV;
-        
+
         // GLX_OML_sync_control
         da_glXGetSyncValuesOML glXGetSyncValuesOML;
         da_glXGetMscRateOML glXGetMscRateOML;
         da_glXSwapBuffersMscOML glXSwapBuffersMscOML;
         da_glXWaitForMscOML glXWaitForMscOML;
         da_glXWaitForSbcOML glXWaitForSbcOML;
-        
+
         // GLX_SGIX_fbconfig
         da_glXGetFBConfigAttribSGIX glXGetFBConfigAttribSGIX;
         da_glXChooseFBConfigSGIX glXChooseFBConfigSGIX;
@@ -655,7 +655,7 @@ static if(Derelict_OS_Posix && !Derelict_OS_Mac)
         da_glXCreateContextWithConfigSGIX glXCreateContextWithConfigSGIX;
         da_glXGetVisualFromFBConfigSGIX glXGetVisualFromFBConfigSGIX;
         da_glXGetFBConfigFromVisualSGIX glXGetFBConfigFromVisualSGIX;
-        
+
         // GLX_SGIX_hyperpipe
         da_glXQueryHyperpipeNetworkS glXQueryHyperpipeNetworkS;
         da_glXHyperpipeConfigSGIX glXHyperpipeConfigSGIX;
@@ -665,38 +665,38 @@ static if(Derelict_OS_Posix && !Derelict_OS_Mac)
         da_glXQueryHyperpipeBestAttribSGIX glXQueryHyperpipeBestAttribSGIX;
         da_glXHyperpipeAttribSGIX glXHyperpipeAttribSGIX;
         da_glXQueryHyperpipeAttribSGIX glXQueryHyperpipeAttribSGIX;
-        
+
         // GLX_SGIX_pbuffer
         da_glXCreateGLXPbufferSGIX glXCreateGLXPbufferSGIX;
         da_glXDestroyGLXPbufferSGIX glXDestroyGLXPbufferSGIX;
         da_glXQueryGLXPbufferSGIX glXQueryGLXPbufferSGIX;
         da_glXSelectEventSGIX glXSelectEventSGIX;
         da_glXGetSelectedEventSGIX glXGetSelectedEventSGIX;
-        
+
         // GLX_SGIX_swap_barrier
         da_glXBindSwapBarrierSGIX glXBindSwapBarrierSGIX;
         da_glXQueryMaxSwapBarriersSGIX glXQueryMaxSwapBarriersSGIX;
-        
+
         // GLX_SGIX_swap_group
         da_glXJoinSwapGroupSGIX glXJoinSwapGroupSGIX;
-        
+
         // GLX_SGIX_video_source
         da_glXBindChannelToWindowSGIX glXBindChannelToWindowSGIX;
         da_glXChannelRectSGIX glXChannelRectSGIX;
         da_glXQueryChannelRectSGIX glXQueryChannelRectSGIX;
         da_glXQueryChannelDeltasSGIX glXQueryChannelDeltasSGIX;
         da_glXChannelRectSyncSGIX glXChannelRectSyncSGIX;
-        
+
         // GLX_SGI_cushion
         da_glXCushionSGI glXCushionSGI;
-        
+
         // GLX_SGI_swap_control
         da_glXSwapIntervalSGI glXSwapIntervalSGI;
-        
+
         // GLX_SGI_video_sync
         da_glXGetVideoSyncSGI glXGetVideoSyncSGI;
         da_glXWaitVideoSyncSGI glXWaitVideoSyncSGI;
-        
+
         // GLX_SUN_get_transparent_index
         da_glXGetTransparentIndexSUN glXGetTransparentIndexSUN;
     }
@@ -726,7 +726,7 @@ static if(Derelict_OS_Posix && !Derelict_OS_Mac)
     private __gshared bool _GLX_SGI_swap_control;
     private __gshared bool _GLX_SGI_video_sync;
     private __gshared bool _GLX_SUN_get_transparent_index;
-    
+
     bool GLX_ARB_create_context() @property { return _GLX_ARB_create_context; }
     bool GLX_ARB_get_proc_address() @property { return _GLX_ARB_get_proc_address; }
     bool GLX_EXT_import_context() @property { return _GLX_EXT_import_context; }
@@ -754,7 +754,7 @@ static if(Derelict_OS_Posix && !Derelict_OS_Mac)
     bool GLX_SUN_get_transparent_index() @property { return _GLX_SUN_get_transparent_index; }
 
 
-    package void loadXEXT(GLVersion glversion)
+    package void loadPlatformEXT(GLVersion glversion)
     {
         // GLX_ARB_create_context
         _GLX_ARB_create_context = isExtSupported(glversion, "GLX_ARB_create_context");
