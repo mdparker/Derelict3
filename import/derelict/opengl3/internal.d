@@ -70,17 +70,25 @@ package
             // Otherwise use the classic approach.
             else
             {
-                auto extstr = to!string(glGetString(GL_EXTENSIONS));
-                auto index = extstr.indexOf(name);
-                if(index != -1)
+                static string extstr;
+                if( extstr == null ) extstr = to!string(glGetString(GL_EXTENSIONS));
+                
+                while (true)
                 {
+                    auto index = extstr.indexOf(name);
+                    if( index == -1 ) break;
+                    
                     // It's possible that the extension name is actually a
                     // substring of another extension. If not, then the
                     // character following the name in the extenions string
                     // should be a space (or possibly the null character).
                     size_t idx = index + name.length;
-                    if(extstr[idx] == ' ' || extstr[idx] == '\0')
+                    if( idx == extstr.length || extstr[idx] == ' ' )
+                    {
                         return true;
+                    }
+                    
+                    extstr = extstr[index + 1 .. $];
                 }
             }
             return false;
