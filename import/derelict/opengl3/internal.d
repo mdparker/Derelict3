@@ -80,7 +80,7 @@ package
                     
                     // It's possible that the extension name is actually a
                     // substring of another extension. If not, then the
-                    // character following the name in the extenions string
+                    // character following the name in the extension string
                     // should be a space (or possibly the null character).
                     size_t idx = index + name.length;
                     if( idx == extstr.length || extstr[idx] == ' ' )
