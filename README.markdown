@@ -44,9 +44,13 @@ build Util GL3
 build util gl3
 ```
 
+##Documentation
+
+Work on documenting Derelict is in process here at the [project wiki](https://github.com/aldacron/Derelict3/wiki). As more documentation is written, this README is going to shrink!
+
 ##Status
 
-Please bear in mind that this is all in an ALPHA state. It's perfectly usable as is, but there needs to be more work done on the build script, testing on different platforms/compilers, and, of course, the addition of a few more packages. Pull requests for bugfixes and enhancements are extremely welcome. However, I make no promises about accepting pull requests that add new packages. I'll have to take a wait-and-see approach on that for now.
+Currently, Derelict can be considered to be in BETA. It is perfectly usable as-is and has been battle-tested pretty well. Only the lack of documentation is preventing me from calling this a "release". Pull requests for bugfixes and enhancements are extremely welcome. However, I make no promises about accepting pull requests that add new packages. I'll have to take a wait-and-see approach on that for now.
 
 
 ##Older Versions
