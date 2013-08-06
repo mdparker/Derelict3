@@ -43,7 +43,7 @@ private
     else static if(Derelict_OS_Mac)
         enum libNames = "/usr/local/lib/libSDL2.dylib, ../Frameworks/SDL2.framework/SDL2, /Library/Frameworks/SDL2.framework/SDL2, /System/Library/Frameworks/SDL2.framework/SDL2";
     else static if(Derelict_OS_Posix)
-        enum libNames = "libSDL2.so,/usr/local/lib/libSDL2.so";
+        enum libNames = "libSDL2.so, libSDL2-2.0.so, libSDL2-2.0.so.0, /usr/local/lib/libSDL2.so, /usr/local/lib/libSDL2-2.0.so, /usr/local/lib/libSDL2-2.0.so.0";
     else
         static assert(0, "Need to implement SDL2 libNames for this operating system.");
 }

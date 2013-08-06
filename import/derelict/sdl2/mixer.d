@@ -39,7 +39,7 @@ private
     else static if(Derelict_OS_Mac)
         enum libNames = "../Frameworks/SDL2_mixer.framework/SDL2_mixer, /Library/Frameworks/SDL2_mixer.framework/SDL2_mixer, /System/Library/Frameworks/SDL2_mixer.framework/SDL2_mixer";
     else static if(Derelict_OS_Posix)
-        enum libNames = "libSDL2_mixer.so, libSDL2_mixer-2.0.so, libSDL2_mixer-2.0.so.0";
+        enum libNames = "libSDL2_mixer.so, libSDL2_mixer-2.0.so, libSDL2_mixer-2.0.so.0, /usr/local/lib/libSDL2.so, /usr/local/lib/libSDL2_mixer-2.0.so, /usr/local/lib/libSDL2_mixer-2.0.so.0";
     else
         static assert(0, "Need to implement SDL2_mixer libNames for this operating system.");
 }
