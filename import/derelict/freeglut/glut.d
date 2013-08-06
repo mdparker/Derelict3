@@ -41,7 +41,7 @@ private
     static if(Derelict_OS_Windows)
         enum libNames = "freeglut.dll";
     else static if(Derelict_OS_Mac)
-        enum libNames = "libfreeglut.dylib";
+        enum libNames = "libfreeglut.dylib,libglut.dylib";
     else static if(Derelict_OS_Posix)
         enum libNames = "libfreeglut.so";
     else
