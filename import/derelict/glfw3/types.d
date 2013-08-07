@@ -289,7 +289,7 @@ extern(C) alias void function() GLFWglproc;
 struct GLFWmonitor;
 struct GLFWwindow;
 
-extern(C) nothrow
+extern(C)
 {
     alias void function(int, const(char)*) GLFWerrorfun;
     alias void function(GLFWwindow*, int, int) GLFWwindowposfun;
