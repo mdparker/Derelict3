@@ -374,7 +374,7 @@ class DerelictGL3Loader : SharedLibLoader
                 bindGLFunc(cast(void**)&glBlendEquationSeparatei, "glBlendEquationSeparatei");
                 bindGLFunc(cast(void**)&glBlendFunci, "glBlendFunci");
                 bindGLFunc(cast(void**)&glBlendFuncSeparatei, "glBlendFuncSeparatei");
-                glVer = GLVersion.GL30;
+                glVer = GLVersion.GL40;
             }
 
             if(maxVer >= GLVersion.GL41)
