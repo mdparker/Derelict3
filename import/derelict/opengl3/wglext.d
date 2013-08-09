@@ -218,6 +218,10 @@ version( Windows )
         alias BOOL function(HPBUFFERARB, int) da_wglReleaseTexImageARB;
         alias BOOL function(HPBUFFERARB, const(int)*) da_wglSetPbufferAttribARB;
 
+        // WGL_EXT_swap_control
+        alias BOOL function( int ) da_wglSwapIntervalEXT;
+        alias int function() da_wglGetSwapIntervalEXT;
+
     }
 
     __gshared
@@ -241,6 +245,9 @@ version( Windows )
         da_wglBindTexImageARB wglBindTexImageARB;
         da_wglReleaseTexImageARB wglReleaseTexImageARB;
         da_wglSetPbufferAttribARB wglSetPbufferAttribARB;
+
+        da_wglSwapIntervalEXT wglSwapIntervalEXT;
+        da_wglGetSwapIntervalEXT wglGetSwapIntervalEXT;
     }
 
     private __gshared {
@@ -258,6 +265,8 @@ version( Windows )
         bool _WGL_ARB_render_texture;
         bool _WGL_ARB_robustness_application_isolation;
         bool _WGL_ARB_robustness_share_group_isolation;
+
+        bool _WGL_EXT_swap_control;
     }
 
     bool WGL_ARB_extensions_string() @property { return _WGL_ARB_extensions_string; }
@@ -274,6 +283,8 @@ version( Windows )
     bool WGL_ARB_render_texture() @property { return _WGL_ARB_render_texture; }
     bool WGL_ARB_robustness_application_isolation() @property { return _WGL_ARB_robustness_application_isolation; }
     bool WGL_ARB_robustness_share_group_isolation() @property { return _WGL_ARB_robustness_share_group_isolation; }
+
+    bool WGL_EXT_swap_control() @property { return _WGL_EXT_swap_control; }
 
     private bool isWGLExtSupported(string name)
     {
@@ -348,5 +359,13 @@ version( Windows )
 
         _WGL_ARB_robustness_application_isolation = isWGLExtSupported( "WGL_ARB_robustness_application_isolation" );
         _WGL_ARB_robustness_share_group_isolation = isWGLExtSupported( "WGL_ARB_robustness_share_group_isolation" );
+
+        if( isWGLExtSupported( "WGL_EXT_swap_control" )) {
+            try {
+                bindGLFunc( cast(void**)&wglSwapIntervalEXT, "wglSwapIntervalEXT" );
+                bindGLFunc( cast(void**)&wglGetSwapIntervalEXT, "wglGetSwapIntervalEXT" );
+                _WGL_EXT_swap_control = true;
+            } catch( Exception e ) { _WGL_EXT_swap_control = false; }
+        }
     }
 }
