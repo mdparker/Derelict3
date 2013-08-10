@@ -462,10 +462,21 @@ class DerelictSDL2Loader : SharedLibLoader
             bindFunc(cast(void**)&SDL_GL_SwapWindow, "SDL_GL_SwapWindow");
             bindFunc(cast(void**)&SDL_GL_DeleteContext, "SDL_GL_DeleteContext");
 
+            // SDL_init will fail if SDL_SetMainReady has not been called.
+            // Since there's no SDL_main on the D side, it needs to be handled
+            // manually. My understanding that this is fine on the platforms
+            // that D is currently available on. If we ever get on to Android
+            // or iPhone, though, this will need to be versioned.
+            // I've wrapped it in a try/catch because it seem the function is
+            // not always exported on Linux. See issue #153
+            // https://github.com/aldacron/Derelict3/issues/153
+            import derelict.util.exception;
+            try {
+                  da_SDL_SetMainReady setReady;
+                  bindFunc(cast(void**)&setReady, "SDL_SetMainReady");
+                  setReady();
+            } catch( DerelictException de ) {}
 
-            da_SDL_SetMainReady setReady;
-            bindFunc(cast(void**)&setReady, "SDL_SetMainReady");
-            setReady();
         }
     }
 
