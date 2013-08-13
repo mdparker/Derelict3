@@ -49,7 +49,7 @@ static if(Derelict_OS_Posix && !Derelict_OS_Mac)
     alias XID GLXPbufferSGIX;
     alias uint GLXVideoDeviceNV;
     struct __GLXFBConfigRec;
-    alias __GLXFBConfigRec GLXFBConfigSGIX;
+    alias __GLXFBConfigRec *GLXFBConfigSGIX;
 
     enum : uint
     {
