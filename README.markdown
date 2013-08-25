@@ -1,5 +1,10 @@
 #Derelict 3
 
+###Important
+I am in the process of migrating each individual Derelict package to its own repository in the [DerelictOrg](https://github.com/DerelictOrg) organization. The new repositories require dub to be used for package management. There is no more Derelict build script. If you are already using dub with Derelict, I highly recommend you change your dependencies to match the new repositories, as described in [this post](http://dblog.aldacron.net/forum/index.php?topic=841.0) on the Derelict forums, once all of the Derelict packages you use have been migrated.
+
+I will continue to accept pull requests here in this repository only for bug fixes. No new packages will be accepted. I will leave it online indefinitely so that those who are using it can continue to do so. However, this repository will be considered deprecated once all of the packages have been migrated. I highly encourage that all new projects, or any that can easily transtion, make use of the new repositories. Thanks!
+
 ###Dynamic D bindings to C libraries for multimedia and game development.
 
 ######Derelict 3 contains bindings to the following libraries:
