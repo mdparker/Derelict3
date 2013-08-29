@@ -40,6 +40,8 @@ private
 
     static if(Derelict_OS_Windows)
         enum libNames = "FreeImage.dll";
+    else static if(Derelict_OS_Mac)
+        enum libNames = "libfreeimage.dylib,libfreeimage.dylib.3";
     else static if(Derelict_OS_Posix)
         enum libNames = "libfreeimage.so,libfreeimage.so.3";
     else
