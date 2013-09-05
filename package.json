@@ -36,7 +36,7 @@
 			"targetPath": "lib",
 			"sourcePaths": ["import/derelict/util"],
 			"importPaths": ["import"],
-            "libs-posix": ["dl"]
+			"libs-posix": ["dl"]
 		},
 		{
 			"name": "alure",
