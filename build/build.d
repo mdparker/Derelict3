@@ -92,7 +92,7 @@ else version(GNU)
     enum compilerOptions = "-c -s -O3 -Wall";
     string buildCompileString(string files, string libName)
     {
-        return format("gdc %s -I..%s -o %s/gdc/%s %s", compilerOptions, importPath, outdir, libName, files);
+        return format("gdc %s -I%s -o %s/gdc/%s %s", compilerOptions, importPath, outdir, libName, files);
     }
 }
 else version(LDC)
