@@ -238,13 +238,10 @@ void buildPackage(Package pack)
 
     // Build up a string of all .d files in the package directory.
     string joined;
-    foreach(string s; dirEntries(pack.path, SpanMode.breadth))
+    foreach(string s; dirEntries(pack.path, "*.d", SpanMode.breadth))
     {
-        if(s.endsWith(".d"))
-        {
-            writeln(s);
-            joined ~= " " ~ s;
-        }
+        writeln(s);
+        joined ~= " " ~ s;
     }
     writeln();
     string libName = format("%s%s%s%s", prefix, "Derelict", pack.name, extension);
