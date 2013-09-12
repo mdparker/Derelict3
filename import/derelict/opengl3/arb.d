@@ -1673,7 +1673,7 @@ extern(System)
     alias nothrow void function(GLint, GLdouble) da_glUniform1d;
     alias nothrow void function(GLint, GLdouble, GLdouble) da_glUniform2d;
     alias nothrow void function(GLint, GLdouble, GLdouble, GLdouble) da_glUniform3d;
-    alias nothrow void function(GLint, GLdouble, GLdouble, GLdouble) da_glUniform4d;
+    alias nothrow void function(GLint, GLdouble, GLdouble, GLdouble, GLdouble) da_glUniform4d;
     alias nothrow void function(GLint, GLsizei, const(GLdouble)*) da_glUniform1dv;
     alias nothrow void function(GLint, GLsizei, const(GLdouble)*) da_glUniform2dv;
     alias nothrow void function(GLint, GLsizei, const(GLdouble)*) da_glUniform3dv;
