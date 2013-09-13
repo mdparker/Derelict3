@@ -63,7 +63,7 @@ class DerelictPQLoader : SharedLibLoader
         override void loadSymbols()
         {
             // PQlibVersion appears first at 9.1
-            try 
+            try
             {
                 bindFunc(cast(void**)&PQlibVersion, "PQlibVersion");
             } catch(SymbolLoadException e)
