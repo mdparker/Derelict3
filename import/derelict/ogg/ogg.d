@@ -39,7 +39,7 @@ private
     import derelict.util.system;
 
     static if(Derelict_OS_Windows)
-        enum libNames = "ogg.dll, libogg.dll";
+        enum libNames = "ogg.dll, libogg-0.dll, libogg.dll";
     else static if(Derelict_OS_Mac)
         enum libNames = "libogg.dylib, libogg.0.dylib";
     else static if(Derelict_OS_Posix)

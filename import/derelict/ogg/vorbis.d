@@ -39,7 +39,7 @@ private
     import derelict.util.system;
 
     static if(Derelict_OS_Windows)
-        enum libNames = "vorbis.dll, libvorbis.dll";
+        enum libNames = "vorbis.dll, libvorbis-0.dll, libvorbis.dll";
     else static if(Derelict_OS_Mac)
         enum libNames = "libvorbis.dylib, libvorbis.0.dylib";
     else static if(Derelict_OS_Posix)
