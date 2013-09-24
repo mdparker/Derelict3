@@ -99,6 +99,11 @@ class DerelictASSIMP3Loader : SharedLibLoader {
         bindFunc(cast(void**)&aiGetMaterialString, "aiGetMaterialString");
         bindFunc(cast(void**)&aiGetMaterialTextureCount, "aiGetMaterialTextureCount");
         bindFunc(cast(void**)&aiGetMaterialTexture, "aiGetMaterialTexture");
+        bindFunc(cast(void**)&aiGetLegalString, "aiGetLegalString");
+        bindFunc(cast(void**)&aiGetVersionMinor, "aiGetVersionMinor");
+        bindFunc(cast(void**)&aiGetVersionMajor, "aiGetVersionMajor");
+        bindFunc(cast(void**)&aiGetVersionRevision, "aiGetVersionRevision");
+        bindFunc(cast(void**)&aiGetCompileFlags, "aiGetCompileFlags");
     }
 
     public this() {

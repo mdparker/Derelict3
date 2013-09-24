@@ -88,6 +88,13 @@ extern( C ) nothrow {
     alias aiReturn function( const( aiMaterial)*, const( char )*, uint, uint, aiString* ) da_aiGetMaterialString;
     alias uint function( const( aiMaterial )*, aiTextureType ) da_aiGetMaterialTextureCount;
     alias aiReturn function( aiTextureType, uint, aiString*, aiTextureMapping* m=null, uint* uvindex = null, float* blend = null, aiTextureOp* op = null, aiTextureMapMode* mm = null, uint* flags = null ) da_aiGetMaterialTexture;
+
+    // version.h
+    alias nothrow const(char)* function() da_aiGetLegalString;
+    alias nothrow uint function() da_aiGetVersionMinor;
+    alias nothrow uint function() da_aiGetVersionMajor;
+    alias nothrow uint function() da_aiGetVersionRevision;
+    alias nothrow uint function() da_aiGetCompileFlags;
 }
 
 __gshared {
@@ -136,4 +143,9 @@ __gshared {
     da_aiGetMaterialString aiGetMaterialString;
     da_aiGetMaterialTextureCount aiGetMaterialTextureCount;
     da_aiGetMaterialTexture aiGetMaterialTexture;
+    da_aiGetLegalString aiGetLegalString;
+    da_aiGetVersionMinor aiGetVersionMinor;
+    da_aiGetVersionMajor aiGetVersionMajor;
+    da_aiGetVersionRevision aiGetVersionRevision;
+    da_aiGetCompileFlags aiGetCompileFlags;
 }
