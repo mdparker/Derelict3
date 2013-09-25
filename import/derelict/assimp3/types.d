@@ -147,6 +147,9 @@ struct aiPropertyStore {
 
 alias int aiBool;
 
+enum AI_FALSE = 0,
+     AI_TRUE = 1;
+
 // color4.h
 align(1) struct aiColor4D {
     float r, g, b, a;
@@ -547,3 +550,11 @@ struct aiMemoryInfo {
     uint lights;
     uint total;
 }
+
+// version.h
+
+enum ASSIMP_CFLAGS_SHARED = 0x1,
+     ASSIMP_CFLAGS_STLPORT = 0x2,
+     ASSIMP_CFLAGS_DEBUG = 0x4,
+     ASSIMP_CFLAGS_NOBOOST = 0x8,
+     ASSIMP_CFLAGS_SINGLETHREADED = 0x10;
