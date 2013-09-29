@@ -27,7 +27,10 @@ DEALINGS IN THE SOFTWARE.
 */
 module derelict.freeimage.types;
 
-private import core.stdc.config;
+private {
+    import core.stdc.config;
+    import core.stdc.stddef;
+}
 
 enum FREEIMAGE_MAJOR_VERSION = 3,
      FREEIMAGE_MINOR_VERSION = 15,
@@ -76,7 +79,6 @@ alias c_ulong DWORD;
 alias int LONG;
 alias long FIINT64;
 alias ulong FIUINT64;
-alias ushort wchar_t; // is wchar_t 2 bytes everywhere?
 
 align(1) struct RGBQUAD
 {

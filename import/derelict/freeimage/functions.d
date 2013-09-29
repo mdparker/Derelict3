@@ -30,6 +30,7 @@ module derelict.freeimage.functions;
 private
 {
     import core.stdc.config;
+    import core.stdc.stddef;
     import derelict.freeimage.types;
     import derelict.util.system;
 }
