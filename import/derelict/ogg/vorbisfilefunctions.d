@@ -39,6 +39,7 @@ private
 extern(C)
 {
     alias nothrow int function(OggVorbis_File*) da_ov_clear;
+    alias nothrow int function(const(char)*, OggVorbis_File*) da_ov_fopen;
     alias nothrow int function(void* datasource, OggVorbis_File*, const(char)*, c_long, ov_callbacks) da_ov_open_callbacks;
     alias nothrow int function(void*, OggVorbis_File*, const(char)*, c_long, ov_callbacks) da_ov_test_callbacks;
     alias nothrow int function(OggVorbis_File*) da_ov_test_open;
@@ -126,6 +127,7 @@ int ov_test(FILE* f, OggVorbis_File* vf, const(char)* initial, c_long ibytes)
 __gshared
 {
     da_ov_clear ov_clear;
+    da_ov_fopen ov_fopen;
     da_ov_open_callbacks ov_open_callbacks;
     da_ov_test_callbacks ov_test_callbacks;
     da_ov_test_open ov_test_open;

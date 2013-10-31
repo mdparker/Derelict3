@@ -54,10 +54,9 @@ protected:
     override void loadSymbols()
     {
         bindFunc(cast(void**)&ov_clear, "ov_clear");
-        // bindFunc(cast(void**)&ov_fopen, "ov_fopen");
+        bindFunc(cast(void**)&ov_fopen, "ov_fopen");
         bindFunc(cast(void**)&ov_open_callbacks, "ov_open_callbacks");
 
-        // bindFunc(cast(void**)&ov_test, "ov_test");
         bindFunc(cast(void**)&ov_test_callbacks, "ov_test_callbacks");
         bindFunc(cast(void**)&ov_test_open, "ov_test_open");
 
