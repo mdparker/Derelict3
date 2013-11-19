@@ -106,6 +106,7 @@ class DerelictSDL2Loader : SharedLibLoader
             bindFunc(cast(void**)&SDL_HasSSE3, "SDL_HasSSE3");
             bindFunc(cast(void**)&SDL_HasSSE41, "SDL_HasSSE41");
             bindFunc(cast(void**)&SDL_HasSSE42, "SDL_HasSSE42");
+            bindFunc(cast(void**)&SDL_GetSystemRAM, "SDL_GetSystemRAM");
             bindFunc(cast(void**)&SDL_SetError, "SDL_SetError");
             bindFunc(cast(void**)&SDL_GetError, "SDL_GetError");
             bindFunc(cast(void**)&SDL_ClearError, "SDL_ClearError");
@@ -183,6 +184,8 @@ class DerelictSDL2Loader : SharedLibLoader
             bindFunc(cast(void**)&SDL_SetHintWithPriority, "SDL_SetHintWithPriority");
             bindFunc(cast(void**)&SDL_SetHint, "SDL_SetHint");
             bindFunc(cast(void**)&SDL_GetHint, "SDL_GetHint");
+            bindFunc(cast(void**)&SDL_AddHintCallback, "SDL_AddHintCallback");
+            bindFunc(cast(void**)&SDL_DelHintCallback, "SDL_DelHintCallback");
             bindFunc(cast(void**)&SDL_ClearHints, "SDL_ClearHints");
 //            bindFunc(cast(void**)&SDL_RedetectInputDevices, "SDL_RedetectInputDevices");
 //            bindFunc(cast(void**)&SDL_GetNumInputDevices, "SDL_GetNumInputDevices");
@@ -295,6 +298,7 @@ class DerelictSDL2Loader : SharedLibLoader
             bindFunc(cast(void**)&SDL_SetTextureBlendMode, "SDL_SetTextureBlendMode");
             bindFunc(cast(void**)&SDL_GetTextureBlendMode, "SDL_GetTextureBlendMode");
             bindFunc(cast(void**)&SDL_UpdateTexture, "SDL_UpdateTexture");
+            bindFunc(cast(void**)&SDL_UpdateYUVTexture, "SDL_UpdateYUVTexture");
             bindFunc(cast(void**)&SDL_LockTexture, "SDL_LockTexture");
             bindFunc(cast(void**)&SDL_UnlockTexture, "SDL_UnlockTexture");
             bindFunc(cast(void**)&SDL_RenderTargetSupported, "SDL_RenderTargetSupported");

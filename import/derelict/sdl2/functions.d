@@ -88,6 +88,7 @@ extern(C)
     alias nothrow SDL_bool function() da_SDL_HasSSE3;
     alias nothrow SDL_bool function() da_SDL_HasSSE41;
     alias nothrow SDL_bool function() da_SDL_HasSSE42;
+    alias nothrow int function() da_SDL_GetSystemRAM;
 
     // SDL_error.h
     alias nothrow void function(const(char)*, ...) da_SDL_SetError;
@@ -178,6 +179,8 @@ extern(C)
     alias nothrow SDL_bool function(const(char)*, const(char)*, SDL_HintPriority) da_SDL_SetHintWithPriority;
     alias nothrow SDL_bool function(const(char)*, const(char)*) da_SDL_SetHint;
     alias nothrow const(char)* function(const(char)*) da_SDL_GetHint;
+    alias nothrow void function(const(char)*, SDL_HintCallback, void*) da_SDL_AddHintCallback;
+    alias nothrow void function(const(char)*, SDL_HintCallback, void*) da_SDL_DelHintCallback;
     alias nothrow void function() da_SDL_ClearHints;
 
     // SDL_input.h
@@ -315,6 +318,7 @@ extern(C)
     alias nothrow int function(SDL_Texture*, SDL_BlendMode) da_SDL_SetTextureBlendMode;
     alias nothrow int function(SDL_Texture*, SDL_BlendMode*) da_SDL_GetTextureBlendMode;
     alias nothrow int function(SDL_Texture*, const(SDL_Rect)*, const(void)*, int) da_SDL_UpdateTexture;
+    alias nothrow int function(SDL_Texture*, const(SDL_Rect)*, const(Uint8)*, int, const(Uint8)*, int, const(Uint8)*, int ) da_SDL_UpdateYUVTexture;
     alias nothrow int function(SDL_Texture*, const(SDL_Rect)*, void**, int*) da_SDL_LockTexture;
     alias nothrow int function(SDL_Texture*) da_SDL_UnlockTexture;
     alias nothrow SDL_bool function(SDL_Renderer*) da_SDL_RenderTargetSupported;
@@ -396,7 +400,7 @@ extern(C)
     alias nothrow int function(SDL_Surface*, SDL_BlendMode*) da_SDL_GetSurfaceBlendMode;
     alias nothrow SDL_bool function(SDL_Surface*, const(SDL_Rect)*) da_SDL_SetClipRect;
     alias nothrow void function(SDL_Surface*, SDL_Rect*) da_SDL_GetClipRect;
-    alias nothrow SDL_Surface* function(SDL_Surface*, SDL_PixelFormat*, Uint32) da_SDL_ConvertSurface;
+    alias nothrow SDL_Surface* function(SDL_Surface*, const(SDL_PixelFormat)*, Uint32) da_SDL_ConvertSurface;
     alias nothrow SDL_Surface* function(SDL_Surface*, Uint32, Uint32) da_SDL_ConvertSurfaceFormat;
     alias nothrow int function(int, int, Uint32, const(void)*, int, Uint32, void*, int) da_SDL_ConvertPixels;
     alias nothrow int function(SDL_Surface*, const(SDL_Rect)*, Uint32) da_SDL_FillRect;
@@ -493,6 +497,9 @@ extern(C)
     alias nothrow int function(SDL_GLattr, int*) da_SDL_GL_GetAttribute;
     alias nothrow SDL_GLContext function(SDL_Window*) da_SDL_GL_CreateContext;
     alias nothrow int function(SDL_Window*, SDL_GLContext) da_SDL_GL_MakeCurrent;
+    alias nothrow SDL_Window* function() da_SDL_GL_GetCurrentWindow;
+    alias nothrow SDL_GLContext function() da_SDL_GL_GetCurrentContext;
+    alias nothrow void function(SDL_Window*, int*, int*) da_SDL_GL_GetDrawableSize;
     alias nothrow int function(int) da_SDL_GL_SetSwapInterval;
     alias nothrow int function() da_SDL_GL_GetSwapInterval;
     alias nothrow void function(SDL_Window*) da_SDL_GL_SwapWindow;
@@ -579,6 +586,7 @@ __gshared
     da_SDL_HasSSE3 SDL_HasSSE3;
     da_SDL_HasSSE41 SDL_HasSSE41;
     da_SDL_HasSSE42 SDL_HasSSE42;
+    da_SDL_GetSystemRAM SDL_GetSystemRAM;
 
     da_SDL_SetError SDL_SetError;
     da_SDL_GetError SDL_GetError;
@@ -662,6 +670,8 @@ __gshared
     da_SDL_SetHintWithPriority SDL_SetHintWithPriority;
     da_SDL_SetHint SDL_SetHint;
     da_SDL_GetHint SDL_GetHint;
+    da_SDL_AddHintCallback SDL_AddHintCallback;
+    da_SDL_DelHintCallback SDL_DelHintCallback;
     da_SDL_ClearHints SDL_ClearHints;
 
 //    da_SDL_RedetectInputDevices SDL_RedetectInputDevices;
@@ -787,6 +797,7 @@ __gshared
     da_SDL_SetTextureBlendMode SDL_SetTextureBlendMode;
     da_SDL_GetTextureBlendMode SDL_GetTextureBlendMode;
     da_SDL_UpdateTexture SDL_UpdateTexture;
+    da_SDL_UpdateYUVTexture SDL_UpdateYUVTexture;
     da_SDL_LockTexture SDL_LockTexture;
     da_SDL_UnlockTexture SDL_UnlockTexture;
     da_SDL_RenderTargetSupported SDL_RenderTargetSupported;

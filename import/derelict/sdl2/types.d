@@ -33,10 +33,6 @@ private
     import core.stdc.stdio;
 }
 
-// From SDL_revision.h
-enum SDL_REVISION = "hg-6984:ae9c4b12f3e2";
-enum SDL_REVISION_NUMBER = 6984;
-
 // SDL_version.h
 struct SDL_version
 {
@@ -49,7 +45,7 @@ enum : Uint8
 {
     SDL_MAJOR_VERSION = 2,
     SDL_MINOR_VERSION = 0,
-    SDL_PATCHLEVEL = 0
+    SDL_PATCHLEVEL = 1
 }
 
 void SDL_VERSION(SDL_version* x)
@@ -645,7 +641,7 @@ enum : Uint16
 {
     SDL_HAPTIC_CONSTANT = 1<<0,
     SDL_HAPTIC_SINE = 1<<1,
-    SDL_HAPTIC_SQUARE = 1<<2,
+    SDL_HAPTIC_LEFTRIGHT = 1<<2,
     SDL_HAPTIC_TRIANGLE = 1<<3,
     SDL_HAPTIC_SAWTOOTHUP = 1<<4,
     SDL_HAPTIC_SAWTOOTHDOWN = 1<<5,
@@ -737,6 +733,13 @@ struct SDL_HapticRamp
     Uint16 fade_level;
 }
 
+struct SDL_HapticLeftRight {
+    Uint16 type;
+    Uint32 length;
+    Uint16 large_magnitude;
+    Uint16 small_magnitude;
+}
+
 struct SDL_HapticCustom
 {
     Uint16 type;
@@ -762,6 +765,7 @@ union SDL_HapticEffect
     SDL_HapticPeriodic periodic;
     SDL_HapticCondition condition;
     SDL_HapticRamp ramp;
+    SDL_HapticLeftRight leftright;
     SDL_HapticCustom custom;
 }
 
@@ -771,6 +775,7 @@ enum : string
     SDL_HINT_FRAMEBUFFER_ACCELERATION = "SDL_FRAMEBUFFER_ACCELERATION",
     SDL_HINT_RENDER_DRIVER = "SDL_RENDER_DRIVER",
     SDL_HINT_RENDER_OPENGL_SHADERS = "SDL_RENDER_OPENGL_SHADERS",
+    SDL_HINT_RENDER_DIRECT3D_THREADSAFE = "SDL_RENDER_DIRECT3D_THREADSAFE",
     SDL_HINT_RENDER_SCALE_QUALITY = "SDL_RENDER_SCALE_QUALITY",
     SDL_HINT_RENDER_VSYNC = "SDL_RENDER_VSYNC",
     SDL_HINT_VIDEO_X11_XVIDMODE = "SDL_VIDEO_X11_XVIDMODE",
@@ -782,6 +787,10 @@ enum : string
     SDL_HINT_ORIENTATIONS = "SDL_IOS_ORIENTATIONS",
     SDL_HINT_XINPUT_ENABLED = "SDL_XINPUT_ENABLED",
     SDL_HINT_GAMECONTROLLERCONFIG = "SDL_GAMECONTROLLERCONFIG",
+    SDL_HINT_JOYSTICK_ALLOW_BACKGROUND_EVENTS = "SDL_JOYSTICK_ALLOW_BACKGROUND_EVENTS",
+    SDL_HINT_ALLOW_TOPMOST = "SDL_ALLOW_TOPMOST",
+    SDL_HINT_TIMER_RESOLUTION = "SDL_TIMER_RESOLUTION",
+    SDL_HINT_VIDEO_HIGHDPI_DISABLED = "SDL_VIDEO_HIGHDPI_DISABLED",
 }
 
 alias int SDL_HintPriority;
@@ -791,6 +800,8 @@ enum
     SDL_HINT_NORMAL,
     SDL_HINT_OVERRIDE,
 }
+
+extern(C) alias nothrow void function(void*, const(char)*, const(char)*) SDL_HintCallback;
 
 // SDL_joystick.h
 struct SDL_Joystick;
@@ -2006,6 +2017,10 @@ extern(C) alias int function(SDL_Surface* src, SDL_Rect* srcrect, SDL_Surface* d
 extern(C) alias Uint32 function(Uint32 interval, void* param) SDL_TimerCallback;
 alias int SDL_TimerID;
 
+bool SDL_TICKS_PASSED(Uint32 A, Uint32 B) {
+    return cast(Sint32)(B - A) <= 0;
+}
+
 // SDL_touch.h
 alias Sint64 SDL_TouchID;
 alias Sint64 SDL_FingerID;
@@ -2047,7 +2062,8 @@ enum
     SDL_WINDOW_INPUT_FOCUS = 0x00000200,
     SDL_WINDOW_MOUSE_FOCUS = 0x00000400,
     SDL_WINDOW_FULLSCREEN_DESKTOP = SDL_WINDOW_FULLSCREEN | 0x00001000,
-    SDL_WINDOW_FOREIGN = 0x00000800
+    SDL_WINDOW_FOREIGN = 0x00000800,
+    SDL_WINDOW_ALLOW_HIGHDPI = 0x00002000,
 }
 
 enum SDL_WINDOWPOS_UNDEFINED_MASK = 0x1FFF0000;
@@ -2108,6 +2124,7 @@ enum
     SDL_GL_CONTEXT_FLAGS,
     SDL_GL_CONTEXT_PROFILE_MASK,
     SDL_GL_SHARE_WITH_CURRENT_CONTEXT,
+    SDL_GL_FRAMEBUFFER_SRGB_CAPABLE,
 }
 
 alias int SDL_GLprofile;
