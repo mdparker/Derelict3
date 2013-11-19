@@ -253,7 +253,7 @@ extern(C)
     alias nothrow void function(SDL_LogOutputFunction, void*) da_SDL_LogSetOutputFunction;
 
     // SDL_messagebox.h
-    alias nothrow int function(const(SDL_MessageBoxData)*, int) da_SDL_ShowMessageBox;
+    alias nothrow int function(const(SDL_MessageBoxData)*, int*) da_SDL_ShowMessageBox;
     alias nothrow int function(Uint32, const(char)*, const(char)*, SDL_Window*) da_SDL_ShowSimpleMessageBox;
 
     // SDL_mouse.h
@@ -966,6 +966,8 @@ __gshared
     da_SDL_GL_GetAttribute SDL_GL_GetAttribute;
     da_SDL_GL_CreateContext SDL_GL_CreateContext;
     da_SDL_GL_MakeCurrent SDL_GL_MakeCurrent;
+    da_SDL_GL_GetCurrentWindow SDL_GL_GetCurrentWindow;
+    da_SDL_GL_GetCurrentContext SDL_GL_GetCurrentContext;
     da_SDL_GL_SetSwapInterval SDL_GL_SetSwapInterval;
     da_SDL_GL_GetSwapInterval SDL_GL_GetSwapInterval;
     da_SDL_GL_SwapWindow SDL_GL_SwapWindow;
