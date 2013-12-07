@@ -439,7 +439,7 @@ extern(C)
     alias nothrow void function() da_SDL_VideoQuit;
     alias nothrow const(char)* function() da_SDL_GetCurrentVideoDriver;
     alias nothrow int function() da_SDL_GetNumVideoDisplays;
-    alias nothrow int function(int) da_SDL_GetDisplayName;
+    alias nothrow const(char)* function(int) da_SDL_GetDisplayName;
     alias nothrow int function(int, SDL_Rect*) da_SDL_GetDisplayBounds;
     alias nothrow int function(int) da_SDL_GetNumDisplayModes;
     alias nothrow int function(int, int, SDL_DisplayMode*) da_SDL_GetDisplayMode;
