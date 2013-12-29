@@ -83,7 +83,7 @@ version(DigitalMars)
     enum compilerOptions = "-lib -O -release -inline -property -w -wi";
     string buildCompileString(string files, string libName)
     {
-        return format("dmd %s -I%s -of%s/dmd/%s %s", compilerOptions, importPath, outdir, libName, files);
+        return format("dmd %s -I\"%s\" -of\"%s/dmd/%s\" %s", compilerOptions, importPath, outdir, libName, files);
     }
 }
 else version(GNU)
@@ -92,7 +92,7 @@ else version(GNU)
     enum compilerOptions = "-c -s -O3 -Wall";
     string buildCompileString(string files, string libName)
     {
-        return format("gdc %s -I%s -o %s/gdc/%s %s", compilerOptions, importPath, outdir, libName, files);
+        return format("gdc %s -I\"%s\" -o \"%s/gdc/%s\" %s", compilerOptions, importPath, outdir, libName, files);
     }
 }
 else version(LDC)
@@ -101,7 +101,7 @@ else version(LDC)
     enum compilerOptions = "-lib -O -release -enable-inlining -property -w -wi";
     string buildCompileString(string files, string libName)
     {
-        return format("ldc2 %s -I%s -of%s/ldc/%s %s", compilerOptions, importPath, outdir, libName, files);
+        return format("ldc2 %s -I\"%s\" -of\"%s/ldc/%s\" %s", compilerOptions, importPath, outdir, libName, files);
     }
 }
 else
@@ -241,7 +241,7 @@ void buildPackage(Package pack)
     foreach(string s; dirEntries(pack.path, "*.d", SpanMode.breadth))
     {
         writeln(s);
-        joined ~= " " ~ s;
+        joined ~= " \"" ~ s ~ "\"";
     }
     writeln();
     string libName = format("%s%s%s%s", prefix, "Derelict", pack.name, extension);
