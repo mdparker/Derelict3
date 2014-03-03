@@ -90,7 +90,7 @@ extern(C)
     alias nothrow ALboolean function(alureStream*, ALuint) da_alureSetStreamOrder;
     alias nothrow ALboolean function(alureStream*, ALchar*) da_alureSetStreamPatchset;
     alias nothrow alureInt64 function(alureStream*) da_alureGetStreamLength;
-    alias nothrow ALboolean function(alureStream*, ALsizei, ALsizei, ALuint*) da_alureDestroyStream;
+    alias nothrow ALboolean function(alureStream*, ALsizei, ALuint*) da_alureDestroyStream;
 
     alias nothrow ALboolean function(alureSetIOCallbacks_open_callback,
                                      alureSetIOCallbacks_close_callback,
