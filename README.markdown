@@ -1,7 +1,7 @@
-#Derelict 3
+#Important
+All of the bindings, except those for libtcod and FreeGLUT, have been migrated to [DerelictOrg][https://github.com/DerelictOrg]. The Derelict 3 repository will be left as-is, but I will no longer be maintaining it. If you are using Derelict 3, switching to DerelictOrg should largely be painless. For the most part, you shouldn't need to change anything in your code to do so. So please make the switch! Thank you.
 
-###Important
-I am in the process of migrating each individual Derelict package to its own repository in the [DerelictOrg](https://github.com/DerelictOrg) organization. The new repositories require dub to be used for package management. There is no more Derelict build script. If you are already using dub with Derelict, I highly recommend you change your dependencies to match the new repositories, as described in [this post](http://dblog.aldacron.net/forum/index.php?topic=841.0) on the Derelict forums, once all of the Derelict packages you use have been migrated.
+#Derelict 3
 
 I will continue to accept pull requests here in this repository only for bug fixes. No new packages will be accepted. I will leave it online indefinitely so that those who are using it can continue to do so. However, this repository will be considered deprecated once all of the packages have been migrated. I highly encourage that all new projects, or any that can easily transtion, make use of the new repositories. Thanks!
 
