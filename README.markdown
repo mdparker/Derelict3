@@ -1,5 +1,5 @@
 #Important
-All of the bindings, except those for libtcod and FreeGLUT, have been migrated to [DerelictOrg][https://github.com/DerelictOrg]. The Derelict 3 repository will be left as-is, but I will no longer be maintaining it. If you are using Derelict 3, switching to DerelictOrg should largely be painless. For the most part, you shouldn't need to change anything in your code to do so. So please make the switch! Thank you.
+All of the bindings, except those for libtcod and FreeGLUT, have been migrated to [DerelictOrg](https://github.com/DerelictOrg). The Derelict 3 repository will be left as-is, but I will no longer be maintaining it. If you are using Derelict 3, switching to DerelictOrg should largely be painless. For the most part, you shouldn't need to change anything in your code to do so. So please make the switch! Thank you.
 
 #Derelict 3
 
