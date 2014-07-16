@@ -69,7 +69,7 @@ struct TCOD_bsp_t
     int x, y, w, h;
     int position;
     uint8 level;
-    bool horizontal;
+    uint8 horizontal;
 }
 
 extern(C) alias uint8 function(TCOD_bsp_t*, void*) TCOD_bsp_callback_t;
