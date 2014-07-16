@@ -334,14 +334,14 @@ extern(C)
 
     // parser structure from parser.h
     alias const char * function(TCOD_parser_struct_t def) da_TCOD_struct_get_name;
-	alias void function(TCOD_parser_struct_t, const char *, TCOD_value_type_t, bool) da_TCOD_struct_add_property;
-	alias void function(TCOD_parser_struct_t, const char *, TCOD_value_type_t, bool) da_TCOD_struct_add_list_property;
-	alias void function(TCOD_parser_struct_t, const char *, const char **, bool) da_TCOD_struct_add_value_list;
-	alias void function(TCOD_parser_struct_t, const char *, const char **, int, bool) da_TCOD_struct_add_value_list_sized;
-	alias void function(TCOD_parser_struct_t, const char *) da_TCOD_struct_add_flag;
-	alias void function(TCOD_parser_struct_t, TCOD_parser_struct_t) da_TCOD_struct_add_structure;
-	alias bool function(TCOD_parser_struct_t, const char *) da_TCOD_struct_is_mandatory;
-	alias TCOD_value_type_t function(TCOD_parser_struct_t, const char *) da_TCOD_struct_get_type;
+    alias void function(TCOD_parser_struct_t, const char *, TCOD_value_type_t, bool) da_TCOD_struct_add_property;
+    alias void function(TCOD_parser_struct_t, const char *, TCOD_value_type_t, bool) da_TCOD_struct_add_list_property;
+    alias void function(TCOD_parser_struct_t, const char *, const char **, bool) da_TCOD_struct_add_value_list;
+    alias void function(TCOD_parser_struct_t, const char *, const char **, int, bool) da_TCOD_struct_add_value_list_sized;
+    alias void function(TCOD_parser_struct_t, const char *) da_TCOD_struct_add_flag;
+    alias void function(TCOD_parser_struct_t, TCOD_parser_struct_t) da_TCOD_struct_add_structure;
+    alias bool function(TCOD_parser_struct_t, const char *) da_TCOD_struct_is_mandatory;
+    alias TCOD_value_type_t function(TCOD_parser_struct_t, const char *) da_TCOD_struct_get_type;
 
     // path.h
     alias nothrow TCOD_path_t function(TCOD_map_t, float) da_TCOD_path_new_using_map;
@@ -737,14 +737,14 @@ __gshared
 
     // parser structure from parser.h
     da_TCOD_struct_get_name TCOD_struct_get_name;
-	da_TCOD_struct_add_property TCOD_struct_add_property;
-	da_TCOD_struct_add_list_property TCOD_struct_add_list_property;
-	da_TCOD_struct_add_value_list TCOD_struct_add_value_list;
-	da_TCOD_struct_add_value_list_sized TCOD_struct_add_value_list_sized;
-	da_TCOD_struct_add_flag TCOD_struct_add_flag;
-	da_TCOD_struct_add_structure TCOD_struct_add_structure;
-	da_TCOD_struct_is_mandatory TCOD_struct_is_mandatory;
-	da_TCOD_struct_get_type TCOD_struct_get_type;
+    da_TCOD_struct_add_property TCOD_struct_add_property;
+    da_TCOD_struct_add_list_property TCOD_struct_add_list_property;
+    da_TCOD_struct_add_value_list TCOD_struct_add_value_list;
+    da_TCOD_struct_add_value_list_sized TCOD_struct_add_value_list_sized;
+    da_TCOD_struct_add_flag TCOD_struct_add_flag;
+    da_TCOD_struct_add_structure TCOD_struct_add_structure;
+    da_TCOD_struct_is_mandatory TCOD_struct_is_mandatory;
+    da_TCOD_struct_get_type TCOD_struct_get_type;
 
     // path.h
     da_TCOD_path_new_using_map TCOD_path_new_using_map;
