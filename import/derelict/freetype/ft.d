@@ -144,7 +144,7 @@ class DerelictFTLoader : SharedLibLoader
             bindFunc(cast(void**)&FT_Has_PS_Glyph_Names, "FT_Has_PS_Glyph_Names");
             bindFunc(cast(void**)&FT_Get_PS_Font_Info, "FT_Get_PS_Font_Info");
             bindFunc(cast(void**)&FT_Get_PS_Font_Private, "FT_Get_PS_Font_Private");
-            bindFunc(cast(void**)&FT_Get_PS_Font_Value, "FT_Get_PS_Font_Value");
+            bindFunc(cast(void**)&FT_Get_PS_Font_Value, "FT_Get_PS_Font_Value", false);
 
             // tttables.h
             bindFunc(cast(void**)&FT_Get_Sfnt_Table, "FT_Get_Sfnt_Table");
